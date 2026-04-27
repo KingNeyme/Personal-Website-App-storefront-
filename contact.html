@@ -29,10 +29,11 @@
 
         <nav class="nav">
           <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
           <a href="journey.html">Journey</a>
           <a href="tech-stack.html">Tech Stack</a>
           <a href="certifications.html">Certifications</a>
-          <a href="index.html#storefront">Storefront</a>
+          <a href="storefront.html">Storefront</a>
           <a href="blog.html">Blog</a>
           <a href="contact.html" aria-current="page">Contact</a>
         </nav>
@@ -63,7 +64,11 @@
             </div>
           </div>
 
-          <form class="lead-form contact-form">
+          <form
+            class="lead-form contact-form"
+            data-demo-form
+            data-success-message="Thanks. Your contact form UI is working and ready to be connected to email, Formspree, Web3Forms, or your own backend."
+          >
             <label>
               Name
               <input type="text" name="name" placeholder="Your name" />
@@ -81,10 +86,12 @@
               <textarea name="message" rows="6" placeholder="Tell me what you’d like to connect about."></textarea>
             </label>
             <button class="button button-primary" type="submit">Send Inquiry</button>
-            <p class="form-note">This form is ready to wire up to email, Formspree, Web3Forms, or your own backend.</p>
+            <p class="form-note" data-form-note>This form is ready to wire up to email, Formspree, Web3Forms, or your own backend.</p>
           </form>
         </section>
       </main>
+
+      <script src="script.js"></script>
 
       <footer class="footer">
         <p>CaribAI</p>

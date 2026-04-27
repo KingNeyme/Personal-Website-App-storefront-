@@ -29,10 +29,11 @@
 
         <nav class="nav">
           <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
           <a href="journey.html">Journey</a>
           <a href="tech-stack.html">Tech Stack</a>
           <a href="certifications.html">Certifications</a>
-          <a href="#storefront">Storefront</a>
+          <a href="storefront.html">Storefront</a>
           <a href="blog.html">Blog</a>
           <a href="contact.html">Contact</a>
         </nav>
@@ -41,7 +42,7 @@
       <main>
         <section class="hero panel">
           <div class="hero-copy">
-            <p class="eyebrow">CaribAI • App Portfolio • Credibility Engine</p>
+            <p class="eyebrow">CaribAI • Builder Brand • App Storefront</p>
             <h1>Documenting the journey into AI engineering, machine learning, and entrepreneurship through real products and public learning.</h1>
             <p class="hero-text">
               CaribAI is my public builder brand, content hub, and product storefront. It exists to document my growth
@@ -50,7 +51,7 @@
             </p>
 
             <div class="hero-actions">
-              <a class="button button-primary" href="#storefront">Explore Apps</a>
+              <a class="button button-primary" href="storefront.html">Explore Apps</a>
               <a class="button button-secondary" href="#lead-access">Join Early Access</a>
               <a class="button button-secondary" href="journey.html">Follow the Journey</a>
             </div>
@@ -175,6 +176,27 @@
           </div>
         </section>
 
+        <section class="panel insights-panel">
+          <div>
+            <p class="eyebrow">Why CaribAI</p>
+            <h2>A public builder brand with product ambition, not just another generic tech site.</h2>
+          </div>
+          <div class="insight-grid">
+            <article>
+              <h3>Built in Public</h3>
+              <p>Visitors can see the progress, the products, the lessons, and the discipline behind the brand in real time.</p>
+            </article>
+            <article>
+              <h3>Product-Led</h3>
+              <p>The site supports app launches, early-access demand, and the long-term growth of a portfolio under one identity.</p>
+            </article>
+            <article>
+              <h3>Career-Strengthening</h3>
+              <p>Everything here also doubles as proof of initiative, technical growth, and entrepreneurial thinking for future opportunities.</p>
+            </article>
+          </div>
+        </section>
+
         <section id="projects" class="panel">
           <div class="section-heading">
             <div>
@@ -261,6 +283,39 @@
           </div>
         </section>
 
+        <section class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Current Focus</p>
+              <h2>What CaribAI is focused on right now</h2>
+            </div>
+          </div>
+
+          <div class="project-list">
+            <article class="project-row">
+              <div>
+                <h3>1. Build and launch focused apps</h3>
+                <p>Start with small, useful products that can become the first real signals of traction under CaribAI.</p>
+              </div>
+              <span>Immediate Priority</span>
+            </article>
+            <article class="project-row">
+              <div>
+                <h3>2. Document the journey</h3>
+                <p>Turn every build, lesson, obstacle, and improvement into content that strengthens the brand and audience trust.</p>
+              </div>
+              <span>Always Active</span>
+            </article>
+            <article class="project-row">
+              <div>
+                <h3>3. Grow technical depth</h3>
+                <p>Use the products as a vehicle for getting stronger in AI engineering, ML, backend systems, and modern tooling.</p>
+              </div>
+              <span>Long-Term Engine</span>
+            </article>
+          </div>
+        </section>
+
         <section id="lead-access" class="panel lead-panel">
           <div>
             <p class="eyebrow">Early Access</p>
@@ -270,7 +325,12 @@
             </p>
           </div>
 
-          <form class="lead-form" id="lead-form">
+          <form
+            class="lead-form"
+            id="lead-form"
+            data-demo-form
+            data-success-message="Thanks. You’re on the CaribAI early-access list UI and this form is ready for your real email platform."
+          >
             <label>
               Name
               <input type="text" name="name" placeholder="Your name" />
@@ -280,7 +340,7 @@
               <input type="email" name="email" placeholder="you@example.com" />
             </label>
             <button class="button button-primary" type="submit">Join Early Access</button>
-            <p class="form-note" id="form-note">This lead form is ready to connect to your email platform or backend.</p>
+            <p class="form-note" id="form-note" data-form-note>This lead form is ready to connect to your email platform or backend.</p>
           </form>
         </section>
 

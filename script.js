@@ -1,10 +1,20 @@
-const leadForm = document.querySelector("#lead-form");
-const formNote = document.querySelector("#form-note");
+const demoForms = document.querySelectorAll("[data-demo-form]");
 
-if (leadForm && formNote) {
-  leadForm.addEventListener("submit", (event) => {
+demoForms.forEach((form) => {
+  const note = form.querySelector("[data-form-note]");
+
+  if (!note) {
+    return;
+  }
+
+  form.addEventListener("submit", (event) => {
     event.preventDefault();
-    formNote.textContent = "Thanks. Your form UI is working and ready to be connected to a real email list or backend.";
-    leadForm.reset();
+
+    const message =
+      form.getAttribute("data-success-message") ||
+      "Thanks. Your form UI is working and ready to be connected to a real email list or backend.";
+
+    note.textContent = message;
+    form.reset();
   });
-}
+});
