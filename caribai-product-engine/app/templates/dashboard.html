@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CaribAI Product Engine</title>
+    <link rel="stylesheet" href="/static/dashboard.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Internal Use</p>
+          <h1>CaribAI Product Engine</h1>
+          <p class="hero-copy">
+            Test ideas through a simple internal UI: create an idea, run the workflow, and inspect the research,
+            validation, brief, build-plan, and asset outputs in one place.
+          </p>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel">
+          <div class="section-heading">
+            <h2>New Idea</h2>
+            <p>Create a product concept and send it through the engine.</p>
+          </div>
+
+          <form class="idea-form" action="/ui/ideas" method="post">
+            <label>
+              Title
+              <input type="text" name="title" required placeholder="CopyBoost" />
+            </label>
+            <label>
+              Niche
+              <input type="text" name="niche" required placeholder="ecommerce" />
+            </label>
+            <label>
+              Platform
+              <input type="text" name="platform" required placeholder="shopify" />
+            </label>
+            <label>
+              Audience
+              <input type="text" name="audience" required placeholder="small Shopify merchants" />
+            </label>
+            <label class="full">
+              Problem
+              <textarea name="problem" rows="4" required placeholder="What painful problem does this solve?"></textarea>
+            </label>
+            <label class="full">
+              Notes
+              <textarea name="notes" rows="3" placeholder="Optional founder notes, assumptions, or ideas"></textarea>
+            </label>
+            <button class="button" type="submit">Create Idea</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="section-heading">
+            <h2>Idea List</h2>
+            <p>Select an idea to inspect its outputs.</p>
+          </div>
+
+          <div class="idea-list">
+            {% for idea in ideas %}
+            <a class="idea-item {% if selected_idea and selected_idea.id == idea.id %}active{% endif %}" href="/ideas/{{ idea.id }}/dashboard">
+              <strong>{{ idea.title }}</strong>
+              <span>{{ idea.platform }} • {{ idea.niche }}</span>
+            </a>
+            {% else %}
+            <p class="empty-state">No ideas yet. Create one to start testing the engine.</p>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="panel full-width">
+          {% if selected_idea %}
+          <div class="section-heading actions">
+            <div>
+              <h2>{{ selected_idea.title }}</h2>
+              <p>{{ selected_idea.audience }} • {{ selected_idea.platform }} • {{ selected_idea.niche }}</p>
+            </div>
+            <div class="button-row">
+              <form action="/ui/ideas/{{ selected_idea.id }}/run-all" method="post">
+                <button class="button" type="submit">Run Full Workflow</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="stage-strip">
+            {% for stage in stage_status %}
+            <article class="stage-card {% if stage.complete %}complete{% endif %}">
+              <div>
+                <strong>{{ stage.name }}</strong>
+                <span>{% if stage.complete %}Completed{% else %}Pending{% endif %}</span>
+              </div>
+              <form action="/ui/ideas/{{ selected_idea.id }}/run-step/{{ stage.action }}" method="post">
+                <button class="button ghost-button" type="submit">
+                  {% if stage.complete %}Re-run{% else %}Run{% endif %}
+                </button>
+              </form>
+            </article>
+            {% endfor %}
+          </div>
+
+          <div class="detail-grid">
+            <article class="detail-card">
+              <h3>Problem</h3>
+              <p>{{ selected_idea.problem }}</p>
+              {% if selected_idea.notes %}
+              <h4>Notes</h4>
+              <p>{{ selected_idea.notes }}</p>
+              {% endif %}
+            </article>
+
+            <article class="detail-card">
+              <h3>Research Report</h3>
+              {% if selected_idea.research_report %}
+              <p><strong>Summary:</strong> {{ selected_idea.research_report.summary }}</p>
+              <p><strong>Demand Signals:</strong> {{ selected_idea.research_report.demand_signals }}</p>
+              <p><strong>Competition:</strong> {{ selected_idea.research_report.competitor_notes }}</p>
+              <p><strong>Monetization:</strong> {{ selected_idea.research_report.monetization_notes }}</p>
+              <p><strong>Recommendation:</strong> {{ selected_idea.research_report.recommendation }}</p>
+              {% else %}
+              <p class="empty-state">Run the workflow to generate the research report.</p>
+              {% endif %}
+            </article>
+
+            <article class="detail-card">
+              <h3>Validation Report</h3>
+              {% if selected_idea.validation_report %}
+              <p><strong>Total Score:</strong> {{ selected_idea.validation_report.total_score }}</p>
+              <div class="score-grid">
+                <div><strong>Pain</strong><span>{{ selected_idea.validation_report.pain_score }}/10</span></div>
+                <div><strong>Speed</strong><span>{{ selected_idea.validation_report.speed_score }}/10</span></div>
+                <div><strong>Monetization</strong><span>{{ selected_idea.validation_report.monetization_score }}/10</span></div>
+                <div><strong>Expansion</strong><span>{{ selected_idea.validation_report.expansion_score }}/10</span></div>
+              </div>
+              <p><strong>Risks:</strong> {{ selected_idea.validation_report.risks }}</p>
+              <p><strong>Recommendation:</strong> {{ selected_idea.validation_report.recommendation }}</p>
+              {% else %}
+              <p class="empty-state">Run the workflow to generate the validation report.</p>
+              {% endif %}
+            </article>
+
+            <article class="detail-card">
+              <h3>Product Brief</h3>
+              {% if selected_idea.product_brief %}
+              <p><strong>Name:</strong> {{ selected_idea.product_brief.product_name }}</p>
+              <p><strong>Positioning:</strong> {{ selected_idea.product_brief.positioning }}</p>
+              <p><strong>Promise:</strong> {{ selected_idea.product_brief.promise }}</p>
+              <p><strong>Core Features:</strong></p>
+              <pre>{{ selected_idea.product_brief.core_features }}</pre>
+              <p><strong>Pricing:</strong> {{ selected_idea.product_brief.pricing_notes }}</p>
+              <p><strong>Launch:</strong> {{ selected_idea.product_brief.launch_notes }}</p>
+              {% else %}
+              <p class="empty-state">Run the workflow to generate the product brief.</p>
+              {% endif %}
+            </article>
+
+            <article class="detail-card">
+              <h3>Build Plan</h3>
+              {% if selected_idea.build_plan %}
+              <p><strong>Stack:</strong> {{ selected_idea.build_plan.stack_recommendation }}</p>
+              <p><strong>Data Entities:</strong> {{ selected_idea.build_plan.data_entities }}</p>
+              <p><strong>API Endpoints:</strong> {{ selected_idea.build_plan.api_endpoints }}</p>
+              <p><strong>Milestones:</strong> {{ selected_idea.build_plan.milestone_plan }}</p>
+              <p><strong>Next Steps:</strong> {{ selected_idea.build_plan.next_steps }}</p>
+              {% else %}
+              <p class="empty-state">Run the workflow to generate the build plan.</p>
+              {% endif %}
+            </article>
+
+            <article class="detail-card">
+              <h3>Asset Factory</h3>
+              {% if selected_idea.launch_assets %}
+              <p><strong>Product Summary:</strong> {{ selected_idea.launch_assets.product_summary }}</p>
+              <p><strong>Landing Page Copy:</strong></p>
+              <pre>{{ selected_idea.launch_assets.landing_page_copy }}</pre>
+              <p><strong>Waitlist Copy:</strong></p>
+              <pre>{{ selected_idea.launch_assets.waitlist_copy }}</pre>
+              <p><strong>Launch Post:</strong></p>
+              <pre>{{ selected_idea.launch_assets.launch_post }}</pre>
+              <p><strong>FAQ:</strong></p>
+              <pre>{{ selected_idea.launch_assets.faq }}</pre>
+              {% else %}
+              <p class="empty-state">Run the workflow to generate product and launch assets.</p>
+              {% endif %}
+            </article>
+
+            <article class="detail-card">
+              <h3>Agent Runs</h3>
+              {% if runs %}
+              <ul class="run-list">
+                {% for run in runs %}
+                <li>
+                  <strong>{{ run.agent_name }}</strong>
+                  <span>{{ run.status }}</span>
+                  <p>{{ run.summary }}</p>
+                </li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              <p class="empty-state">No agent runs yet.</p>
+              {% endif %}
+            </article>
+          </div>
+          {% else %}
+          <div class="section-heading">
+            <h2>No idea selected</h2>
+            <p>Create your first idea to start using the engine through this UI.</p>
+          </div>
+          {% endif %}
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
