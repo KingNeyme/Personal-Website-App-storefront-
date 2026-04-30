@@ -1,21 +1,22 @@
 # caribai-product-engine
 
-Private internal V1 for researching, validating, and planning digital products under CaribAI.
+Private internal V1 for researching, shaping, and generating digital products under CaribAI Labs.
 
 ## What this version does
 
-- captures raw product ideas
-- generates a structured research report
-- scores the idea with a validation report
-- turns the idea into a product brief
-- creates a first-pass build plan
+- accepts a prompt like `Create an AI digital product`
+- runs `Signal` to choose and justify the strongest opportunity
+- runs `Blueprint` to shape the product structure and delivery
+- runs `Forge` to generate a customer-facing digital product bundle
+- generates premium bundle assets such as a PDF, landing page, listing copy, and marketplace cover images
 
-This version is intentionally simple:
+This version is intentionally practical:
 
 - `FastAPI` backend
 - `SQLAlchemy` models
 - `SQLite` by default for local development
-- rule-based workflow services that are ready to be replaced with LLM-backed implementations later
+- OpenAI-backed structured generation when `OPENAI_API_KEY` is set
+- reliable fallback generation when model calls are unavailable
 
 ## Project structure
 
@@ -36,20 +37,29 @@ caribai-product-engine/
 
 ```bash
 cd /Users/kingneyme/Desktop/Personal-Website-App-storefront-/caribai-product-engine
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn main:app --reload
+cp .env.example .env
+./.venv/bin/python -m pip install -r requirements.txt
+./.venv/bin/python -m uvicorn main:app --reload
+```
+
+Set your key in `.env`:
+
+```env
+OPENAI_API_KEY=your_real_openai_api_key
+OPENAI_MODEL=gpt-5.5
+OPENAI_IMAGE_MODEL=gpt-image-1.5
+OPENAI_TIMEOUT_SECONDS=25
 ```
 
 Open:
 
 - `http://127.0.0.1:8000/health`
 - `http://127.0.0.1:8000/docs`
+- `http://127.0.0.1:8000/`
 
 ## Suggested next steps
 
-1. Replace rule-based service logic with OpenAI-backed structured outputs.
-2. Add async job execution for longer research flows.
+1. Add multi-variant cover generation and selection in Forge.
+2. Stream real server-side stage progress instead of client-simulated substeps.
 3. Move from SQLite to PostgreSQL when the workflow stabilizes.
 4. Add auth before exposing beyond local use.

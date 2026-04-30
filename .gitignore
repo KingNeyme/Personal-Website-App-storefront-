@@ -1,0 +1,12 @@
+caribai-product-engine/.env
+caribai-product-engine/generated_assets/
+caribai-product-engine/.pycache/
+caribai-product-engine/__pycache__/
+caribai-product-engine/app/__pycache__/
+caribai-product-engine/app/api/__pycache__/
+caribai-product-engine/app/api/routes/__pycache__/
+caribai-product-engine/app/core/__pycache__/
+caribai-product-engine/app/db/__pycache__/
+caribai-product-engine/app/models/__pycache__/
+caribai-product-engine/app/schemas/__pycache__/
+caribai-product-engine/app/services/__pycache__/

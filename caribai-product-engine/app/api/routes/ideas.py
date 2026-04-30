@@ -109,11 +109,9 @@ def run_full_workflow(idea_id: int, db: Session = Depends(get_db)) -> WorkflowSn
     idea = _get_idea_or_404(db, idea_id)
     service = ProductWorkflowService(db)
 
-    service.generate_research_report(idea)
-    service.generate_validation_report(idea)
-    service.generate_product_brief(idea)
-    service.generate_build_plan(idea)
-    service.generate_launch_assets(idea)
+    service.run_signal(idea)
+    service.run_blueprint(idea)
+    service.run_forge(idea)
 
     db.refresh(idea)
     return WorkflowSnapshot(
