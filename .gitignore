@@ -1,4 +1,6 @@
 caribai-product-engine/.env
+caribai-product-engine/.venv/
+caribai-product-engine/*.db
 caribai-product-engine/generated_assets/
 caribai-product-engine/.pycache/
 caribai-product-engine/__pycache__/

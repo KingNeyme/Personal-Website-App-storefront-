@@ -29,6 +29,7 @@ class SignalCandidate(BaseModel):
     platform: str
     audience: str
     problem: str
+    product_archetype: str
     product_format: str
     demand_score: int = Field(ge=1, le=10)
     pain_score: int = Field(ge=1, le=10)
@@ -48,6 +49,8 @@ class SignalAnalysis(BaseModel):
 
 class SignalExecution(BaseModel):
     summary: str
+    product_archetype: str
+    transformation_promise: str
     demand_signals: list[str]
     competitor_notes: list[str]
     monetization_notes: list[str]
@@ -63,10 +66,14 @@ class SignalExecution(BaseModel):
 
 class BlueprintExecution(BaseModel):
     product_name: str
+    product_archetype: str
     product_type: str
     positioning: str
     promise: str
+    customer_problem: str
+    transformation: str
     core_features: list[str]
+    signature_assets: list[str]
     pricing_notes: str
     launch_notes: str
     format_architecture: str
@@ -98,6 +105,7 @@ class ChecklistGroup(BaseModel):
 
 class ForgeExecution(BaseModel):
     product_name: str
+    product_archetype: str
     product_type: str
     tagline: str
     hero_promise: str
@@ -166,6 +174,8 @@ class ProductWorkflowService:
             {
                 "SIGNAL_SELECTION": signal.selection_reason,
                 "SIGNAL_TOTAL_SCORE": str(signal.total_score),
+                "PRODUCT_ARCHETYPE": signal.product_archetype,
+                "TRANSFORMATION_PROMISE": signal.transformation_promise,
             },
         )
         self._record_run(idea.id, "signal", "completed", "Signal selected and scored the strongest digital product direction.")
@@ -194,6 +204,9 @@ class ProductWorkflowService:
             {
                 "PRODUCT_TYPE": blueprint.product_type,
                 "BLUEPRINT_NAME": blueprint.product_name,
+                "PRODUCT_ARCHETYPE": blueprint.product_archetype,
+                "CUSTOMER_PROBLEM": blueprint.customer_problem,
+                "TRANSFORMATION_PROMISE": blueprint.transformation,
             },
         )
         self._record_run(idea.id, "blueprint", "completed", "Blueprint shaped the digital product structure and packaging plan.")
@@ -225,6 +238,7 @@ class ProductWorkflowService:
         notes = (
             f"SOURCE_PROMPT: {prompt}\n"
             f"DEMAND_SELECTION: {selected['selection_reason']}\n"
+            f"PRODUCT_ARCHETYPE: {selected['product_archetype']}\n"
             f"PRODUCT_FORMAT: {selected['product_format']}\n"
             f"DEMAND_SCORE: {selected['demand_score']}/10\n"
             f"WEIGHTED_SCORE: {selected['weighted_score']}/100\n"
@@ -401,12 +415,14 @@ class ProductWorkflowService:
                 "You are the Signal stage of CaribAI Labs, a private AI digital product factory. "
                 "Your job is to weigh multiple Gumroad-friendly AI digital product opportunities and choose the strongest one. "
                 "Optimize for real demand, painful urgency, fast packaging, and digital-product fit. "
-                "Do not suggest software SaaS builds. Favor prompt packs, workbooks, planners, template kits, checklists, guides, and swipe files."
+                "Do not suggest software SaaS builds. "
+                "Choose from strong archetypes such as Prompt System, Generator Toolkit, Template Pack, Swipe File Kit, or Operational Playbook. "
+                "Favor products that directly help the buyer get a result, not generic education bundles."
             ),
             user_prompt=(
                 f"Founder prompt: {prompt}\n\n"
                 "Return 4-5 candidate digital products, each with a title, niche, platform, audience, problem, product format, "
-                "scores, clear reasoning, and keywords. Select the single best opportunity."
+                "product archetype, scores, clear reasoning, and keywords. Select the single best opportunity."
             ),
             max_output_tokens=4000,
         )
@@ -422,7 +438,7 @@ class ProductWorkflowService:
             system_prompt=(
                 "You are the Signal stage inside CaribAI Labs. "
                 "Given a chosen digital product opportunity, produce structured market reasoning that justifies why it is worth packaging for sale. "
-                "Focus on digital product demand, pain, monetization, and speed to market."
+                "Focus on digital product demand, pain, monetization, speed to market, and why the chosen archetype matches the pain."
             ),
             user_prompt=(
                 f"Original prompt: {source_prompt}\n"
@@ -431,7 +447,7 @@ class ProductWorkflowService:
                 f"Platform: {idea.platform}\n"
                 f"Audience: {idea.audience}\n"
                 f"Problem: {idea.problem}\n\n"
-                "Provide concise but specific market reasoning and numeric scores."
+                "Provide concise but specific market reasoning, numeric scores, the product archetype, and the transformation promise."
             ),
             max_output_tokens=3000,
         )
@@ -447,7 +463,7 @@ class ProductWorkflowService:
             system_prompt=(
                 "You are the Blueprint stage in CaribAI Labs. "
                 "Turn a chosen digital product opportunity into a polished, sellable package plan for a marketplace like Gumroad. "
-                "Do not describe a SaaS build. Describe the product structure, included deliverables, transformation, pricing direction, and packaging map."
+                "Do not describe a SaaS build. Describe the product archetype, product structure, included deliverables, transformation, signature assets, pricing direction, and packaging map."
             ),
             user_prompt=(
                 f"Title: {idea.title}\n"
@@ -475,6 +491,7 @@ class ProductWorkflowService:
                 "The result must feel premium, practical, complete, and niche-specific. "
                 "Create something a buyer would feel comfortable paying roughly $49 to $79 for. "
                 "Avoid generic filler. Include concrete examples, realistic use cases, stronger prompt packs, and practical worksheet material. "
+                "The product must directly help the buyer solve the pain point. "
                 "Generate specific workbook sections, prompt pack entries, checklist groups, quick-start steps, use cases, FAQ, marketplace copy, pricing direction, and design direction."
             ),
             user_prompt=(
@@ -511,6 +528,8 @@ class ProductWorkflowService:
         total = signal.pain_score + signal.speed_score + signal.monetization_score + signal.expansion_score
         return SignalExecution(
             summary=signal.summary,
+            product_archetype=signal.product_archetype,
+            transformation_promise=signal.transformation_promise,
             demand_signals=signal.demand_signals,
             competitor_notes=signal.competitor_notes,
             monetization_notes=signal.monetization_notes,
@@ -533,6 +552,7 @@ class ProductWorkflowService:
                 "platform": "gumroad",
                 "audience": "small Shopify merchants",
                 "problem": "Merchants need faster, higher-converting product pages without paying copywriters for every listing.",
+                "product_archetype": "Prompt System",
                 "product_format": "prompt pack + workbook + optimization checklist",
                 "demand_score": 9,
                 "pain_score": 9,
@@ -547,6 +567,7 @@ class ProductWorkflowService:
                 "platform": "gumroad",
                 "audience": "IT professionals pivoting into cybersecurity or AI roles",
                 "problem": "Career changers need practical prompts, frameworks, and worksheets to reposition themselves quickly and confidently.",
+                "product_archetype": "Operational Playbook",
                 "product_format": "workbook + prompt pack + transition checklist",
                 "demand_score": 8,
                 "pain_score": 8,
@@ -561,6 +582,7 @@ class ProductWorkflowService:
                 "platform": "gumroad",
                 "audience": "creators and personal brands",
                 "problem": "Creators need repeatable systems for turning one idea into multiple monetizable content assets.",
+                "product_archetype": "Generator Toolkit",
                 "product_format": "prompt pack + planning workbook + repurposing checklist",
                 "demand_score": 8,
                 "pain_score": 7,
@@ -575,6 +597,7 @@ class ProductWorkflowService:
                 "platform": "gumroad",
                 "audience": "online businesses handling DMs and support",
                 "problem": "Owners lose sales and trust because replies are slow, inconsistent, and mentally draining to produce.",
+                "product_archetype": "Swipe File Kit",
                 "product_format": "reply prompt pack + template bundle + quick-start guide",
                 "demand_score": 7,
                 "pain_score": 8,
@@ -627,6 +650,8 @@ class ProductWorkflowService:
                 f"{idea.title} sits in the {idea.niche} niche for {idea.audience}. "
                 "It targets an immediate and visible pain point that fits a downloadable AI digital product."
             ),
+            product_archetype=self._selected_archetype(idea),
+            transformation_promise=self._transformation_promise(idea),
             demand_signals=[
                 "Buyers already look for shortcuts that reduce time, confusion, or inconsistent results.",
                 "The problem is repeated enough to justify a reusable prompt pack and workbook bundle.",
@@ -657,9 +682,12 @@ class ProductWorkflowService:
 
     def _fallback_blueprint_execution(self, idea: Idea) -> BlueprintExecution:
         product_name = self._product_name(idea)
+        product_archetype = self._selected_archetype(idea)
         product_type = self._extract_note_value(idea.notes, "PRODUCT_FORMAT") or "AI prompt pack + workbook + checklist bundle"
+        signature_assets = self._signature_assets_for_archetype(product_archetype)
         return BlueprintExecution(
             product_name=product_name,
+            product_archetype=product_archetype,
             product_type=product_type,
             positioning=(
                 f"A premium but practical AI digital product for {idea.audience} that removes friction from {idea.problem.lower()}."
@@ -667,27 +695,29 @@ class ProductWorkflowService:
             promise=(
                 f"Help {idea.audience} go from confusion and wasted effort to a cleaner, faster workflow they can execute immediately."
             ),
+            customer_problem=idea.problem,
+            transformation=self._transformation_promise(idea),
             core_features=[
-                "A guided workbook that turns the problem into a repeatable process",
+                f"A {product_archetype.lower()} built around one repeated pain point",
                 "Ready-to-use prompts tailored to the niche and audience",
-                "Checklists that raise output quality before the buyer ships their work",
+                "Filled examples that show what strong outputs should look like",
                 "Quick-start material that helps the buyer get value on day one",
             ],
+            signature_assets=signature_assets,
             pricing_notes="Price the first version as a premium mini-bundle with a clear transformation and instant-use promise.",
             launch_notes="Lead with the pain point, show the bundle contents clearly, and make the preview feel polished and specific.",
-            format_architecture="Prompt pack + workbook + checklist bundle + quick-start guide + bonus resource sheet + Gumroad listing assets",
-            deliverables=[
+            format_architecture=(
+                f"{product_archetype} + workbook + examples and swipes + implementation map + quick-start guide + marketplace assets"
+            ),
+            deliverables=signature_assets
+            + [
                 "Customer workbook PDF/markdown",
-                "Prompt pack",
-                "Checklist bundle",
-                "Quick-start guide",
-                "Bonus resource sheet",
                 "Marketplace listing copy and promo banner",
             ],
             module_map=[
                 "Opening promise and who-this-is-for page",
                 "Current-state audit section",
-                "Prompt execution section with examples",
+                "Core prompt or template execution section with examples",
                 "Quality-control and packaging checklist",
                 "Quick-start and bonus implementation pages",
             ],
@@ -714,6 +744,7 @@ class ProductWorkflowService:
 
         return ForgeExecution(
             product_name=blueprint.product_name,
+            product_archetype=blueprint.product_archetype,
             product_type=blueprint.product_type,
             tagline=f"Practical AI systems for {idea.audience}",
             hero_promise=f"Go from manual effort to a cleaner workflow for {outcome}.",
@@ -854,6 +885,7 @@ class ProductWorkflowService:
     def _fallback_shopify_forge_execution(self, idea: Idea, blueprint: BlueprintExecution) -> ForgeExecution:
         return ForgeExecution(
             product_name=blueprint.product_name,
+            product_archetype=blueprint.product_archetype,
             product_type="Shopify prompt pack + conversion workbook + product page checklist system",
             tagline="Conversion-focused AI copy tools for Shopify merchants",
             hero_promise="Go from thin, generic listings to stronger product pages that sound more persuasive and easier to buy from.",
@@ -1053,6 +1085,7 @@ class ProductWorkflowService:
         outcome = "transitioning into a stronger target role faster"
         return ForgeExecution(
             product_name=blueprint.product_name,
+            product_archetype=blueprint.product_archetype,
             product_type="career transition workbook + resume prompts + interview checklist system",
             tagline="AI-guided career transition tools for role changers",
             hero_promise="Go from scattered career effort to a clearer, more confident transition plan.",
@@ -1097,6 +1130,7 @@ class ProductWorkflowService:
     def _fallback_creator_forge_execution(self, idea: Idea, blueprint: BlueprintExecution) -> ForgeExecution:
         return ForgeExecution(
             product_name=blueprint.product_name,
+            product_archetype=blueprint.product_archetype,
             product_type="content repurposing system + planning workbook + creator prompt pack",
             tagline="AI-assisted content systems for creators and personal brands",
             hero_promise="Go from one raw idea to a repeatable stream of better content outputs.",
@@ -1249,6 +1283,7 @@ class ProductWorkflowService:
             "product_summary.json": json.dumps(
                 {
                     "product_name": package.product_name,
+                    "product_archetype": package.product_archetype,
                     "product_type": package.product_type,
                     "summary": assets.product_summary,
                     "platform": idea.platform,
@@ -1809,8 +1844,14 @@ class ProductWorkflowService:
             "## Product Type",
             package.product_type,
             "",
+            "## Product Archetype",
+            package.product_archetype,
+            "",
             "## Customer Result",
             package.customer_result,
+            "",
+            "## Transformation Promise",
+            package.hero_promise,
             "",
             "## Why This Product Has Value",
             package.bundle_value,
@@ -1838,7 +1879,14 @@ class ProductWorkflowService:
         return "\n".join(parts).strip() + "\n"
 
     def _implementation_map_markdown(self, package: ForgeExecution) -> str:
-        parts = [f"# {package.product_name} Implementation Map", "", "## Quick Start Steps"]
+        parts = [
+            f"# {package.product_name} Implementation Map",
+            "",
+            "## Product Archetype",
+            package.product_archetype,
+            "",
+            "## Quick Start Steps",
+        ]
         for index, step in enumerate(package.quick_start_steps, start=1):
             parts.append(f"{index}. {step}")
         parts.extend(["", "## Use Cases"])
@@ -1891,6 +1939,61 @@ class ProductWorkflowService:
         if "message" in lower_problem or "support" in lower_problem or "reply" in lower_problem:
             return "handling customer communication faster and more confidently"
         return "solving a repeated workflow problem faster"
+
+    def _selected_archetype(self, idea: Idea) -> str:
+        return self._extract_note_value(idea.notes, "PRODUCT_ARCHETYPE") or "Prompt System"
+
+    def _transformation_promise(self, idea: Idea) -> str:
+        stored = self._extract_note_value(idea.notes, "TRANSFORMATION_PROMISE")
+        if stored:
+            return stored
+
+        outcome = self._target_outcome(idea)
+        lower_audience = idea.audience.lower()
+        if "merchant" in lower_audience or "shopify" in lower_audience:
+            return f"Help {idea.audience} go from slow, generic listings to faster, higher-converting product pages."
+        if "creator" in lower_audience:
+            return f"Help {idea.audience} go from one raw idea to a repeatable content-output system."
+        if "professional" in lower_audience or "career" in idea.niche.lower():
+            return f"Help {idea.audience} go from scattered effort to clearer positioning and better execution."
+        return f"Help {idea.audience} go from friction and guesswork to a repeatable system for {outcome}."
+
+    def _signature_assets_for_archetype(self, archetype: str) -> list[str]:
+        normalized = archetype.lower()
+        if "generator" in normalized:
+            return [
+                "A generator prompt stack for multiple scenarios",
+                "Filled examples that show what good output looks like",
+                "A batching worksheet for repeat production",
+                "A quality filter checklist",
+            ]
+        if "swipe" in normalized:
+            return [
+                "Message swipe files segmented by situation",
+                "Plug-and-play response templates",
+                "Escalation and tone checklists",
+                "A same-day implementation guide",
+            ]
+        if "operational" in normalized or "playbook" in normalized:
+            return [
+                "A step-by-step playbook workbook",
+                "Decision prompts for each stage",
+                "Execution checklists and trackers",
+                "A first-week implementation roadmap",
+            ]
+        if "template" in normalized:
+            return [
+                "Editable templates for the core workflow",
+                "Niche examples and fill-in fields",
+                "Quality-control checklists",
+                "A quick-start implementation sequence",
+            ]
+        return [
+            "A master prompt system for the core pain point",
+            "Use-case-specific prompt variations",
+            "Filled examples and before/after swipes",
+            "A quality rubric and implementation guide",
+        ]
 
     def _record_run(self, idea_id: int, agent_name: str, status: str, summary: str) -> None:
         run = AgentRun(

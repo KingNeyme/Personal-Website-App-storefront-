@@ -17,6 +17,8 @@ This version is intentionally practical:
 - `SQLite` by default for local development
 - OpenAI-backed structured generation when `OPENAI_API_KEY` is set
 - reliable fallback generation when model calls are unavailable
+- Docker-ready local deployment for staff use
+- pytest coverage for the core prompt-to-forge flow
 
 ## Project structure
 
@@ -56,6 +58,27 @@ Open:
 - `http://127.0.0.1:8000/health`
 - `http://127.0.0.1:8000/docs`
 - `http://127.0.0.1:8000/`
+
+## Docker Run
+
+```bash
+cd /Users/kingneyme/Desktop/Personal-Website-App-storefront-/caribai-product-engine
+mkdir -p data generated_assets
+docker compose up --build
+```
+
+This runs the app on `http://127.0.0.1:8000/` with:
+
+- SQLite stored in `./data`
+- generated product bundles stored in `./generated_assets`
+- environment loaded from `.env`
+
+## Tests
+
+```bash
+cd /Users/kingneyme/Desktop/Personal-Website-App-storefront-/caribai-product-engine
+./.venv/bin/python -m unittest tests.test_app
+```
 
 ## Suggested next steps
 

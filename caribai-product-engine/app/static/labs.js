@@ -103,6 +103,7 @@ function renderCandidates(candidates) {
       <strong>${candidate.title}</strong>
       <span>${candidate.platform} • ${candidate.niche}</span>
       <span>${candidate.audience}</span>
+      <div class="candidate-score">Archetype: ${candidate.product_archetype}</div>
       <div class="candidate-score">Demand: ${candidate.demand_score}/10 • Weighted: ${candidate.weighted_score}</div>
       <p>${candidate.selection_reason}</p>
     `;
@@ -123,7 +124,10 @@ function renderBlueprint(snapshot) {
     <article class="detail-card">
       <h3>Product Brief</h3>
       <p><strong>Name:</strong> ${blueprint.product_name ?? "Pending"}</p>
+      <p><strong>Archetype:</strong> ${blueprint.product_archetype ?? "Pending"}</p>
       <p><strong>Type:</strong> ${blueprint.product_type ?? "Pending"}</p>
+      <p><strong>Customer Problem:</strong> ${blueprint.customer_problem ?? "Pending"}</p>
+      <p><strong>Transformation:</strong> ${blueprint.transformation ?? "Pending"}</p>
       <p><strong>Positioning:</strong> ${blueprint.positioning ?? "Pending"}</p>
       <p><strong>Promise:</strong> ${blueprint.promise ?? "Pending"}</p>
       <p><strong>Core Features:</strong></p>
@@ -146,6 +150,7 @@ function renderBlueprint(snapshot) {
 
 function renderForge(snapshot) {
   const forge = snapshot.forge;
+  const packageData = forge.package || {};
   const downloads = forge.downloads || [];
   const links = downloads
     .map((asset) => `<li><a href="${asset.url}" target="_blank" rel="noreferrer">${asset.name}</a></li>`)
@@ -170,17 +175,26 @@ function renderForge(snapshot) {
 
   forgeContent.innerHTML = `
     <article class="detail-card">
-      <h3>Digital Product Bundle</h3>
+      <h3>Digital Product System</h3>
+      <p><strong>Archetype:</strong> ${packageData.product_archetype ?? snapshot.blueprint?.product_archetype ?? "Pending"}</p>
+      <p><strong>Customer Result:</strong> ${packageData.customer_result ?? "Pending"}</p>
+      <p><strong>Bundle Value:</strong> ${packageData.bundle_value ?? "Pending"}</p>
       <p>${forge.product_summary ?? "Pending"}</p>
-      <p><strong>Landing Page Copy:</strong></p>
-      <pre>${forge.landing_page_copy ?? "Pending"}</pre>
-      <p><strong>Launch Post:</strong></p>
-      <pre>${forge.launch_post ?? "Pending"}</pre>
+      <p><strong>AI Product System:</strong></p>
+      <pre>${forge.system_overview ?? "Pending"}</pre>
+      <p><strong>Examples and Swipes:</strong></p>
+      <pre>${forge.examples_preview ?? "Pending"}</pre>
       ${previewMarkup}
     </article>
     <article class="detail-card">
-      <h3>Downloads</h3>
+      <h3>Implementation and Downloads</h3>
+      <p><strong>Prompt Pack Preview:</strong></p>
+      <pre>${forge.prompt_pack_preview ?? "Pending"}</pre>
+      <p><strong>Implementation Map:</strong></p>
+      <pre>${forge.implementation_map ?? "Pending"}</pre>
       <ul class="download-list">${links}</ul>
+      <p><strong>Landing Page Copy:</strong></p>
+      <pre>${forge.landing_page_copy ?? "Pending"}</pre>
       <p><strong>Waitlist Copy:</strong></p>
       <pre>${forge.waitlist_copy ?? "Pending"}</pre>
       <p><strong>FAQ:</strong></p>
@@ -225,7 +239,7 @@ if (promptForm) {
       addMessage(
         "assistant",
         "Signal",
-        `Selected ${data.snapshot.idea.title} for ${data.snapshot.idea.audience} in ${data.snapshot.idea.niche}.\n\n${data.snapshot.signal.selection_reason ?? "The engine weighed multiple opportunities and chose the strongest current option."}`
+        `Selected ${data.snapshot.idea.title} for ${data.snapshot.idea.audience} in ${data.snapshot.idea.niche}.\n\nArchetype: ${data.snapshot.signal.product_archetype ?? "Pending"}\nTransformation: ${data.snapshot.signal.transformation_promise ?? "Pending"}\n\n${data.snapshot.signal.selection_reason ?? "The engine weighed multiple opportunities and chose the strongest current option."}`
       );
       show(blueprintPanel);
       show(blueprintButton);
@@ -265,7 +279,7 @@ if (blueprintButton) {
       addMessage(
         "assistant",
         "Blueprint",
-        `${data.snapshot.blueprint.product_name ?? "The product"} is now structured as a ${data.snapshot.blueprint.product_type ?? "digital product package"} with a full package map.`
+        `${data.snapshot.blueprint.product_name ?? "The product"} is now structured as a ${data.snapshot.blueprint.product_type ?? "digital product package"}.\n\nArchetype: ${data.snapshot.blueprint.product_archetype ?? "Pending"}\nTransformation: ${data.snapshot.blueprint.transformation ?? "Pending"}`
       );
       show(forgePanel);
       show(forgeButton);
@@ -299,7 +313,11 @@ if (forgeButton) {
       if (forgeTicker) forgeTicker();
       renderForge(data.snapshot);
       hide(forgeLoading);
-      addMessage("assistant", "Forge", "The digital product bundle has been forged and the downloads are ready.");
+      addMessage(
+        "assistant",
+        "Forge",
+        `The digital product bundle has been forged.\n\nCustomer result: ${data.snapshot.forge.package?.customer_result ?? "Pending"}\nBundle value: ${data.snapshot.forge.package?.bundle_value ?? "Pending"}`
+      );
     } catch (error) {
       if (forgeTicker) forgeTicker();
       hide(forgeLoading);

@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, Form, Request
@@ -92,6 +93,33 @@ def _build_asset_links(selected_idea: Idea | None) -> list[dict]:
     return links
 
 
+def _asset_dir_for_idea(selected_idea: Idea | None) -> Path | None:
+    if not selected_idea or not selected_idea.launch_assets:
+        return None
+    asset_dir = Path(settings.generated_assets_dir) / f"idea_{selected_idea.id}"
+    return asset_dir if asset_dir.exists() else None
+
+
+def _read_asset_text(selected_idea: Idea | None, filename: str) -> str | None:
+    asset_dir = _asset_dir_for_idea(selected_idea)
+    if not asset_dir:
+        return None
+    path = asset_dir / filename
+    if not path.exists():
+        return None
+    return path.read_text(encoding="utf-8")
+
+
+def _read_forge_package(selected_idea: Idea | None) -> dict | None:
+    raw = _read_asset_text(selected_idea, "forge_package.json")
+    if not raw:
+        return None
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        return None
+
+
 def _extract_note_value(notes: str, key: str) -> str | None:
     if not notes:
         return None
@@ -107,10 +135,13 @@ def _build_chat_messages(selected_idea: Idea | None, asset_links: list[dict]) ->
         return []
 
     messages = []
+    forge_package = _read_forge_package(selected_idea)
     source_prompt = _extract_note_value(selected_idea.notes, "SOURCE_PROMPT")
     demand_selection = _extract_note_value(selected_idea.notes, "DEMAND_SELECTION")
     product_format = _extract_note_value(selected_idea.notes, "PRODUCT_FORMAT")
+    product_archetype = _extract_note_value(selected_idea.notes, "PRODUCT_ARCHETYPE")
     demand_score = _extract_note_value(selected_idea.notes, "DEMAND_SCORE")
+    transformation_promise = _extract_note_value(selected_idea.notes, "TRANSFORMATION_PROMISE")
 
     if source_prompt:
         messages.append({"role": "user", "title": "Prompt", "body": source_prompt})
@@ -118,12 +149,16 @@ def _build_chat_messages(selected_idea: Idea | None, asset_links: list[dict]) ->
     intro = (
         f"I selected **{selected_idea.title}** for **{selected_idea.audience}** in the **{selected_idea.niche}** niche."
     )
+    if product_archetype:
+        intro += f"\n\nChosen archetype: {product_archetype}"
     if demand_selection:
         intro += f"\n\nReason: {demand_selection}"
     if demand_score:
         intro += f"\nDemand score: {demand_score}"
     if product_format:
         intro += f"\nProduct format: {product_format}"
+    if transformation_promise:
+        intro += f"\nTransformation: {transformation_promise}"
     messages.append({"role": "assistant", "title": "Demand-Aware Selection", "body": intro})
 
     if selected_idea.research_report:
@@ -154,14 +189,19 @@ def _build_chat_messages(selected_idea: Idea | None, asset_links: list[dict]) ->
         )
 
     if selected_idea.launch_assets:
+        forge_summary = selected_idea.launch_assets.product_summary
+        if forge_package:
+            forge_summary = (
+                f"{forge_package.get('product_summary', forge_summary)}\n\n"
+                f"Archetype: {forge_package.get('product_archetype', 'Pending')}\n"
+                f"Customer result: {forge_package.get('customer_result', 'Pending')}\n"
+                f"Bundle value: {forge_package.get('bundle_value', 'Pending')}"
+            )
         messages.append(
             {
                 "role": "assistant",
                 "title": "Forge Output",
-                "body": (
-                    f"{selected_idea.launch_assets.product_summary}\n\n"
-                    "The package now includes customer-facing files such as a workbook, prompt pack, checklist bundle, quick-start guide, bonus resources, and marketplace packaging assets."
-                ),
+                "body": forge_summary,
             }
         )
 
@@ -182,6 +222,7 @@ def _snapshot_payload(idea: Idea | None, asset_links: list[dict] | None = None) 
         return {}
 
     asset_links = asset_links or []
+    forge_package = _read_forge_package(idea)
     return {
         "idea": {
             "id": idea.id,
@@ -195,6 +236,8 @@ def _snapshot_payload(idea: Idea | None, asset_links: list[dict] | None = None) 
         "signal": {
             "selection_reason": _extract_note_value(idea.notes, "SIGNAL_SELECTION"),
             "total_score": _extract_note_value(idea.notes, "SIGNAL_TOTAL_SCORE"),
+            "product_archetype": _extract_note_value(idea.notes, "PRODUCT_ARCHETYPE"),
+            "transformation_promise": _extract_note_value(idea.notes, "TRANSFORMATION_PROMISE"),
             "research": {
                 "summary": idea.research_report.summary if idea.research_report else None,
                 "demand_signals": idea.research_report.demand_signals if idea.research_report else None,
@@ -213,7 +256,10 @@ def _snapshot_payload(idea: Idea | None, asset_links: list[dict] | None = None) 
         },
         "blueprint": {
             "product_name": idea.product_brief.product_name if idea.product_brief else None,
+            "product_archetype": _extract_note_value(idea.notes, "PRODUCT_ARCHETYPE"),
             "product_type": _extract_note_value(idea.notes, "PRODUCT_TYPE"),
+            "customer_problem": _extract_note_value(idea.notes, "CUSTOMER_PROBLEM"),
+            "transformation": _extract_note_value(idea.notes, "TRANSFORMATION_PROMISE"),
             "positioning": idea.product_brief.positioning if idea.product_brief else None,
             "promise": idea.product_brief.promise if idea.product_brief else None,
             "core_features": idea.product_brief.core_features if idea.product_brief else None,
@@ -231,6 +277,11 @@ def _snapshot_payload(idea: Idea | None, asset_links: list[dict] | None = None) 
             "waitlist_copy": idea.launch_assets.waitlist_copy if idea.launch_assets else None,
             "launch_post": idea.launch_assets.launch_post if idea.launch_assets else None,
             "faq": idea.launch_assets.faq if idea.launch_assets else None,
+            "package": forge_package,
+            "system_overview": _read_asset_text(idea, "ai_product_system.md"),
+            "prompt_pack_preview": _read_asset_text(idea, "prompt_pack.md"),
+            "examples_preview": _read_asset_text(idea, "examples_and_swipes.md"),
+            "implementation_map": _read_asset_text(idea, "implementation_map.md"),
             "downloads": asset_links,
         },
     }
@@ -305,6 +356,7 @@ def prompt_intake_api(
                 "niche": candidate["niche"],
                 "platform": candidate["platform"],
                 "audience": candidate["audience"],
+                "product_archetype": candidate["product_archetype"],
                 "product_format": candidate["product_format"],
                 "demand_score": candidate["demand_score"],
                 "weighted_score": candidate["weighted_score"],

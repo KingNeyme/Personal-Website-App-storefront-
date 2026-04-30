@@ -1,0 +1,19 @@
+services:
+  caribai-labs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: caribai-labs
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    env_file:
+      - .env
+    environment:
+      APP_HOST: 0.0.0.0
+      APP_PORT: 8000
+      DATABASE_URL: "sqlite:////app/data/caribai_product_engine.db"
+      GENERATED_ASSETS_DIR: "/app/generated_assets"
+    volumes:
+      - ./data:/app/data
+      - ./generated_assets:/app/generated_assets
+    restart: unless-stopped
