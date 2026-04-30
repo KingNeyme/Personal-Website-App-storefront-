@@ -190,6 +190,8 @@ function renderForge(snapshot) {
       <h3>Implementation and Downloads</h3>
       <p><strong>Prompt Pack Preview:</strong></p>
       <pre>${forge.prompt_pack_preview ?? "Pending"}</pre>
+      <p><strong>Done-For-You Templates:</strong></p>
+      <pre>${forge.templates_preview ?? "Pending"}</pre>
       <p><strong>Implementation Map:</strong></p>
       <pre>${forge.implementation_map ?? "Pending"}</pre>
       <ul class="download-list">${links}</ul>

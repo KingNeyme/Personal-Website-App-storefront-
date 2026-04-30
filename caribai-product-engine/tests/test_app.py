@@ -77,7 +77,9 @@ class CaribAILabsAppTests(unittest.TestCase):
         self.assertIn("asset_bundle.zip", names)
         self.assertIn("ai_product_system.md", names)
         self.assertIn("prompt_pack.md", names)
+        self.assertIn("done_for_you_templates.md", names)
         self.assertIn("Examples and Swipes", forge.json()["snapshot"]["forge"]["examples_preview"])
+        self.assertIn("Done-For-You Templates", forge.json()["snapshot"]["forge"]["templates_preview"])
 
         idea_assets = self.assets_dir / f"idea_{idea_id}"
         self.assertTrue((idea_assets / "asset_bundle.zip").exists())

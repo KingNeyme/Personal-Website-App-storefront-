@@ -96,6 +96,7 @@ class PromptAsset(BaseModel):
     outcome: str
     example_input: str
     example_result: str
+    sample_output: str = ""
 
 
 class ChecklistGroup(BaseModel):
@@ -970,6 +971,10 @@ class ProductWorkflowService:
                     outcome="Create a full product description structure.",
                     example_input="Minimal product notes for a candle, skincare item, or apparel product.",
                     example_result="A cleaner, more persuasive description with stronger flow and buyer-facing benefits.",
+                    sample_output=(
+                        "Meet the candle that makes winding down feel effortless. This slow-burning soy blend fills the room with a warm, clean scent while the minimalist jar keeps your space looking polished. "
+                        "Perfect for evening routines, gifting, or making everyday moments feel more elevated."
+                    ),
                 ),
                 PromptAsset(
                     title="Feature-to-Benefit Translator",
@@ -977,6 +982,11 @@ class ProductWorkflowService:
                     outcome="Upgrade flat feature lists.",
                     example_input="100% cotton, machine washable, relaxed fit.",
                     example_result="Three bullets that explain comfort, ease, and everyday usability instead of raw specs.",
+                    sample_output=(
+                        "- Feels soft and breathable from the first wear\n"
+                        "- Easy to wash and wear again without extra fuss\n"
+                        "- Relaxed fit that keeps everyday styling simple"
+                    ),
                 ),
                 PromptAsset(
                     title="Angle Finder",
@@ -984,6 +994,13 @@ class ProductWorkflowService:
                     outcome="Find stronger merchandising angles.",
                     example_input="A home organization product or beauty item.",
                     example_result="Multiple angles that help the merchant test a stronger positioning direction.",
+                    sample_output=(
+                        "1. Make your evening routine feel more calming\n"
+                        "2. Elevate small spaces without visual clutter\n"
+                        "3. Give a gift that feels polished but practical\n"
+                        "4. Simplify daily self-care with one easy upgrade\n"
+                        "5. Create a more premium at-home experience"
+                    ),
                 ),
                 PromptAsset(
                     title="SEO Snippet Builder",
@@ -991,6 +1008,10 @@ class ProductWorkflowService:
                     outcome="Create supporting search copy.",
                     example_input="Product title and two core benefits.",
                     example_result="Cleaner metadata that still sounds useful to a human reader.",
+                    sample_output=(
+                        "SEO Title: Amber Glow Soy Candle | Clean Home Fragrance\n"
+                        "Meta Description: A slow-burning soy candle that adds warm scent, clean style, and an elevated feel to your everyday space."
+                    ),
                 ),
                 PromptAsset(
                     title="Objection Handler",
@@ -998,6 +1019,12 @@ class ProductWorkflowService:
                     outcome="Reduce buyer hesitation.",
                     example_input="Price concerns, quality doubts, sizing questions, shipping concerns.",
                     example_result="Trust-building lines that can be woven into the listing.",
+                    sample_output=(
+                        "Objection: Is it worth the price?\n"
+                        "Response: Crafted to look refined, burn cleanly, and fit beautifully into everyday routines.\n\n"
+                        "Objection: Will the scent be too strong?\n"
+                        "Response: Balanced fragrance designed to feel noticeable without overwhelming the room."
+                    ),
                 ),
                 PromptAsset(
                     title="Luxury Rewrite",
@@ -1005,6 +1032,9 @@ class ProductWorkflowService:
                     outcome="Create a higher-end tone option.",
                     example_input="A plain draft description.",
                     example_result="A more polished version suited to a premium brand style.",
+                    sample_output=(
+                        "Designed to bring quiet sophistication to the everyday, this candle blends clean fragrance with understated style for a more elevated home ritual."
+                    ),
                 ),
                 PromptAsset(
                     title="Minimalist Rewrite",
@@ -1012,6 +1042,9 @@ class ProductWorkflowService:
                     outcome="Create a stripped-back tone option.",
                     example_input="A long or overly busy description.",
                     example_result="A cleaner version that feels sharper and easier to scan.",
+                    sample_output=(
+                        "Clean scent. Slow burn. Simple styling. An easy way to make your space feel calmer and more refined."
+                    ),
                 ),
                 PromptAsset(
                     title="Cross-Sell Suggestion Prompt",
@@ -1019,6 +1052,11 @@ class ProductWorkflowService:
                     outcome="Add related revenue opportunities.",
                     example_input="A candle, notebook, skincare set, or tote bag.",
                     example_result="Relevant add-on copy that feels natural rather than forced.",
+                    sample_output=(
+                        "Pair it with a minimalist tray for a more complete bedside setup.\n"
+                        "Add a matching room mist to extend the scent story through your space.\n"
+                        "Bundle with a wick trimmer for a more polished gift-ready set."
+                    ),
                 ),
             ],
             checklist_groups=[
@@ -1234,6 +1272,7 @@ class ProductWorkflowService:
         bonus_resource_markdown = self._bonus_resource_markdown(idea, package)
         system_overview_markdown = self._system_overview_markdown(idea, package)
         examples_markdown = self._examples_and_swipes_markdown(package)
+        done_for_you_templates_markdown = self._done_for_you_templates_markdown(idea, package)
         implementation_map_markdown = self._implementation_map_markdown(package)
 
         manifest = {
@@ -1245,6 +1284,7 @@ class ProductWorkflowService:
                 "ai_product_system.md",
                 "prompt_pack.md",
                 "examples_and_swipes.md",
+                "done_for_you_templates.md",
                 "implementation_map.md",
                 "customer_workbook.md",
                 "quick_start_guide.md",
@@ -1269,6 +1309,7 @@ class ProductWorkflowService:
             "ai_product_system.md": system_overview_markdown,
             "prompt_pack.md": prompt_pack_markdown,
             "examples_and_swipes.md": examples_markdown,
+            "done_for_you_templates.md": done_for_you_templates_markdown,
             "implementation_map.md": implementation_map_markdown,
             "customer_workbook.md": workbook_markdown,
             "quick_start_guide.md": quick_start_markdown,
@@ -1794,6 +1835,7 @@ class ProductWorkflowService:
                     f"Outcome: {prompt_asset.outcome}",
                     f"Example Input: {prompt_asset.example_input}",
                     f"Example Result: {prompt_asset.example_result}",
+                    *(["", "Sample Output:", prompt_asset.sample_output] if prompt_asset.sample_output else []),
                     "",
                 ]
             )
@@ -1873,9 +1915,46 @@ class ProductWorkflowService:
                     "",
                     f"Example Input: {prompt_asset.example_input}",
                     f"Example Result: {prompt_asset.example_result}",
+                    *(["", "Sample Output:", prompt_asset.sample_output] if prompt_asset.sample_output else []),
                     "",
                 ]
             )
+        return "\n".join(parts).strip() + "\n"
+
+    def _done_for_you_templates_markdown(self, idea: Idea, package: ForgeExecution) -> str:
+        lower_niche = idea.niche.lower()
+        if "ecommerce" in lower_niche or "shopify" in idea.audience.lower():
+            parts = [
+                f"# {package.product_name} Done-For-You Templates",
+                "",
+                "## Product Description Template",
+                "[Hook that states the main buyer outcome]",
+                "",
+                "[2-3 lines explaining why the product makes life easier, better, or more enjoyable]",
+                "",
+                "[3 feature-to-benefit bullets]",
+                "",
+                "[Confidence-building close or simple CTA]",
+                "",
+                "## Benefit Bullet Template",
+                "- [Feature] -> [Why it matters to the buyer]",
+                "- [Feature] -> [How it improves the buyer experience]",
+                "- [Feature] -> [What makes it easier, faster, or more premium]",
+                "",
+                "## Objection Handling Block",
+                "Worried about [price, scent strength, sizing, shipping, or quality concern]? Use one short trust-building sentence that removes doubt without sounding defensive.",
+                "",
+                "## Meta Description Template",
+                "[Product name] that helps [buyer] enjoy [outcome] with [benefit 1], [benefit 2], and a [tone/feel] experience.",
+            ]
+            return "\n".join(parts).strip() + "\n"
+
+        parts = [
+            f"# {package.product_name} Done-For-You Templates",
+            "",
+            "## Core Template",
+            "Use the prompts, examples, and implementation guide in this bundle to adapt the product to your niche workflow.",
+        ]
         return "\n".join(parts).strip() + "\n"
 
     def _implementation_map_markdown(self, package: ForgeExecution) -> str:
@@ -1927,8 +2006,7 @@ class ProductWorkflowService:
         return "\n".join(f"- {item}" for item in items)
 
     def _product_name(self, idea: Idea) -> str:
-        cleaned_title = idea.title.strip()
-        return cleaned_title if cleaned_title.lower().endswith("ai") else f"{cleaned_title} AI"
+        return idea.title.strip()
 
     def _target_outcome(self, idea: Idea) -> str:
         lower_problem = idea.problem.lower()

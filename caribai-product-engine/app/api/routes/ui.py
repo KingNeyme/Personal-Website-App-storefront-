@@ -74,12 +74,13 @@ def _build_asset_links(selected_idea: Idea | None) -> list[dict]:
         "ai_product_system.md": 1,
         "prompt_pack.md": 2,
         "examples_and_swipes.md": 3,
-        "implementation_map.md": 4,
-        "marketplace_cover.png": 5,
-        "worksheet_preview.png": 6,
-        "product_sheet.pdf": 7,
-        "landing_page.html": 8,
-        "offer_sheet.html": 9,
+        "done_for_you_templates.md": 4,
+        "implementation_map.md": 5,
+        "marketplace_cover.png": 6,
+        "worksheet_preview.png": 7,
+        "product_sheet.pdf": 8,
+        "landing_page.html": 9,
+        "offer_sheet.html": 10,
     }
     files = sorted(files, key=lambda path: (priority.get(path.name, 99), path.name))
     links = []
@@ -281,6 +282,7 @@ def _snapshot_payload(idea: Idea | None, asset_links: list[dict] | None = None) 
             "system_overview": _read_asset_text(idea, "ai_product_system.md"),
             "prompt_pack_preview": _read_asset_text(idea, "prompt_pack.md"),
             "examples_preview": _read_asset_text(idea, "examples_and_swipes.md"),
+            "templates_preview": _read_asset_text(idea, "done_for_you_templates.md"),
             "implementation_map": _read_asset_text(idea, "implementation_map.md"),
             "downloads": asset_links,
         },
