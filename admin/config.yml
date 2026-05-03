@@ -12,8 +12,8 @@ backend:
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
-site_url: "https://your-project-name.vercel.app"
-display_url: "https://your-project-name.vercel.app"
+site_url: "https://caribailabs.vercel.app/"
+display_url: "https://caribailabs.vercel.app/"
 publish_mode: editorial_workflow
 
 collections:
