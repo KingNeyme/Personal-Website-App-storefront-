@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "title": "Why platform-based apps become stronger after real product demand",
+      "slug": "platform-apps-after-product-demand",
+      "publishDate": "2026-05-01",
+      "category": "Launch Strategy",
+      "featured": true,
+      "excerpt": "The strongest platform-based apps usually come after real product demand, not before it. This is the logic I want CaribAI to keep following.",
+      "body": "Platform apps can look exciting early, but they get much stronger when they grow out of a validated problem and an audience that is already responding to a product.\n\nFor CaribAI, that means digital products can act as the first proof point. They show whether the problem is painful enough, whether people understand the offer, and whether the market is already leaning in.\n\nOnce that proof exists, an app becomes more than an idea. It becomes a clearer next step.\n\n## Why this matters\n\nA product-first path lowers the guesswork. It gives the brand a chance to build momentum, generate revenue earlier, and learn what customers actually want before heavier software work begins.\n\n## The CaribAI lens\n\nThe goal is not to build apps just because apps sound bigger. The goal is to let real product demand pull the next tool into existence.\n\nThat is how the ecosystem stays practical instead of inflated."
+    },
+    {
+      "title": "How I decide whether a problem is worth turning into a product",
+      "slug": "how-i-choose-product-worthy-problems",
+      "publishDate": "2026-04-29",
+      "category": "Product Thinking",
+      "featured": false,
+      "excerpt": "Not every interesting problem deserves a product. These are the filters I use before deciding a problem is worth packaging under CaribAI.",
+      "body": "Every product starts with a problem, but not every problem deserves the time, attention, and focus it takes to become a real offer.\n\nThe first filter is pain. If the issue is not painful enough, the product usually stays optional in the buyer's mind.\n\nThe second filter is speed. If a useful first version can be packaged and launched quickly, that creates faster learning and less drag.\n\nThe third filter is clarity. The best products explain their value quickly. A confused offer is hard to launch even if the idea seems promising.\n\n## Questions I keep coming back to\n\n- Is the pain real enough to pay for?\n- Is the promise clear enough to explain simply?\n- Can I package a useful first version without building forever?\n- Does this solve a problem people already know they have?\n\nCaribAI grows faster when these filters stay practical."
+    },
+    {
+      "title": "Why CaribAI is both a storefront and a visible product-building journey",
+      "slug": "why-caribai-is-a-storefront-and-journey",
+      "publishDate": "2026-04-26",
+      "category": "Founder Notes",
+      "featured": false,
+      "excerpt": "CaribAI is not just a place to list products. It is also a public record of how the products, systems, and skills are being built over time.",
+      "body": "A storefront alone can show what exists, but it does not always show why it exists or how it is growing.\n\nCaribAI needs both sides. It needs a product-facing layer where people can discover offers, and it needs a visible journey that shows the logic, the execution, and the learning behind the brand.\n\n## Why that matters\n\nThis creates trust in a different way. People can see that the products are connected to real thinking, real progress, and real work instead of random launches.\n\nIt also gives the brand a content engine. Build notes, launch lessons, and technical progress all become part of the ecosystem instead of separate side projects.\n\nThat combination makes CaribAI feel more alive and more believable over time."
+    }
+  ]
+}

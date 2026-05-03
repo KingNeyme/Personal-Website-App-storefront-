@@ -6,7 +6,7 @@
     <title>CaribAI Blog | Product Notes, Build Logs, and Launch Thinking</title>
     <meta
       name="description"
-      content="CaribAI blog covering product thinking, launch notes, build logs, public learning, and practical lessons from building an AI product brand."
+      content="Read CaribAI product notes, build logs, launch thinking, and lessons from building digital products, AI tools, and practical systems."
     />
     <meta name="robots" content="index,follow" />
     <meta property="og:title" content="CaribAI Blog | Product Notes, Build Logs, and Launch Thinking" />
@@ -62,37 +62,24 @@
           <p class="section-copy">
             A home for product thinking, launch notes, technical lessons, and the real process of building an AI-powered product ecosystem in public.
           </p>
+          <p class="section-copy">
+            New posts can be managed through the CaribAI content dashboard once the blog admin is connected.
+          </p>
         </section>
 
         <section class="panel">
-          <div class="blog-grid">
-            <article class="blog-card">
-              <span class="pill muted">Launch Strategy</span>
-              <h2>Why platform-based apps can become a smart expansion path after digital products</h2>
-              <p>
-                The right tool comes after the right problem. Platform-based apps become stronger when they grow out of real product demand and validated pain points.
-              </p>
-              <a class="text-link" href="contact.html">Request full article</a>
-            </article>
-
-            <article class="blog-card">
-              <span class="pill muted">Product Thinking</span>
-              <h2>How I decide whether a problem is worth turning into a product</h2>
-              <p>
-                The filters stay practical: painful problem, fast packaging, obvious value, and a believable path from first product to stronger offers later.
-              </p>
-              <a class="text-link" href="contact.html">Request full article</a>
-            </article>
-
-            <article class="blog-card">
-              <span class="pill muted">Founder Notes</span>
-              <h2>Why CaribAI is both a storefront and a visible product-building journey</h2>
-              <p>
-                The site is built to show the products, the launch logic, the visible momentum, and the thinking behind how the ecosystem is growing.
-              </p>
-              <a class="text-link" href="contact.html">Request full article</a>
-            </article>
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Latest Posts</p>
+              <h2>Writing that supports the products and the build journey</h2>
+            </div>
+            <p class="section-copy">
+              These posts are loaded from the site content files, so new articles can be added without editing the page layout itself.
+            </p>
           </div>
+
+          <div class="blog-grid" id="blog-grid" data-blog-list></div>
+          <p class="empty-state" data-blog-empty hidden>No blog posts are live yet. Check back soon for new CaribAI notes and launch updates.</p>
         </section>
 
         <section class="panel contact-banner">
@@ -110,5 +97,7 @@
         <p>CaribAI is the public brand. CaribAI Labs is the build layer behind the products, experiments, and future AI tools.</p>
       </footer>
     </div>
+
+    <script src="blog.js"></script>
   </body>
 </html>

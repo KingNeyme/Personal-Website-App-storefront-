@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CaribAI Article</title>
+    <meta
+      name="description"
+      content="Read CaribAI articles, launch notes, product thinking, and behind-the-scenes lessons from building AI-powered digital products and tools."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="CaribAI Article" />
+    <meta
+      property="og:description"
+      content="Read CaribAI articles, launch notes, product thinking, and behind-the-scenes lessons from building AI-powered digital products and tools."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="assets/CaribAiTrans.png" />
+    <meta property="og:site_name" content="CaribAI" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CaribAI Article" />
+    <meta
+      name="twitter:description"
+      content="Read CaribAI articles, launch notes, product thinking, and behind-the-scenes lessons from building AI-powered digital products and tools."
+    />
+    <meta name="twitter:image" content="assets/CaribAiTrans.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><img src="assets/CaribAiTrans.png" alt="CaribAI logo" /></span>
+          <span class="brand-copy">
+            <strong>CaribAI</strong>
+            <span>AI-powered products, tools, and systems</span>
+          </span>
+        </a>
+
+        <nav class="nav">
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="journey.html">Journey</a>
+          <a href="tech-stack.html">Tech Stack</a>
+          <a href="certifications.html">Certifications</a>
+          <a href="storefront.html">Storefront</a>
+          <a href="blog.html" aria-current="page">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <article class="panel post-shell" data-post-shell hidden>
+          <p class="eyebrow" data-post-category></p>
+          <h1 data-post-title></h1>
+          <div class="post-meta">
+            <span data-post-date></span>
+            <span data-post-reading-time></span>
+          </div>
+          <p class="section-copy post-excerpt" data-post-excerpt></p>
+          <div class="post-content" data-post-content></div>
+        </article>
+
+        <section class="panel" data-post-empty>
+          <p class="eyebrow">Article</p>
+          <h1>That article could not be found.</h1>
+          <p class="section-copy">Try heading back to the blog to choose a live post.</p>
+          <a class="button button-secondary" href="blog.html">Back to Blog</a>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p class="footer-brand"><img src="assets/CaribAiTrans.png" alt="CaribAI logo" /><span>CaribAI</span></p>
+        <p>CaribAI is the public brand. CaribAI Labs is the build layer behind the products, experiments, and future AI tools.</p>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="blog.js"></script>
+  </body>
+</html>

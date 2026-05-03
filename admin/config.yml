@@ -1,0 +1,39 @@
+local_backend: true
+
+backend:
+  name: github
+  repo: KingNeyme/Personal-Website-App-storefront-
+  branch: main
+  # For a live Vercel deployment, add your OAuth proxy URL here after you set it up.
+  # Example:
+  # base_url: https://your-decap-auth.example.com
+  preview_context: vercel
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: "https://your-project-name.vercel.app"
+display_url: "https://your-project-name.vercel.app"
+publish_mode: editorial_workflow
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    files:
+      - label: "Blog Posts"
+        name: "posts"
+        file: "content/blog/posts.json"
+        format: "json"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Slug", name: "slug", widget: "string", hint: "Use lowercase words separated by hyphens." }
+              - { label: "Publish Date", name: "publishDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Featured", name: "featured", widget: "boolean", required: false, default: false }
+              - { label: "Excerpt", name: "excerpt", widget: "text" }
+              - { label: "Body", name: "body", widget: "markdown" }
