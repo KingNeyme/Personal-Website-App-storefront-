@@ -4,16 +4,14 @@ backend:
   name: github
   repo: KingNeyme/Personal-Website-App-storefront-
   branch: main
-  # For a live Vercel deployment, add your OAuth proxy URL here after you set it up.
-  # Example:
-  # base_url: https://your-decap-auth.example.com
+  base_url: https://caribai-cms-auth.vercel.app
   preview_context: vercel
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
-site_url: "https://caribailabs.vercel.app/"
-display_url: "https://caribailabs.vercel.app/"
+site_url: "https://caribailabs.vercel.app"
+display_url: "https://caribailabs.vercel.app"
 publish_mode: editorial_workflow
 
 collections:
