@@ -1441,9 +1441,9 @@ textarea:focus {
   }
 
   .footer-links {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    max-width: 220px;
+    grid-template-columns: repeat(2, minmax(90px, 1fr));
+    gap: 10px 12px;
+    max-width: 240px;
   }
 
   .section-heading,
