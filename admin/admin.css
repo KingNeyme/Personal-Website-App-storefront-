@@ -228,6 +228,33 @@ button {
   gap: 8px;
 }
 
+.admin-mini-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.admin-mini-nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(199, 210, 254, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--admin-text);
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.admin-mini-nav-link:hover,
+.admin-mini-nav-link.is-active {
+  transform: translateY(-1px);
+  border-color: rgba(124, 58, 237, 0.24);
+  background: rgba(255, 255, 255, 0.045);
+}
+
 .admin-action {
   display: flex;
   align-items: center;
@@ -430,6 +457,57 @@ button {
   color: var(--admin-muted);
 }
 
+.admin-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.admin-page-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.admin-page-grid-compact {
+  grid-template-columns: 1fr;
+}
+
+.admin-page-tile {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  min-height: 118px;
+  padding: 16px 16px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(199, 210, 254, 0.1);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--admin-text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.admin-page-tile:hover,
+.admin-page-tile:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(124, 58, 237, 0.24);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 16px 30px rgba(2, 6, 23, 0.14);
+  outline: none;
+}
+
+.admin-page-tile strong {
+  font-size: 0.96rem;
+  letter-spacing: -0.02em;
+}
+
+.admin-page-tile span {
+  color: var(--admin-muted);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
 .admin-ops-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -589,6 +667,7 @@ button {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .admin-stack-grid,
   .admin-ops-grid,
   .admin-card-grid {
     grid-template-columns: 1fr;
@@ -625,6 +704,10 @@ button {
     padding: 20px;
   }
 
+  .admin-page-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .admin-stat-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -647,6 +730,11 @@ button {
   .admin-workspace,
   .admin-card {
     border-radius: 24px;
+  }
+
+  .admin-mini-nav,
+  .admin-page-grid {
+    grid-template-columns: 1fr;
   }
 
   .admin-sidebar {
