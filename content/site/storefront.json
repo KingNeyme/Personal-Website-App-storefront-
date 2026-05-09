@@ -1,15 +1,15 @@
 {
   "hero": {
     "eyebrow": "Storefront",
-    "title": "Practical digital products now, scalable AI tools and systems over time.",
-    "description": "This is the public product layer of CaribAI: focused solutions built around real operational, productivity, and income-related problems, with room to evolve into broader tools and systems over time.",
+    "title": "Practical AI tools now, scalable systems and software over time.",
+    "description": "This is the public product layer of CaribAI: focused solutions built around real operational, productivity, and execution-related problems, with room to evolve into broader intelligent tools and systems over time.",
     "image": "assets/graphics/ai-toolkit-card.svg",
     "imageAlt": "CaribAI storefront visual"
   },
   "products": {
     "eyebrow": "Featured Products",
     "title": "The current product lineup",
-    "description": "Each offer is built around a specific need. The audience changes by product because CaribAI is designed to solve real problems first and let each solution earn its own market.",
+    "description": "Each offer is built around a specific need. The audience changes by product because CaribAI is designed to solve real problems first and let each system or tool earn its own market.",
     "items": [
       {
         "badge": "Current Product",
@@ -29,7 +29,7 @@
         "title": "AI Toolkit",
         "image": "assets/graphics/ai-toolkit-card.svg",
         "imageAlt": "AI Toolkit product visual",
-        "description": "AI usage system for IT professionals, knowledge workers, and tech-savvy individuals who want better output, clearer workflows, and stronger results.",
+        "description": "AI workflow system for IT professionals, knowledge workers, and tech-savvy individuals who want better output, clearer workflows, and stronger results.",
         "meta": [
           "Category: Digital Product",
           "Status: Growing Offer"
@@ -53,7 +53,7 @@
         "title": "CaribAI Apps",
         "image": "assets/graphics/caribai-apps-card.svg",
         "imageAlt": "CaribAI Apps concept visual",
-        "description": "AI tools, automation systems, and micro SaaS products that can grow from validated digital-product demand and real product traction.",
+        "description": "AI tools, automation systems, and micro SaaS products that can grow from validated demand, real traction, and stronger engineering depth.",
         "meta": [
           "Category: AI Tools",
           "Status: Validation Path"
@@ -66,11 +66,11 @@
     "items": [
       {
         "title": "What You’ll Find Here",
-        "description": "Digital products, future AI tools, automation systems, early-access offers, and visible signals of the larger ecosystem CaribAI is building."
+        "description": "Digital tools, future AI apps, automation systems, early-access offers, and visible signals of the larger intelligent systems ecosystem CaribAI is building."
       },
       {
         "title": "Why It Matters",
-        "description": "The storefront makes the product side of the business visible by showing actual solutions, not just ideas or trend-based positioning."
+        "description": "The storefront makes the practical side of the business visible by showing actual solutions, not just concepts or trend-based positioning."
       },
       {
         "title": "How To Follow",

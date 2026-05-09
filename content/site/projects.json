@@ -1,15 +1,15 @@
 {
   "hero": {
     "eyebrow": "Projects",
-    "title": "Products, systems, and software directions shaping the CaribAI ecosystem.",
-    "description": "This page shows how CaribAI grows through a portfolio of practical solutions: current digital products, emerging automation systems, practical tools, and future AI software directions built around real-world needs.",
+    "title": "Systems, products, and software directions shaping the CaribAI ecosystem.",
+    "description": "This page shows how CaribAI grows through a portfolio of practical solutions: current digital tools, emerging automation systems, intelligent workflows, and future AI software directions built around real-world needs.",
     "image": "assets/graphics/cyber-ascend-card.svg",
     "imageAlt": "CaribAI projects visual"
   },
   "pipeline": {
     "eyebrow": "Current Pipeline",
-    "title": "The current product ecosystem and future software directions at the center of the roadmap",
-    "description": "Each one represents a different problem and a different value opportunity, which is exactly how the CaribAI model is designed to scale.",
+    "title": "The current solution roadmap and future software directions at the center of the ecosystem",
+    "description": "Each one represents a different problem, a different execution context, and a different systems opportunity, which is exactly how the CaribAI model is designed to scale.",
     "items": [
       {
         "badge": "Current Product",
@@ -29,7 +29,7 @@
         "title": "AI Toolkit",
         "image": "assets/graphics/ai-toolkit-card.svg",
         "imageAlt": "AI Toolkit product visual",
-        "description": "Practical AI usage system for people who want stronger results, clearer workflows, and more leverage from modern AI tools.",
+        "description": "Practical AI execution system for people who want stronger results, clearer workflows, and more leverage from modern AI tools.",
         "meta": [
           "Status: Growing Offer",
           "Focus: Productivity"
@@ -53,7 +53,7 @@
         "title": "CaribAI Apps",
         "image": "assets/graphics/caribai-apps-card.svg",
         "imageAlt": "CaribAI Apps concept visual",
-        "description": "AI tools, automation systems, and future software businesses that grow out of validated product demand and stronger market signals.",
+        "description": "AI apps, automation systems, and future software businesses that grow out of validated demand and stronger technical signal.",
         "meta": [
           "Status: Validation Path",
           "Focus: AI Tools"
@@ -66,15 +66,15 @@
     "items": [
       {
         "title": "What These Projects Show",
-        "description": "How CaribAI moves from one problem to one focused solution instead of trying to force one offer on every market."
+        "description": "How CaribAI moves from one problem to one focused system instead of trying to force one offer on every market."
       },
       {
         "title": "Why They Matter",
-        "description": "They show the real operating logic behind the business: identify, build, launch, learn, improve, and repeat."
+        "description": "They show the real operating logic behind the business: identify, engineer, launch, learn, improve, and repeat."
       },
       {
         "title": "How They Evolve",
-        "description": "Some remain focused digital products, while the strongest directions evolve into AI tools, operational systems, or scalable software businesses."
+        "description": "Some remain focused digital tools, while the strongest directions evolve into AI apps, operational systems, or scalable software businesses."
       }
     ]
   },

@@ -1,33 +1,33 @@
 {
   "hero": {
     "eyebrow": "Technology Behind CaribAI",
-    "title": "The technology stack behind CaribAI’s products, systems, and growth.",
-    "description": "CaribAI is built on practical technologies chosen to support real digital products, automation systems, and long-term software growth.",
+    "title": "The technology stack behind CaribAI’s systems, infrastructure, and growth.",
+    "description": "CaribAI is built on practical technologies chosen to support AI engineering, intelligent workflows, digital infrastructure, and long-term software growth.",
     "image": "assets/graphics/caribai-apps-card.svg",
     "imageAlt": "CaribAI technology visual"
   },
   "primary": {
     "eyebrow": "Primary Stack",
-    "title": "The core tools behind current CaribAI products and systems",
-    "description": "These are the main technologies shaping the products, internal systems, and software directions across the CaribAI ecosystem.",
+    "title": "The core tools behind current CaribAI systems and software directions",
+    "description": "These are the main technologies shaping the public products, internal systems, infrastructure, and software directions across the CaribAI ecosystem.",
     "items": [
       {
         "title": "Python",
         "label": "Core Language",
         "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-        "description": "Core language for backend development, AI integrations, automation logic, and system workflows."
+        "description": "Core language for backend engineering, AI integrations, automation logic, and system workflows."
       },
       {
         "title": "FastAPI",
         "label": "Backend Framework",
         "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
-        "description": "Framework for APIs, internal services, automation backends, and AI-powered product flows."
+        "description": "Framework for APIs, internal services, automation backends, and AI-powered system flows."
       },
       {
         "title": "PostgreSQL",
         "label": "Data Layer",
         "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-        "description": "Primary database layer for product data, application records, and long-term system reliability."
+        "description": "Primary database layer for application records, workflow data, and long-term system reliability."
       },
       {
         "title": "SQLAlchemy",
@@ -52,13 +52,13 @@
   "secondary": {
     "eyebrow": "Extended Stack",
     "title": "The supporting technologies that make the ecosystem more capable",
-    "description": "These tools help CaribAI move from digital products into stronger automation, AI systems, and scalable software over time.",
+    "description": "These tools help CaribAI move from focused digital tools into stronger automation, AI systems, and scalable software over time.",
     "items": [
       {
         "title": "OpenAI API",
         "label": "AI Layer",
         "logo": "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg",
-        "description": "Model-powered workflows, structured outputs, and intelligent product features for modern AI systems."
+        "description": "Model-powered workflows, structured outputs, and intelligent application features for modern AI systems."
       },
       {
         "title": "GitHub",
@@ -70,13 +70,13 @@
         "title": "JavaScript",
         "label": "Frontend Logic",
         "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-        "description": "Frontend behavior, site interactions, and dynamic content rendering across public and internal tools."
+        "description": "Frontend behavior, site interactions, and dynamic content rendering across public experiences and internal tools."
       },
       {
         "title": "HTML & CSS",
         "label": "Interface Layer",
         "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-        "description": "Clean, fast user interfaces for products, landing pages, storefronts, and supporting brand experiences."
+        "description": "Clean, fast interfaces for products, landing pages, storefronts, and supporting brand experiences."
       },
       {
         "title": "Vercel",

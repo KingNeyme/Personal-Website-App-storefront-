@@ -1,36 +1,36 @@
 {
   "hero": {
     "eyebrow": "About",
-    "title": "CaribAI is a Caribbean-born AI product company with a practical, systems-driven approach.",
-    "description": "CaribAI builds digital products, automation systems, and scalable software solutions that solve real-world operational, productivity, and income-related problems. CaribAI Labs supports that work as the experimentation and product-development layer behind the scenes.",
+    "title": "CaribAI is a Caribbean-born AI engineering and intelligent systems brand.",
+    "description": "CaribAI builds practical AI systems, digital infrastructure, automation layers, and scalable software directions designed to solve real-world operational, productivity, and execution-related problems. CaribAI Labs supports that work as the experimentation and systems-development layer behind the scenes.",
     "image": "assets/graphics/caribai-apps-card.svg",
     "imageAlt": "CaribAI ecosystem visual"
   },
   "identity": {
     "eyebrow": "Core Identity",
-    "title": "A product-first business built around real problems, clear execution, and long-term ecosystem growth.",
-    "description": "The operating model is straightforward: identify specific problems, build focused solutions, launch quickly, learn from real-world feedback, and improve continuously through iteration. The long-term goal is a globally recognized AI product ecosystem originating from the Caribbean."
+    "title": "An execution-focused AI brand built around real problems, clear systems thinking, and long-term technical growth.",
+    "description": "The operating model is straightforward: identify specific problems, engineer focused solutions, launch quickly, learn from real-world signal, and improve continuously through iteration. The long-term goal is a globally recognized AI engineering and intelligent systems ecosystem originating from the Caribbean."
   },
   "values": {
     "items": [
       {
         "title": "Mission",
-        "description": "Build practical AI-powered products and systems that improve how people and businesses work, operate, and create value."
+        "description": "Build practical AI-powered systems and infrastructure that improve how people and businesses work, operate, and create value."
       },
       {
         "title": "Vision",
-        "description": "Become a globally recognized AI product ecosystem originating from the Caribbean."
+        "description": "Become a globally recognized AI engineering and intelligent systems company originating from the Caribbean."
       },
       {
         "title": "Operating Lens",
-        "description": "Build around problems, not trends, and let each product earn its own audience by solving a real need well."
+        "description": "Build around problems, not trends, and let each system or product earn its audience by solving a real need well."
       }
     ]
   },
   "structure": {
     "eyebrow": "Structure",
     "title": "How the public brand and the build layer work together",
-    "description": "CaribAI handles the outward-facing side of the ecosystem, while CaribAI Labs keeps exploring the research, experimentation, systems, and future software opportunities behind it.",
+    "description": "CaribAI handles the outward-facing side of the ecosystem, while CaribAI Labs keeps exploring the research, experimentation, machine learning depth, systems architecture, and future software opportunities behind it.",
     "items": [
       {
         "badge": "Brand",
@@ -47,21 +47,21 @@
       {
         "badge": "Digital Products",
         "title": "CaribAI Products",
-        "description": "Digital products, workflow systems, automation kits, and focused offers that create immediate practical value.",
+        "description": "Digital tools, workflow systems, automation kits, and focused offers that create immediate practical value while supporting broader technical growth.",
         "muted": true
       },
       {
         "badge": "Apps",
         "title": "CaribAI Apps",
-        "description": "AI tools, micro SaaS, operational systems, and scalable software that can emerge from validated product demand.",
+        "description": "AI tools, intelligent dashboards, operational systems, and scalable software that can emerge from validated demand and stronger engineering capability.",
         "muted": true
       }
     ]
   },
   "cta": {
     "eyebrow": "Next Step",
-    "title": "See how the ecosystem is turning into products, launches, and technical growth.",
-    "description": "Follow the product pipeline, product launches, and the systems behind how CaribAI is being built.",
+    "title": "See how the ecosystem is turning into products, systems, launches, and technical growth.",
+    "description": "Follow the project pipeline, visible launches, and the systems behind how CaribAI is being built.",
     "label": "View Product Pipeline",
     "href": "projects.html"
   }

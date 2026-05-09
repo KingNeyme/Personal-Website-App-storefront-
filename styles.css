@@ -126,11 +126,19 @@ img {
   gap: 3px;
   font-size: 0.94rem;
   color: var(--muted);
+  min-width: 0;
 }
 
 .brand-copy strong {
-  font-size: 1rem;
-  letter-spacing: -0.02em;
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
+}
+
+.brand-copy span:last-child {
+  max-width: 32ch;
+  font-size: 0.79rem;
+  line-height: 1.35;
+  color: rgba(199, 210, 254, 0.88);
 }
 
 .brand-copy strong,
@@ -150,6 +158,8 @@ h3 {
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(199, 210, 254, 0.08);
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .nav a {
@@ -212,6 +222,10 @@ main {
 
 .hero-copy {
   max-width: 700px;
+}
+
+.hero-copy .eyebrow {
+  max-width: 42ch;
 }
 
 .eyebrow {
@@ -545,13 +559,13 @@ textarea:focus {
 }
 
 .page-hero-rich {
-  padding: 30px;
+  padding: 34px;
 }
 
 .page-hero-layout {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 24px;
+  gap: 30px;
   align-items: center;
 }
 
@@ -794,6 +808,11 @@ textarea:focus {
   border-top: 1px solid rgba(199, 210, 254, 0.08);
 }
 
+.footer p:last-child {
+  max-width: 62ch;
+  text-align: right;
+}
+
 .footer-brand {
   display: inline-flex;
   align-items: center;
@@ -839,6 +858,10 @@ textarea:focus {
     align-items: flex-start;
   }
 
+  .footer p:last-child {
+    text-align: left;
+  }
+
   .nav {
     width: 100%;
     overflow-x: auto;
@@ -864,6 +887,10 @@ textarea:focus {
     border-radius: 24px;
   }
 
+  .topbar {
+    gap: 18px;
+  }
+
   .brand {
     gap: 12px;
   }
@@ -877,6 +904,21 @@ textarea:focus {
   .footer-brand img {
     width: 36px;
     height: 36px;
+  }
+
+  .brand-copy span:last-child {
+    max-width: 28ch;
+    font-size: 0.74rem;
+  }
+
+  .nav {
+    gap: 8px;
+    padding: 5px;
+  }
+
+  .nav a {
+    padding: 9px 11px;
+    font-size: 0.9rem;
   }
 
   h1 {

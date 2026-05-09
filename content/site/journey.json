@@ -1,8 +1,8 @@
 {
   "hero": {
     "eyebrow": "Learning Journey",
-    "title": "Building CaribAI in public through implementation, reflection, and steady progress.",
-    "description": "This page shares the real path behind CaribAI: what is being learned, what is being built, and how the ecosystem is becoming stronger through product execution, systems thinking, and visible progress.",
+    "title": "Building CaribAI in public through engineering practice, reflection, and steady progress.",
+    "description": "This page shares the real path behind CaribAI: what is being learned, what is being built, and how the ecosystem is becoming stronger through AI implementation, systems thinking, machine learning exploration, and visible progress.",
     "image": "assets/graphics/caribai-apps-card.svg",
     "imageAlt": "CaribAI journey visual"
   },
@@ -12,19 +12,19 @@
     "items": [
       {
         "title": "AI Implementation",
-        "description": "APIs, model integrations, structured outputs, and practical workflows that support useful AI-powered products.",
+        "description": "APIs, model integrations, structured outputs, and practical workflows that support useful AI-powered systems and software.",
         "image": "assets/graphics/ai-toolkit-card.svg",
         "imageAlt": "AI implementation visual"
       },
       {
-        "title": "Product Building",
-        "description": "Sharpening how problems are identified, solutions are packaged, and ideas are turned into stronger products over time.",
+        "title": "Systems Building",
+        "description": "Sharpening how problems are identified, solutions are designed, and ideas are turned into stronger systems over time.",
         "image": "assets/graphics/cyber-ascend-card.svg",
         "imageAlt": "Product building visual"
       },
       {
-        "title": "Systems Growth",
-        "description": "Strengthening the systems, habits, and technical depth needed to support a long-term product ecosystem.",
+        "title": "Machine Learning Growth",
+        "description": "Strengthening the systems, habits, and technical depth needed to support long-term machine learning exploration and intelligent systems work.",
         "image": "assets/graphics/caribai-apps-card.svg",
         "imageAlt": "Systems growth visual"
       }
@@ -33,11 +33,11 @@
   "documentation": {
     "eyebrow": "What I Document",
     "title": "The real parts of growth that usually stay hidden",
-    "description": "The goal is not to present a polished illusion. It’s to show how skills are actually built through practice, mistakes, revisions, and visible momentum.",
+    "description": "The goal is not to present a polished illusion. It is to show how engineering ability is actually built through practice, mistakes, revisions, and visible momentum.",
     "items": [
       {
         "title": "Technical Lessons",
-        "description": "Notes from backend engineering, AI integrations, data handling, automation thinking, and product development workflows.",
+        "description": "Notes from backend engineering, AI integrations, data handling, automation thinking, ML exploration, and product development workflows.",
         "status": "Ongoing",
         "image": "assets/graphics/ai-toolkit-card.svg",
         "imageAlt": "Technical lessons visual"
@@ -51,7 +51,7 @@
       },
       {
         "title": "Implementation Milestones",
-        "description": "New tools learned, product ideas tested, features shipped, systems improved, and clearer strategic direction earned over time.",
+        "description": "New tools learned, systems tested, features shipped, infrastructure improved, and clearer strategic direction earned over time.",
         "status": "Tracked Publicly",
         "image": "assets/graphics/cyber-ascend-card.svg",
         "imageAlt": "Implementation milestones visual"
@@ -64,15 +64,15 @@
     "items": [
       {
         "title": "Now",
-        "description": "Product execution, backend development, AI implementation, and stronger systems thinking across the ecosystem."
+        "description": "AI implementation, backend development, digital infrastructure, and stronger systems thinking across the ecosystem."
       },
       {
         "title": "Next",
-        "description": "Better deployment workflows, stronger automation, deeper product quality, and more polished launches."
+        "description": "Better deployment workflows, stronger automation, deeper ML experimentation, and more polished launches."
       },
       {
         "title": "Later",
-        "description": "More advanced AI systems, broader software directions, and carefully earned expansion into higher-complexity opportunities."
+        "description": "More advanced AI systems, broader software directions, and carefully earned expansion into higher-complexity research and infrastructure opportunities."
       }
     ]
   },

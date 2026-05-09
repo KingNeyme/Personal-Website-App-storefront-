@@ -1,8 +1,8 @@
 {
   "hero": {
     "eyebrow": "Contact",
-    "title": "Let’s connect around the products, launches, and ecosystem CaribAI is building.",
-    "description": "Reach out if you want to connect about digital products, future AI tools, partnerships, launch opportunities, media features, or early access to upcoming releases.",
+    "title": "Let’s connect around the systems, launches, and ecosystem CaribAI is building.",
+    "description": "Reach out if you want to connect about AI systems, workflow tools, future software directions, partnerships, launch opportunities, media features, or early access to upcoming releases.",
     "image": "assets/graphics/ai-toolkit-card.svg",
     "imageAlt": "CaribAI contact visual"
   },
@@ -17,7 +17,7 @@
     "boxes": [
       {
         "title": "Positioning",
-        "description": "CaribAI builds practical AI-powered products and systems that help people and businesses work smarter, improve operations, and create value."
+        "description": "CaribAI builds practical AI systems, intelligent workflows, and digital infrastructure that help people and businesses work smarter, improve operations, and create value."
       },
       {
         "title": "Email",

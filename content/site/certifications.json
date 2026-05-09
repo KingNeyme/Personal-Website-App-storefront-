@@ -2,13 +2,13 @@
   "hero": {
     "eyebrow": "Certifications",
     "title": "Credentials, milestones, and structured growth supporting the CaribAI ecosystem.",
-    "description": "This page shows the structured learning path developing alongside the products, launches, and systems shaping CaribAI over time.",
+    "description": "This page shows the structured learning path developing alongside the systems, launches, and technical directions shaping CaribAI over time.",
     "image": "assets/graphics/resume-kit-card.svg",
     "imageAlt": "CaribAI certifications visual"
   },
   "status": {
     "eyebrow": "Current Status",
-    "title": "Structured growth alongside product execution and technical development",
+    "title": "Structured growth alongside execution and technical development",
     "description": "CaribAI is being built through a mix of hands-on implementation, structured learning, and credentials that strengthen long-term technical credibility.",
     "items": [
       {
@@ -27,7 +27,7 @@
       },
       {
         "title": "Future Targets",
-        "description": "Kubernetes-related growth, advanced AI and ML milestones, and future higher-complexity AI directions as they are earned over time.",
+        "description": "Infrastructure growth, advanced AI and ML milestones, cybersecurity depth, and future higher-complexity AI directions as they are earned over time.",
         "status": "Planned",
         "image": "assets/graphics/caribai-apps-card.svg",
         "imageAlt": "Future certification targets visual"
@@ -50,7 +50,7 @@
       },
       {
         "title": "How It Fits the Brand",
-        "description": "CaribAI is about visible progress, and credentials are part of that larger story when paired with real projects.",
+        "description": "CaribAI is about visible progress, and credentials are part of that larger story when paired with real systems and projects.",
         "image": "assets/graphics/caribai-apps-card.svg",
         "imageAlt": "Brand growth visual"
       }

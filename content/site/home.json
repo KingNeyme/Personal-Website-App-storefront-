@@ -1,8 +1,8 @@
 {
   "hero": {
-    "eyebrow": "Caribbean-Born AI Product Company",
-    "title": "Practical AI products and systems built for real-world execution.",
-    "description": "CaribAI builds practical digital products, automation systems, and scalable software solutions designed to solve real operational, productivity, and income-related problems. The approach is disciplined: identify a clear need, build a focused solution, launch quickly, learn from usage, and improve through iteration.",
+    "eyebrow": "AI Engineering • Intelligent Systems • Digital Infrastructure",
+    "title": "Practical AI systems built for modern execution and real-world impact.",
+    "description": "CaribAI is a Caribbean-born AI engineering and intelligent systems brand building practical software, digital infrastructure, automation layers, and future-facing AI workflows. The focus is clear: build useful systems, ship them into the real world, learn quickly, and keep compounding capability over time.",
     "actions": [
       {
         "label": "Explore Products",
@@ -21,38 +21,38 @@
       }
     ],
     "points": [
-      "Practical over hype: build useful systems that create measurable value in the real world",
-      "Problem-first strategy: each product earns its own audience by solving a specific pain point",
-      "Built to scale: products can begin small, then evolve into tools, SaaS, and larger software systems"
+      "Practical over hype: systems and infrastructure that improve execution, not empty AI branding",
+      "Engineering mindset: structure problems clearly, build focused solutions, and iterate with evidence",
+      "Designed to compound: today’s workflows and digital tools can become tomorrow’s intelligent platforms"
     ],
     "metrics": [
       {
         "label": "Identity",
-        "title": "CaribAI is a public-facing AI product ecosystem with Caribbean roots and global ambition.",
-        "description": "It exists to build practical solutions around real operational, productivity, and income-related problems rather than chase short-term trends.",
+        "title": "CaribAI is a Caribbean-born AI systems brand with long-term engineering ambition.",
+        "description": "It is focused on practical implementation, intelligent workflows, digital infrastructure, and real-world systems that earn trust through usefulness.",
         "featured": true
       },
       {
         "label": "Model",
-        "title": "Product Factory Model",
-        "description": "Identify a real problem, build a focused solution, launch quickly, gather feedback, improve the product, and repeat continuously."
+        "title": "Engineering + Execution Model",
+        "description": "Identify a real problem, design a focused system, ship quickly, study the signal, improve deliberately, and expand what proves valuable."
       },
       {
         "label": "Direction",
-        "title": "Systems company. Product ecosystem. Long-term builder.",
-        "description": "Start with focused digital products and practical systems, then expand successful ideas into AI tools, automation layers, and scalable software."
+        "title": "AI engineering ecosystem. Intelligent systems. Long-term builder.",
+        "description": "Start with practical tools and execution systems, then expand validated ideas into AI apps, machine learning layers, and stronger digital infrastructure."
       }
     ]
   },
   "positioning": {
     "eyebrow": "Positioning",
-    "title": "CaribAI builds around problems, then lets each product earn its own audience.",
-    "description": "The business is not built around one trend, one niche, or one broad offer. Each product is shaped around a specific problem, then positioned to create clear value for the audience that actually needs it."
+    "title": "CaribAI builds intelligent systems around real problems, then lets each solution earn its audience.",
+    "description": "The brand is not built around one trend or one generic audience. It is built around practical AI implementation, system design, digital infrastructure, and execution-focused products that create measurable value."
   },
   "structure": {
     "eyebrow": "Structure",
-    "title": "One brand, one build layer, and a growing ecosystem of product directions",
-    "description": "CaribAI is the public-facing brand responsible for products, launches, marketing, partnerships, and ecosystem growth. CaribAI Labs is the innovation and experimentation layer where research, prototyping, AI experimentation, and future software directions take shape.",
+    "title": "One public AI brand, one experimentation layer, and a growing intelligent systems roadmap",
+    "description": "CaribAI is the outward-facing brand for launches, products, content, and ecosystem growth. CaribAI Labs is the experimentation layer where research, prototyping, AI exploration, machine learning depth, and future software directions are developed.",
     "items": [
       {
         "badge": "Brand",
@@ -69,21 +69,21 @@
       {
         "badge": "Products",
         "title": "CaribAI Products",
-        "description": "Digital products, workflow systems, templates, and practical tools designed to create immediate value around real pain points.",
+        "description": "Digital products, workflow kits, and focused execution tools that create practical value while shaping the broader system roadmap.",
         "muted": true
       },
       {
         "badge": "Apps",
         "title": "CaribAI Apps",
-        "description": "AI tools, micro SaaS, automation systems, and scalable software that can grow out of validated product demand.",
+        "description": "AI applications, intelligent dashboards, automation systems, and scalable software that can grow out of validated product demand and stronger technical depth.",
         "muted": true
       }
     ]
   },
   "storefront": {
     "eyebrow": "Storefront",
-    "title": "Current products and ecosystem directions under the CaribAI brand",
-    "description": "CaribAI products can begin as digital downloads, workflow systems, automation kits, or small practical tools, then evolve into AI tools, subscription platforms, or larger software systems as traction grows.",
+    "title": "Current products and emerging intelligent system directions under the CaribAI brand",
+    "description": "CaribAI solutions can begin as focused digital tools, execution systems, or workflow kits, then evolve into AI applications, subscription software, or larger infrastructure layers as traction and technical maturity grow.",
     "items": [
       {
         "badge": "Current Product",
@@ -128,22 +128,22 @@
     "title": "What CaribAI is building across the ecosystem",
     "items": [
       {
-        "title": "AI Productivity Systems",
-        "description": "Products and systems designed to improve how people and businesses work, think, and execute with AI."
+        "title": "AI Engineering Systems",
+        "description": "Practical AI-powered applications, tooling, and workflows built to solve real operational and execution challenges."
       },
       {
-        "title": "Automation and Operations",
-        "description": "Focused systems that simplify workflows, improve operations, and create measurable efficiency gains."
+        "title": "Intelligent Execution Systems",
+        "description": "Workflow systems and automation layers that help people and teams operate more clearly, consistently, and efficiently."
       },
       {
-        "title": "Scalable Software Directions",
-        "description": "Validated ideas that can grow into AI tools, assistants, micro SaaS, and more scalable software businesses over time."
+        "title": "Machine Learning and Infrastructure Growth",
+        "description": "Validated directions that can expand into smarter software, predictive systems, AI infrastructure, and higher-complexity product layers over time."
       }
     ]
   },
   "businessModel": {
     "eyebrow": "Business Model",
-    "title": "CaribAI operates through a product factory model.",
+    "title": "CaribAI operates through an engineering-first product factory model.",
     "items": [
       {
         "title": "Identify",
@@ -151,11 +151,11 @@
       },
       {
         "title": "Build",
-        "description": "Develop a focused product, tool, or system that can create practical and measurable value quickly."
+        "description": "Develop a focused product, workflow, or intelligent system that can create practical and measurable value quickly."
       },
       {
         "title": "Repeat",
-        "description": "Launch, gather feedback, improve, systemize what works, and repeat until strong ideas grow into larger businesses."
+        "description": "Launch, gather feedback, improve, systemize what works, and repeat until strong ideas grow into broader platforms and infrastructure."
       }
     ]
   },
@@ -168,18 +168,18 @@
     },
     "items": [
       {
-        "title": "Phase 1: Launch digital products",
-        "description": "Generate cash and product momentum through practical, focused AI-powered digital products.",
+        "title": "Phase 1: Launch digital tools and execution systems",
+        "description": "Generate traction and market signal through focused AI-powered digital tools, workflow systems, and practical software.",
         "status": "Immediate"
       },
       {
-        "title": "Phase 2: Build AI tools",
-        "description": "Turn validated product ideas into AI tools and micro SaaS offers with clearer market signals behind them.",
+        "title": "Phase 2: Build AI apps and software layers",
+        "description": "Turn validated ideas into AI apps, dashboards, and software products with stronger technical depth behind them.",
         "status": "Mid-Term"
       },
       {
-        "title": "Phase 3: Scale into SaaS",
-        "description": "Use the strongest validated ideas as the foundation for larger software platforms and AI systems.",
+        "title": "Phase 3: Expand into infrastructure and research",
+        "description": "Use the strongest validated directions as the base for machine learning exploration, intelligent infrastructure, and more advanced AI systems.",
         "status": "Long-Term"
       }
     ]
@@ -190,22 +190,22 @@
     "items": [
       {
         "title": "Public Learning",
-        "description": "The journey, content, and documentation matter because they show how the ecosystem is being built in a visible and credible way."
+        "description": "The journey, content, and documentation matter because they show how the engineering capability is being built in a visible and credible way."
       },
       {
-        "title": "Product Credibility",
-        "description": "Visitors should quickly understand what CaribAI builds, why it matters, and how each product supports the bigger vision."
+        "title": "System Credibility",
+        "description": "Visitors should quickly understand what CaribAI is engineering, why it matters, and how each product or workflow supports the bigger vision."
       },
       {
         "title": "Opportunity Surface",
-        "description": "The site creates room for customer, collaborator, media, and audience opportunities without turning the brand into a generic service pitch."
+        "description": "The site creates room for customers, collaborators, media, and future partners without flattening the brand into a generic services pitch."
       }
     ]
   },
   "growthHub": {
     "eyebrow": "Growth Hub",
     "title": "Explore the full CaribAI platform",
-    "description": "Beyond the storefront, CaribAI also shows how the ecosystem is being built through visible progress, product thinking, technical growth, and public execution.",
+    "description": "Beyond the storefront, CaribAI also shows how its engineering capability is being built through visible progress, technical growth, machine learning exploration, and public execution.",
     "items": [
       {
         "title": "About",
@@ -227,7 +227,7 @@
         "title": "Tech Stack + Certifications",
         "image": "assets/graphics/caribai-apps-card.svg",
         "imageAlt": "CaribAI technology visual",
-        "description": "The stack, systems, and technical growth supporting the long-term evolution of the product ecosystem.",
+        "description": "The stack, systems, and technical growth supporting the long-term evolution of the AI engineering ecosystem.",
         "href": "tech-stack.html",
         "linkLabel": "View the stack"
       }
@@ -238,8 +238,8 @@
     "title": "What the business is focused on right now",
     "items": [
       {
-        "title": "1. Launch focused digital products",
-        "description": "Start with practical products that solve clear problems and create the first layer of real traction.",
+        "title": "1. Launch focused AI tools and workflows",
+        "description": "Start with practical systems that solve clear problems and create the first layer of real traction.",
         "status": "Immediate Priority"
       },
       {
@@ -248,24 +248,24 @@
         "status": "Always Active"
       },
       {
-        "title": "3. Build toward tools and SaaS",
-        "description": "Use product validation as the bridge into AI apps, tools, automation systems, and larger software over time.",
+        "title": "3. Build toward apps, infrastructure, and SaaS",
+        "description": "Use validation as the bridge into AI apps, intelligent tools, automation systems, and larger software over time.",
         "status": "Long-Term Engine"
       }
     ]
   },
   "lead": {
     "eyebrow": "Early Access",
-    "title": "Get early access to new CaribAI products and launches",
-    "description": "Join the list to hear about new digital products, AI tools, launch updates, and ecosystem growth as CaribAI keeps shipping.",
+    "title": "Get early access to new CaribAI systems, tools, and launches",
+    "description": "Join the list to hear about new AI tools, execution systems, launch updates, and ecosystem growth as CaribAI keeps shipping.",
     "buttonLabel": "Join Early Access",
     "successMessage": "Your email app should open with a ready-to-send early access request for CaribAI.",
     "note": "This opens a ready-to-send email to the CaribAI inbox for now."
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Follow the products, explore the ecosystem, or connect around what CaribAI is building.",
-    "description": "This site is built for customers, early users, collaborators, readers, and anyone interested in practical AI-powered products and systems.",
+    "title": "Follow the systems, explore the ecosystem, or connect around what CaribAI is building.",
+    "description": "This site is built for customers, early users, collaborators, readers, and anyone interested in practical AI systems, infrastructure, and execution-focused tools.",
     "label": "Contact Me",
     "href": "contact.html"
   }
