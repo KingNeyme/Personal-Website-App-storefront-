@@ -21,9 +21,9 @@
       }
     ],
     "points": [
-      "Practical over hype: systems and infrastructure that improve execution, not empty AI branding",
-      "Engineering mindset: structure problems clearly, build focused solutions, and iterate with evidence",
-      "Designed to compound: today’s workflows and digital tools can become tomorrow’s intelligent platforms"
+      "Practical over hype: useful systems that improve execution",
+      "Engineering mindset: clear problems, focused builds, iterative evidence",
+      "Designed to compound: tools today, stronger platforms tomorrow"
     ],
     "metrics": [
       {
@@ -82,8 +82,8 @@
   },
   "storefront": {
     "eyebrow": "Storefront",
-    "title": "Current products and emerging system directions under the CaribAI brand.",
-    "description": "Focused digital tools can evolve into AI applications, subscription software, and stronger infrastructure as traction and technical depth grow.",
+    "title": "Current products and emerging system directions.",
+    "description": "Focused tools today can grow into stronger AI applications, subscription software, and infrastructure layers over time.",
     "items": [
       {
         "badge": "Current Product",
