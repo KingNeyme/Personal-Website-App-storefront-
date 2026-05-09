@@ -31,8 +31,8 @@ body {
   font-family: "Poppins", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at 14% 0%, rgba(79, 70, 229, 0.15), transparent 26%),
-    radial-gradient(circle at 84% 0%, rgba(124, 58, 237, 0.12), transparent 28%),
+    radial-gradient(circle at 14% 0%, rgba(79, 70, 229, 0.11), transparent 24%),
+    radial-gradient(circle at 84% 0%, rgba(124, 58, 237, 0.09), transparent 26%),
     linear-gradient(180deg, #090d1b 0%, #0a0f1f 48%, #0e1430 100%);
   position: relative;
   line-height: 1.65;
@@ -48,7 +48,7 @@ body::before {
     linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
   background-size: 110px 110px;
   mask-image: radial-gradient(circle at center, black 34%, transparent 82%);
-  opacity: 0.08;
+  opacity: 0.06;
   z-index: -1;
 }
 
@@ -62,9 +62,9 @@ body::after {
   min-height: 320px;
   border-radius: 50%;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.09), transparent 62%);
-  filter: blur(54px);
-  opacity: 0.34;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.06), transparent 62%);
+  filter: blur(68px);
+  opacity: 0.22;
   z-index: -1;
 }
 
@@ -103,7 +103,7 @@ img {
   top: 18px;
   z-index: 30;
   box-shadow: none;
-  animation: rise-fade 500ms ease both;
+  animation: rise-fade 360ms ease both;
 }
 
 .brand {
@@ -236,7 +236,7 @@ h3 {
   border-radius: 999px;
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
-  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
   overflow: hidden;
   white-space: nowrap;
   text-align: center;
@@ -278,7 +278,7 @@ h3 {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
     0 12px 24px rgba(79, 70, 229, 0.14);
-  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
   justify-self: end;
 }
 
@@ -294,6 +294,7 @@ h3 {
 .nav-cta[aria-current="page"] {
   background: linear-gradient(135deg, rgba(79, 70, 229, 0.28), rgba(124, 58, 237, 0.24));
   border-color: rgba(124, 58, 237, 0.38);
+  transform: translateY(-1px);
 }
 
 main {
@@ -322,7 +323,7 @@ main {
   inset: 0;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 20%),
-    radial-gradient(circle at top right, rgba(124, 58, 237, 0.05), transparent 24%);
+    radial-gradient(circle at top right, rgba(124, 58, 237, 0.035), transparent 22%);
   pointer-events: none;
 }
 
@@ -350,8 +351,8 @@ main {
   right: -70px;
   top: -70px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.14), transparent 70%);
-  filter: blur(10px);
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.08), transparent 70%);
+  filter: blur(16px);
   pointer-events: none;
   z-index: 0;
 }
@@ -441,7 +442,7 @@ h3 {
   border-radius: 999px;
   border: 1px solid transparent;
   font-weight: 600;
-  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
   position: relative;
   overflow: hidden;
 }
@@ -465,6 +466,7 @@ h3 {
 
 .button:hover {
   transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.12);
 }
 
 .hero-points {
@@ -524,7 +526,7 @@ h3 {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.05),
     0 12px 28px rgba(2, 6, 23, 0.1);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .metric-card:hover,
@@ -536,7 +538,7 @@ h3 {
   border-color: rgba(124, 58, 237, 0.18);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 16px 32px rgba(2, 6, 23, 0.13);
+    0 14px 26px rgba(2, 6, 23, 0.11);
 }
 
 .glow-card,
@@ -683,7 +685,7 @@ h3 {
     rgba(255, 255, 255, 0.03);
   margin-bottom: 18px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition: transform 260ms ease, filter 260ms ease;
+  transition: transform 220ms ease, filter 220ms ease;
 }
 
 .home-products .store-card .card-media {
@@ -693,8 +695,8 @@ h3 {
 .store-card:hover .card-media,
 .capability-card:hover .card-media,
 .blog-card:hover .blog-media {
-  transform: scale(1.02);
-  filter: saturate(1.05);
+  transform: scale(1.012);
+  filter: saturate(1.03);
 }
 
 .project-row-layout {
@@ -758,7 +760,7 @@ textarea:focus {
 
 .page-hero {
   background:
-    linear-gradient(145deg, rgba(124, 58, 237, 0.09), rgba(255, 255, 255, 0) 38%),
+    linear-gradient(145deg, rgba(124, 58, 237, 0.07), rgba(255, 255, 255, 0) 38%),
     var(--panel-strong);
 }
 
@@ -814,7 +816,7 @@ textarea:focus {
 
 .showcase-panel {
   background:
-    linear-gradient(135deg, rgba(79, 70, 229, 0.12), rgba(255, 255, 255, 0.02) 38%, rgba(124, 58, 237, 0.08)),
+    linear-gradient(135deg, rgba(79, 70, 229, 0.09), rgba(255, 255, 255, 0.02) 38%, rgba(124, 58, 237, 0.06)),
     var(--panel-strong);
 }
 
@@ -834,7 +836,7 @@ textarea:focus {
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
     0 20px 42px rgba(2, 6, 23, 0.16);
-  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .hero-showcase-main {
@@ -892,7 +894,7 @@ textarea:focus {
   border-color: rgba(124, 58, 237, 0.18);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 18px 34px rgba(2, 6, 23, 0.14);
+    0 15px 28px rgba(2, 6, 23, 0.12);
 }
 
 .hero-mini-media {
@@ -919,13 +921,13 @@ textarea:focus {
   border-radius: var(--radius-md);
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.024);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
 .structure-card:hover {
   transform: translateY(-1px);
   border-color: rgba(124, 58, 237, 0.16);
-  box-shadow: 0 16px 30px rgba(2, 6, 23, 0.12);
+  box-shadow: 0 14px 24px rgba(2, 6, 23, 0.1);
 }
 
 .featured-structure {
@@ -1034,10 +1036,10 @@ textarea:focus {
 
 .reveal {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(8px);
   transition:
-    opacity 320ms ease,
-    transform 320ms ease;
+    opacity 240ms ease,
+    transform 240ms ease;
   transition-delay: var(--reveal-delay, 0ms);
 }
 
@@ -1048,7 +1050,7 @@ textarea:focus {
 
 .hero.reveal,
 .page-hero.reveal {
-  transform: translateY(18px);
+  transform: translateY(12px);
 }
 
 .hero.reveal.is-visible,
@@ -1281,6 +1283,10 @@ textarea:focus {
 
   .footer-brand-block {
     justify-items: center;
+  }
+
+  .footer-brand {
+    justify-content: center;
   }
 
   .footer-links {
