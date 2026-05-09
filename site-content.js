@@ -322,37 +322,31 @@ const renderForm = (config = {}) => {
 
 function renderHomePage(data) {
   return `
-    <section class="hero panel">
+    <section class="hero panel hero-home">
       <div class="hero-copy">
         <p class="eyebrow">${data.hero?.eyebrow || ""}</p>
         <h1>${data.hero?.title || ""}</h1>
         <p class="hero-text">${data.hero?.description || ""}</p>
         <div class="hero-actions">${renderButtons(data.hero?.actions)}</div>
-        <ul class="hero-points">${renderHeroPoints(data.hero?.points)}</ul>
+        <ul class="hero-points">${renderHeroPoints((data.hero?.points || []).slice(0, 3))}</ul>
       </div>
-      <div class="hero-card-grid">${renderMetricCards(data.hero?.metrics)}</div>
+      <div class="hero-side">
+        ${renderHeroShowcase(data.storefront?.items)}
+      </div>
     </section>
 
-    <section class="panel showcase-panel">
-      <div class="section-heading">
+    <section class="panel home-thesis">
+      <div class="split-section">
         <div>
-          <p class="eyebrow">Featured Visuals</p>
-          <h2>Product concepts presented with a more premium, high-tech feel.</h2>
+          <p class="eyebrow">${data.positioning?.eyebrow || ""}</p>
+          <h2>${data.positioning?.title || ""}</h2>
         </div>
-        <p class="section-copy">CaribAI is moving toward sharper visual packaging, stronger launch presentation, and more polished digital product storytelling.</p>
+        <p class="section-copy">${data.positioning?.description || ""}</p>
       </div>
-      ${renderHeroShowcase(data.storefront?.items)}
+      <div class="metric-strip">${renderMetricCards((data.hero?.metrics || []).slice(0, 3))}</div>
     </section>
 
-    <section class="panel split-section">
-      <div>
-        <p class="eyebrow">${data.positioning?.eyebrow || ""}</p>
-        <h2>${data.positioning?.title || ""}</h2>
-      </div>
-      <p class="section-copy">${data.positioning?.description || ""}</p>
-    </section>
-
-    <section class="panel">
+    <section class="panel home-structure">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.structure?.eyebrow || ""}</p>
@@ -363,7 +357,7 @@ function renderHomePage(data) {
       <div class="structure-grid">${renderStructureCards(data.structure?.items)}</div>
     </section>
 
-    <section id="storefront" class="panel">
+    <section id="storefront" class="panel home-products">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.storefront?.eyebrow || ""}</p>
@@ -374,25 +368,21 @@ function renderHomePage(data) {
       <div class="storefront-grid">${renderStoreCards(data.storefront?.items)}</div>
     </section>
 
-    <section class="panel">
+    <section class="panel home-roadmap">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.build?.eyebrow || ""}</p>
           <h2>${data.build?.title || ""}</h2>
         </div>
+        <p class="section-copy">${data.businessModel?.title || ""}</p>
       </div>
-      <div class="capability-grid">${renderCapabilityCards(data.build?.items)}</div>
+      <div class="home-roadmap-grid">
+        <div class="capability-grid">${renderCapabilityCards(data.build?.items)}</div>
+        <div class="insight-grid compact-insight-grid">${renderInsightCards(data.businessModel?.items)}</div>
+      </div>
     </section>
 
-    <section class="panel insights-panel">
-      <div>
-        <p class="eyebrow">${data.businessModel?.eyebrow || ""}</p>
-        <h2>${data.businessModel?.title || ""}</h2>
-      </div>
-      <div class="insight-grid">${renderInsightCards(data.businessModel?.items)}</div>
-    </section>
-
-    <section id="projects" class="panel">
+    <section id="projects" class="panel home-pipeline">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.execution?.eyebrow || ""}</p>
@@ -407,15 +397,7 @@ function renderHomePage(data) {
       <div class="project-list">${renderProjectRows(data.execution?.items)}</div>
     </section>
 
-    <section class="panel insights-panel">
-      <div>
-        <p class="eyebrow">${data.lens?.eyebrow || ""}</p>
-        <h2>${data.lens?.title || ""}</h2>
-      </div>
-      <div class="insight-grid">${renderInsightCards(data.lens?.items)}</div>
-    </section>
-
-    <section class="panel">
+    <section class="panel home-platform">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.growthHub?.eyebrow || ""}</p>
@@ -426,12 +408,13 @@ function renderHomePage(data) {
       <div class="capability-grid">${renderCapabilityCards(data.growthHub?.items)}</div>
     </section>
 
-    <section class="panel">
+    <section class="panel home-focus">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.focus?.eyebrow || ""}</p>
           <h2>${data.focus?.title || ""}</h2>
         </div>
+        <p class="section-copy">${data.lens?.title || ""}</p>
       </div>
       <div class="project-list">${renderProjectRows(data.focus?.items)}</div>
     </section>
