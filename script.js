@@ -3,9 +3,10 @@ const fallbackInbox = "caribailabs@gmail.com";
 const initSiteNav = () => {
   const topbar = document.querySelector(".topbar");
   const toggle = document.querySelector(".nav-toggle");
+  const navShell = document.querySelector(".nav-shell");
   const nav = document.querySelector(".nav");
 
-  if (!topbar || !toggle || !nav) {
+  if (!topbar || !toggle || !navShell || !nav) {
     return;
   }
 
@@ -20,7 +21,7 @@ const initSiteNav = () => {
     toggle.setAttribute("aria-expanded", String(next));
   });
 
-  nav.querySelectorAll("a").forEach((link) => {
+  navShell.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeNav);
   });
 
