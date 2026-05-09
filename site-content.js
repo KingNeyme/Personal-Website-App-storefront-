@@ -33,6 +33,47 @@ const SITE_PAGE_CONFIG = {
   },
 };
 
+const enhanceRevealMotion = (root = document) => {
+  const targets = Array.from(
+    root.querySelectorAll(
+      ".panel, .store-card, .capability-card, .project-row, .tool-card, .structure-card, .metric-card, .hero-mini-card"
+    )
+  );
+
+  if (!targets.length) {
+    return;
+  }
+
+  targets.forEach((node, index) => {
+    node.classList.add("reveal");
+    node.style.setProperty("--reveal-delay", `${Math.min(index * 45, 320)}ms`);
+  });
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    targets.forEach((node) => node.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.16,
+      rootMargin: "0px 0px -8% 0px",
+    }
+  );
+
+  targets.forEach((node) => observer.observe(node));
+};
+
 const renderMedia = (item, className = "card-media") => {
   if (item?.video) {
     return `<video class="${className}" controls preload="metadata" src="${item.video}"></video>`;
@@ -710,6 +751,7 @@ const initSiteContent = async () => {
 
     const data = await response.json();
     page.innerHTML = config.render(data);
+    enhanceRevealMotion(page.closest(".site-shell") || document);
   } catch (error) {
     console.error(error);
   }

@@ -1,5 +1,42 @@
 const BLOG_DATA_PATH = "content/blog/posts.json";
 
+const enhanceBlogRevealMotion = () => {
+  const targets = Array.from(document.querySelectorAll(".panel, .blog-card, .post-shell"));
+
+  if (!targets.length) {
+    return;
+  }
+
+  targets.forEach((node, index) => {
+    node.classList.add("reveal");
+    node.style.setProperty("--reveal-delay", `${Math.min(index * 50, 300)}ms`);
+  });
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    targets.forEach((node) => node.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.16,
+      rootMargin: "0px 0px -8% 0px",
+    }
+  );
+
+  targets.forEach((node) => observer.observe(node));
+};
+
 const formatDate = (value) => {
   if (!value) {
     return "";
@@ -145,6 +182,8 @@ const renderBlogPost = (posts) => {
   if (emptyState) {
     emptyState.hidden = true;
   }
+
+  enhanceBlogRevealMotion();
 };
 
 const initBlog = async () => {
@@ -167,6 +206,8 @@ const initBlog = async () => {
 
     console.error(error);
   }
+
+  enhanceBlogRevealMotion();
 };
 
 initBlog();
