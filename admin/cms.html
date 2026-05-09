@@ -14,6 +14,86 @@
     <link rel="stylesheet" href="decap-theme.css" />
   </head>
   <body>
+    <div class="cms-shell">
+      <header class="cms-topbar">
+        <div class="cms-brandblock">
+          <a class="cms-brand" href="index.html" aria-label="Return to CaribAI control center">
+            <img src="../assets/CariAI-LOGO-Transparent.png" alt="CaribAI logo" />
+          </a>
+          <div class="cms-intro">
+            <p class="cms-eyebrow">CMS workspace</p>
+            <h1>Editorial operations</h1>
+            <p>Manage site content, publish journal updates, and move between editing and preview without leaving the workspace.</p>
+          </div>
+        </div>
+
+        <div class="cms-actions">
+          <a class="cms-action-link" href="index.html">Control center</a>
+          <a class="cms-action-link is-accent" href="../index.html" target="_blank" rel="noreferrer">View live site</a>
+        </div>
+      </header>
+
+      <section class="cms-launchpad" aria-label="Quick operations">
+        <div class="cms-launchpad-main">
+          <a class="cms-shortcut" href="cms.html#/" data-cms-route="overview">
+            <span class="cms-shortcut-mark">O</span>
+            <span class="cms-shortcut-copy">
+              <strong>Overview</strong>
+              <span>Return to the main CMS landing view.</span>
+            </span>
+          </a>
+          <a class="cms-shortcut" href="cms.html#/collections/site" data-cms-route="site">
+            <span class="cms-shortcut-mark">S</span>
+            <span class="cms-shortcut-copy">
+              <strong>Site content</strong>
+              <span>Edit homepage, products, journey, tech stack, and contact content.</span>
+            </span>
+          </a>
+          <a class="cms-shortcut" href="cms.html#/collections/blog" data-cms-route="blog">
+            <span class="cms-shortcut-mark">J</span>
+            <span class="cms-shortcut-copy">
+              <strong>Journal</strong>
+              <span>Publish posts, upload cover media, and manage editorial updates.</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="cms-sidecards">
+          <article class="cms-note-card">
+            <p class="cms-eyebrow">Publishing flow</p>
+            <h2>Edit, review, then preview.</h2>
+            <p>Use the collection shortcuts here, then jump back to previews in the control center to confirm the public experience before publishing more changes.</p>
+          </article>
+          <article class="cms-note-card">
+            <p class="cms-eyebrow">Media</p>
+            <h2>Use uploads to keep the brand premium.</h2>
+            <p>Images, logos, and media files still publish through the CMS, so this workspace stays close to a proper operations panel instead of a raw code workflow.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="cms-manager-grid" aria-label="Collection manager">
+        <article class="cms-manager-panel">
+          <div class="cms-manager-header">
+            <div>
+              <p class="cms-eyebrow">Collection manager</p>
+              <h2 data-cms-manager-title>Choose a workspace to begin.</h2>
+              <p data-cms-manager-copy>Use the shortcuts above to switch collections, then use the focused links here to move faster inside the CMS.</p>
+            </div>
+          </div>
+          <div class="cms-manager-list" data-cms-manager-list></div>
+        </article>
+
+        <aside class="cms-manager-panel cms-manager-panel-side">
+          <p class="cms-eyebrow">Operational note</p>
+          <h2 data-cms-note-title>Publishing should feel structured.</h2>
+          <p data-cms-note-copy>Each collection here maps to a public-facing surface, so this workspace is designed to help you edit with clarity instead of guessing where content lives.</p>
+          <div class="cms-mini-links" data-cms-note-links></div>
+        </aside>
+      </section>
+    </div>
+
+    <div id="nc-root"></div>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script src="decap-theme.js"></script>
   </body>
