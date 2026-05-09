@@ -71,6 +71,12 @@ const ADMIN_VIEWS = {
     label: "Blog collection",
     target: "cms.html#/collections/blog",
   },
+  media: {
+    title: "Media workflow",
+    copy: "Use the journal and page entries that control uploads, cover imagery, product visuals, and the public-facing media layer across the site.",
+    label: "Media-oriented content workflow",
+    target: "cms.html#/collections/blog",
+  },
   preview_home: {
     title: "Homepage preview",
     copy: "Review the live homepage composition, premium shell, and public-facing narrative without leaving the control center.",

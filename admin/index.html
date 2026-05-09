@@ -16,52 +16,64 @@
   <body>
     <div class="admin-shell">
       <header class="admin-topbar">
-        <a class="admin-brand" href="../index.html" aria-label="CaribAI home">
-          <img src="../assets/CariAI-LOGO-Transparent.png" alt="CaribAI logo" />
-        </a>
-        <div class="admin-statusbar">
-          <strong>CaribAI Control Center</strong>
-          <span>Premium editorial workspace for the public site</span>
+        <div class="admin-topbar-left">
+          <a class="admin-brand" href="../index.html" aria-label="CaribAI home">
+            <img src="../assets/CariAI-LOGO-Transparent.png" alt="CaribAI logo" />
+          </a>
+          <div class="admin-statusbar">
+            <strong>CaribAI Admin</strong>
+            <span>Editorial operations panel</span>
+          </div>
         </div>
-        <div class="admin-badge">Publishing ready</div>
+        <div class="admin-topbar-right">
+          <a class="admin-topbar-link" href="../index.html" target="_blank" rel="noreferrer">Visit site</a>
+          <div class="admin-badge">Publishing ready</div>
+        </div>
       </header>
 
       <div class="admin-grid">
         <aside class="admin-sidebar">
           <div class="admin-sidebar-header">
-            <p class="admin-eyebrow">Admin</p>
-            <h1>Manage the full public CaribAI experience.</h1>
-            <p>Use this control center to edit the brand site, publish journal updates, refresh visuals, and keep the public-facing platform sharp.</p>
+            <p class="admin-eyebrow">Dashboard</p>
+            <h1>Manage the public CaribAI site.</h1>
+            <p>Pages, posts, media, previews, and publishing all route through this control layer.</p>
           </div>
 
           <section class="admin-section">
-            <h2>Content</h2>
+            <h2>Main</h2>
             <div class="admin-link-cluster">
               <button class="admin-action is-active" type="button" data-admin-target data-admin-view="overview">
                 <span class="admin-action-copy">
-                  <strong>Overview</strong>
-                  <span>Start from the dashboard and jump into the editor.</span>
+                  <strong>Dashboard</strong>
+                  <span>Start from the main admin overview.</span>
                 </span>
-                <span class="admin-action-mark">O</span>
+                <span class="admin-action-mark">D</span>
               </button>
               <button class="admin-action" type="button" data-admin-target data-admin-view="site">
                 <span class="admin-action-copy">
-                  <strong>Site content</strong>
-                  <span>Edit homepage, projects, storefront, journey, and more.</span>
+                  <strong>Pages</strong>
+                  <span>Edit homepage, projects, products, journey, and more.</span>
                 </span>
-                <span class="admin-action-mark">S</span>
+                <span class="admin-action-mark">P</span>
               </button>
               <button class="admin-action" type="button" data-admin-target data-admin-view="blog">
                 <span class="admin-action-copy">
-                  <strong>Journal</strong>
-                  <span>Publish blog posts, cover images, and editorial updates.</span>
+                  <strong>Posts</strong>
+                  <span>Publish articles, cover images, and editorial updates.</span>
                 </span>
-                <span class="admin-action-mark">J</span>
+                <span class="admin-action-mark">T</span>
+              </button>
+              <button class="admin-action" type="button" data-admin-target data-admin-view="media">
+                <span class="admin-action-copy">
+                  <strong>Media</strong>
+                  <span>Jump into entries that control visual assets and uploads.</span>
+                </span>
+                <span class="admin-action-mark">M</span>
               </button>
               <button class="admin-action" type="button" data-admin-target data-admin-view="full">
                 <span class="admin-action-copy">
-                  <strong>Full CMS</strong>
-                  <span>Open the native editing environment directly.</span>
+                  <strong>All content</strong>
+                  <span>Open the native CMS collection workspace.</span>
                 </span>
                 <span class="admin-action-mark">C</span>
               </button>
@@ -69,7 +81,7 @@
           </section>
 
           <section class="admin-section">
-            <h2>Pages</h2>
+            <h2>Page manager</h2>
             <div class="admin-mini-nav">
               <button class="admin-mini-nav-link" type="button" data-admin-target data-admin-view="edit_home">Home</button>
               <button class="admin-mini-nav-link" type="button" data-admin-target data-admin-view="edit_about">About</button>
@@ -126,8 +138,8 @@
           <div class="admin-workspace-header">
             <div>
               <p class="admin-eyebrow">Workspace</p>
-              <h2 data-admin-title>CaribAI control center</h2>
-              <p data-admin-copy>Manage the public-facing site, publish updates, and keep the CaribAI brand polished from one premium editorial workspace.</p>
+              <h2 data-admin-title>CaribAI dashboard</h2>
+              <p data-admin-copy>Manage pages, posts, previews, and the public-facing brand from one structured admin workspace.</p>
             </div>
             <div class="admin-toolbar">
               <span class="admin-pill"><strong>Site:</strong>&nbsp; caribailabs.vercel.app</span>
@@ -138,14 +150,14 @@
 
           <div class="admin-stat-grid">
             <article class="admin-stat-card">
-              <p class="admin-eyebrow">Collections</p>
+              <p class="admin-eyebrow">Pages</p>
               <strong>8</strong>
-              <span>Editable site content surfaces inside the CMS.</span>
+              <span>Core editable public site surfaces.</span>
             </article>
             <article class="admin-stat-card">
-              <p class="admin-eyebrow">Publishing</p>
+              <p class="admin-eyebrow">Posts</p>
               <strong>1</strong>
-              <span>Central journal workflow for articles, media, and updates.</span>
+              <span>Journal workflow for articles and media.</span>
             </article>
             <article class="admin-stat-card">
               <p class="admin-eyebrow">Preview</p>
@@ -159,9 +171,60 @@
             </article>
           </div>
 
+          <div class="admin-dashboard-grid">
+            <article class="admin-list-card admin-list-card-table">
+              <p class="admin-eyebrow">Content index</p>
+              <h3>Manage key surfaces</h3>
+              <div class="admin-table">
+                <div class="admin-table-row">
+                  <div class="admin-table-main">
+                    <strong>Homepage</strong>
+                    <span>Hero, positioning, execution, focus</span>
+                  </div>
+                  <button class="admin-table-action" type="button" data-admin-target data-admin-view="edit_home">Edit</button>
+                </div>
+                <div class="admin-table-row">
+                  <div class="admin-table-main">
+                    <strong>Products</strong>
+                    <span>Storefront cards, offers, product presentation</span>
+                  </div>
+                  <button class="admin-table-action" type="button" data-admin-target data-admin-view="edit_storefront">Edit</button>
+                </div>
+                <div class="admin-table-row">
+                  <div class="admin-table-main">
+                    <strong>Projects</strong>
+                    <span>Current builds, initiatives, status messaging</span>
+                  </div>
+                  <button class="admin-table-action" type="button" data-admin-target data-admin-view="edit_projects">Edit</button>
+                </div>
+                <div class="admin-table-row">
+                  <div class="admin-table-main">
+                    <strong>Journal</strong>
+                    <span>Posts, cover images, editorial publishing</span>
+                  </div>
+                  <button class="admin-table-action" type="button" data-admin-target data-admin-view="blog">Open</button>
+                </div>
+              </div>
+            </article>
+            <article class="admin-list-card">
+              <p class="admin-eyebrow">Quick draft</p>
+              <h3>Common next actions</h3>
+              <ul class="admin-task-list">
+                <li>Edit the homepage before reviewing the live shell.</li>
+                <li>Update products and then open the Products preview.</li>
+                <li>Publish a journal update and check the public listing.</li>
+                <li>Use Full CMS for native collection management.</li>
+              </ul>
+              <div class="admin-inline-actions">
+                <button class="admin-subtle-link" type="button" data-admin-target data-admin-view="edit_home">Edit homepage</button>
+                <button class="admin-subtle-link" type="button" data-admin-target data-admin-view="blog">Open posts</button>
+              </div>
+            </article>
+          </div>
+
           <div class="admin-stack-grid">
             <article class="admin-list-card">
-              <p class="admin-eyebrow">Page manager</p>
+              <p class="admin-eyebrow">Pages</p>
               <h3>Edit the main public surfaces</h3>
               <div class="admin-page-grid">
                 <button class="admin-page-tile" type="button" data-admin-target data-admin-view="edit_home">
@@ -183,7 +246,7 @@
               </div>
             </article>
             <article class="admin-list-card">
-              <p class="admin-eyebrow">Media and publishing</p>
+              <p class="admin-eyebrow">Publishing</p>
               <h3>Run the content workflow faster</h3>
               <div class="admin-page-grid admin-page-grid-compact">
                 <button class="admin-page-tile" type="button" data-admin-target data-admin-view="blog">
