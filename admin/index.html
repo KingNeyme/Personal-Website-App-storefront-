@@ -35,7 +35,7 @@
           </div>
 
           <section class="admin-section">
-            <h2>Workspace</h2>
+            <h2>Content</h2>
             <div class="admin-link-cluster">
               <button class="admin-action is-active" type="button" data-admin-target data-admin-view="overview">
                 <span class="admin-action-copy">
@@ -58,6 +58,19 @@
                 </span>
                 <span class="admin-action-mark">J</span>
               </button>
+              <button class="admin-action" type="button" data-admin-target data-admin-view="full">
+                <span class="admin-action-copy">
+                  <strong>Full CMS</strong>
+                  <span>Open the native editing environment directly.</span>
+                </span>
+                <span class="admin-action-mark">C</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="admin-section">
+            <h2>Preview</h2>
+            <div class="admin-link-cluster">
               <button class="admin-action" type="button" data-admin-target data-admin-view="preview_home">
                 <span class="admin-action-copy">
                   <strong>Homepage preview</strong>
@@ -72,12 +85,12 @@
                 </span>
                 <span class="admin-action-mark">P</span>
               </button>
-              <button class="admin-action" type="button" data-admin-target data-admin-view="full">
+              <button class="admin-action" type="button" data-admin-target data-admin-view="preview_journal">
                 <span class="admin-action-copy">
-                  <strong>Full CMS</strong>
-                  <span>Open the native editing environment directly.</span>
+                  <strong>Journal preview</strong>
+                  <span>Review the public editorial experience before publishing more updates.</span>
                 </span>
-                <span class="admin-action-mark">C</span>
+                <span class="admin-action-mark">R</span>
               </button>
             </div>
           </section>
@@ -104,8 +117,32 @@
             </div>
             <div class="admin-toolbar">
               <span class="admin-pill"><strong>Site:</strong>&nbsp; caribailabs.vercel.app</span>
+              <span class="admin-pill"><strong>Mode:</strong>&nbsp; editorial workflow</span>
               <a href="cms.html#/" target="_blank" rel="noreferrer">Open Decap in new tab</a>
             </div>
+          </div>
+
+          <div class="admin-stat-grid">
+            <article class="admin-stat-card">
+              <p class="admin-eyebrow">Collections</p>
+              <strong>8</strong>
+              <span>Editable site content surfaces inside the CMS.</span>
+            </article>
+            <article class="admin-stat-card">
+              <p class="admin-eyebrow">Publishing</p>
+              <strong>1</strong>
+              <span>Central journal workflow for articles, media, and updates.</span>
+            </article>
+            <article class="admin-stat-card">
+              <p class="admin-eyebrow">Preview</p>
+              <strong>3</strong>
+              <span>Live preview routes for homepage, products, and journal.</span>
+            </article>
+            <article class="admin-stat-card">
+              <p class="admin-eyebrow">Workflow</p>
+              <strong>Git</strong>
+              <span>Versioned publishing with a cleaner founder-facing control layer.</span>
+            </article>
           </div>
 
           <div class="admin-card-grid">
@@ -141,6 +178,31 @@
               <p class="admin-eyebrow">CMS</p>
               <h3>Raw workspace</h3>
               <p>Drop directly into the full Decap environment whenever you need native collection workflows and publishing controls.</p>
+            </article>
+          </div>
+
+          <div class="admin-ops-grid">
+            <article class="admin-list-card">
+              <p class="admin-eyebrow">Recommended flow</p>
+              <h3>Publish like an operator</h3>
+              <ul class="admin-task-list">
+                <li>Start in <strong>Site content</strong> to refine messaging and page structure.</li>
+                <li>Use <strong>Journal</strong> to publish articles, images, and editorial updates.</li>
+                <li>Switch to <strong>Preview</strong> before and after publishing to review the live experience.</li>
+                <li>Open the full CMS only when you need the raw collection workflow.</li>
+              </ul>
+              <button class="admin-subtle-link" type="button" data-admin-target data-admin-view="site">Open site content</button>
+            </article>
+            <article class="admin-list-card">
+              <p class="admin-eyebrow">Surface map</p>
+              <h3>What this panel controls</h3>
+              <ul class="admin-task-list">
+                <li>Homepage narrative, hero structure, and editorial composition.</li>
+                <li>Products, projects, journey, tech stack, certifications, and contact content.</li>
+                <li>Blog publishing with media uploads and public journal previews.</li>
+                <li>The live CaribAI brand experience without touching templates manually.</li>
+              </ul>
+              <button class="admin-subtle-link" type="button" data-admin-target data-admin-view="preview_home">Preview homepage</button>
             </article>
           </div>
 

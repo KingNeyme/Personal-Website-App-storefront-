@@ -65,6 +65,15 @@ actions.forEach((action) => {
   action.addEventListener("click", () => {
     setView(action.dataset.adminView || "overview");
   });
+
+  if (action.matches(".admin-card-action")) {
+    action.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setView(action.dataset.adminView || "overview");
+      }
+    });
+  }
 });
 
 setView("overview");
