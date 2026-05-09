@@ -377,6 +377,20 @@ button {
   padding: 22px;
 }
 
+.admin-card-action {
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.admin-card-action:hover,
+.admin-card-action:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(124, 58, 237, 0.24);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 16px 30px rgba(2, 6, 23, 0.14);
+  outline: none;
+}
+
 .admin-card > * {
   position: relative;
   z-index: 1;
@@ -392,6 +406,10 @@ button {
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.65;
+}
+
+.admin-card-grid-secondary {
+  margin-top: -4px;
 }
 
 .admin-frame-wrap {

@@ -58,6 +58,20 @@
                 </span>
                 <span class="admin-action-mark">J</span>
               </button>
+              <button class="admin-action" type="button" data-admin-target data-admin-view="preview_home">
+                <span class="admin-action-copy">
+                  <strong>Homepage preview</strong>
+                  <span>Check the live homepage directly inside the control center.</span>
+                </span>
+                <span class="admin-action-mark">H</span>
+              </button>
+              <button class="admin-action" type="button" data-admin-target data-admin-view="preview_products">
+                <span class="admin-action-copy">
+                  <strong>Products preview</strong>
+                  <span>Review the storefront presentation and product cards live.</span>
+                </span>
+                <span class="admin-action-mark">P</span>
+              </button>
               <button class="admin-action" type="button" data-admin-target data-admin-view="full">
                 <span class="admin-action-copy">
                   <strong>Full CMS</strong>
@@ -95,20 +109,38 @@
           </div>
 
           <div class="admin-card-grid">
-            <article class="admin-card">
+            <article class="admin-card admin-card-action" data-admin-target data-admin-view="site" role="button" tabindex="0">
               <p class="admin-eyebrow">Publishing</p>
               <h3>Edit brand content</h3>
               <p>Update homepage positioning, products, journey, tech stack, certifications, and contact content without touching templates directly.</p>
             </article>
-            <article class="admin-card">
+            <article class="admin-card admin-card-action" data-admin-target data-admin-view="blog" role="button" tabindex="0">
               <p class="admin-eyebrow">Media</p>
               <h3>Keep visuals premium</h3>
               <p>Upload images and post media while keeping the public-facing brand aligned with the more polished CaribAI direction.</p>
             </article>
-            <article class="admin-card">
+            <article class="admin-card admin-card-action" data-admin-target data-admin-view="preview_home" role="button" tabindex="0">
               <p class="admin-eyebrow">Ops</p>
-              <h3>Move fast, stay clean</h3>
-              <p>Use the dashboard as a calmer editorial layer, then drop into the native CMS only when you need deeper collection controls.</p>
+              <h3>Review the live experience</h3>
+              <p>Switch straight into homepage preview mode when you need to judge the public-facing presentation without leaving the admin.</p>
+            </article>
+          </div>
+
+          <div class="admin-card-grid admin-card-grid-secondary">
+            <article class="admin-card admin-card-action" data-admin-target data-admin-view="preview_products" role="button" tabindex="0">
+              <p class="admin-eyebrow">Preview</p>
+              <h3>Products</h3>
+              <p>Inspect the storefront layout, product hierarchy, and premium packaging direction live.</p>
+            </article>
+            <article class="admin-card admin-card-action" data-admin-target data-admin-view="preview_journal" role="button" tabindex="0">
+              <p class="admin-eyebrow">Preview</p>
+              <h3>Journal</h3>
+              <p>Review the editorial experience and public post listing with one click from the dashboard.</p>
+            </article>
+            <article class="admin-card admin-card-action" data-admin-target data-admin-view="full" role="button" tabindex="0">
+              <p class="admin-eyebrow">CMS</p>
+              <h3>Raw workspace</h3>
+              <p>Drop directly into the full Decap environment whenever you need native collection workflows and publishing controls.</p>
             </article>
           </div>
 

@@ -23,6 +23,24 @@ const ADMIN_VIEWS = {
     label: "Blog collection",
     target: "cms.html#/collections/blog",
   },
+  preview_home: {
+    title: "Homepage preview",
+    copy: "Review the live homepage composition, premium shell, and public-facing narrative without leaving the control center.",
+    label: "Live homepage preview",
+    target: "../index.html",
+  },
+  preview_products: {
+    title: "Products preview",
+    copy: "Inspect the storefront presentation, card composition, and product positioning in the public experience.",
+    label: "Live products preview",
+    target: "../storefront.html",
+  },
+  preview_journal: {
+    title: "Journal preview",
+    copy: "Review the public journal experience, post listing flow, and editorial presentation from inside the admin workspace.",
+    label: "Live journal preview",
+    target: "../blog.html",
+  },
   full: {
     title: "Full CMS workspace",
     copy: "Open the raw Decap CMS interface directly when you want the full editor, workflow states, and native collection navigation.",
