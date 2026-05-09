@@ -94,7 +94,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 24px;
   margin-bottom: 36px;
   padding: 18px 20px 18px 22px;
   border: 1px solid var(--line);
@@ -115,6 +115,7 @@ img {
   gap: 14px;
   min-width: 0;
   flex: 0 1 auto;
+  max-width: 460px;
 }
 
 .brand-logo-shell {
@@ -143,7 +144,7 @@ h3 {
 
 .brand-tagline {
   max-width: 28ch;
-  font-size: 0.77rem;
+  font-size: 0.75rem;
   line-height: 1.45;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -200,6 +201,10 @@ h3 {
 
 .nav a:hover::before {
   transform: translateX(130%);
+}
+
+.nav::-webkit-scrollbar {
+  display: none;
 }
 
 main {
@@ -1019,9 +1024,10 @@ textarea:focus {
 
   .nav {
     width: 100%;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
+    overflow: visible;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 4px;
     justify-content: flex-start;
   }
 
@@ -1035,6 +1041,7 @@ textarea:focus {
   .topbar {
     flex-direction: column;
     align-items: flex-start;
+    gap: 18px;
   }
 
   .nav {
@@ -1121,6 +1128,7 @@ textarea:focus {
     max-width: 32ch;
     font-size: 0.7rem;
     line-height: 1.4;
+    letter-spacing: 0.11em;
   }
 
   .footer-brand {
@@ -1154,6 +1162,10 @@ textarea:focus {
   .nav a {
     padding: 8px 9px;
     font-size: 0.84rem;
+  }
+
+  .footer {
+    gap: 14px;
   }
 
   main {
