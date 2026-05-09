@@ -1,5 +1,36 @@
 const fallbackInbox = "caribailabs@gmail.com";
 
+const initSiteNav = () => {
+  const topbar = document.querySelector(".topbar");
+  const toggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector(".nav");
+
+  if (!topbar || !toggle || !nav) {
+    return;
+  }
+
+  const closeNav = () => {
+    topbar.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+  };
+
+  toggle.addEventListener("click", () => {
+    const next = !topbar.classList.contains("is-open");
+    topbar.classList.toggle("is-open", next);
+    toggle.setAttribute("aria-expanded", String(next));
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeNav);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 980) {
+      closeNav();
+    }
+  });
+};
+
 const buildMailtoLink = (form) => {
   const type = form.getAttribute("data-form-type") || "general";
   const formData = new FormData(form);
@@ -62,3 +93,5 @@ document.addEventListener("submit", (event) => {
 
   form.reset();
 });
+
+initSiteNav();
