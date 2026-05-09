@@ -1189,8 +1189,9 @@ textarea:focus {
   }
 
   .topbar {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
     gap: 16px;
     padding: 14px 16px;
     border: 1px solid var(--line);
@@ -1201,9 +1202,21 @@ textarea:focus {
       0 16px 34px rgba(2, 6, 23, 0.16);
   }
 
+  .brand {
+    grid-column: 1;
+    justify-self: start;
+    padding: 0;
+  }
+
+  .nav-toggle {
+    grid-column: 2;
+    justify-self: end;
+  }
+
   .nav-shell {
     display: none;
     width: 100%;
+    grid-column: 1 / -1;
     padding-top: 14px;
     border-top: 1px solid rgba(199, 210, 254, 0.08);
     flex-direction: column;
@@ -1262,11 +1275,19 @@ textarea:focus {
   .footer {
     grid-template-columns: 1fr;
     gap: 22px;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .footer-brand-block {
+    justify-items: center;
   }
 
   .footer-links {
     grid-template-columns: repeat(2, minmax(120px, 1fr));
     width: 100%;
+    max-width: 360px;
+    justify-items: center;
   }
 }
 
@@ -1359,6 +1380,7 @@ textarea:focus {
 
   .footer-links {
     gap: 10px 14px;
+    max-width: 320px;
   }
 }
 
@@ -1421,6 +1443,7 @@ textarea:focus {
   .footer-links {
     grid-template-columns: 1fr;
     gap: 10px;
+    max-width: 220px;
   }
 
   .section-heading,
