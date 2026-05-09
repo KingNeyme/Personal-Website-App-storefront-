@@ -96,6 +96,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 14px;
+  min-width: 0;
 }
 
 .brand-mark {
@@ -160,6 +161,7 @@ h3 {
   border: 1px solid rgba(199, 210, 254, 0.08);
   flex-wrap: wrap;
   justify-content: flex-end;
+  flex: 1 1 auto;
 }
 
 .nav a {
@@ -872,6 +874,22 @@ textarea:focus {
   .project-row-layout {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 1120px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .brand-copy span:last-child {
+    max-width: 40ch;
   }
 }
 
