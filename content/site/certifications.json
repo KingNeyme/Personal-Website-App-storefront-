@@ -1,0 +1,66 @@
+{
+  "hero": {
+    "eyebrow": "Certifications",
+    "title": "Credentials, milestones, and structured growth supporting the CaribAI ecosystem.",
+    "description": "This page shows the structured learning path developing alongside the products, launches, and systems shaping CaribAI over time.",
+    "image": "assets/graphics/resume-kit-card.svg",
+    "imageAlt": "CaribAI certifications visual"
+  },
+  "status": {
+    "eyebrow": "Current Status",
+    "title": "Structured growth alongside product execution and technical development",
+    "description": "CaribAI is being built through a mix of hands-on implementation, structured learning, and credentials that strengthen long-term technical credibility.",
+    "items": [
+      {
+        "title": "Completed",
+        "description": "Earned certifications, badges, and formal milestones will be added here as they are completed.",
+        "status": "Coming Soon",
+        "image": "assets/graphics/resume-kit-card.svg",
+        "imageAlt": "Completed certifications visual"
+      },
+      {
+        "title": "In Progress",
+        "description": "Python foundations, cloud and AI fundamentals, backend depth, and the milestones strengthening the technical side of the ecosystem.",
+        "status": "Active",
+        "image": "assets/graphics/ai-toolkit-card.svg",
+        "imageAlt": "In-progress certifications visual"
+      },
+      {
+        "title": "Future Targets",
+        "description": "Kubernetes-related growth, advanced AI and ML milestones, and future higher-complexity AI directions as they are earned over time.",
+        "status": "Planned",
+        "image": "assets/graphics/caribai-apps-card.svg",
+        "imageAlt": "Future certification targets visual"
+      }
+    ]
+  },
+  "summary": {
+    "items": [
+      {
+        "title": "Why This Page Matters",
+        "description": "It shows that the growth behind CaribAI is intentional, structured, and backed by more than motivation alone.",
+        "image": "assets/graphics/cyber-ascend-card.svg",
+        "imageAlt": "Certification purpose visual"
+      },
+      {
+        "title": "What It Signals",
+        "description": "Discipline, follow-through, and a willingness to build both practical skills and formal credibility over time.",
+        "image": "assets/graphics/ai-toolkit-card.svg",
+        "imageAlt": "Discipline and growth visual"
+      },
+      {
+        "title": "How It Fits the Brand",
+        "description": "CaribAI is about visible progress, and credentials are part of that larger story when paired with real projects.",
+        "image": "assets/graphics/caribai-apps-card.svg",
+        "imageAlt": "Brand growth visual"
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Next Step",
+    "title": "Read the content and reflections behind the technical growth.",
+    "description": "The blog is where the lessons, ideas, and progress become easier to follow.",
+    "label": "Read the Blog",
+    "href": "blog.html"
+  }
+}

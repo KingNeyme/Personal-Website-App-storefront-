@@ -1,0 +1,96 @@
+{
+  "hero": {
+    "eyebrow": "Storefront",
+    "title": "Practical digital products now, scalable AI tools and systems over time.",
+    "description": "This is the public product layer of CaribAI: focused solutions built around real operational, productivity, and income-related problems, with room to evolve into broader tools and systems over time.",
+    "image": "assets/graphics/ai-toolkit-card.svg",
+    "imageAlt": "CaribAI storefront visual"
+  },
+  "products": {
+    "eyebrow": "Featured Products",
+    "title": "The current product lineup",
+    "description": "Each offer is built around a specific need. The audience changes by product because CaribAI is designed to solve real problems first and let each solution earn its own market.",
+    "items": [
+      {
+        "badge": "Current Product",
+        "title": "Cyber Ascend",
+        "image": "assets/graphics/cyber-ascend-card.svg",
+        "imageAlt": "Cyber Ascend product visual",
+        "description": "Career transition system for IT professionals moving into cybersecurity through stronger positioning, preparation, and execution.",
+        "meta": [
+          "Category: Digital Product",
+          "Status: Active Offer",
+          "Target: Career Transition"
+        ],
+        "featured": true
+      },
+      {
+        "badge": "Current Product",
+        "title": "AI Toolkit",
+        "image": "assets/graphics/ai-toolkit-card.svg",
+        "imageAlt": "AI Toolkit product visual",
+        "description": "AI usage system for IT professionals, knowledge workers, and tech-savvy individuals who want better output, clearer workflows, and stronger results.",
+        "meta": [
+          "Category: Digital Product",
+          "Status: Growing Offer"
+        ],
+        "muted": true
+      },
+      {
+        "badge": "Current Product",
+        "title": "Resume Kit",
+        "image": "assets/graphics/resume-kit-card.svg",
+        "imageAlt": "Resume Kit product visual",
+        "description": "Job acquisition tool built to help buyers improve presentation, positioning, and response quality across the hiring process.",
+        "meta": [
+          "Category: Digital Product",
+          "Status: Focused Utility"
+        ],
+        "muted": true
+      },
+      {
+        "badge": "Future Direction",
+        "title": "CaribAI Apps",
+        "image": "assets/graphics/caribai-apps-card.svg",
+        "imageAlt": "CaribAI Apps concept visual",
+        "description": "AI tools, automation systems, and micro SaaS products that can grow from validated digital-product demand and real product traction.",
+        "meta": [
+          "Category: AI Tools",
+          "Status: Validation Path"
+        ],
+        "muted": true
+      }
+    ]
+  },
+  "summary": {
+    "items": [
+      {
+        "title": "What You’ll Find Here",
+        "description": "Digital products, future AI tools, automation systems, early-access offers, and visible signals of the larger ecosystem CaribAI is building."
+      },
+      {
+        "title": "Why It Matters",
+        "description": "The storefront makes the product side of the business visible by showing actual solutions, not just ideas or trend-based positioning."
+      },
+      {
+        "title": "How To Follow",
+        "description": "Join early access, follow launch updates, and watch how practical products evolve into stronger AI tools, systems, and software over time."
+      }
+    ]
+  },
+  "lead": {
+    "eyebrow": "Early Access",
+    "title": "Get updates on launches, experiments, and new product drops",
+    "description": "Join the CaribAI list to hear about upcoming apps, demand-tested experiments, blog posts, and product milestones first.",
+    "buttonLabel": "Join Early Access",
+    "successMessage": "Your email app should open with a ready-to-send storefront early access request.",
+    "note": "This opens a ready-to-send email to the CaribAI inbox for now."
+  },
+  "cta": {
+    "eyebrow": "Next Step",
+    "title": "See the broader journey behind the storefront.",
+    "description": "The products are one part of the story. The learning journey shows how they’re being built.",
+    "label": "View Learning Journey",
+    "href": "journey.html"
+  }
+}

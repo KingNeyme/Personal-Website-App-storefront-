@@ -1,0 +1,120 @@
+{
+  "hero": {
+    "eyebrow": "Technology Behind CaribAI",
+    "title": "The technology stack behind CaribAI’s products, systems, and growth.",
+    "description": "CaribAI is built on practical technologies chosen to support real digital products, automation systems, and long-term software growth.",
+    "image": "assets/graphics/caribai-apps-card.svg",
+    "imageAlt": "CaribAI technology visual"
+  },
+  "primary": {
+    "eyebrow": "Primary Stack",
+    "title": "The core tools behind current CaribAI products and systems",
+    "description": "These are the main technologies shaping the products, internal systems, and software directions across the CaribAI ecosystem.",
+    "items": [
+      {
+        "title": "Python",
+        "label": "Core Language",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+        "description": "Core language for backend development, AI integrations, automation logic, and system workflows."
+      },
+      {
+        "title": "FastAPI",
+        "label": "Backend Framework",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+        "description": "Framework for APIs, internal services, automation backends, and AI-powered product flows."
+      },
+      {
+        "title": "PostgreSQL",
+        "label": "Data Layer",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+        "description": "Primary database layer for product data, application records, and long-term system reliability."
+      },
+      {
+        "title": "SQLAlchemy",
+        "label": "ORM",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg",
+        "description": "Structured database access and application modeling for backend systems and product workflows."
+      },
+      {
+        "title": "Redis",
+        "label": "Performance",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+        "description": "Caching, queue support, and faster workflows for apps and automation systems that need more responsiveness."
+      },
+      {
+        "title": "Docker",
+        "label": "Deployment",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+        "description": "Consistent build, test, and deployment environments that make applications easier to run and scale."
+      }
+    ]
+  },
+  "secondary": {
+    "eyebrow": "Extended Stack",
+    "title": "The supporting technologies that make the ecosystem more capable",
+    "description": "These tools help CaribAI move from digital products into stronger automation, AI systems, and scalable software over time.",
+    "items": [
+      {
+        "title": "OpenAI API",
+        "label": "AI Layer",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg",
+        "description": "Model-powered workflows, structured outputs, and intelligent product features for modern AI systems."
+      },
+      {
+        "title": "GitHub",
+        "label": "Version Control",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+        "description": "Version control, collaboration, deployment flow, and a visible engineering record behind the work."
+      },
+      {
+        "title": "JavaScript",
+        "label": "Frontend Logic",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+        "description": "Frontend behavior, site interactions, and dynamic content rendering across public and internal tools."
+      },
+      {
+        "title": "HTML & CSS",
+        "label": "Interface Layer",
+        "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+        "description": "Clean, fast user interfaces for products, landing pages, storefronts, and supporting brand experiences."
+      },
+      {
+        "title": "Vercel",
+        "label": "Hosting",
+        "logo": "https://assets.vercel.com/image/upload/front/favicon/vercel/57x57.png",
+        "description": "Fast deployment and hosting for the public-facing CaribAI site and future frontend experiences."
+      },
+      {
+        "title": "Decap CMS",
+        "label": "Content Management",
+        "logo": "https://decapcms.org/img/decap-cms-logo.svg",
+        "description": "Content editing workflow for blog posts, stack updates, and future site-managed sections without direct code edits."
+      }
+    ]
+  },
+  "support": {
+    "eyebrow": "Supporting Tools",
+    "title": "The wider stack supporting long-term product and system development.",
+    "items": [
+      {
+        "title": "Frontend",
+        "description": "HTML, CSS, JavaScript, and selective use of modern frontend tooling when the product experience needs it."
+      },
+      {
+        "title": "Workflow",
+        "description": "Git, GitHub, testing, deployment habits, and engineering discipline that make progress visible over time."
+      },
+      {
+        "title": "Growth Edge",
+        "description": "Automation maturity, deeper ML implementation, better deployment workflows, and stronger systems thinking over time."
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Next Step",
+    "title": "See the milestones and credentials supporting the journey.",
+    "description": "The stack matters, but the structured growth path behind it matters too.",
+    "label": "View Certifications",
+    "href": "certifications.html"
+  }
+}

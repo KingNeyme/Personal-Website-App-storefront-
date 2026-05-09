@@ -1,4 +1,3 @@
-const demoForms = document.querySelectorAll("[data-demo-form]");
 const fallbackInbox = "caribailabs@gmail.com";
 
 const buildMailtoLink = (form) => {
@@ -25,39 +24,41 @@ const buildMailtoLink = (form) => {
   return `mailto:${fallbackInbox}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };
 
-demoForms.forEach((form) => {
+document.addEventListener("submit", (event) => {
+  const form = event.target.closest("[data-demo-form]");
+  if (!form) {
+    return;
+  }
+
+  event.preventDefault();
+
   const note = form.querySelector("[data-form-note]");
+  const nameField = form.querySelector('[name="name"]');
+  const emailField = form.querySelector('[name="email"]');
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const nameField = form.querySelector('[name="name"]');
-    const emailField = form.querySelector('[name="email"]');
-
-    if (nameField && !nameField.value.trim()) {
-      if (note) {
-        note.textContent = "Please add your name before continuing.";
-      }
-      nameField.focus();
-      return;
-    }
-
-    if (emailField && !emailField.value.trim()) {
-      if (note) {
-        note.textContent = "Please add your email before continuing.";
-      }
-      emailField.focus();
-      return;
-    }
-
-    window.location.href = buildMailtoLink(form);
-
+  if (nameField && !nameField.value.trim()) {
     if (note) {
-      note.textContent =
-        form.getAttribute("data-success-message") ||
-        "Your email app should open with a ready-to-send message for CaribAI.";
+      note.textContent = "Please add your name before continuing.";
     }
+    nameField.focus();
+    return;
+  }
 
-    form.reset();
-  });
+  if (emailField && !emailField.value.trim()) {
+    if (note) {
+      note.textContent = "Please add your email before continuing.";
+    }
+    emailField.focus();
+    return;
+  }
+
+  window.location.href = buildMailtoLink(form);
+
+  if (note) {
+    note.textContent =
+      form.getAttribute("data-success-message") ||
+      "Your email app should open with a ready-to-send message for CaribAI.";
+  }
+
+  form.reset();
 });

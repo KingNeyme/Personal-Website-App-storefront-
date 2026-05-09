@@ -60,6 +60,7 @@ const renderBlogList = (posts) => {
       const readingTime = estimateReadingTime(post.body || "");
       return `
         <article class="blog-card">
+          ${post.coverImage ? `<img class="blog-media" src="${post.coverImage}" alt="${post.title} cover image" />` : ""}
           <span class="pill ${post.featured ? "" : "muted"}">${post.category || "CaribAI Notes"}</span>
           <h2>${post.title}</h2>
           <p>${post.excerpt || ""}</p>
@@ -121,6 +122,23 @@ const renderBlogPost = (posts) => {
 
   const contentNode = shell.querySelector("[data-post-content]");
   const content = post.body || "";
+  const existingMedia = shell.querySelector(".post-hero-media");
+  if (existingMedia) {
+    existingMedia.remove();
+  }
+
+  if (post.coverVideo) {
+    shell.querySelector("[data-post-excerpt]").insertAdjacentHTML(
+      "afterend",
+      `<video class="post-hero-media" src="${post.coverVideo}" controls playsinline></video>`
+    );
+  } else if (post.coverImage) {
+    shell.querySelector("[data-post-excerpt]").insertAdjacentHTML(
+      "afterend",
+      `<img class="post-hero-media" src="${post.coverImage}" alt="${post.title} cover image" />`
+    );
+  }
+
   contentNode.innerHTML = window.marked ? window.marked.parse(content) : content;
 
   shell.hidden = false;

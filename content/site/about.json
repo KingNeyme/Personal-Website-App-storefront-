@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "eyebrow": "About",
+    "title": "CaribAI is a Caribbean-born AI product company with a practical, systems-driven approach.",
+    "description": "CaribAI builds digital products, automation systems, and scalable software solutions that solve real-world operational, productivity, and income-related problems. CaribAI Labs supports that work as the experimentation and product-development layer behind the scenes.",
+    "image": "assets/graphics/caribai-apps-card.svg",
+    "imageAlt": "CaribAI ecosystem visual"
+  },
+  "identity": {
+    "eyebrow": "Core Identity",
+    "title": "A product-first business built around real problems, clear execution, and long-term ecosystem growth.",
+    "description": "The operating model is straightforward: identify specific problems, build focused solutions, launch quickly, learn from real-world feedback, and improve continuously through iteration. The long-term goal is a globally recognized AI product ecosystem originating from the Caribbean."
+  },
+  "values": {
+    "items": [
+      {
+        "title": "Mission",
+        "description": "Build practical AI-powered products and systems that improve how people and businesses work, operate, and create value."
+      },
+      {
+        "title": "Vision",
+        "description": "Become a globally recognized AI product ecosystem originating from the Caribbean."
+      },
+      {
+        "title": "Operating Lens",
+        "description": "Build around problems, not trends, and let each product earn its own audience by solving a real need well."
+      }
+    ]
+  },
+  "structure": {
+    "eyebrow": "Structure",
+    "title": "How the public brand and the build layer work together",
+    "description": "CaribAI handles the outward-facing side of the ecosystem, while CaribAI Labs keeps exploring the research, experimentation, systems, and future software opportunities behind it.",
+    "items": [
+      {
+        "badge": "Brand",
+        "title": "CaribAI",
+        "description": "Public-facing brand responsible for products, launches, marketing, audience building, partnerships, and ecosystem growth.",
+        "featured": true
+      },
+      {
+        "badge": "Product Lab",
+        "title": "CaribAI Labs",
+        "description": "Internal innovation and experimentation layer focused on product research, prototyping, AI experimentation, system architecture, and future software directions.",
+        "muted": true
+      },
+      {
+        "badge": "Digital Products",
+        "title": "CaribAI Products",
+        "description": "Digital products, workflow systems, automation kits, and focused offers that create immediate practical value.",
+        "muted": true
+      },
+      {
+        "badge": "Apps",
+        "title": "CaribAI Apps",
+        "description": "AI tools, micro SaaS, operational systems, and scalable software that can emerge from validated product demand.",
+        "muted": true
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Next Step",
+    "title": "See how the ecosystem is turning into products, launches, and technical growth.",
+    "description": "Follow the product pipeline, product launches, and the systems behind how CaribAI is being built.",
+    "label": "View Product Pipeline",
+    "href": "projects.html"
+  }
+}

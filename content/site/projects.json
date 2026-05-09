@@ -1,0 +1,88 @@
+{
+  "hero": {
+    "eyebrow": "Projects",
+    "title": "Products, systems, and software directions shaping the CaribAI ecosystem.",
+    "description": "This page shows how CaribAI grows through a portfolio of practical solutions: current digital products, emerging automation systems, practical tools, and future AI software directions built around real-world needs.",
+    "image": "assets/graphics/cyber-ascend-card.svg",
+    "imageAlt": "CaribAI projects visual"
+  },
+  "pipeline": {
+    "eyebrow": "Current Pipeline",
+    "title": "The current product ecosystem and future software directions at the center of the roadmap",
+    "description": "Each one represents a different problem and a different value opportunity, which is exactly how the CaribAI model is designed to scale.",
+    "items": [
+      {
+        "badge": "Current Product",
+        "title": "Cyber Ascend",
+        "image": "assets/graphics/cyber-ascend-card.svg",
+        "imageAlt": "Cyber Ascend product visual",
+        "description": "Career transition system built for IT professionals who want a more practical and better-structured path into cybersecurity.",
+        "meta": [
+          "Status: Active Direction",
+          "Focus: Career Transition",
+          "Format: Digital Product"
+        ],
+        "featured": true
+      },
+      {
+        "badge": "Current Product",
+        "title": "AI Toolkit",
+        "image": "assets/graphics/ai-toolkit-card.svg",
+        "imageAlt": "AI Toolkit product visual",
+        "description": "Practical AI usage system for people who want stronger results, clearer workflows, and more leverage from modern AI tools.",
+        "meta": [
+          "Status: Growing Offer",
+          "Focus: Productivity"
+        ],
+        "muted": true
+      },
+      {
+        "badge": "Current Product",
+        "title": "Resume Kit",
+        "image": "assets/graphics/resume-kit-card.svg",
+        "imageAlt": "Resume Kit product visual",
+        "description": "Job acquisition support product built to improve materials, positioning, and response quality during the hiring process.",
+        "meta": [
+          "Status: Focused Utility",
+          "Focus: Career Support"
+        ],
+        "muted": true
+      },
+      {
+        "badge": "Future Direction",
+        "title": "CaribAI Apps",
+        "image": "assets/graphics/caribai-apps-card.svg",
+        "imageAlt": "CaribAI Apps concept visual",
+        "description": "AI tools, automation systems, and future software businesses that grow out of validated product demand and stronger market signals.",
+        "meta": [
+          "Status: Validation Path",
+          "Focus: AI Tools"
+        ],
+        "muted": true
+      }
+    ]
+  },
+  "summary": {
+    "items": [
+      {
+        "title": "What These Projects Show",
+        "description": "How CaribAI moves from one problem to one focused solution instead of trying to force one offer on every market."
+      },
+      {
+        "title": "Why They Matter",
+        "description": "They show the real operating logic behind the business: identify, build, launch, learn, improve, and repeat."
+      },
+      {
+        "title": "How They Evolve",
+        "description": "Some remain focused digital products, while the strongest directions evolve into AI tools, operational systems, or scalable software businesses."
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "Next Step",
+    "title": "Follow the lessons and milestones behind the builds.",
+    "description": "The project list is the what. The learning journey explains the how and why.",
+    "label": "View Learning Journey",
+    "href": "journey.html"
+  }
+}
