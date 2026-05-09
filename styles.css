@@ -114,58 +114,40 @@ img {
   align-items: center;
   gap: 14px;
   min-width: 0;
+  flex: 0 1 auto;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 56px;
-  padding: 8px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.28);
-  overflow: hidden;
-  flex-shrink: 0;
+.brand-logo-shell {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
 }
 
-.brand-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.brand-wordmark {
+  width: min(100%, 232px);
+  height: auto;
   display: block;
-  filter: drop-shadow(0 8px 16px rgba(2, 6, 23, 0.22));
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 14px rgba(124, 58, 237, 0.16))
+    drop-shadow(0 8px 16px rgba(2, 6, 23, 0.14));
   animation: logo-float 7s ease-in-out infinite;
 }
 
-.brand-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  font-size: 0.94rem;
-  color: var(--muted);
-  min-width: 0;
-}
-
-.brand-copy strong {
-  font-size: 1.05rem;
-  letter-spacing: -0.03em;
-}
-
-.brand-copy span:last-child {
-  max-width: 32ch;
-  font-size: 0.79rem;
-  line-height: 1.35;
-  color: rgba(199, 210, 254, 0.88);
-}
-
-.brand-copy strong,
 .nav a,
 h1,
 h2,
 h3 {
   color: var(--text);
+}
+
+.brand-tagline {
+  max-width: 28ch;
+  font-size: 0.77rem;
+  line-height: 1.45;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(199, 210, 254, 0.86);
 }
 
 .nav {
@@ -950,12 +932,14 @@ textarea:focus {
   font-weight: 700;
 }
 
-.footer-brand img {
-  width: 40px;
-  height: 40px;
+.footer-wordmark {
+  width: min(180px, 100%);
+  height: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 8px 16px rgba(2, 6, 23, 0.18));
+  filter:
+    drop-shadow(0 0 16px rgba(124, 58, 237, 0.14))
+    drop-shadow(0 8px 16px rgba(2, 6, 23, 0.14));
 }
 
 @keyframes rise-fade {
@@ -1013,6 +997,10 @@ textarea:focus {
     align-items: flex-start;
   }
 
+  .brand {
+    width: 100%;
+  }
+
   main {
     gap: 30px;
   }
@@ -1034,6 +1022,7 @@ textarea:focus {
     overflow-x: auto;
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
   }
 
   .project-row-layout {
@@ -1051,10 +1040,6 @@ textarea:focus {
   .nav {
     width: 100%;
     justify-content: flex-start;
-  }
-
-  .brand-copy span:last-child {
-    max-width: 40ch;
   }
 
   .hero {
@@ -1085,33 +1070,26 @@ textarea:focus {
   }
 
   .brand {
-    gap: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
   }
 
-  .brand-mark {
-    width: 50px;
-    height: 50px;
-    padding: 7px;
-  }
-
-  .footer-brand img {
-    width: 36px;
-    height: 36px;
-  }
-
-  .brand-copy span:last-child {
-    max-width: 28ch;
-    font-size: 0.74rem;
+  .brand-wordmark {
+    width: min(100%, 200px);
   }
 
   .nav {
     gap: 8px;
-    padding: 5px;
+    padding: 4px;
+    overflow: visible;
+    flex-wrap: wrap;
   }
 
   .nav a {
-    padding: 9px 11px;
-    font-size: 0.9rem;
+    padding: 8px 10px;
+    font-size: 0.88rem;
   }
 
   h1 {
@@ -1138,9 +1116,46 @@ textarea:focus {
   .hero-actions {
     align-items: stretch;
   }
+
+  .brand-tagline {
+    max-width: 32ch;
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  .footer-brand {
+    gap: 10px;
+  }
+
+  .footer-wordmark {
+    width: min(160px, 100%);
+  }
 }
 
 @media (max-width: 560px) {
+  .topbar {
+    padding: 20px;
+  }
+
+  .brand-wordmark {
+    width: min(100%, 178px);
+  }
+
+  .brand-tagline {
+    max-width: 28ch;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .nav {
+    gap: 6px;
+  }
+
+  .nav a {
+    padding: 8px 9px;
+    font-size: 0.84rem;
+  }
+
   main {
     gap: 24px;
   }
@@ -1179,6 +1194,10 @@ textarea:focus {
   .contact-banner,
   .contact-grid {
     gap: 22px;
+  }
+
+  .footer-wordmark {
+    width: min(150px, 100%);
   }
 }
 
