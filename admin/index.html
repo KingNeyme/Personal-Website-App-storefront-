@@ -3,10 +3,135 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CaribAI Content Admin</title>
+    <title>CaribAI Control Center</title>
     <base href="/admin/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="admin.css" />
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <div class="admin-shell">
+      <header class="admin-topbar">
+        <a class="admin-brand" href="../index.html" aria-label="CaribAI home">
+          <img src="../assets/CariAI-LOGO-Transparent.png" alt="CaribAI logo" />
+        </a>
+        <div class="admin-statusbar">
+          <strong>CaribAI Control Center</strong>
+          <span>Premium editorial workspace for the public site</span>
+        </div>
+        <div class="admin-badge">Publishing ready</div>
+      </header>
+
+      <div class="admin-grid">
+        <aside class="admin-sidebar">
+          <div class="admin-sidebar-header">
+            <p class="admin-eyebrow">Admin</p>
+            <h1>Manage the full public CaribAI experience.</h1>
+            <p>Use this control center to edit the brand site, publish journal updates, refresh visuals, and keep the public-facing platform sharp.</p>
+          </div>
+
+          <section class="admin-section">
+            <h2>Workspace</h2>
+            <div class="admin-link-cluster">
+              <button class="admin-action is-active" type="button" data-admin-target data-admin-view="overview">
+                <span class="admin-action-copy">
+                  <strong>Overview</strong>
+                  <span>Start from the dashboard and jump into the editor.</span>
+                </span>
+                <span class="admin-action-mark">O</span>
+              </button>
+              <button class="admin-action" type="button" data-admin-target data-admin-view="site">
+                <span class="admin-action-copy">
+                  <strong>Site content</strong>
+                  <span>Edit homepage, projects, storefront, journey, and more.</span>
+                </span>
+                <span class="admin-action-mark">S</span>
+              </button>
+              <button class="admin-action" type="button" data-admin-target data-admin-view="blog">
+                <span class="admin-action-copy">
+                  <strong>Journal</strong>
+                  <span>Publish blog posts, cover images, and editorial updates.</span>
+                </span>
+                <span class="admin-action-mark">J</span>
+              </button>
+              <button class="admin-action" type="button" data-admin-target data-admin-view="full">
+                <span class="admin-action-copy">
+                  <strong>Full CMS</strong>
+                  <span>Open the native editing environment directly.</span>
+                </span>
+                <span class="admin-action-mark">C</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="admin-section">
+            <h2>Quick links</h2>
+            <div class="admin-links-inline">
+              <a href="../index.html" target="_blank" rel="noreferrer">View site</a>
+              <a href="../blog.html" target="_blank" rel="noreferrer">Open journal</a>
+              <a href="../storefront.html" target="_blank" rel="noreferrer">Open products</a>
+              <a href="../contact.html" target="_blank" rel="noreferrer">Open contact</a>
+            </div>
+          </section>
+
+          <p class="admin-footer-note">The Decap editor still powers content changes underneath. This shell gives it a more premium, founder-friendly operational experience.</p>
+        </aside>
+
+        <section class="admin-workspace">
+          <div class="admin-workspace-header">
+            <div>
+              <p class="admin-eyebrow">Workspace</p>
+              <h2 data-admin-title>CaribAI control center</h2>
+              <p data-admin-copy>Manage the public-facing site, publish updates, and keep the CaribAI brand polished from one premium editorial workspace.</p>
+            </div>
+            <div class="admin-toolbar">
+              <span class="admin-pill"><strong>Site:</strong>&nbsp; caribailabs.vercel.app</span>
+              <a href="cms.html#/" target="_blank" rel="noreferrer">Open Decap in new tab</a>
+            </div>
+          </div>
+
+          <div class="admin-card-grid">
+            <article class="admin-card">
+              <p class="admin-eyebrow">Publishing</p>
+              <h3>Edit brand content</h3>
+              <p>Update homepage positioning, products, journey, tech stack, certifications, and contact content without touching templates directly.</p>
+            </article>
+            <article class="admin-card">
+              <p class="admin-eyebrow">Media</p>
+              <h3>Keep visuals premium</h3>
+              <p>Upload images and post media while keeping the public-facing brand aligned with the more polished CaribAI direction.</p>
+            </article>
+            <article class="admin-card">
+              <p class="admin-eyebrow">Ops</p>
+              <h3>Move fast, stay clean</h3>
+              <p>Use the dashboard as a calmer editorial layer, then drop into the native CMS only when you need deeper collection controls.</p>
+            </article>
+          </div>
+
+          <div class="admin-frame-wrap">
+            <div class="admin-frame-toolbar">
+              <div class="admin-frame-dots" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="admin-frame-label" data-admin-frame-label>Overview</div>
+            </div>
+            <iframe
+              class="admin-frame"
+              title="CaribAI CMS workspace"
+              data-admin-frame
+              src="cms.html#/"
+            ></iframe>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="admin.js"></script>
   </body>
 </html>
