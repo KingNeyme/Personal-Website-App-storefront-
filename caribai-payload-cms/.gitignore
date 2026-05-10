@@ -1,0 +1,9 @@
+.env
+.next
+node_modules
+dist
+build
+caribai.db
+caribai.db-journal
+caribai.db-shm
+caribai.db-wal

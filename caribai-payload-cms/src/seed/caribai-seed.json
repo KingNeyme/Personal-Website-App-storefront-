@@ -1,0 +1,1361 @@
+{
+  "globals": {
+    "siteSettings": {
+      "brand": {
+        "brandName": "CaribAI",
+        "legalName": "CaribAI Labs",
+        "tagline": "AI Engineering • Intelligent Systems • Digital Infrastructure"
+      },
+      "business": {
+        "siteUrl": "https://caribailabs.vercel.app",
+        "supportEmail": "caribailabs@gmail.com",
+        "primaryLocation": "St. Lucia, Caribbean"
+      },
+      "primaryNavigation": [
+        {
+          "label": "Home",
+          "href": "/"
+        },
+        {
+          "label": "About",
+          "href": "/about"
+        },
+        {
+          "label": "Products",
+          "href": "/products"
+        },
+        {
+          "label": "Projects",
+          "href": "/projects"
+        },
+        {
+          "label": "Journey",
+          "href": "/journey"
+        },
+        {
+          "label": "Journal",
+          "href": "/journal"
+        }
+      ],
+      "headerAction": {
+        "label": "Contact",
+        "href": "/contact"
+      },
+      "socialLinks": [
+        {
+          "label": "Journal",
+          "href": "/journal"
+        },
+        {
+          "label": "GitHub",
+          "href": "https://github.com/KingNeyme"
+        }
+      ],
+      "footerColumns": [
+        {
+          "heading": "Platform",
+          "links": [
+            {
+              "label": "Home",
+              "href": "/"
+            },
+            {
+              "label": "About",
+              "href": "/about"
+            },
+            {
+              "label": "Journal",
+              "href": "/journal"
+            }
+          ]
+        },
+        {
+          "heading": "Products",
+          "links": [
+            {
+              "label": "Products",
+              "href": "/products"
+            },
+            {
+              "label": "Projects",
+              "href": "/projects"
+            },
+            {
+              "label": "Tech Stack",
+              "href": "/tech-stack"
+            }
+          ]
+        },
+        {
+          "heading": "Company",
+          "links": [
+            {
+              "label": "Journey",
+              "href": "/journey"
+            },
+            {
+              "label": "Certifications",
+              "href": "/certifications"
+            },
+            {
+              "label": "Contact",
+              "href": "/contact"
+            }
+          ]
+        }
+      ],
+      "footerMeta": {
+        "headline": "CaribAI",
+        "description": "AI engineering, intelligent systems, and digital infrastructure built from the Caribbean with practical long-term ambition.",
+        "copyrightText": "CaribAI. All rights reserved."
+      }
+    },
+    "homePage": {
+      "hero": {
+        "eyebrow": "AI Engineering • Intelligent Systems • Digital Infrastructure",
+        "title": "Practical AI systems built for modern execution.",
+        "description": "CaribAI is a Caribbean-born AI engineering brand focused on practical software, intelligent workflows, and digital infrastructure that solve real problems and compound into stronger systems over time.",
+        "actions": [
+          {
+            "label": "Explore Products",
+            "href": "/products",
+            "variant": "primary"
+          },
+          {
+            "label": "Join Early Access",
+            "href": "#lead-access",
+            "variant": "secondary"
+          },
+          {
+            "label": "View Product Pipeline",
+            "href": "/projects",
+            "variant": "secondary"
+          }
+        ],
+        "points": [
+          "Practical over hype: useful systems that improve execution",
+          "Engineering mindset: clear problems, focused builds, iterative evidence",
+          "Designed to compound: tools today, stronger platforms tomorrow"
+        ],
+        "metrics": [
+          {
+            "label": "Identity",
+            "title": "A Caribbean-born AI systems brand with long-term engineering ambition.",
+            "description": "Focused on practical implementation, intelligent workflows, and real-world systems that earn trust through usefulness.",
+            "featured": true
+          },
+          {
+            "label": "Model",
+            "title": "Engineering + execution model",
+            "description": "Identify a real problem, design a focused system, ship quickly, study the signal, and expand what proves valuable."
+          },
+          {
+            "label": "Direction",
+            "title": "AI engineering ecosystem with long-term depth.",
+            "description": "Start with practical tools and expand validated ideas into apps, machine learning layers, and stronger infrastructure."
+          }
+        ]
+      },
+      "positioning": {
+        "eyebrow": "Positioning",
+        "title": "CaribAI builds intelligent systems around real problems.",
+        "description": "The brand is built around practical AI implementation, system design, digital infrastructure, and execution-focused products that create measurable value."
+      },
+      "structure": {
+        "eyebrow": "Structure",
+        "title": "One public brand, one experimentation layer, one evolving roadmap.",
+        "description": "CaribAI leads launches, products, and growth. CaribAI Labs supports the research, prototyping, and technical exploration behind what comes next.",
+        "items": [
+          {
+            "badge": "Brand",
+            "title": "CaribAI",
+            "description": "Public-facing identity used for products, launches, marketing, partnerships, and the long-term growth of the ecosystem.",
+            "featured": true
+          },
+          {
+            "badge": "Product Lab",
+            "title": "CaribAI Labs",
+            "description": "The innovation and experimentation layer focused on product research, prototyping, systems architecture, and future software directions.",
+            "muted": true
+          },
+          {
+            "badge": "Products",
+            "title": "CaribAI Products",
+            "description": "Digital products, workflow kits, and focused execution tools that create practical value while shaping the broader system roadmap.",
+            "muted": true
+          },
+          {
+            "badge": "Apps",
+            "title": "CaribAI Apps",
+            "description": "AI applications, intelligent dashboards, automation systems, and scalable software that can grow out of validated product demand and stronger technical depth.",
+            "muted": true
+          }
+        ]
+      },
+      "storefront": {
+        "eyebrow": "Storefront",
+        "title": "Current products and emerging system directions.",
+        "description": "Focused tools today can grow into stronger AI applications, subscription software, and infrastructure layers over time.",
+        "items": [
+          {
+            "badge": "Current Product",
+            "title": "Cyber Ascend",
+            "image": "assets/graphics/cyber-ascend-card.svg",
+            "imageAlt": "Cyber Ascend product visual",
+            "description": "Career transition system for IT professionals moving into cybersecurity through more focused positioning, preparation, and execution.",
+            "meta": [
+              "Digital Product",
+              "Career Growth",
+              "Launch Ready Direction"
+            ],
+            "featured": true
+          },
+          {
+            "badge": "Current Product",
+            "title": "AI Toolkit",
+            "image": "assets/graphics/ai-toolkit-card.svg",
+            "imageAlt": "AI Toolkit product visual",
+            "description": "Practical AI usage system for IT professionals, knowledge workers, and tech-savvy individuals who want stronger output from AI tools.",
+            "meta": [
+              "Digital Product",
+              "Productivity",
+              "Growing Offer"
+            ],
+            "muted": true
+          },
+          {
+            "badge": "Current Product",
+            "title": "Resume Kit",
+            "image": "assets/graphics/resume-kit-card.svg",
+            "imageAlt": "Resume Kit product visual",
+            "description": "Job acquisition tool built to help buyers improve positioning, presentation, and response quality in the hiring process.",
+            "meta": [
+              "Digital Product",
+              "Career Support"
+            ],
+            "muted": true
+          },
+          {
+            "badge": "Future Direction",
+            "title": "CaribAI Apps",
+            "image": "assets/graphics/caribai-apps-card.svg",
+            "imageAlt": "CaribAI Apps concept visual",
+            "description": "AI tools, automation systems, and micro SaaS products that grow out of validated digital-product demand and real-world problems.",
+            "meta": [
+              "AI Tools",
+              "Micro SaaS"
+            ],
+            "muted": true
+          }
+        ]
+      },
+      "build": {
+        "eyebrow": "What We Build",
+        "title": "What CaribAI is building across the ecosystem",
+        "items": [
+          {
+            "title": "AI Engineering Systems",
+            "description": "Practical AI-powered applications, tooling, and workflows built to solve real operational and execution challenges."
+          },
+          {
+            "title": "Intelligent Execution Systems",
+            "description": "Workflow systems and automation layers that help people and teams operate more clearly, consistently, and efficiently."
+          },
+          {
+            "title": "Machine Learning and Infrastructure Growth",
+            "description": "Validated directions that can expand into smarter software, predictive systems, AI infrastructure, and higher-complexity product layers over time."
+          }
+        ]
+      },
+      "businessModel": {
+        "eyebrow": "Business Model",
+        "title": "An engineering-first product factory model.",
+        "items": [
+          {
+            "title": "Identify",
+            "description": "Find a real operational, productivity, or income-related problem worth solving."
+          },
+          {
+            "title": "Build",
+            "description": "Develop a focused product, workflow, or intelligent system that can create practical and measurable value quickly."
+          },
+          {
+            "title": "Repeat",
+            "description": "Launch, gather feedback, improve, systemize what works, and repeat until strong ideas grow into broader platforms and infrastructure."
+          }
+        ]
+      },
+      "execution": {
+        "eyebrow": "Execution Strategy",
+        "title": "How the ecosystem is designed to grow",
+        "link": {
+          "label": "See all projects",
+          "href": "/projects"
+        },
+        "items": [
+          {
+            "title": "Phase 1: Launch digital tools and execution systems",
+            "description": "Generate traction and market signal through focused AI-powered digital tools, workflow systems, and practical software.",
+            "status": "Immediate"
+          },
+          {
+            "title": "Phase 2: Build AI apps and software layers",
+            "description": "Turn validated ideas into AI apps, dashboards, and software products with stronger technical depth behind them.",
+            "status": "Mid-Term"
+          },
+          {
+            "title": "Phase 3: Expand into infrastructure and research",
+            "description": "Use the strongest validated directions as the base for machine learning exploration, intelligent infrastructure, and more advanced AI systems.",
+            "status": "Long-Term"
+          }
+        ]
+      },
+      "lens": {
+        "eyebrow": "Why It Compounds",
+        "title": "The ecosystem grows through products, execution, and visible progress.",
+        "items": [
+          {
+            "title": "Public Learning",
+            "description": "The journey, content, and documentation matter because they show how the engineering capability is being built in a visible and credible way."
+          },
+          {
+            "title": "System Credibility",
+            "description": "Visitors should quickly understand what CaribAI is engineering, why it matters, and how each product or workflow supports the bigger vision."
+          },
+          {
+            "title": "Opportunity Surface",
+            "description": "The site creates room for customers, collaborators, media, and future partners without flattening the brand into a generic services pitch."
+          }
+        ]
+      },
+      "growthHub": {
+        "eyebrow": "Growth Hub",
+        "title": "Explore the wider CaribAI platform",
+        "description": "Beyond the storefront, CaribAI shows how its engineering capability is growing through technical progress, public execution, and evolving systems.",
+        "items": [
+          {
+            "title": "About",
+            "image": "assets/graphics/cyber-ascend-card.svg",
+            "imageAlt": "CaribAI brand visual",
+            "description": "See the brand story, product structure, and the strategic thinking behind the CaribAI ecosystem.",
+            "href": "/about",
+            "linkLabel": "Explore the brand"
+          },
+          {
+            "title": "Learning Journey",
+            "image": "assets/graphics/ai-toolkit-card.svg",
+            "imageAlt": "CaribAI learning journey visual",
+            "description": "Follow the build logs, milestones, and technical growth behind the products and systems being launched.",
+            "href": "/journey",
+            "linkLabel": "See the journey"
+          },
+          {
+            "title": "Tech Stack + Certifications",
+            "image": "assets/graphics/caribai-apps-card.svg",
+            "imageAlt": "CaribAI technology visual",
+            "description": "The stack, systems, and technical growth supporting the long-term evolution of the AI engineering ecosystem.",
+            "href": "/tech-stack",
+            "linkLabel": "View the stack"
+          }
+        ]
+      },
+      "focus": {
+        "eyebrow": "Current Focus",
+        "title": "What the business is focused on right now",
+        "items": [
+          {
+            "title": "1. Launch focused AI tools and workflows",
+            "description": "Start with practical systems that solve clear problems and create the first layer of real traction.",
+            "status": "Immediate Priority"
+          },
+          {
+            "title": "2. Turn launches into a stronger brand",
+            "description": "Use content, product storytelling, and visible execution to strengthen recognition and trust around CaribAI.",
+            "status": "Always Active"
+          },
+          {
+            "title": "3. Build toward apps, infrastructure, and SaaS",
+            "description": "Use validation as the bridge into AI apps, intelligent tools, automation systems, and larger software over time.",
+            "status": "Long-Term Engine"
+          }
+        ]
+      },
+      "lead": {
+        "eyebrow": "Early Access",
+        "title": "Get early access to new CaribAI systems and launches",
+        "description": "Join the list to hear about new AI tools, execution systems, and product updates as CaribAI keeps shipping.",
+        "buttonLabel": "Join Early Access",
+        "successMessage": "Your email app should open with a ready-to-send early access request for CaribAI.",
+        "note": "This opens a ready-to-send email to the CaribAI inbox for now."
+      },
+      "contact": {
+        "eyebrow": "Contact",
+        "title": "Follow the systems, explore the ecosystem, or connect around what CaribAI is building.",
+        "description": "Built for customers, early users, collaborators, and anyone interested in practical AI systems, infrastructure, and execution-focused tools.",
+        "label": "Contact Me",
+        "href": "/contact"
+      },
+      "storefrontSection": {
+        "eyebrow": "Storefront",
+        "title": "Current products and emerging system directions.",
+        "description": "Focused tools today can grow into stronger AI applications, subscription software, and infrastructure layers over time.",
+        "items": [
+          {
+            "badge": "Current Product",
+            "title": "Cyber Ascend",
+            "image": "assets/graphics/cyber-ascend-card.svg",
+            "imageAlt": "Cyber Ascend product visual",
+            "description": "Career transition system for IT professionals moving into cybersecurity through more focused positioning, preparation, and execution.",
+            "meta": [
+              "Digital Product",
+              "Career Growth",
+              "Launch Ready Direction"
+            ],
+            "featured": true
+          },
+          {
+            "badge": "Current Product",
+            "title": "AI Toolkit",
+            "image": "assets/graphics/ai-toolkit-card.svg",
+            "imageAlt": "AI Toolkit product visual",
+            "description": "Practical AI usage system for IT professionals, knowledge workers, and tech-savvy individuals who want stronger output from AI tools.",
+            "meta": [
+              "Digital Product",
+              "Productivity",
+              "Growing Offer"
+            ],
+            "muted": true
+          },
+          {
+            "badge": "Current Product",
+            "title": "Resume Kit",
+            "image": "assets/graphics/resume-kit-card.svg",
+            "imageAlt": "Resume Kit product visual",
+            "description": "Job acquisition tool built to help buyers improve positioning, presentation, and response quality in the hiring process.",
+            "meta": [
+              "Digital Product",
+              "Career Support"
+            ],
+            "muted": true
+          },
+          {
+            "badge": "Future Direction",
+            "title": "CaribAI Apps",
+            "image": "assets/graphics/caribai-apps-card.svg",
+            "imageAlt": "CaribAI Apps concept visual",
+            "description": "AI tools, automation systems, and micro SaaS products that grow out of validated digital-product demand and real-world problems.",
+            "meta": [
+              "AI Tools",
+              "Micro SaaS"
+            ],
+            "muted": true
+          }
+        ]
+      },
+      "buildSection": {
+        "eyebrow": "What We Build",
+        "title": "What CaribAI is building across the ecosystem",
+        "items": [
+          {
+            "title": "AI Engineering Systems",
+            "description": "Practical AI-powered applications, tooling, and workflows built to solve real operational and execution challenges."
+          },
+          {
+            "title": "Intelligent Execution Systems",
+            "description": "Workflow systems and automation layers that help people and teams operate more clearly, consistently, and efficiently."
+          },
+          {
+            "title": "Machine Learning and Infrastructure Growth",
+            "description": "Validated directions that can expand into smarter software, predictive systems, AI infrastructure, and higher-complexity product layers over time."
+          }
+        ]
+      },
+      "contactCTA": {
+        "eyebrow": "Contact",
+        "title": "Follow the systems, explore the ecosystem, or connect around what CaribAI is building.",
+        "description": "Built for customers, early users, collaborators, and anyone interested in practical AI systems, infrastructure, and execution-focused tools.",
+        "label": "Contact Me",
+        "href": "/contact"
+      }
+    },
+    "aboutPage": {
+      "hero": {
+        "eyebrow": "About",
+        "title": "CaribAI is a Caribbean-born AI engineering and intelligent systems brand.",
+        "description": "CaribAI builds practical AI systems, digital infrastructure, automation layers, and scalable software directions designed to solve real-world operational, productivity, and execution-related problems. CaribAI Labs supports that work as the experimentation and systems-development layer behind the scenes.",
+        "image": "assets/graphics/caribai-apps-card.svg",
+        "imageAlt": "CaribAI ecosystem visual"
+      },
+      "identity": {
+        "eyebrow": "Core Identity",
+        "title": "An execution-focused AI brand built around real problems, clear systems thinking, and long-term technical growth.",
+        "description": "The operating model is straightforward: identify specific problems, engineer focused solutions, launch quickly, learn from real-world signal, and improve continuously through iteration. The long-term goal is a globally recognized AI engineering and intelligent systems ecosystem originating from the Caribbean."
+      },
+      "values": {
+        "items": [
+          {
+            "title": "Mission",
+            "description": "Build practical AI-powered systems and infrastructure that improve how people and businesses work, operate, and create value."
+          },
+          {
+            "title": "Vision",
+            "description": "Become a globally recognized AI engineering and intelligent systems company originating from the Caribbean."
+          },
+          {
+            "title": "Operating Lens",
+            "description": "Build around problems, not trends, and let each system or product earn its audience by solving a real need well."
+          }
+        ]
+      },
+      "structure": {
+        "eyebrow": "Structure",
+        "title": "How the public brand and the build layer work together",
+        "description": "CaribAI handles the outward-facing side of the ecosystem, while CaribAI Labs keeps exploring the research, experimentation, machine learning depth, systems architecture, and future software opportunities behind it.",
+        "items": [
+          {
+            "badge": "Brand",
+            "title": "CaribAI",
+            "description": "Public-facing brand responsible for products, launches, marketing, audience building, partnerships, and ecosystem growth.",
+            "featured": true
+          },
+          {
+            "badge": "Product Lab",
+            "title": "CaribAI Labs",
+            "description": "Internal innovation and experimentation layer focused on product research, prototyping, AI experimentation, system architecture, and future software directions.",
+            "muted": true
+          },
+          {
+            "badge": "Digital Products",
+            "title": "CaribAI Products",
+            "description": "Digital tools, workflow systems, automation kits, and focused offers that create immediate practical value while supporting broader technical growth.",
+            "muted": true
+          },
+          {
+            "badge": "Apps",
+            "title": "CaribAI Apps",
+            "description": "AI tools, intelligent dashboards, operational systems, and scalable software that can emerge from validated demand and stronger engineering capability.",
+            "muted": true
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Next Step",
+        "title": "See how the ecosystem is turning into products, systems, launches, and technical growth.",
+        "description": "Follow the project pipeline, visible launches, and the systems behind how CaribAI is being built.",
+        "label": "View Product Pipeline",
+        "href": "/projects"
+      }
+    },
+    "journalPage": {
+      "hero": {
+        "eyebrow": "CaribAI Journal",
+        "title": "Writing about AI engineering, execution systems, and platform-building logic.",
+        "description": "The journal turns CaribAI into a visible thinking system: product notes, engineering lessons, launch logic, and the strategic decisions shaping the platform."
+      },
+      "editorial": {
+        "eyebrow": "Editorial Lens",
+        "title": "A public record of how the ecosystem is being built.",
+        "description": "Each entry should help readers understand what is being engineered, why it matters, and how practical AI systems become stronger through iteration and evidence."
+      },
+      "featured": {
+        "eyebrow": "Featured Themes",
+        "title": "What the journal is designed to cover",
+        "items": [
+          {
+            "title": "AI Engineering",
+            "description": "Practical implementation notes behind tools, systems, automation, and infrastructure."
+          },
+          {
+            "title": "Execution Systems",
+            "description": "How workflows, operating models, and product decisions are shaped for measurable outcomes."
+          },
+          {
+            "title": "Platform Thinking",
+            "description": "The strategic reasoning behind products, apps, and the long-term ecosystem architecture."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Stay Close",
+        "title": "Follow the build as the platform gets sharper.",
+        "description": "Use the journal to track what is being launched, learned, and strengthened across CaribAI.",
+        "label": "Contact CaribAI",
+        "href": "/contact"
+      }
+    },
+    "storefrontPage": {
+      "hero": {
+        "eyebrow": "Storefront",
+        "title": "Practical AI tools now, scalable systems and software over time.",
+        "description": "This is the public product layer of CaribAI: focused solutions built around real operational, productivity, and execution-related problems, with room to evolve into broader intelligent tools and systems over time.",
+        "image": "assets/graphics/ai-toolkit-card.svg",
+        "imageAlt": "CaribAI storefront visual"
+      },
+      "products": {
+        "eyebrow": "Featured Products",
+        "title": "The current product lineup",
+        "description": "Each offer is built around a specific need. The audience changes by product because CaribAI is designed to solve real problems first and let each system or tool earn its own market.",
+        "items": [
+          {
+            "badge": "Current Product",
+            "title": "Cyber Ascend",
+            "image": "assets/graphics/cyber-ascend-card.svg",
+            "imageAlt": "Cyber Ascend product visual",
+            "description": "Career transition system for IT professionals moving into cybersecurity through stronger positioning, preparation, and execution.",
+            "meta": [
+              "Category: Digital Product",
+              "Status: Active Offer",
+              "Target: Career Transition"
+            ],
+            "featured": true
+          },
+          {
+            "badge": "Current Product",
+            "title": "AI Toolkit",
+            "image": "assets/graphics/ai-toolkit-card.svg",
+            "imageAlt": "AI Toolkit product visual",
+            "description": "AI workflow system for IT professionals, knowledge workers, and tech-savvy individuals who want better output, clearer workflows, and stronger results.",
+            "meta": [
+              "Category: Digital Product",
+              "Status: Growing Offer"
+            ],
+            "muted": true
+          },
+          {
+            "badge": "Current Product",
+            "title": "Resume Kit",
+            "image": "assets/graphics/resume-kit-card.svg",
+            "imageAlt": "Resume Kit product visual",
+            "description": "Job acquisition tool built to help buyers improve presentation, positioning, and response quality across the hiring process.",
+            "meta": [
+              "Category: Digital Product",
+              "Status: Focused Utility"
+            ],
+            "muted": true
+          },
+          {
+            "badge": "Future Direction",
+            "title": "CaribAI Apps",
+            "image": "assets/graphics/caribai-apps-card.svg",
+            "imageAlt": "CaribAI Apps concept visual",
+            "description": "AI tools, automation systems, and micro SaaS products that can grow from validated demand, real traction, and stronger engineering depth.",
+            "meta": [
+              "Category: AI Tools",
+              "Status: Validation Path"
+            ],
+            "muted": true
+          }
+        ]
+      },
+      "summary": {
+        "items": [
+          {
+            "title": "What You’ll Find Here",
+            "description": "Digital tools, future AI apps, automation systems, early-access offers, and visible signals of the larger intelligent systems ecosystem CaribAI is building."
+          },
+          {
+            "title": "Why It Matters",
+            "description": "The storefront makes the practical side of the business visible by showing actual solutions, not just concepts or trend-based positioning."
+          },
+          {
+            "title": "How To Follow",
+            "description": "Join early access, follow launch updates, and watch how practical products evolve into stronger AI tools, systems, and software over time."
+          }
+        ]
+      },
+      "lead": {
+        "eyebrow": "Early Access",
+        "title": "Get updates on launches, experiments, and new product drops",
+        "description": "Join the CaribAI list to hear about upcoming apps, demand-tested experiments, blog posts, and product milestones first.",
+        "buttonLabel": "Join Early Access",
+        "successMessage": "Your email app should open with a ready-to-send storefront early access request.",
+        "note": "This opens a ready-to-send email to the CaribAI inbox for now."
+      },
+      "cta": {
+        "eyebrow": "Next Step",
+        "title": "See the broader journey behind the storefront.",
+        "description": "The products are one part of the story. The learning journey shows how they’re being built.",
+        "label": "View Learning Journey",
+        "href": "/journey"
+      },
+      "productsSection": {
+        "eyebrow": "Featured Products",
+        "title": "The current product lineup",
+        "description": "Each offer is built around a specific need. The audience changes by product because CaribAI is designed to solve real problems first and let each system or tool earn its own market.",
+        "items": [
+          {
+            "badge": "Current Product",
+            "title": "Cyber Ascend",
+            "image": "assets/graphics/cyber-ascend-card.svg",
+            "imageAlt": "Cyber Ascend product visual",
+            "description": "Career transition system for IT professionals moving into cybersecurity through stronger positioning, preparation, and execution.",
+            "meta": [
+              "Category: Digital Product",
+              "Status: Active Offer",
+              "Target: Career Transition"
+            ],
+            "featured": true
+          },
+          {
+            "badge": "Current Product",
+            "title": "AI Toolkit",
+            "image": "assets/graphics/ai-toolkit-card.svg",
+            "imageAlt": "AI Toolkit product visual",
+            "description": "AI workflow system for IT professionals, knowledge workers, and tech-savvy individuals who want better output, clearer workflows, and stronger results.",
+            "meta": [
+              "Category: Digital Product",
+              "Status: Growing Offer"
+            ],
+            "muted": true
+          },
+          {
+            "badge": "Current Product",
+            "title": "Resume Kit",
+            "image": "assets/graphics/resume-kit-card.svg",
+            "imageAlt": "Resume Kit product visual",
+            "description": "Job acquisition tool built to help buyers improve presentation, positioning, and response quality across the hiring process.",
+            "meta": [
+              "Category: Digital Product",
+              "Status: Focused Utility"
+            ],
+            "muted": true
+          },
+          {
+            "badge": "Future Direction",
+            "title": "CaribAI Apps",
+            "image": "assets/graphics/caribai-apps-card.svg",
+            "imageAlt": "CaribAI Apps concept visual",
+            "description": "AI tools, automation systems, and micro SaaS products that can grow from validated demand, real traction, and stronger engineering depth.",
+            "meta": [
+              "Category: AI Tools",
+              "Status: Validation Path"
+            ],
+            "muted": true
+          }
+        ]
+      }
+    },
+    "projectsPage": {
+      "hero": {
+        "eyebrow": "Projects",
+        "title": "Systems, products, and software directions shaping the CaribAI ecosystem.",
+        "description": "This page shows how CaribAI grows through a portfolio of practical solutions: current digital tools, emerging automation systems, intelligent workflows, and future AI software directions built around real-world needs.",
+        "image": "assets/graphics/cyber-ascend-card.svg",
+        "imageAlt": "CaribAI projects visual"
+      },
+      "pipeline": {
+        "eyebrow": "Current Pipeline",
+        "title": "The current solution roadmap and future software directions at the center of the ecosystem",
+        "description": "Each one represents a different problem, a different execution context, and a different systems opportunity, which is exactly how the CaribAI model is designed to scale.",
+        "items": [
+          {
+            "badge": "Current Product",
+            "title": "Cyber Ascend",
+            "image": "assets/graphics/cyber-ascend-card.svg",
+            "imageAlt": "Cyber Ascend product visual",
+            "description": "Career transition system built for IT professionals who want a more practical and better-structured path into cybersecurity.",
+            "meta": [
+              "Status: Active Direction",
+              "Focus: Career Transition",
+              "Format: Digital Product"
+            ],
+            "featured": true
+          },
+          {
+            "badge": "Current Product",
+            "title": "AI Toolkit",
+            "image": "assets/graphics/ai-toolkit-card.svg",
+            "imageAlt": "AI Toolkit product visual",
+            "description": "Practical AI execution system for people who want stronger results, clearer workflows, and more leverage from modern AI tools.",
+            "meta": [
+              "Status: Growing Offer",
+              "Focus: Productivity"
+            ],
+            "muted": true
+          },
+          {
+            "badge": "Current Product",
+            "title": "Resume Kit",
+            "image": "assets/graphics/resume-kit-card.svg",
+            "imageAlt": "Resume Kit product visual",
+            "description": "Job acquisition support product built to improve materials, positioning, and response quality during the hiring process.",
+            "meta": [
+              "Status: Focused Utility",
+              "Focus: Career Support"
+            ],
+            "muted": true
+          },
+          {
+            "badge": "Future Direction",
+            "title": "CaribAI Apps",
+            "image": "assets/graphics/caribai-apps-card.svg",
+            "imageAlt": "CaribAI Apps concept visual",
+            "description": "AI apps, automation systems, and future software businesses that grow out of validated demand and stronger technical signal.",
+            "meta": [
+              "Status: Validation Path",
+              "Focus: AI Tools"
+            ],
+            "muted": true
+          }
+        ]
+      },
+      "summary": {
+        "items": [
+          {
+            "title": "What These Projects Show",
+            "description": "How CaribAI moves from one problem to one focused system instead of trying to force one offer on every market."
+          },
+          {
+            "title": "Why They Matter",
+            "description": "They show the real operating logic behind the business: identify, engineer, launch, learn, improve, and repeat."
+          },
+          {
+            "title": "How They Evolve",
+            "description": "Some remain focused digital tools, while the strongest directions evolve into AI apps, operational systems, or scalable software businesses."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Next Step",
+        "title": "Follow the lessons and milestones behind the builds.",
+        "description": "The project list is the what. The learning journey explains the how and why.",
+        "label": "View Learning Journey",
+        "href": "/journey"
+      }
+    },
+    "journeyPage": {
+      "hero": {
+        "eyebrow": "Learning Journey",
+        "title": "Building CaribAI in public through engineering practice, reflection, and steady progress.",
+        "description": "This page shares the real path behind CaribAI: what is being learned, what is being built, and how the ecosystem is becoming stronger through AI implementation, systems thinking, machine learning exploration, and visible progress.",
+        "image": "assets/graphics/caribai-apps-card.svg",
+        "imageAlt": "CaribAI journey visual"
+      },
+      "focus": {
+        "eyebrow": "Current Focus",
+        "title": "What is actively being learned, tested, and improved",
+        "items": [
+          {
+            "title": "AI Implementation",
+            "description": "APIs, model integrations, structured outputs, and practical workflows that support useful AI-powered systems and software.",
+            "image": "assets/graphics/ai-toolkit-card.svg",
+            "imageAlt": "AI implementation visual"
+          },
+          {
+            "title": "Systems Building",
+            "description": "Sharpening how problems are identified, solutions are designed, and ideas are turned into stronger systems over time.",
+            "image": "assets/graphics/cyber-ascend-card.svg",
+            "imageAlt": "Product building visual"
+          },
+          {
+            "title": "Machine Learning Growth",
+            "description": "Strengthening the systems, habits, and technical depth needed to support long-term machine learning exploration and intelligent systems work.",
+            "image": "assets/graphics/caribai-apps-card.svg",
+            "imageAlt": "Systems growth visual"
+          }
+        ]
+      },
+      "documentation": {
+        "eyebrow": "What I Document",
+        "title": "The real parts of growth that usually stay hidden",
+        "description": "The goal is not to present a polished illusion. It is to show how engineering ability is actually built through practice, mistakes, revisions, and visible momentum.",
+        "items": [
+          {
+            "title": "Technical Lessons",
+            "description": "Notes from backend engineering, AI integrations, data handling, automation thinking, ML exploration, and product development workflows.",
+            "status": "Ongoing",
+            "image": "assets/graphics/ai-toolkit-card.svg",
+            "imageAlt": "Technical lessons visual"
+          },
+          {
+            "title": "Challenges and Setbacks",
+            "description": "What broke, what took longer than expected, what needed rethinking, and what those moments taught along the way.",
+            "status": "Visible by Design",
+            "image": "assets/graphics/resume-kit-card.svg",
+            "imageAlt": "Challenges and setbacks visual"
+          },
+          {
+            "title": "Implementation Milestones",
+            "description": "New tools learned, systems tested, features shipped, infrastructure improved, and clearer strategic direction earned over time.",
+            "status": "Tracked Publicly",
+            "image": "assets/graphics/cyber-ascend-card.svg",
+            "imageAlt": "Implementation milestones visual"
+          }
+        ]
+      },
+      "future": {
+        "eyebrow": "Future Direction",
+        "title": "Building a practical foundation now for deeper AI systems and future expansion.",
+        "items": [
+          {
+            "title": "Now",
+            "description": "AI implementation, backend development, digital infrastructure, and stronger systems thinking across the ecosystem."
+          },
+          {
+            "title": "Next",
+            "description": "Better deployment workflows, stronger automation, deeper ML experimentation, and more polished launches."
+          },
+          {
+            "title": "Later",
+            "description": "More advanced AI systems, broader software directions, and carefully earned expansion into higher-complexity research and infrastructure opportunities."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Keep Going",
+        "title": "See the stack and tools behind the journey.",
+        "description": "Explore the technologies I’m building with and the ones I’m actively learning next.",
+        "label": "View Tech Stack",
+        "href": "/tech-stack"
+      }
+    },
+    "techStackPage": {
+      "hero": {
+        "eyebrow": "Technology Behind CaribAI",
+        "title": "The technology stack behind CaribAI’s systems, infrastructure, and growth.",
+        "description": "CaribAI is built on practical technologies chosen to support AI engineering, intelligent workflows, digital infrastructure, and long-term software growth.",
+        "image": "assets/graphics/caribai-apps-card.svg",
+        "imageAlt": "CaribAI technology visual"
+      },
+      "primary": {
+        "eyebrow": "Primary Stack",
+        "title": "The core tools behind current CaribAI systems and software directions",
+        "description": "These are the main technologies shaping the public products, internal systems, infrastructure, and software directions across the CaribAI ecosystem.",
+        "items": [
+          {
+            "title": "Python",
+            "label": "Core Language",
+            "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+            "description": "Core language for backend engineering, AI integrations, automation logic, and system workflows."
+          },
+          {
+            "title": "FastAPI",
+            "label": "Backend Framework",
+            "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+            "description": "Framework for APIs, internal services, automation backends, and AI-powered system flows."
+          },
+          {
+            "title": "PostgreSQL",
+            "label": "Data Layer",
+            "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+            "description": "Primary database layer for application records, workflow data, and long-term system reliability."
+          },
+          {
+            "title": "SQLAlchemy",
+            "label": "ORM",
+            "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg",
+            "description": "Structured database access and application modeling for backend systems and product workflows."
+          },
+          {
+            "title": "Redis",
+            "label": "Performance",
+            "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+            "description": "Caching, queue support, and faster workflows for apps and automation systems that need more responsiveness."
+          },
+          {
+            "title": "Docker",
+            "label": "Deployment",
+            "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+            "description": "Consistent build, test, and deployment environments that make applications easier to run and scale."
+          }
+        ]
+      },
+      "secondary": {
+        "eyebrow": "Extended Stack",
+        "title": "The supporting technologies that make the ecosystem more capable",
+        "description": "These tools help CaribAI move from focused digital tools into stronger automation, AI systems, and scalable software over time.",
+        "items": [
+          {
+            "title": "OpenAI API",
+            "label": "AI Layer",
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg",
+            "description": "Model-powered workflows, structured outputs, and intelligent application features for modern AI systems."
+          },
+          {
+            "title": "GitHub",
+            "label": "Version Control",
+            "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+            "description": "Version control, collaboration, deployment flow, and a visible engineering record behind the work."
+          },
+          {
+            "title": "JavaScript",
+            "label": "Frontend Logic",
+            "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+            "description": "Frontend behavior, site interactions, and dynamic content rendering across public experiences and internal tools."
+          },
+          {
+            "title": "HTML & CSS",
+            "label": "Interface Layer",
+            "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+            "description": "Clean, fast interfaces for products, landing pages, storefronts, and supporting brand experiences."
+          },
+          {
+            "title": "Vercel",
+            "label": "Hosting",
+            "logo": "https://assets.vercel.com/image/upload/front/favicon/vercel/57x57.png",
+            "description": "Fast deployment and hosting for the public-facing CaribAI site and future frontend experiences."
+          },
+          {
+            "title": "Decap CMS",
+            "label": "Content Management",
+            "logo": "https://decapcms.org/img/decap-cms-logo.svg",
+            "description": "Content editing workflow for blog posts, stack updates, and future site-managed sections without direct code edits."
+          }
+        ]
+      },
+      "support": {
+        "eyebrow": "Supporting Tools",
+        "title": "The wider stack supporting long-term product and system development.",
+        "items": [
+          {
+            "title": "Frontend",
+            "description": "HTML, CSS, JavaScript, and selective use of modern frontend tooling when the product experience needs it."
+          },
+          {
+            "title": "Workflow",
+            "description": "Git, GitHub, testing, deployment habits, and engineering discipline that make progress visible over time."
+          },
+          {
+            "title": "Growth Edge",
+            "description": "Automation maturity, deeper ML implementation, better deployment workflows, and stronger systems thinking over time."
+          }
+        ]
+      },
+      "cta": {
+        "eyebrow": "Next Step",
+        "title": "See the milestones and credentials supporting the journey.",
+        "description": "The stack matters, but the structured growth path behind it matters too.",
+        "label": "View Certifications",
+        "href": "/certifications"
+      }
+    },
+    "certificationsPage": {
+      "content": {
+        "hero": {
+          "eyebrow": "Certifications",
+          "title": "Credentials, milestones, and structured growth supporting the CaribAI ecosystem.",
+          "description": "This page shows the structured learning path developing alongside the systems, launches, and technical directions shaping CaribAI over time.",
+          "image": "assets/graphics/resume-kit-card.svg",
+          "imageAlt": "CaribAI certifications visual"
+        },
+        "status": {
+          "eyebrow": "Current Status",
+          "title": "Structured growth alongside execution and technical development",
+          "description": "CaribAI is being built through a mix of hands-on implementation, structured learning, and credentials that strengthen long-term technical credibility.",
+          "items": [
+            {
+              "title": "Completed",
+              "description": "Earned certifications, badges, and formal milestones will be added here as they are completed.",
+              "status": "Coming Soon",
+              "image": "assets/graphics/resume-kit-card.svg",
+              "imageAlt": "Completed certifications visual"
+            },
+            {
+              "title": "In Progress",
+              "description": "Python foundations, cloud and AI fundamentals, backend depth, and the milestones strengthening the technical side of the ecosystem.",
+              "status": "Active",
+              "image": "assets/graphics/ai-toolkit-card.svg",
+              "imageAlt": "In-progress certifications visual"
+            },
+            {
+              "title": "Future Targets",
+              "description": "Infrastructure growth, advanced AI and ML milestones, cybersecurity depth, and future higher-complexity AI directions as they are earned over time.",
+              "status": "Planned",
+              "image": "assets/graphics/caribai-apps-card.svg",
+              "imageAlt": "Future certification targets visual"
+            }
+          ]
+        },
+        "summary": {
+          "items": [
+            {
+              "title": "Why This Page Matters",
+              "description": "It shows that the growth behind CaribAI is intentional, structured, and backed by more than motivation alone.",
+              "image": "assets/graphics/cyber-ascend-card.svg",
+              "imageAlt": "Certification purpose visual"
+            },
+            {
+              "title": "What It Signals",
+              "description": "Discipline, follow-through, and a willingness to build both practical skills and formal credibility over time.",
+              "image": "assets/graphics/ai-toolkit-card.svg",
+              "imageAlt": "Discipline and growth visual"
+            },
+            {
+              "title": "How It Fits the Brand",
+              "description": "CaribAI is about visible progress, and credentials are part of that larger story when paired with real systems and projects.",
+              "image": "assets/graphics/caribai-apps-card.svg",
+              "imageAlt": "Brand growth visual"
+            }
+          ]
+        },
+        "cta": {
+          "eyebrow": "Next Step",
+          "title": "Read the content and reflections behind the technical growth.",
+          "description": "The blog is where the lessons, ideas, and progress become easier to follow.",
+          "label": "Read the Blog",
+          "href": "/journal"
+        }
+      }
+    },
+    "contactPage": {
+      "content": {
+        "hero": {
+          "eyebrow": "Contact",
+          "title": "Let’s connect around the systems, launches, and ecosystem CaribAI is building.",
+          "description": "Reach out if you want to connect about AI systems, workflow tools, future software directions, partnerships, launch opportunities, media features, or early access to upcoming releases.",
+          "image": "assets/graphics/ai-toolkit-card.svg",
+          "imageAlt": "CaribAI contact visual"
+        },
+        "info": {
+          "title": "Best fit conversations",
+          "items": [
+            "AI systems, workflow tools, and launch-stage offers",
+            "Partnerships, collaborations, and ecosystem conversations",
+            "Media, features, interviews, and brand conversations",
+            "Early access, product updates, and launch opportunities"
+          ],
+          "boxes": [
+            {
+              "title": "Positioning",
+              "description": "CaribAI builds practical AI systems, intelligent workflows, and digital infrastructure that help people and businesses work smarter, improve operations, and create value."
+            },
+            {
+              "title": "Email",
+              "description": "caribailabs@gmail.com",
+              "href": "mailto:caribailabs@gmail.com"
+            }
+          ]
+        },
+        "form": {
+          "buttonLabel": "Send Inquiry",
+          "successMessage": "Your email app should open with a ready-to-send message to CaribAI.",
+          "note": "This opens a ready-to-send email to the CaribAI inbox for now.",
+          "topicPlaceholder": "Partnership, product, media, launch, collaboration...",
+          "messagePlaceholder": "Tell me what you’d like to connect about."
+        }
+      }
+    }
+  },
+  "collections": {
+    "posts": [
+      {
+        "title": "Why platform-based apps become stronger after real product demand",
+        "slug": "platform-apps-after-product-demand",
+        "publishDate": "2026-05-01",
+        "category": "Launch Strategy",
+        "featured": true,
+        "coverImage": "",
+        "coverVideo": "",
+        "excerpt": "The strongest platform-based apps usually come after real product demand, not before it. This is the logic I want CaribAI to keep following.",
+        "body": "Platform apps can look exciting early, but they get much stronger when they grow out of a validated problem and an audience that is already responding to a product.\n\nFor CaribAI, that means digital products can act as the first proof point. They show whether the problem is painful enough, whether people understand the offer, and whether the market is already leaning in.\n\nOnce that proof exists, an app becomes more than an idea. It becomes a clearer next step.\n\n## Why this matters\n\nA product-first path lowers the guesswork. It gives the brand a chance to build momentum, generate revenue earlier, and learn what customers actually want before heavier software work begins.\n\n## The CaribAI lens\n\nThe goal is not to build apps just because apps sound bigger. The goal is to let real product demand pull the next tool into existence.\n\nThat is how the ecosystem stays practical instead of inflated.",
+        "publishedAt": "2026-05-01"
+      },
+      {
+        "title": "How I decide whether a problem is worth turning into a product",
+        "slug": "how-i-choose-product-worthy-problems",
+        "publishDate": "2026-04-29",
+        "category": "Product Thinking",
+        "featured": false,
+        "coverImage": "",
+        "coverVideo": "",
+        "excerpt": "Not every interesting problem deserves a product. These are the filters I use before deciding a problem is worth packaging under CaribAI.",
+        "body": "Every product starts with a problem, but not every problem deserves the time, attention, and focus it takes to become a real offer.\n\nThe first filter is pain. If the issue is not painful enough, the product usually stays optional in the buyer's mind.\n\nThe second filter is speed. If a useful first version can be packaged and launched quickly, that creates faster learning and less drag.\n\nThe third filter is clarity. The best products explain their value quickly. A confused offer is hard to launch even if the idea seems promising.\n\n## Questions I keep coming back to\n\n- Is the pain real enough to pay for?\n- Is the promise clear enough to explain simply?\n- Can I package a useful first version without building forever?\n- Does this solve a problem people already know they have?\n\nCaribAI grows faster when these filters stay practical.",
+        "publishedAt": "2026-04-29"
+      },
+      {
+        "title": "Why CaribAI is both a storefront and a visible product-building journey",
+        "slug": "why-caribai-is-a-storefront-and-journey",
+        "publishDate": "2026-04-26",
+        "category": "Founder Notes",
+        "featured": false,
+        "coverImage": "",
+        "coverVideo": "",
+        "excerpt": "CaribAI is not just a place to list products. It is also a public record of how the products, systems, and skills are being built over time.",
+        "body": "A storefront alone can show what exists, but it does not always show why it exists or how it is growing.\n\nCaribAI needs both sides. It needs a product-facing layer where people can discover offers, and it needs a visible journey that shows the logic, the execution, and the learning behind the brand.\n\n## Why that matters\n\nThis creates trust in a different way. People can see that the products are connected to real thinking, real progress, and real work instead of random launches.\n\nIt also gives the brand a content engine. Build notes, launch lessons, and technical progress all become part of the ecosystem instead of separate side projects.\n\nThat combination makes CaribAI feel more alive and more believable over time.",
+        "publishedAt": "2026-04-26"
+      }
+    ],
+    "products": [
+      {
+        "title": "Cyber Ascend",
+        "slug": "cyber-ascend",
+        "badge": "Current Product",
+        "category": "Current Product",
+        "status": "active",
+        "image": "assets/graphics/cyber-ascend-card.svg",
+        "imageAlt": "Cyber Ascend product visual",
+        "summary": "Career transition system for IT professionals moving into cybersecurity through stronger positioning, preparation, and execution.",
+        "meta": [
+          {
+            "value": "Category: Digital Product"
+          },
+          {
+            "value": "Status: Active Offer"
+          },
+          {
+            "value": "Target: Career Transition"
+          }
+        ],
+        "featured": true,
+        "muted": false,
+        "problemSolved": "Career transition system for IT professionals moving into cybersecurity through stronger positioning, preparation, and execution."
+      },
+      {
+        "title": "AI Toolkit",
+        "slug": "ai-toolkit",
+        "badge": "Current Product",
+        "category": "Current Product",
+        "status": "growing",
+        "image": "assets/graphics/ai-toolkit-card.svg",
+        "imageAlt": "AI Toolkit product visual",
+        "summary": "AI workflow system for IT professionals, knowledge workers, and tech-savvy individuals who want better output, clearer workflows, and stronger results.",
+        "meta": [
+          {
+            "value": "Category: Digital Product"
+          },
+          {
+            "value": "Status: Growing Offer"
+          }
+        ],
+        "featured": false,
+        "muted": true,
+        "problemSolved": "AI workflow system for IT professionals, knowledge workers, and tech-savvy individuals who want better output, clearer workflows, and stronger results."
+      },
+      {
+        "title": "Resume Kit",
+        "slug": "resume-kit",
+        "badge": "Current Product",
+        "category": "Current Product",
+        "status": "active",
+        "image": "assets/graphics/resume-kit-card.svg",
+        "imageAlt": "Resume Kit product visual",
+        "summary": "Job acquisition tool built to help buyers improve presentation, positioning, and response quality across the hiring process.",
+        "meta": [
+          {
+            "value": "Category: Digital Product"
+          },
+          {
+            "value": "Status: Focused Utility"
+          }
+        ],
+        "featured": false,
+        "muted": true,
+        "problemSolved": "Job acquisition tool built to help buyers improve presentation, positioning, and response quality across the hiring process."
+      },
+      {
+        "title": "CaribAI Apps",
+        "slug": "caribai-apps",
+        "badge": "Future Direction",
+        "category": "Future Direction",
+        "status": "future",
+        "image": "assets/graphics/caribai-apps-card.svg",
+        "imageAlt": "CaribAI Apps concept visual",
+        "summary": "AI tools, automation systems, and micro SaaS products that can grow from validated demand, real traction, and stronger engineering depth.",
+        "meta": [
+          {
+            "value": "Category: AI Tools"
+          },
+          {
+            "value": "Status: Validation Path"
+          }
+        ],
+        "featured": false,
+        "muted": true,
+        "problemSolved": "AI tools, automation systems, and micro SaaS products that can grow from validated demand, real traction, and stronger engineering depth."
+      }
+    ],
+    "projects": [
+      {
+        "title": "Cyber Ascend",
+        "slug": "cyber-ascend",
+        "badge": "Current Product",
+        "category": "Current Product",
+        "status": "active",
+        "image": "assets/graphics/cyber-ascend-card.svg",
+        "imageAlt": "Cyber Ascend product visual",
+        "summary": "Career transition system built for IT professionals who want a more practical and better-structured path into cybersecurity.",
+        "meta": [
+          {
+            "value": "Status: Active Direction"
+          },
+          {
+            "value": "Focus: Career Transition"
+          },
+          {
+            "value": "Format: Digital Product"
+          }
+        ],
+        "featured": true,
+        "muted": false,
+        "problemSolved": "Career transition system built for IT professionals who want a more practical and better-structured path into cybersecurity.",
+        "focus": "Career Transition"
+      },
+      {
+        "title": "AI Toolkit",
+        "slug": "ai-toolkit",
+        "badge": "Current Product",
+        "category": "Current Product",
+        "status": "growing",
+        "image": "assets/graphics/ai-toolkit-card.svg",
+        "imageAlt": "AI Toolkit product visual",
+        "summary": "Practical AI execution system for people who want stronger results, clearer workflows, and more leverage from modern AI tools.",
+        "meta": [
+          {
+            "value": "Status: Growing Offer"
+          },
+          {
+            "value": "Focus: Productivity"
+          }
+        ],
+        "featured": false,
+        "muted": true,
+        "problemSolved": "Practical AI execution system for people who want stronger results, clearer workflows, and more leverage from modern AI tools.",
+        "focus": "Productivity"
+      },
+      {
+        "title": "Resume Kit",
+        "slug": "resume-kit",
+        "badge": "Current Product",
+        "category": "Current Product",
+        "status": "focused",
+        "image": "assets/graphics/resume-kit-card.svg",
+        "imageAlt": "Resume Kit product visual",
+        "summary": "Job acquisition support product built to improve materials, positioning, and response quality during the hiring process.",
+        "meta": [
+          {
+            "value": "Status: Focused Utility"
+          },
+          {
+            "value": "Focus: Career Support"
+          }
+        ],
+        "featured": false,
+        "muted": true,
+        "problemSolved": "Job acquisition support product built to improve materials, positioning, and response quality during the hiring process.",
+        "focus": "Career Support"
+      },
+      {
+        "title": "CaribAI Apps",
+        "slug": "caribai-apps",
+        "badge": "Future Direction",
+        "category": "Future Direction",
+        "status": "future",
+        "image": "assets/graphics/caribai-apps-card.svg",
+        "imageAlt": "CaribAI Apps concept visual",
+        "summary": "AI apps, automation systems, and future software businesses that grow out of validated demand and stronger technical signal.",
+        "meta": [
+          {
+            "value": "Status: Validation Path"
+          },
+          {
+            "value": "Focus: AI Tools"
+          }
+        ],
+        "featured": false,
+        "muted": true,
+        "problemSolved": "AI apps, automation systems, and future software businesses that grow out of validated demand and stronger technical signal.",
+        "focus": "AI Tools"
+      }
+    ]
+  }
+}
