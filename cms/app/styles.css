@@ -243,6 +243,14 @@ img {
   min-width: 0;
 }
 
+.editor-main {
+  grid-column: 1;
+}
+
+.editor-side {
+  grid-column: 2;
+}
+
 .editor-panel {
   padding: 18px;
   min-width: 0;
@@ -724,6 +732,11 @@ code {
 @media (max-width: 1100px) {
   .editor-layout {
     grid-template-columns: 1fr;
+  }
+
+  .editor-main,
+  .editor-side {
+    grid-column: auto;
   }
 }
 
