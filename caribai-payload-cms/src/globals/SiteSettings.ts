@@ -1,6 +1,6 @@
 import type { GlobalConfig } from 'payload'
 
-import { footerColumnFields, linkFields } from '@/fields/shared'
+import { footerColumnFields, linkFields } from '../fields/shared'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings',
@@ -10,7 +10,6 @@ export const SiteSettings: GlobalConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 20,
   },
   fields: [
     {

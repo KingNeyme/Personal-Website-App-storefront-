@@ -6,6 +6,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 const nextConfig = {
   reactStrictMode: true,
   typedRoutes: false,
+  output: 'standalone',
   turbopack: {
     root: process.cwd(),
   },

@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
-import { seoFields } from '@/fields/shared'
+import { seoFields } from '../fields/shared'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -11,7 +11,6 @@ export const Posts: CollectionConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 30,
   },
   fields: [
     { name: 'title', type: 'text', required: true },

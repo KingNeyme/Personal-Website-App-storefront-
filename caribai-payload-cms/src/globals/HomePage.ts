@@ -1,6 +1,6 @@
 import type { GlobalConfig } from 'payload'
 
-import { badgeCardFields, ctaFields, heroFields, seoFields, simpleCTAFields, summaryItemFields } from '@/fields/shared'
+import { badgeCardFields, ctaFields, heroFields, seoFields, simpleCTAFields, summaryItemFields } from '../fields/shared'
 
 export const HomePage: GlobalConfig = {
   slug: 'home-page',
@@ -10,7 +10,6 @@ export const HomePage: GlobalConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 20,
   },
   fields: [
     {

@@ -4,8 +4,12 @@ import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
 
 export const metadata: Metadata = {
-  title: 'CaribAI Payload Platform',
-  description: 'The next-generation CaribAI content and application platform powered by Payload.',
+  title: {
+    default: 'CaribAI',
+    template: '%s | CaribAI',
+  },
+  description:
+    'CaribAI builds intelligent systems, digital infrastructure, and practical AI products shaped for real-world execution.',
 }
 
 export default function AppLayout({ children }: { children: ReactNode }) {

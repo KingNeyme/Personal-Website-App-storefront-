@@ -8,7 +8,6 @@ export const CertificationsPage: GlobalConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 20,
   },
   fields: [
     {

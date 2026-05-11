@@ -10,7 +10,6 @@ export const Media: CollectionConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 15,
   },
   fields: [
     {

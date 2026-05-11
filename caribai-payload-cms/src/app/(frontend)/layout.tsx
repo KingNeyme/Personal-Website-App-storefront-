@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import Link from 'next/link'
 
 import { getPayloadClient } from '@/lib/payload'
 
@@ -27,21 +28,21 @@ export default async function FrontendLayout({ children }: { children: ReactNode
     <div className="public-shell">
       <header className="public-header">
         <div className="shell public-header__inner">
-          <a className="public-brand" href="/">
+          <Link className="public-brand" href="/">
             <span className="public-brand__name">{brandName}</span>
             <span className="public-brand__tagline">{tagline}</span>
-          </a>
+          </Link>
           <nav className="public-nav" aria-label="Primary">
             {navItems.map((item) => (
-              <a key={`${item.label}-${item.href}`} href={item.href || '#'}>
+              <Link key={`${item.label}-${item.href}`} href={item.href || '#'}>
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
           {headerAction?.label && headerAction?.href ? (
-            <a className="button button--primary public-header__cta" href={headerAction.href}>
+            <Link className="button button--primary public-header__cta" href={headerAction.href}>
               {headerAction.label}
-            </a>
+            </Link>
           ) : null}
         </div>
       </header>
@@ -60,9 +61,9 @@ export default async function FrontendLayout({ children }: { children: ReactNode
                 <h3>{column.heading}</h3>
                 <div className="public-footer__column-links">
                   {(column.links || []).map((link: LinkItem) => (
-                    <a key={`${link.label}-${link.href}`} href={link.href || '#'}>
+                    <Link key={`${link.label}-${link.href}`} href={link.href || '#'}>
                       {link.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

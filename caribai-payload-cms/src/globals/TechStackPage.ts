@@ -1,8 +1,8 @@
-import type { GlobalConfig } from 'payload'
+import type { Field, GlobalConfig } from 'payload'
 
-import { heroFields, seoFields, simpleCTAFields, summaryItemFields } from '@/fields/shared'
+import { heroFields, seoFields, simpleCTAFields, summaryItemFields } from '../fields/shared'
 
-const toolFields = [
+const toolFields: Field[] = [
   { name: 'title', type: 'text', required: true },
   { name: 'label', type: 'text' },
   { name: 'logo', type: 'text' },
@@ -17,7 +17,6 @@ export const TechStackPage: GlobalConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 20,
   },
   fields: [
     { name: 'hero', type: 'group', fields: heroFields() },

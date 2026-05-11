@@ -1,6 +1,6 @@
 import type { GlobalConfig } from 'payload'
 
-import { heroFields, seoFields, simpleCTAFields, summaryItemFields } from '@/fields/shared'
+import { heroFields, seoFields, simpleCTAFields, summaryItemFields } from '../fields/shared'
 
 export const JournalPage: GlobalConfig = {
   slug: 'journal-page',
@@ -10,7 +10,6 @@ export const JournalPage: GlobalConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 20,
   },
   fields: [
     { name: 'hero', type: 'group', fields: heroFields() },

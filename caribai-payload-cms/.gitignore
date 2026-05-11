@@ -7,3 +7,4 @@ caribai.db
 caribai.db-journal
 caribai.db-shm
 caribai.db-wal
+*.tsbuildinfo

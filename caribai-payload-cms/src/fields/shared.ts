@@ -67,10 +67,8 @@ export const simpleCTAFields = (): Field[] => [
   { name: 'eyebrow', label: 'Eyebrow', type: 'text' },
   { name: 'title', label: 'Title', type: 'text', required: true },
   { name: 'description', label: 'Description', type: 'textarea', required: true },
-  ...linkFields().map((field) => ({
-    ...field,
-    label: field.name === 'label' ? 'Button Label' : 'Button Link',
-  })),
+  { name: 'label', label: 'Button Label', type: 'text', required: true },
+  { name: 'href', label: 'Button Link', type: 'text', required: true },
 ]
 
 export const seoFields = (): Field[] => [

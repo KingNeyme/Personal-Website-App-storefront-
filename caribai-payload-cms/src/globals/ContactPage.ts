@@ -8,7 +8,6 @@ export const ContactPage: GlobalConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 20,
   },
   fields: [
     {

@@ -9,11 +9,13 @@ type Args = {
   searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
+type PayloadSearchParams = Promise<Record<string, string | string[]>>
+
 export const generateMetadata = ({ params, searchParams }: Args): Promise<Metadata> =>
   generatePageMetadata({
     config: Promise.resolve(config),
     params,
-    searchParams,
+    searchParams: searchParams as PayloadSearchParams,
   })
 
 export default function PayloadAdminPage({ params, searchParams }: Args) {
@@ -22,7 +24,7 @@ export default function PayloadAdminPage({ params, searchParams }: Args) {
       config={Promise.resolve(config)}
       importMap={importMap}
       params={params as Promise<{ segments: string[] }>}
-      searchParams={searchParams as Promise<Record<string, string | string[]>>}
+      searchParams={searchParams as PayloadSearchParams}
     />
   )
 }

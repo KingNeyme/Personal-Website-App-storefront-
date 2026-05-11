@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "payload migrate && next build",
-    "start": "next start",
+    "build": "payload migrate && next build --webpack",
+    "start": "node .next/standalone/server.js",
     "payload": "payload",
     "generate:seed": "node scripts/build-seed-data.mjs",
     "generate:media-manifest": "node scripts/build-media-manifest.mjs",
