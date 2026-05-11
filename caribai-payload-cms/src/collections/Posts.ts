@@ -4,6 +4,10 @@ import { seoFields } from '../fields/shared'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
+  labels: {
+    singular: 'Journal Entry',
+    plural: 'Journal',
+  },
   admin: {
     group: 'Publishing',
     useAsTitle: 'title',

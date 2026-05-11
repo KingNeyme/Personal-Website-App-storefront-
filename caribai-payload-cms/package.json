@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
+    "dev:preview": "NEXT_PUBLIC_SITE_URL=http://127.0.0.1:4010 next dev --hostname 127.0.0.1 --port 4010",
     "build": "next build --webpack",
     "start": "node .next/standalone/server.js",
     "payload": "payload",
@@ -15,7 +16,8 @@
     "generate:types": "payload generate:types",
     "import:seed": "node --import tsx scripts/import-seed.ts",
     "check:env": "node scripts/check-env.mjs",
-    "create:admin": "node --import tsx scripts/create-admin.ts"
+    "create:admin": "node --import tsx scripts/create-admin.ts",
+    "unlock:admin": "node scripts/unlock-admin.mjs"
   },
   "dependencies": {
     "@payloadcms/next": "^3.0.0",
