@@ -25,6 +25,7 @@ html,
 body {
   margin: 0;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -69,6 +70,7 @@ img {
   display: grid;
   grid-template-columns: 224px minmax(0, 1fr);
   min-height: 100vh;
+  width: 100%;
 }
 
 .cms-sidebar {
@@ -133,8 +135,11 @@ img {
 }
 
 .cms-main {
+  width: 100%;
+  min-width: 0;
   padding: 20px;
   max-width: 1520px;
+  margin-inline: auto;
 }
 
 .cms-topbar,
@@ -228,16 +233,19 @@ img {
   display: grid;
   grid-template-columns: minmax(0, 1.55fr) 316px;
   gap: 16px;
+  align-items: start;
 }
 
 .editor-main,
 .editor-side {
   display: grid;
   gap: 16px;
+  min-width: 0;
 }
 
 .editor-panel {
   padding: 18px;
+  min-width: 0;
 }
 
 .panel-head {
@@ -313,6 +321,7 @@ img {
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--panel-soft);
+  min-width: 0;
 }
 
 .content-row h3,
@@ -382,6 +391,7 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
   margin-bottom: 14px;
   padding: 12px 13px;
   border: 1px solid var(--line);
@@ -392,12 +402,16 @@ img {
 .editor-toolbar-meta {
   display: grid;
   gap: 8px;
+  min-width: 0;
+  flex: 1 1 280px;
 }
 
 .editor-toolbar-actions {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  min-width: 0;
+  justify-content: flex-end;
 }
 
 .section-tabs {
@@ -435,6 +449,7 @@ img {
 .field-stack {
   display: grid;
   gap: 14px;
+  min-width: 0;
 }
 
 .field-group {
@@ -503,6 +518,7 @@ img {
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--panel-soft);
+  min-width: 0;
 }
 
 .nested-panel > .field-stack,
@@ -670,6 +686,14 @@ img {
   min-width: 0;
 }
 
+.content-row > div,
+.table-row > div,
+.offer-row > div,
+.mini-panel,
+.asset-card {
+  min-width: 0;
+}
+
 .table-meta {
   display: flex;
   align-items: center;
@@ -677,10 +701,24 @@ img {
   flex-wrap: wrap;
 }
 
+.content-row h3,
+.content-row p,
+.table-row h3,
+.table-row p,
+.offer-row h3,
+.offer-row p,
+.mini-panel h3,
+.mini-panel p,
+.field-help,
+code {
+  overflow-wrap: anywhere;
+}
+
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   font-size: 0.78rem;
   color: var(--muted-strong);
+  white-space: normal;
 }
 
 @media (max-width: 1100px) {
