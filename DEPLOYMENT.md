@@ -1,73 +1,70 @@
 # CaribAI Deployment Notes
 
-## Vercel
+## Current Public Site
 
-This site is ready to deploy as a static project on Vercel.
+The active front-facing CaribAI site is the static site at the repository root.
 
-### What is already prepared
+It includes:
 
-- Static HTML, CSS, and JavaScript pages
-- A content-driven blog
-- A Decap CMS admin at `/admin`
-- Vercel configuration in `vercel.json`
+- static HTML pages
+- shared CSS and JavaScript
+- JSON-driven site content
+- a JSON-driven journal/blog
+- local assets under `assets/`
 
-### Deploy steps
+## Vercel Deployment
 
-1. Push the current repo to GitHub.
-2. Create a new Vercel project and import this repository.
-3. Keep the project as a static site.
+This project is currently set up to deploy as a static Vercel site.
+
+Relevant file:
+
+- `vercel.json`
+
+### Deploy Steps
+
+1. Push the repository to GitHub.
+2. Import the repository into Vercel.
+3. Keep the deployment as a static site.
 4. Deploy.
-5. After deploy, update:
-   - `admin/config.yml`
-   - `site_url`
-   - `display_url`
-   with your real Vercel URL or custom domain.
 
-## Decap CMS on Vercel
+## What The Public Site Depends On
 
-The content model is ready, but the GitHub backend needs an authentication helper for live login.
+### Core files
 
-### Important
-
-Decap's GitHub backend requires a server for authentication. Netlify provides this directly for Netlify-hosted sites, but for Vercel you need an external OAuth helper or proxy.
-
-### In practice
-
-For a live Vercel + Decap setup, you still need:
-
-1. A GitHub OAuth app
-2. An OAuth proxy/helper URL
-3. That proxy URL added to `admin/config.yml` as `base_url`
-
-### Current content setup
-
-Blog content lives in:
-
-- `content/blog/posts.json`
-
-The public blog pages are:
-
+- `index.html`
+- `about.html`
+- `projects.html`
+- `storefront.html`
+- `journey.html`
+- `tech-stack.html`
+- `certifications.html`
+- `contact.html`
 - `blog.html`
 - `blog-post.html`
+- `styles.css`
+- `script.js`
+- `site-content.js`
+- `blog.js`
 
-The admin UI is:
+### Content files
 
-- `admin/index.html`
+- `content/site/`
+- `content/blog/`
 
-## Short-term publishing options
+### Assets
 
-### Option 1
+- `assets/`
 
-Deploy the site to Vercel first, then finish the Decap auth step after the public site is live.
+## Contact Form Note
 
-### Option 2
-
-If you want the easiest built-in Decap authentication path immediately, host the site on Netlify instead of Vercel.
-
-## Temporary note
-
-Form handling currently opens the local email client using:
+The current contact flow still opens the local email client and targets:
 
 - `caribailabs@gmail.com`
 
-This is enough for a first launch, but you can later replace it with Formspree, Brevo, or your own backend.
+That is fine for now, but it can later be replaced with a proper form backend such as Formspree, Brevo, or a custom submission service.
+
+## New Direction
+
+The old Decap and Payload CMS layers have been removed.
+
+The next CMS/admin direction should be built cleanly around the existing public site instead of reviving those earlier experiments.

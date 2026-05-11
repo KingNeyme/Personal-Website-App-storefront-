@@ -83,12 +83,6 @@
         "label": "Hosting",
         "logo": "https://assets.vercel.com/image/upload/front/favicon/vercel/57x57.png",
         "description": "Fast deployment and hosting for the public-facing CaribAI site and future frontend experiences."
-      },
-      {
-        "title": "Decap CMS",
-        "label": "Content Management",
-        "logo": "https://decapcms.org/img/decap-cms-logo.svg",
-        "description": "Content editing workflow for blog posts, stack updates, and future site-managed sections without direct code edits."
       }
     ]
   },

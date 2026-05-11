@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CaribAI CMS | Content Manager</title>
+    <meta
+      name="description"
+      content="A calm, premium CaribAI content manager for editing the public site, journal, storefront, and shared assets."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="cms-shell">
+      <aside class="cms-sidebar">
+        <div class="cms-brand">
+          <img src="../../assets/CariAI-LOGO-Transparent.png" alt="CaribAI logo" class="cms-brand-logo" />
+        </div>
+
+        <nav class="cms-nav" aria-label="CMS sections">
+          <button class="cms-nav-item is-active" data-view="overview" type="button">Overview</button>
+          <button class="cms-nav-item" data-view="pages" type="button">Pages</button>
+          <button class="cms-nav-item" data-view="journal" type="button">Journal</button>
+          <button class="cms-nav-item" data-view="storefront" type="button">Storefront</button>
+          <button class="cms-nav-item" data-view="media" type="button">Media</button>
+          <button class="cms-nav-item" data-view="settings" type="button">Settings</button>
+        </nav>
+
+        <div class="cms-sidebar-foot">
+          <a class="sidebar-link" href="../../index.html">Open public site</a>
+          <p>Built to manage the brand site simply, without clutter.</p>
+        </div>
+      </aside>
+
+      <main class="cms-main">
+        <header class="cms-topbar">
+          <div>
+            <p class="overline" id="viewEyebrow">Workspace</p>
+            <h1 id="viewTitle">CaribAI content manager</h1>
+            <p class="intro-copy" id="viewIntroCopy">
+              A simpler editorial layer for controlling the front end, publishing content, and keeping the site clean.
+            </p>
+          </div>
+          <div class="cms-topbar-actions">
+            <button class="ghost-button" type="button">Preview site</button>
+            <button class="primary-button" type="button">Create post</button>
+          </div>
+        </header>
+
+        <section class="cms-view is-active" data-view-panel="overview">
+          <div class="editor-layout">
+            <section class="editor-main">
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Editing Queue</p>
+                    <h2>What matters most right now</h2>
+                  </div>
+                </div>
+                <div class="content-list">
+                  <article class="content-row">
+                    <div>
+                      <h3>Homepage</h3>
+                      <p>Core positioning, hero, CTA, and storefront lead-in.</p>
+                    </div>
+                    <button class="row-action" data-view-target="pages" type="button">Edit</button>
+                  </article>
+                  <article class="content-row">
+                    <div>
+                      <h3>Storefront</h3>
+                      <p>Offer stack, product descriptions, and early-access flow.</p>
+                    </div>
+                    <button class="row-action" data-view-target="storefront" type="button">Manage</button>
+                  </article>
+                  <article class="content-row">
+                    <div>
+                      <h3>Journal</h3>
+                      <p>Founder notes, featured story, and publishing quality.</p>
+                    </div>
+                    <button class="row-action" data-view-target="journal" type="button">Open</button>
+                  </article>
+                </div>
+              </article>
+
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Content Structure</p>
+                    <h2>How the site is organized</h2>
+                  </div>
+                </div>
+                <div class="simple-grid">
+                  <article class="mini-panel">
+                    <h3>Pages</h3>
+                    <p>Eight singleton page surfaces power the public brand site.</p>
+                  </article>
+                  <article class="mini-panel">
+                    <h3>Journal</h3>
+                    <p>Blog-style publishing with featured stories, categories, and covers.</p>
+                  </article>
+                  <article class="mini-panel">
+                    <h3>Storefront</h3>
+                    <p>Visible digital products and future software directions.</p>
+                  </article>
+                  <article class="mini-panel">
+                    <h3>Media</h3>
+                    <p>Brand logos, graphics, uploads, and tech-stack logo dependencies.</p>
+                  </article>
+                </div>
+              </article>
+            </section>
+
+            <aside class="editor-side">
+              <article class="editor-panel">
+                <p class="overline">Principle</p>
+                <h2>Keep it editorial, not analytical.</h2>
+                <p>
+                  The CMS should feel like a beautiful content manager: edit, update, organize, preview, and publish
+                  without visual clutter or dashboard noise.
+                </p>
+              </article>
+
+              <article class="editor-panel">
+                <p class="overline">Next Build Step</p>
+                <h2>First working editor</h2>
+                <p>Load the real page JSON into forms, let staff edit fields, and save those changes back safely.</p>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="cms-view" data-view-panel="pages">
+          <div class="editor-layout">
+            <aside class="editor-side">
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Page Directory</p>
+                    <h2>Singleton editors</h2>
+                  </div>
+                </div>
+                <div class="page-list" id="pagesList"></div>
+              </article>
+            </aside>
+
+            <section class="editor-main">
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Editor</p>
+                    <h2 id="pageEditorTitle">Select a page to edit</h2>
+                    <p class="intro-copy" id="pageEditorSummary">
+                      The first real editor flow loads the current page JSON, supports form editing, and lets you save
+                      a browser draft or export updated JSON.
+                    </p>
+                  </div>
+                  <span class="badge" id="pageEditorStatus">Idle</span>
+                </div>
+
+                <div class="editor-toolbar" id="pageEditorToolbar" hidden>
+                  <code id="pageEditorSource"></code>
+                  <div class="editor-toolbar-actions">
+                    <button class="ghost-button" id="pageFileSaveButton" type="button">Save to file</button>
+                    <button class="ghost-button" id="pageResetButton" type="button">Reset</button>
+                    <button class="ghost-button" id="pageDraftButton" type="button">Save draft</button>
+                    <button class="primary-button" id="pageDownloadButton" type="button">Download JSON</button>
+                  </div>
+                </div>
+
+                <div class="section-tabs" id="pageSectionTabs" hidden></div>
+                <div id="pageEditorForm"></div>
+              </article>
+            </section>
+          </div>
+        </section>
+
+        <section class="cms-view" data-view-panel="journal">
+          <div class="editor-layout">
+            <aside class="editor-side">
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Post Directory</p>
+                    <h2>Journal entries</h2>
+                  </div>
+                </div>
+                <div class="page-list" id="journalList"></div>
+              </article>
+            </aside>
+
+            <section class="editor-main">
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Post Editor</p>
+                    <h2 id="journalEditorTitle">Select a post to edit</h2>
+                    <p class="intro-copy" id="journalEditorSummary">
+                      Edit the real journal content, keep drafts locally, and export or save the updated post source.
+                    </p>
+                  </div>
+                  <span class="badge" id="journalEditorStatus">Idle</span>
+                </div>
+
+                <div class="editor-toolbar" id="journalEditorToolbar" hidden>
+                  <code id="journalEditorSource"></code>
+                  <div class="editor-toolbar-actions">
+                    <button class="ghost-button" id="journalFileSaveButton" type="button">Save to file</button>
+                    <button class="ghost-button" id="journalResetButton" type="button">Reset</button>
+                    <button class="ghost-button" id="journalDraftButton" type="button">Save draft</button>
+                    <button class="primary-button" id="journalDownloadButton" type="button">Download JSON</button>
+                  </div>
+                </div>
+
+                <div id="journalEditorForm"></div>
+              </article>
+            </section>
+
+            <aside class="editor-side">
+              <article class="editor-panel">
+                <p class="overline">Publishing Rules</p>
+                <ul class="bullet-list">
+                  <li>Keep titles concise and strong.</li>
+                  <li>Use excerpts to support the public brand story.</li>
+                  <li>Feature only one article that deserves homepage emphasis.</li>
+                </ul>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="cms-view" data-view-panel="storefront">
+          <article class="editor-panel">
+            <div class="panel-head">
+              <div>
+                <p class="overline">Storefront</p>
+                <h2>Manage visible offers</h2>
+              </div>
+            </div>
+            <div class="offer-list" id="storefrontList"></div>
+          </article>
+        </section>
+
+        <section class="cms-view" data-view-panel="media">
+          <div class="editor-layout">
+            <section class="editor-main">
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Media</p>
+                    <h2>Core asset groups</h2>
+                  </div>
+                </div>
+                <div class="content-list">
+                  <article class="content-row">
+                    <div>
+                      <h3>Brand Logos</h3>
+                      <p>Main wordmarks and logo variants used across the site.</p>
+                    </div>
+                    <span class="row-meta">2 tracked assets</span>
+                  </article>
+                  <article class="content-row">
+                    <div>
+                      <h3>Section Graphics</h3>
+                      <p>Hero and panel visuals used throughout the public pages.</p>
+                    </div>
+                    <span class="row-meta">4 tracked graphics</span>
+                  </article>
+                  <article class="content-row">
+                    <div>
+                      <h3>Tech Logos</h3>
+                      <p>Currently remote-heavy and should later get fallback handling.</p>
+                    </div>
+                    <span class="row-meta">Needs audit</span>
+                  </article>
+                </div>
+              </article>
+            </section>
+            <aside class="editor-side">
+              <article class="editor-panel">
+                <p class="overline">Asset Preview</p>
+                <div class="asset-preview-row">
+                  <img src="../../assets/CariAI-LOGO-Transparent.png" alt="CaribAI wordmark" />
+                  <img src="../../assets/CaribAiTrans.png" alt="CaribAI alt mark" />
+                </div>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <section class="cms-view" data-view-panel="settings">
+          <article class="editor-panel">
+            <div class="panel-head">
+              <div>
+                <p class="overline">Settings</p>
+                <h2>Shared front-end controls</h2>
+              </div>
+            </div>
+            <div class="content-list">
+              <article class="content-row">
+                <div>
+                  <h3>Navigation and footer</h3>
+                  <p>Menu labels, footer ordering, and shared route controls.</p>
+                </div>
+                <button class="row-action" type="button">Open</button>
+              </article>
+              <article class="content-row">
+                <div>
+                  <h3>Contact controls</h3>
+                  <p>Email destination, lead wording, and form behavior.</p>
+                </div>
+                <button class="row-action" type="button">Open</button>
+              </article>
+              <article class="content-row">
+                <div>
+                  <h3>Brand controls</h3>
+                  <p>Primary logos, shared descriptive copy, and later social links.</p>
+                </div>
+                <button class="row-action" type="button">Open</button>
+              </article>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
