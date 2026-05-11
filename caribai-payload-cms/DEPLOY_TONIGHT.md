@@ -51,8 +51,14 @@ As of July 22, 2025, Vercel no longer provisions a first-party "Vercel Postgres"
    - `PAYLOAD_SECRET`
    - `NEXT_PUBLIC_SITE_URL=https://your-domain.com`
    - `HOSTNAME=0.0.0.0`
-6. Deploy.
-7. After the database connection is live, import the baseline content:
+6. Run the migration explicitly against Postgres before or right after the first deploy:
+
+```bash
+DATABASE_URL=postgres://... npm run migrate
+```
+
+7. Deploy.
+8. After the database connection is live, import the baseline content:
 
 ```bash
 DATABASE_URL=postgres://... npm run import:seed
@@ -72,6 +78,22 @@ This seeds:
 - posts
 - products
 - projects
+
+## Why migrations are separate
+
+The Vercel build now runs only:
+
+```bash
+npm run build
+```
+
+and the database migration is run separately with:
+
+```bash
+npm run migrate
+```
+
+This avoids deployment failures caused by a database migration step blocking or failing inside the Vercel build pipeline.
 
 ## Health check
 
