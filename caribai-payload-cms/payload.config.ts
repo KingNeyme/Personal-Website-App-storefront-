@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { buildConfig } from 'payload'
@@ -23,6 +24,18 @@ import { TechStackPage } from './src/globals/TechStackPage'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
+const postgresURL = process.env.DATABASE_URL || process.env.POSTGRES_URL
+const databaseAdapter = postgresURL
+  ? postgresAdapter({
+      pool: {
+        connectionString: postgresURL,
+      },
+    })
+  : sqliteAdapter({
+      client: {
+        url: process.env.DATABASE_URI || 'file:./caribai.db',
+      },
+    })
 
 export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || 'replace-me-in-env',
@@ -50,9 +63,5 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'src/payload-types.ts'),
   },
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URI || 'file:./caribai.db',
-    },
-  }),
+  db: databaseAdapter,
 })

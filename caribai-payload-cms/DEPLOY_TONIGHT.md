@@ -1,57 +1,77 @@
-# Deploy CaribAI Tonight
+# Deploy CaribAI Permanently
 
-This Payload app can be hosted tonight, but the right host depends on the database choice.
+This Payload app is now aimed at the permanent CaribAI stack:
 
-## Fastest path tonight
+- Vercel for the frontend / app runtime
+- Payload for admin and content operations
+- Postgres for the production database
 
-### Option A: Railway with the current SQLite setup
-Use this if the goal is to get the new Payload-powered CaribAI app online quickly with minimal rework.
+The SQLite path remains only as a local fallback while Postgres is being provisioned.
 
-Why:
-- the app already runs on SQLite locally
-- Railway supports deploying containerized apps
-- Railway supports persistent volumes, which matters for SQLite-backed apps
+## Recommended permanent stack
 
-What to configure:
-- deploy the repo or the `caribai-payload-cms` directory as a service
-- use the included `Dockerfile`
-- set `PAYLOAD_SECRET`
-- keep `DATABASE_URI=file:./caribai.db`
-- attach a persistent volume so the SQLite file survives restarts
-
-## Better long-term path
-
-### Option B: Vercel + Postgres
-Use this if the goal is the cleanest long-term frontend/platform architecture.
+### Vercel + Payload + Postgres
+Use this if the goal is the real long-term CaribAI platform.
 
 Why:
-- Payload can run anywhere Next.js runs
-- Vercel is strong for the Next.js side
-- Postgres is a better long-term production database than SQLite for a serious business app
+- Payload runs well in a Next.js deployment model
+- Vercel is strong for the frontend and app hosting layer
+- Postgres is the right production database for a serious CMS/business platform
+- this avoids building permanent infrastructure around SQLite
 
-What changes are needed:
-- replace `@payloadcms/db-sqlite` with a Postgres adapter
-- switch the DB config in `payload.config.ts`
-- provide a real Postgres connection string
-- choose a Postgres provider such as Vercel Postgres / Neon / Railway Postgres
+## Database note
 
-## Recommended decision
+As of July 22, 2025, Vercel no longer provisions a first-party "Vercel Postgres" database. Vercel now connects Postgres through Marketplace providers such as Neon. The app is therefore configured to work with standard Postgres connection strings through:
 
-If you need the app live tonight:
-- deploy **Railway first**
-- keep SQLite temporarily
-- move to **Postgres** after launch hardening
+- `DATABASE_URL`
+- `POSTGRES_URL`
 
-If you want the most future-proof production shape:
-- migrate to **Postgres** before public cutover
-- deploy the app on **Vercel** after the DB switch
+## How the app now behaves
+
+- If `DATABASE_URL` or `POSTGRES_URL` is present, Payload uses Postgres
+- If neither is present, Payload falls back to local SQLite for development only
 
 ## Required env vars
 
 - `PAYLOAD_SECRET`
-- `DATABASE_URI`
+- `DATABASE_URL` or `POSTGRES_URL`
 - `NEXT_PUBLIC_SITE_URL`
 - `PORT` (optional, defaults to `3000`)
+- `HOSTNAME` (recommended as `0.0.0.0` in hosted environments)
+
+## Vercel setup
+
+1. Push `caribai-payload-cms` to GitHub.
+2. Create a Vercel project using `caribai-payload-cms` as the root directory.
+3. Add a Postgres provider from the Vercel Marketplace, or provision Neon manually.
+4. Ensure Vercel injects either:
+   - `POSTGRES_URL`
+   - or `DATABASE_URL`
+5. Add:
+   - `PAYLOAD_SECRET`
+   - `NEXT_PUBLIC_SITE_URL=https://your-domain.com`
+   - `HOSTNAME=0.0.0.0`
+6. Deploy.
+7. After the database connection is live, import the baseline content:
+
+```bash
+DATABASE_URL=postgres://... npm run import:seed
+```
+
+This seeds:
+- site settings
+- homepage
+- about
+- journal page
+- storefront page
+- projects page
+- journey
+- tech stack
+- certifications
+- contact
+- posts
+- products
+- projects
 
 ## Health check
 
@@ -85,40 +105,16 @@ Expected response:
    - a soft internal preview
    - or the real public CaribAI cutover
 
-## Fastest Railway setup
-
-1. Push `caribai-payload-cms` to GitHub.
-2. Create a new Railway service from the repo.
-3. Set the service root directory to `caribai-payload-cms`.
-4. Let Railway build from the included `Dockerfile`.
-5. Add environment variables:
-   - `PAYLOAD_SECRET`
-   - `DATABASE_URI=file:./caribai.db`
-   - `NEXT_PUBLIC_SITE_URL=https://your-railway-domain.up.railway.app`
-   - `PORT=3000`
-   - `HOSTNAME=0.0.0.0`
-6. Attach a persistent volume so `caribai.db` survives restarts.
-7. After deploy, check:
-   - `/api/health`
-   - `/admin`
-   - `/`
-
 ## Local production smoke test
 
 Run:
 
 ```bash
 npm run build
-PORT=4011 HOSTNAME=127.0.0.1 npm run start
+DATABASE_URL=postgres://... PORT=4011 HOSTNAME=127.0.0.1 npm run start
 ```
 
 Then check:
 
 - `http://127.0.0.1:4011/api/health`
 - `http://127.0.0.1:4011/admin`
-
-## Recommended tonight workflow
-
-1. Deploy the Payload app as an internal preview first.
-2. Confirm admin login, media upload, and page rendering.
-3. Then point your public domain after the preview feels stable.

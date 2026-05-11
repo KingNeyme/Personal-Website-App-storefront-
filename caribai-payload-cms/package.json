@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@payloadcms/next": "^3.0.0",
+    "@payloadcms/db-postgres": "^3.0.0",
     "@payloadcms/db-sqlite": "^3.0.0",
     "@payloadcms/richtext-lexical": "^3.0.0",
     "dotenv": "^16.4.5",
