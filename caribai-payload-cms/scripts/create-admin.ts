@@ -39,6 +39,8 @@ const main = async () => {
         password,
         displayName,
         role,
+        loginAttempts: 0,
+        lockUntil: null,
       },
     })
 
@@ -53,6 +55,8 @@ const main = async () => {
       password,
       displayName,
       role,
+      loginAttempts: 0,
+      lockUntil: null,
     },
   })
 
