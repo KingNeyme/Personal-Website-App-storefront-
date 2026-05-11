@@ -44,26 +44,26 @@ export default buildConfig({
     user: Users.slug,
     components: {
       beforeLogin: [
-        '/src/components/admin/LoginPanel.tsx#LoginPanel',
+        './components/admin/LoginPanel.tsx#LoginPanel',
       ],
       beforeNav: [
-        '/src/components/admin/SidebarBrand.tsx#SidebarBrand',
+        './components/admin/SidebarBrand.tsx#SidebarBrand',
       ],
       afterNavLinks: [
-        '/src/components/admin/SidebarHelp.tsx#SidebarHelp',
+        './components/admin/SidebarHelp.tsx#SidebarHelp',
       ],
       graphics: {
-        Icon: '/src/components/admin/BrandLogo.tsx#AdminIcon',
-        Logo: '/src/components/admin/BrandLogo.tsx#AdminLogo',
+        Icon: './components/admin/BrandLogo.tsx#AdminIcon',
+        Logo: './components/admin/BrandLogo.tsx#AdminLogo',
       },
       views: {
         dashboard: {
-          Component: '/src/components/admin/DashboardView.tsx#DashboardView',
+          Component: './components/admin/DashboardView.tsx#DashboardView',
         },
       },
     },
     importMap: {
-      baseDir: path.resolve(dirname, './src/app/(payload)'),
+      baseDir: path.resolve(dirname, './src'),
       importMapFile: path.resolve(dirname, './src/app/(payload)/admin/importMap.js'),
     },
   },
