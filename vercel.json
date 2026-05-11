@@ -1,6 +1,24 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/cms",
+      "destination": "/cms/index.html"
+    },
+    {
+      "source": "/cms/",
+      "destination": "/cms/index.html"
+    },
+    {
+      "source": "/cms/app",
+      "destination": "/cms/app/index.html"
+    },
+    {
+      "source": "/cms/app/",
+      "destination": "/cms/app/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/content/(.*)",
