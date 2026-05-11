@@ -450,6 +450,21 @@ button,
   background: #ffffff;
 }
 
+.login__form input,
+.login__form textarea,
+.login__form select,
+.login__form .field-type input,
+.login__form .field-type textarea,
+.login__form .field-type select {
+  color: var(--caribai-admin-text) !important;
+  caret-color: var(--caribai-admin-primary);
+}
+
+.login__form input::placeholder,
+.login__form textarea::placeholder {
+  color: #8a95b3 !important;
+}
+
 .login__form .field-type {
   border: 1px solid rgba(102, 119, 166, 0.16);
   border-radius: 14px;

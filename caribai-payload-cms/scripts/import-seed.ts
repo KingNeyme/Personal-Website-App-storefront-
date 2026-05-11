@@ -6,6 +6,8 @@ import { getPayload } from 'payload'
 
 import config from '../payload.config'
 
+process.env.NODE_ENV ||= 'production'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 const seedPath = path.join(dirname, '..', 'src', 'seed', 'caribai-seed.json')

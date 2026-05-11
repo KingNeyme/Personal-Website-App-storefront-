@@ -2,6 +2,8 @@ import { getPayload } from 'payload'
 
 import config from '../payload.config'
 
+process.env.NODE_ENV ||= 'production'
+
 const required = ['ADMIN_EMAIL', 'ADMIN_PASSWORD'] as const
 
 for (const key of required) {
