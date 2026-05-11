@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import type { Project, ProjectsPage } from '@/payload-types'
+import { resolveMediaAlt, resolveMediaURL } from '@/lib/media'
 import { getPayloadClient } from '@/lib/payload'
 
 export const dynamic = 'force-dynamic'
@@ -73,6 +74,14 @@ export default async function ProjectsRoute() {
                 key={item.id}
                 className={`timeline__item timeline__item--project ${item.featured ? 'card--featured' : item.muted ? 'card--subtle' : ''}`}
               >
+                {resolveMediaURL(item.image) ? (
+                  <div className="timeline__media">
+                    <img
+                      alt={resolveMediaAlt(item.image, item.imageAlt || `${item.title} visual`)}
+                      src={resolveMediaURL(item.image) || ''}
+                    />
+                  </div>
+                ) : null}
                 <div>
                   <span className="card-kicker">{item.badge || item.focus}</span>
                   <h3>{item.title}</h3>

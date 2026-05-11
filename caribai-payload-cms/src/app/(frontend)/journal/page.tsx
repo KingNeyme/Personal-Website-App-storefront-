@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import type { JournalPage, Post } from '@/payload-types'
+import { resolveMediaAlt, resolveMediaURL } from '@/lib/media'
 import { getPayloadClient } from '@/lib/payload'
 
 export const dynamic = 'force-dynamic'
@@ -95,6 +96,14 @@ export default async function JournalRoute() {
                 key={post.id}
                 className={`card journal-card ${post.featured ? 'card--featured' : 'card--subtle'}`}
               >
+                {resolveMediaURL(post.coverImage) ? (
+                  <div className="card-media card-media--wide">
+                    <img
+                      alt={resolveMediaAlt(post.coverImage, `${post.title} cover image`)}
+                      src={resolveMediaURL(post.coverImage) || ''}
+                    />
+                  </div>
+                ) : null}
                 <div className="journal-card__meta">
                   <span className="card-kicker">{post.category}</span>
                   <span>{formatDate(post.publishedAt)}</span>

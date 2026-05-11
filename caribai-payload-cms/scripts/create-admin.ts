@@ -2,7 +2,11 @@ import { getPayload } from 'payload'
 
 import config from '../payload.config'
 
-process.env.NODE_ENV ||= 'production'
+const env = process.env as Record<string, string | undefined>
+
+if (!env.NODE_ENV) {
+  env.NODE_ENV = 'production'
+}
 
 const required = ['ADMIN_EMAIL', 'ADMIN_PASSWORD'] as const
 

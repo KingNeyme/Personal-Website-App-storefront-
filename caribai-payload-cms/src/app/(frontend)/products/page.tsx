@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import type { Product, StorefrontPage } from '@/payload-types'
+import { resolveMediaAlt, resolveMediaURL } from '@/lib/media'
 import { getPayloadClient } from '@/lib/payload'
 
 export const dynamic = 'force-dynamic'
@@ -73,6 +74,14 @@ export default async function ProductsRoute() {
                 key={item.id}
                 className={`card card--product ${item.featured ? 'card--featured' : item.muted ? 'card--subtle' : ''}`}
               >
+                {resolveMediaURL(item.image) ? (
+                  <div className="card-media">
+                    <img
+                      alt={resolveMediaAlt(item.image, item.imageAlt || `${item.title} visual`)}
+                      src={resolveMediaURL(item.image) || ''}
+                    />
+                  </div>
+                ) : null}
                 <span className="card-kicker">{item.badge || item.category || item.lifecycleStatus}</span>
                 <h3>{item.title}</h3>
                 <p>{item.summary}</p>

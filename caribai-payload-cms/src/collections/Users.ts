@@ -11,7 +11,9 @@ export const Users: CollectionConfig = {
     useAsTitle: 'email',
     defaultColumns: ['email', 'role', 'updatedAt'],
   },
-  auth: true,
+  auth: {
+    maxLoginAttempts: 0,
+  },
   fields: [
     {
       name: 'role',

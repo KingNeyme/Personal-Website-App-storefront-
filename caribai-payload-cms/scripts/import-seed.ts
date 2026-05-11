@@ -6,11 +6,17 @@ import { getPayload } from 'payload'
 
 import config from '../payload.config'
 
-process.env.NODE_ENV ||= 'production'
+const env = process.env as Record<string, string | undefined>
+
+if (!env.NODE_ENV) {
+  env.NODE_ENV = 'production'
+}
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 const seedPath = path.join(dirname, '..', 'src', 'seed', 'caribai-seed.json')
+const mediaManifestPath = path.join(dirname, '..', 'src', 'seed', 'caribai-media-manifest.json')
+const workspaceRoot = path.join(dirname, '..', '..')
 
 type ProductLike = {
   id: string | number
@@ -25,6 +31,12 @@ type SeedData = {
     products: any[]
     projects: any[]
   }
+}
+
+type MediaManifest = {
+  localAssets: {
+    filePath: string
+  }[]
 }
 
 const globalSlugMap: Record<string, string> = {
@@ -48,11 +60,78 @@ const loadSeed = async (): Promise<SeedData> => {
   return JSON.parse(raw)
 }
 
+const loadMediaManifest = async (): Promise<MediaManifest> => {
+  const raw = await fs.readFile(mediaManifestPath, 'utf8')
+  return JSON.parse(raw)
+}
+
 const uploadFieldNames = new Set(['image', 'coverImage', 'logo', 'ogImage'])
 
-const sanitizeUnresolvedUploads = (value: unknown): unknown => {
+const normalizeAssetKey = (value: string) => value.replace(/\\/g, '/')
+
+const isRemoteAsset = (value: string) => /^https?:\/\//i.test(value)
+
+const inferMediaCategory = (filePath: string) => {
+  if (filePath.includes('logo')) return 'brand'
+  if (filePath.includes('cyber-ascend') || filePath.includes('ai-toolkit') || filePath.includes('resume-kit')) {
+    return 'product'
+  }
+  if (filePath.includes('caribai-apps')) return 'project'
+  return 'general'
+}
+
+const inferMediaAlt = (filePath: string) =>
+  path
+    .basename(filePath, path.extname(filePath))
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase())
+
+const upsertLocalMediaAssets = async (payload: any) => {
+  const manifest = await loadMediaManifest()
+  const assetMap = new Map<string, number>()
+
+  for (const asset of manifest.localAssets || []) {
+    const normalizedPath = normalizeAssetKey(asset.filePath)
+    const absolutePath = path.join(workspaceRoot, normalizedPath)
+    const filename = path.basename(normalizedPath)
+
+    const existing = await payload.find({
+      collection: 'media',
+      where: {
+        filename: {
+          equals: filename,
+        },
+      },
+      limit: 1,
+      pagination: false,
+    })
+
+    if (existing.docs?.[0]) {
+      assetMap.set(normalizedPath, existing.docs[0].id)
+      continue
+    }
+
+    const created = await payload.create({
+      collection: 'media',
+      data: {
+        alt: inferMediaAlt(normalizedPath),
+        category: inferMediaCategory(normalizedPath),
+      },
+      filePath: absolutePath,
+    })
+
+    assetMap.set(normalizedPath, created.id)
+  }
+
+  return assetMap
+}
+
+const sanitizeUnresolvedUploads = (
+  value: unknown,
+  assetMap: Map<string, number>,
+): unknown => {
   if (Array.isArray(value)) {
-    return value.map((item) => sanitizeUnresolvedUploads(item))
+    return value.map((item) => sanitizeUnresolvedUploads(item, assetMap))
   }
 
   if (value && typeof value === 'object') {
@@ -60,10 +139,20 @@ const sanitizeUnresolvedUploads = (value: unknown): unknown => {
       Object.entries(value as Record<string, unknown>)
         .map(([key, entry]) => {
           if (uploadFieldNames.has(key) && typeof entry === 'string') {
+            const assetKey = normalizeAssetKey(entry)
+
+            if (assetMap.has(assetKey)) {
+              return [key, assetMap.get(assetKey)]
+            }
+
+            if (key === 'logo') {
+              return [key, isRemoteAsset(entry) ? entry : null]
+            }
+
             return [key, null]
           }
 
-          return [key, sanitizeUnresolvedUploads(entry)]
+          return [key, sanitizeUnresolvedUploads(entry, assetMap)]
         })
         .filter(([, entry]) => entry !== undefined),
     )
@@ -77,11 +166,13 @@ const upsertBySlug = async ({
   collection,
   slug,
   data,
+  assetMap,
 }: {
   payload: any
   collection: 'posts' | 'products' | 'projects'
   slug: string
   data: Record<string, unknown>
+  assetMap: Map<string, number>
 }) => {
   const existing = await payload.find({
     collection,
@@ -98,13 +189,13 @@ const upsertBySlug = async ({
     return payload.update({
       collection,
       id: existing.docs[0].id,
-      data: sanitizeUnresolvedUploads(data),
+      data: sanitizeUnresolvedUploads(data, assetMap),
     })
   }
 
   return payload.create({
     collection,
-    data: sanitizeUnresolvedUploads(data),
+    data: sanitizeUnresolvedUploads(data, assetMap),
   })
 }
 
@@ -126,7 +217,11 @@ const normalizeProjectSeed = (item: Record<string, unknown>) => {
   }
 }
 
-const importCollections = async (payload: any, seed: SeedData) => {
+const importCollections = async (
+  payload: any,
+  seed: SeedData,
+  assetMap: Map<string, number>,
+) => {
   const products: ProductLike[] = []
   const projects: ProductLike[] = []
 
@@ -136,6 +231,7 @@ const importCollections = async (payload: any, seed: SeedData) => {
       collection: 'products',
       slug: item.slug,
       data: normalizeProductSeed(item),
+      assetMap,
     })
 
     products.push({
@@ -151,6 +247,7 @@ const importCollections = async (payload: any, seed: SeedData) => {
       collection: 'projects',
       slug: item.slug,
       data: normalizeProjectSeed(item),
+      assetMap,
     })
 
     projects.push({
@@ -166,6 +263,7 @@ const importCollections = async (payload: any, seed: SeedData) => {
       collection: 'posts',
       slug: item.slug,
       data: item,
+      assetMap,
     })
   }
 
@@ -220,14 +318,27 @@ const importGlobals = async ({
   seed,
   productsByTitle,
   projectsByTitle,
+  assetMap,
 }: {
   payload: any
   seed: SeedData
   productsByTitle: Map<string, string | number>
   projectsByTitle: Map<string, string | number>
+  assetMap: Map<string, number>
 }) => {
+  const siteSettings = seed.globals.siteSettings || {}
   const globalsToImport: Record<string, any> = {
     ...seed.globals,
+    siteSettings: {
+      ...siteSettings,
+      brand: {
+        ...siteSettings.brand,
+        logo:
+          siteSettings.brand?.logo ||
+          assetMap.get('assets/CariAI-LOGO-Transparent.png') ||
+          null,
+      },
+    },
     homePage: normalizeHomePage(seed.globals.homePage, productsByTitle),
     storefrontPage: normalizeStorefrontPage(seed.globals.storefrontPage, productsByTitle),
     projectsPage: normalizeProjectsPage(seed.globals.projectsPage, projectsByTitle),
@@ -240,7 +351,7 @@ const importGlobals = async ({
 
     await payload.updateGlobal({
       slug: globalSlug,
-      data: sanitizeUnresolvedUploads(data),
+      data: sanitizeUnresolvedUploads(data, assetMap),
     })
   }
 }
@@ -248,14 +359,20 @@ const importGlobals = async ({
 const main = async () => {
   const payload = await getPayload({ config })
   const seed = await loadSeed()
+  const assetMap = await upsertLocalMediaAssets(payload)
 
-  const { productsByTitle, projectsByTitle } = await importCollections(payload, seed)
+  const { productsByTitle, projectsByTitle } = await importCollections(
+    payload,
+    seed,
+    assetMap,
+  )
 
   await importGlobals({
     payload,
     seed,
     productsByTitle,
     projectsByTitle,
+    assetMap,
   })
 
   console.log('CaribAI seed import complete.')

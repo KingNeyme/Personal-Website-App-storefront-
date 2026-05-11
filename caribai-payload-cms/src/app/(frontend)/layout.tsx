@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import Link from 'next/link'
 
 import { getPayloadClient } from '@/lib/payload'
+import { resolveMediaAlt, resolveMediaURL } from '@/lib/media'
 
 type LinkItem = {
   label?: string | null
@@ -23,14 +24,25 @@ export default async function FrontendLayout({ children }: { children: ReactNode
   const headerAction = siteSettings.headerAction
   const footerColumns = siteSettings.footerColumns || []
   const footerMeta = siteSettings.footerMeta
+  const brandLogo = resolveMediaURL(siteSettings.brand?.logo)
+  const brandLogoAlt = resolveMediaAlt(siteSettings.brand?.logo, `${brandName} logo`)
 
   return (
     <div className="public-shell">
       <header className="public-header">
         <div className="shell public-header__inner">
           <Link className="public-brand" href="/">
-            <span className="public-brand__name">{brandName}</span>
-            <span className="public-brand__tagline">{tagline}</span>
+            {brandLogo ? (
+              <img
+                alt={brandLogoAlt}
+                className="public-brand__mark"
+                src={brandLogo}
+              />
+            ) : null}
+            <span className="public-brand__copy">
+              <span className="public-brand__name">{brandName}</span>
+              <span className="public-brand__tagline">{tagline}</span>
+            </span>
           </Link>
           <nav className="public-nav" aria-label="Primary">
             {navItems.map((item) => (
@@ -52,6 +64,13 @@ export default async function FrontendLayout({ children }: { children: ReactNode
       <footer className="public-footer">
         <div className="shell public-footer__grid">
           <div className="public-footer__brand">
+            {brandLogo ? (
+              <img
+                alt={brandLogoAlt}
+                className="public-footer__logo"
+                src={brandLogo}
+              />
+            ) : null}
             <h2>{footerMeta?.headline || brandName}</h2>
             <p>{footerMeta?.description || 'A practical AI platform for intelligent systems, execution, and digital infrastructure.'}</p>
           </div>

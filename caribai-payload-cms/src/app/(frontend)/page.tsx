@@ -1,3 +1,4 @@
+import { resolveMediaAlt, resolveMediaURL } from '@/lib/media'
 import { getPayloadClient } from '@/lib/payload'
 
 export const dynamic = 'force-dynamic'
@@ -7,6 +8,8 @@ type ItemWithCopy = {
   description?: string | null
   badge?: string | null
   status?: string | null
+  image?: unknown
+  imageAlt?: string | null
 }
 
 type ProductCard = {
@@ -16,6 +19,8 @@ type ProductCard = {
   badge?: string | null
   category?: string | null
   lifecycleStatus?: string | null
+  image?: unknown
+  imageAlt?: string | null
 }
 
 export default async function HomePage() {
@@ -41,6 +46,7 @@ export default async function HomePage() {
   const businessItems = homePage.businessModel?.items || []
   const executionItems = homePage.execution?.items || []
   const focusItems = homePage.focus?.items || []
+  const growthHubItems = homePage.growthHub?.items || []
   const lead = homePage.lead
   const productItems = (homePage.storefrontSection?.items?.length
     ? homePage.storefrontSection.items
@@ -54,6 +60,14 @@ export default async function HomePage() {
             <p className="hero__eyebrow">{homePage.hero?.eyebrow}</p>
             <h1 className="hero__title">{homePage.hero?.title}</h1>
             <p className="hero__description">{homePage.hero?.description}</p>
+            {resolveMediaURL(homePage.hero?.image) ? (
+              <div className="hero-media">
+                <img
+                  alt={resolveMediaAlt(homePage.hero?.image, homePage.hero?.imageAlt || 'CaribAI hero image')}
+                  src={resolveMediaURL(homePage.hero?.image) || ''}
+                />
+              </div>
+            ) : null}
             <div className="hero__actions">
               {heroActions.map((action: any) => (
                 <a
@@ -90,6 +104,14 @@ export default async function HomePage() {
           <div className="grid grid--three">
             {heroMetrics.map((item: ItemWithCopy) => (
               <article key={item.title} className="card card--metric">
+                {resolveMediaURL(item.image) ? (
+                  <div className="card-media">
+                    <img
+                      alt={resolveMediaAlt(item.image, item.imageAlt || `${item.title} visual`)}
+                      src={resolveMediaURL(item.image) || ''}
+                    />
+                  </div>
+                ) : null}
                 <span className="card-kicker">{item.badge}</span>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
@@ -111,6 +133,14 @@ export default async function HomePage() {
           <div className="grid grid--four">
             {structureItems.map((item: ItemWithCopy) => (
               <article key={item.title} className="card">
+                {resolveMediaURL(item.image) ? (
+                  <div className="card-media">
+                    <img
+                      alt={resolveMediaAlt(item.image, item.imageAlt || `${item.title} visual`)}
+                      src={resolveMediaURL(item.image) || ''}
+                    />
+                  </div>
+                ) : null}
                 <span className="card-kicker">{item.badge}</span>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
@@ -132,6 +162,14 @@ export default async function HomePage() {
           <div className="grid grid--products">
             {productItems.map((item: ProductCard) => (
               <article key={`${item.id}-${item.title}`} className="card card--product">
+                {resolveMediaURL(item.image) ? (
+                  <div className="card-media">
+                    <img
+                      alt={resolveMediaAlt(item.image, item.imageAlt || `${item.title} visual`)}
+                      src={resolveMediaURL(item.image) || ''}
+                    />
+                  </div>
+                ) : null}
                 <span className="card-kicker">{item.badge || item.category || item.lifecycleStatus}</span>
                 <h3>{item.title}</h3>
                 <p>{item.summary}</p>
@@ -153,6 +191,14 @@ export default async function HomePage() {
           <div className="grid grid--three">
             {buildItems.map((item: ItemWithCopy) => (
               <article key={item.title} className="card">
+                {resolveMediaURL(item.image) ? (
+                  <div className="card-media">
+                    <img
+                      alt={resolveMediaAlt(item.image, item.imageAlt || `${item.title} visual`)}
+                      src={resolveMediaURL(item.image) || ''}
+                    />
+                  </div>
+                ) : null}
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </article>
@@ -161,6 +207,14 @@ export default async function HomePage() {
           <div className="grid grid--three section-stack">
             {businessItems.map((item: ItemWithCopy) => (
               <article key={item.title} className="card card--subtle">
+                {resolveMediaURL(item.image) ? (
+                  <div className="card-media">
+                    <img
+                      alt={resolveMediaAlt(item.image, item.imageAlt || `${item.title} visual`)}
+                      src={resolveMediaURL(item.image) || ''}
+                    />
+                  </div>
+                ) : null}
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
               </article>
@@ -195,6 +249,40 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {growthHubItems.length ? (
+        <section className="section section--compact">
+          <div className="shell">
+            <div className="section-heading">
+              <div>
+                <p className="section-eyebrow">{homePage.growthHub?.eyebrow}</p>
+                <h2>{homePage.growthHub?.title}</h2>
+              </div>
+              <p className="section-copy">{homePage.growthHub?.description}</p>
+            </div>
+            <div className="grid grid--three">
+              {growthHubItems.map((item: any) => (
+                <article key={item.id || item.title} className="card">
+                  {resolveMediaURL(item.image) ? (
+                    <div className="card-media">
+                      <img
+                        alt={resolveMediaAlt(item.image, item.imageAlt || `${item.title} visual`)}
+                        src={resolveMediaURL(item.image) || ''}
+                      />
+                    </div>
+                  ) : null}
+                  <span className="card-kicker">Growth Hub</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <a className="journal-card__link" href={item.href || '#'}>
+                    {item.linkLabel || 'Open'}
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="section section--compact">
         <div className="shell">

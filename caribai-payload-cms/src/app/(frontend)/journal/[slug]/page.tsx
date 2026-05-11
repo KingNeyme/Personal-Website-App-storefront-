@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import type { Post } from '@/payload-types'
+import { resolveMediaAlt, resolveMediaURL } from '@/lib/media'
 import { getPayloadClient } from '@/lib/payload'
 import { renderMarkdownLite } from '@/lib/rich-text'
 
@@ -80,6 +81,14 @@ export default async function JournalEntryRoute({
               <span>{formatDate(post.publishedAt)}</span>
               {post.featured ? <span>Featured</span> : null}
             </div>
+            {resolveMediaURL(post.coverImage) ? (
+              <div className="entry-media">
+                <img
+                  alt={resolveMediaAlt(post.coverImage, `${post.title} cover image`)}
+                  src={resolveMediaURL(post.coverImage) || ''}
+                />
+              </div>
+            ) : null}
           </div>
         </div>
       </section>

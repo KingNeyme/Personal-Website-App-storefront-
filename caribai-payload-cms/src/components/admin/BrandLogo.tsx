@@ -1,4 +1,4 @@
-const logoSrc = '/assets/CariAI-LOGO-Transparent.png'
+const logoSrc = '/CariAI-LOGO-Transparent.png'
 
 function LogoWording() {
   return (

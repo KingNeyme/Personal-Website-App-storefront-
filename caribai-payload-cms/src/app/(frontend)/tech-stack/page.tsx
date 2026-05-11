@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 import type { TechStackPage } from '@/payload-types'
+import { normalizeAssetPath } from '@/lib/media'
 import { getPayloadClient } from '@/lib/payload'
 
 export const dynamic = 'force-dynamic'
@@ -34,7 +35,7 @@ function ToolCard({
     <article className="card tool-card">
       <div className="tool-card__header">
         <div className="tool-card__logo">
-          {logo ? <img src={logo} alt={`${title} logo`} /> : title.slice(0, 2).toUpperCase()}
+          {logo ? <img src={normalizeAssetPath(logo)} alt={`${title} logo`} /> : title.slice(0, 2).toUpperCase()}
         </div>
         <div>
           {label ? <span className="card-kicker">{label}</span> : null}
