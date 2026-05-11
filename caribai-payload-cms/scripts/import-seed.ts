@@ -106,6 +106,24 @@ const upsertBySlug = async ({
   })
 }
 
+const normalizeProductSeed = (item: Record<string, unknown>) => {
+  const { status, ...rest } = item
+
+  return {
+    ...rest,
+    lifecycleStatus: status,
+  }
+}
+
+const normalizeProjectSeed = (item: Record<string, unknown>) => {
+  const { status, ...rest } = item
+
+  return {
+    ...rest,
+    lifecycleStatus: status,
+  }
+}
+
 const importCollections = async (payload: any, seed: SeedData) => {
   const products: ProductLike[] = []
   const projects: ProductLike[] = []
@@ -115,7 +133,7 @@ const importCollections = async (payload: any, seed: SeedData) => {
       payload,
       collection: 'products',
       slug: item.slug,
-      data: item,
+      data: normalizeProductSeed(item),
     })
 
     products.push({
@@ -130,7 +148,7 @@ const importCollections = async (payload: any, seed: SeedData) => {
       payload,
       collection: 'projects',
       slug: item.slug,
-      data: item,
+      data: normalizeProjectSeed(item),
     })
 
     projects.push({

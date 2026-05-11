@@ -15,7 +15,7 @@ type ProductCard = {
   summary?: string | null
   badge?: string | null
   category?: string | null
-  status?: string | null
+  lifecycleStatus?: string | null
 }
 
 export default async function HomePage() {
@@ -132,7 +132,7 @@ export default async function HomePage() {
           <div className="grid grid--products">
             {productItems.map((item: ProductCard) => (
               <article key={`${item.id}-${item.title}`} className="card card--product">
-                <span className="card-kicker">{item.badge || item.category || item.status}</span>
+                <span className="card-kicker">{item.badge || item.category || item.lifecycleStatus}</span>
                 <h3>{item.title}</h3>
                 <p>{item.summary}</p>
               </article>

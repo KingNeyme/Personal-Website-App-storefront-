@@ -73,7 +73,7 @@ export default async function ProductsRoute() {
                 key={item.id}
                 className={`card card--product ${item.featured ? 'card--featured' : item.muted ? 'card--subtle' : ''}`}
               >
-                <span className="card-kicker">{item.badge || item.category || item.status}</span>
+                <span className="card-kicker">{item.badge || item.category || item.lifecycleStatus}</span>
                 <h3>{item.title}</h3>
                 <p>{item.summary}</p>
                 {item.meta?.length ? (

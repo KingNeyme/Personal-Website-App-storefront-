@@ -228,7 +228,7 @@ export interface Product {
   slug: string;
   badge?: string | null;
   category?: string | null;
-  status?: ('active' | 'growing' | 'validation' | 'future') | null;
+  lifecycleStatus?: ('active' | 'growing' | 'validation' | 'future') | null;
   image?: (number | null) | Media;
   imageAlt?: string | null;
   summary: string;
@@ -260,7 +260,7 @@ export interface Project {
   slug: string;
   badge?: string | null;
   focus?: string | null;
-  status?: ('active' | 'growing' | 'focused' | 'future') | null;
+  lifecycleStatus?: ('active' | 'growing' | 'focused' | 'future') | null;
   image?: (number | null) | Media;
   imageAlt?: string | null;
   summary: string;
@@ -446,7 +446,7 @@ export interface ProductsSelect<T extends boolean = true> {
   slug?: T;
   badge?: T;
   category?: T;
-  status?: T;
+  lifecycleStatus?: T;
   image?: T;
   imageAlt?: T;
   summary?: T;
@@ -479,7 +479,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   slug?: T;
   badge?: T;
   focus?: T;
-  status?: T;
+  lifecycleStatus?: T;
   image?: T;
   imageAlt?: T;
   summary?: T;

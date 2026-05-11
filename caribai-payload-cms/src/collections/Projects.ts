@@ -7,7 +7,7 @@ export const Projects: CollectionConfig = {
   admin: {
     group: 'Business',
     useAsTitle: 'title',
-    defaultColumns: ['title', 'status', 'focus'],
+    defaultColumns: ['title', 'lifecycleStatus', 'focus'],
   },
   versions: {
     drafts: true,
@@ -18,7 +18,8 @@ export const Projects: CollectionConfig = {
     { name: 'badge', type: 'text' },
     { name: 'focus', type: 'text' },
     {
-      name: 'status',
+      name: 'lifecycleStatus',
+      label: 'Lifecycle Status',
       type: 'select',
       options: ['active', 'growing', 'focused', 'future'],
       defaultValue: 'active',

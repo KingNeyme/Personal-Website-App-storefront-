@@ -85,7 +85,7 @@ export default async function ProjectsRoute() {
                     </div>
                   ) : null}
                 </div>
-                {item.status ? <span>{item.status}</span> : null}
+                {item.lifecycleStatus ? <span>{item.lifecycleStatus}</span> : null}
               </article>
             ))}
           </div>

@@ -7,7 +7,7 @@ export const Products: CollectionConfig = {
   admin: {
     group: 'Business',
     useAsTitle: 'title',
-    defaultColumns: ['title', 'status', 'category'],
+    defaultColumns: ['title', 'lifecycleStatus', 'category'],
   },
   versions: {
     drafts: true,
@@ -18,7 +18,8 @@ export const Products: CollectionConfig = {
     { name: 'badge', type: 'text' },
     { name: 'category', type: 'text' },
     {
-      name: 'status',
+      name: 'lifecycleStatus',
+      label: 'Lifecycle Status',
       type: 'select',
       options: ['active', 'growing', 'validation', 'future'],
       defaultValue: 'active',
