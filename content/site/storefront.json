@@ -1,4 +1,5 @@
 {
+  "_workflowStatus": "live",
   "hero": {
     "eyebrow": "Storefront",
     "title": "Practical AI tools now, scalable systems and software over time.",
@@ -13,6 +14,7 @@
     "items": [
       {
         "badge": "Current Product",
+        "workflowStatus": "live",
         "title": "Cyber Ascend",
         "image": "assets/graphics/cyber-ascend-card.svg",
         "imageAlt": "Cyber Ascend product visual",
@@ -26,6 +28,7 @@
       },
       {
         "badge": "Current Product",
+        "workflowStatus": "live",
         "title": "AI Toolkit",
         "image": "assets/graphics/ai-toolkit-card.svg",
         "imageAlt": "AI Toolkit product visual",
@@ -38,6 +41,7 @@
       },
       {
         "badge": "Current Product",
+        "workflowStatus": "live",
         "title": "Resume Kit",
         "image": "assets/graphics/resume-kit-card.svg",
         "imageAlt": "Resume Kit product visual",
@@ -50,6 +54,7 @@
       },
       {
         "badge": "Future Direction",
+        "workflowStatus": "ready",
         "title": "CaribAI Apps",
         "image": "assets/graphics/caribai-apps-card.svg",
         "imageAlt": "CaribAI Apps concept visual",

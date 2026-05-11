@@ -48,8 +48,8 @@
             </p>
           </div>
           <div class="cms-topbar-actions">
-            <button class="ghost-button" type="button">Preview site</button>
-            <button class="primary-button" type="button">Create post</button>
+            <a class="ghost-button" href="../../index.html">Preview site</a>
+            <button class="primary-button" id="createPostButton" type="button">Create post</button>
           </div>
         </header>
 
@@ -128,8 +128,8 @@
 
               <article class="editor-panel">
                 <p class="overline">Next Build Step</p>
-                <h2>First working editor</h2>
-                <p>Load the real page JSON into forms, let staff edit fields, and save those changes back safely.</p>
+                <h2>Calm publishing flow</h2>
+                <p>The next layer is refinement: quieter editorial polish, stronger asset handling, and smoother daily content operations.</p>
               </article>
             </aside>
           </div>
@@ -164,8 +164,12 @@
                 </div>
 
                 <div class="editor-toolbar" id="pageEditorToolbar" hidden>
-                  <code id="pageEditorSource"></code>
+                  <div class="editor-toolbar-meta">
+                    <code id="pageEditorSource"></code>
+                    <div class="workflow-switch" id="pageWorkflowSwitch"></div>
+                  </div>
                   <div class="editor-toolbar-actions">
+                    <a class="ghost-button" id="pagePreviewButton" href="../../index.html" target="_blank" rel="noreferrer">Preview page</a>
                     <button class="ghost-button" id="pageFileSaveButton" type="button">Save to file</button>
                     <button class="ghost-button" id="pageResetButton" type="button">Reset</button>
                     <button class="ghost-button" id="pageDraftButton" type="button">Save draft</button>
@@ -189,6 +193,9 @@
                     <p class="overline">Post Directory</p>
                     <h2>Journal entries</h2>
                   </div>
+                  <div class="panel-head-actions">
+                    <button class="small-button" id="journalCreateButton" type="button">New post</button>
+                  </div>
                 </div>
                 <div class="page-list" id="journalList"></div>
               </article>
@@ -208,8 +215,13 @@
                 </div>
 
                 <div class="editor-toolbar" id="journalEditorToolbar" hidden>
-                  <code id="journalEditorSource"></code>
+                  <div class="editor-toolbar-meta">
+                    <code id="journalEditorSource"></code>
+                    <div class="workflow-switch" id="journalWorkflowSwitch"></div>
+                  </div>
                   <div class="editor-toolbar-actions">
+                    <a class="ghost-button" id="journalPreviewButton" href="../../blog.html" target="_blank" rel="noreferrer">Preview post</a>
+                    <button class="ghost-button" id="journalDeleteButton" type="button" hidden>Delete post</button>
                     <button class="ghost-button" id="journalFileSaveButton" type="button">Save to file</button>
                     <button class="ghost-button" id="journalResetButton" type="button">Reset</button>
                     <button class="ghost-button" id="journalDraftButton" type="button">Save draft</button>
@@ -235,96 +247,144 @@
         </section>
 
         <section class="cms-view" data-view-panel="storefront">
-          <article class="editor-panel">
-            <div class="panel-head">
-              <div>
-                <p class="overline">Storefront</p>
-                <h2>Manage visible offers</h2>
-              </div>
-            </div>
-            <div class="offer-list" id="storefrontList"></div>
-          </article>
-        </section>
-
-        <section class="cms-view" data-view-panel="media">
           <div class="editor-layout">
+            <aside class="editor-side">
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Offer Directory</p>
+                    <h2>Visible offers</h2>
+                  </div>
+                  <div class="panel-head-actions">
+                    <button class="small-button" id="storefrontCreateButton" type="button">New offer</button>
+                  </div>
+                </div>
+                <div class="page-list" id="storefrontOfferList"></div>
+              </article>
+            </aside>
+
             <section class="editor-main">
               <article class="editor-panel">
                 <div class="panel-head">
                   <div>
-                    <p class="overline">Media</p>
-                    <h2>Core asset groups</h2>
+                    <p class="overline">Storefront Editor</p>
+                    <h2 id="storefrontEditorTitle">Select an offer to edit</h2>
+                    <p class="intro-copy" id="storefrontEditorSummary">
+                      Edit the real storefront structure, product cards, and lead messaging without leaving the CMS shell.
+                    </p>
+                  </div>
+                  <span class="badge" id="storefrontEditorStatus">Idle</span>
+                </div>
+
+                <div class="editor-toolbar" id="storefrontEditorToolbar" hidden>
+                  <div class="editor-toolbar-meta">
+                    <code id="storefrontEditorSource"></code>
+                    <div class="workflow-switch" id="storefrontWorkflowSwitch"></div>
+                  </div>
+                  <div class="editor-toolbar-actions">
+                    <a class="ghost-button" id="storefrontPreviewButton" href="../../storefront.html" target="_blank" rel="noreferrer">Preview view</a>
+                    <button class="ghost-button" id="storefrontDeleteButton" type="button" hidden>Delete offer</button>
+                    <button class="ghost-button" id="storefrontFileSaveButton" type="button">Save to file</button>
+                    <button class="ghost-button" id="storefrontResetButton" type="button">Reset</button>
+                    <button class="ghost-button" id="storefrontDraftButton" type="button">Save draft</button>
+                    <button class="primary-button" id="storefrontDownloadButton" type="button">Download JSON</button>
                   </div>
                 </div>
-                <div class="content-list">
-                  <article class="content-row">
-                    <div>
-                      <h3>Brand Logos</h3>
-                      <p>Main wordmarks and logo variants used across the site.</p>
-                    </div>
-                    <span class="row-meta">2 tracked assets</span>
-                  </article>
-                  <article class="content-row">
-                    <div>
-                      <h3>Section Graphics</h3>
-                      <p>Hero and panel visuals used throughout the public pages.</p>
-                    </div>
-                    <span class="row-meta">4 tracked graphics</span>
-                  </article>
-                  <article class="content-row">
-                    <div>
-                      <h3>Tech Logos</h3>
-                      <p>Currently remote-heavy and should later get fallback handling.</p>
-                    </div>
-                    <span class="row-meta">Needs audit</span>
-                  </article>
-                </div>
+
+                <div class="section-tabs" id="storefrontSectionTabs" hidden></div>
+                <div id="storefrontEditorForm"></div>
               </article>
             </section>
+          </div>
+        </section>
+
+        <section class="cms-view" data-view-panel="media">
+          <div class="editor-layout">
             <aside class="editor-side">
               <article class="editor-panel">
-                <p class="overline">Asset Preview</p>
-                <div class="asset-preview-row">
-                  <img src="../../assets/CariAI-LOGO-Transparent.png" alt="CaribAI wordmark" />
-                  <img src="../../assets/CaribAiTrans.png" alt="CaribAI alt mark" />
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Media Groups</p>
+                    <h2>Asset directories</h2>
+                  </div>
                 </div>
+                <div class="page-list" id="mediaGroupList"></div>
               </article>
             </aside>
+
+            <section class="editor-main">
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Media Editor</p>
+                    <h2 id="mediaPanelTitle">Core asset groups</h2>
+                    <p class="intro-copy" id="mediaPanelSummary">
+                      Organize brand assets, supporting graphics, and tech-logo dependencies in one place.
+                    </p>
+                  </div>
+                  <span class="badge" id="mediaEditorStatus">Idle</span>
+                </div>
+
+                <div class="editor-toolbar" id="mediaEditorToolbar" hidden>
+                  <code id="mediaEditorSource"></code>
+                  <div class="editor-toolbar-actions">
+                    <a class="ghost-button" id="mediaPreviewButton" href="../../index.html" target="_blank" rel="noreferrer">Preview site</a>
+                    <button class="ghost-button" id="mediaFileSaveButton" type="button">Save to file</button>
+                    <button class="ghost-button" id="mediaResetButton" type="button">Reset</button>
+                    <button class="ghost-button" id="mediaDraftButton" type="button">Save draft</button>
+                    <button class="primary-button" id="mediaDownloadButton" type="button">Download JSON</button>
+                  </div>
+                </div>
+
+                <div id="mediaPanelBody"></div>
+              </article>
+            </section>
           </div>
         </section>
 
         <section class="cms-view" data-view-panel="settings">
-          <article class="editor-panel">
-            <div class="panel-head">
-              <div>
-                <p class="overline">Settings</p>
-                <h2>Shared front-end controls</h2>
-              </div>
-            </div>
-            <div class="content-list">
-              <article class="content-row">
-                <div>
-                  <h3>Navigation and footer</h3>
-                  <p>Menu labels, footer ordering, and shared route controls.</p>
+          <div class="editor-layout">
+            <aside class="editor-side">
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Settings Sections</p>
+                    <h2>Shared controls</h2>
+                  </div>
                 </div>
-                <button class="row-action" type="button">Open</button>
+                <div class="page-list" id="settingsSectionList"></div>
               </article>
-              <article class="content-row">
-                <div>
-                  <h3>Contact controls</h3>
-                  <p>Email destination, lead wording, and form behavior.</p>
+            </aside>
+
+            <section class="editor-main">
+              <article class="editor-panel">
+                <div class="panel-head">
+                  <div>
+                    <p class="overline">Settings Editor</p>
+                    <h2 id="settingsEditorTitle">Shared front-end controls</h2>
+                    <p class="intro-copy" id="settingsEditorSummary">
+                      Edit the real shared site settings that power navigation, footer, brand text, and contact routing.
+                    </p>
+                  </div>
+                  <span class="badge" id="settingsEditorStatus">Idle</span>
                 </div>
-                <button class="row-action" type="button">Open</button>
-              </article>
-              <article class="content-row">
-                <div>
-                  <h3>Brand controls</h3>
-                  <p>Primary logos, shared descriptive copy, and later social links.</p>
+
+                <div class="editor-toolbar" id="settingsEditorToolbar" hidden>
+                  <code id="settingsEditorSource"></code>
+                  <div class="editor-toolbar-actions">
+                    <a class="ghost-button" id="settingsPreviewButton" href="../../index.html" target="_blank" rel="noreferrer">Preview site</a>
+                    <button class="ghost-button" id="settingsFileSaveButton" type="button">Save to file</button>
+                    <button class="ghost-button" id="settingsResetButton" type="button">Reset</button>
+                    <button class="ghost-button" id="settingsDraftButton" type="button">Save draft</button>
+                    <button class="primary-button" id="settingsDownloadButton" type="button">Download JSON</button>
+                  </div>
                 </div>
-                <button class="row-action" type="button">Open</button>
+
+                <div class="section-tabs" id="settingsSectionTabs" hidden></div>
+                <div id="settingsEditorForm"></div>
               </article>
-            </div>
-          </article>
+            </section>
+          </div>
         </section>
       </main>
     </div>

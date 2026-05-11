@@ -1,4 +1,99 @@
-const fallbackInbox = "caribailabs@gmail.com";
+const SETTINGS_PATH = "content/site/settings.json";
+const defaultInbox = "caribailabs@gmail.com";
+
+let activeInbox = defaultInbox;
+
+const getCurrentPageName = () => {
+  const pathname = window.location.pathname.split("/").pop() || "index.html";
+  return pathname === "" ? "index.html" : pathname;
+};
+
+const applyBrandSettings = (settings = {}) => {
+  const homeHref = settings.homeHref || "index.html";
+  const logoSrc = settings.logoSrc || "assets/CariAI-LOGO-Transparent.png";
+  const logoAlt = settings.logoAlt || "CaribAI logo";
+  const footerCopy =
+    settings.footerCopy ||
+    "AI engineering, intelligent systems, and digital infrastructure built from the Caribbean with global ambition.";
+
+  document.querySelectorAll(".brand").forEach((node) => {
+    node.setAttribute("href", homeHref);
+    node.setAttribute("aria-label", "CaribAI home");
+  });
+
+  document.querySelectorAll(".brand-wordmark, .footer-wordmark").forEach((image) => {
+    image.setAttribute("src", logoSrc);
+    image.setAttribute("alt", logoAlt);
+  });
+
+  document.querySelectorAll(".footer-copy").forEach((node) => {
+    node.textContent = footerCopy;
+  });
+};
+
+const applyNavSettings = (settings = {}) => {
+  const currentPage = getCurrentPageName();
+  const links = Array.isArray(settings.links) ? settings.links : [];
+  const cta = settings.cta || {};
+  const ctaLabel = cta.label || "Contact";
+  const ctaHref = cta.href || "contact.html";
+
+  document.querySelectorAll(".nav").forEach((nav) => {
+    nav.innerHTML = links
+      .map((link) => {
+        const href = link.href || "#";
+        const isCurrent = href === currentPage;
+        return `<a href="${href}"${isCurrent ? ' aria-current="page"' : ""}>${link.label || "Link"}</a>`;
+      })
+      .join("");
+  });
+
+  document.querySelectorAll(".nav-cta").forEach((link) => {
+    link.textContent = ctaLabel;
+    link.setAttribute("href", ctaHref);
+    if (ctaHref === currentPage) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+};
+
+const applyFooterSettings = (settings = {}) => {
+  const currentPage = getCurrentPageName();
+  const links = Array.isArray(settings.links) ? settings.links : [];
+
+  document.querySelectorAll(".footer-links").forEach((nav) => {
+    nav.innerHTML = links
+      .map((link) => {
+        const href = link.href || "#";
+        const isCurrent = href === currentPage;
+        return `<a href="${href}"${isCurrent ? ' aria-current="page"' : ""}>${link.label || "Link"}</a>`;
+      })
+      .join("");
+  });
+};
+
+const applySiteSettings = (payload = {}) => {
+  activeInbox = payload.contact?.email || defaultInbox;
+  applyBrandSettings(payload.brand || {});
+  applyNavSettings(payload.navigation || {});
+  applyFooterSettings(payload.footer || {});
+};
+
+const initSiteSettings = async () => {
+  try {
+    const response = await fetch(SETTINGS_PATH, { cache: "no-store" });
+    if (!response.ok) {
+      return;
+    }
+
+    const payload = await response.json();
+    applySiteSettings(payload);
+  } catch (error) {
+    console.error("Unable to load shared site settings.", error);
+  }
+};
 
 const initSiteNav = () => {
   const topbar = document.querySelector(".topbar");
@@ -21,8 +116,10 @@ const initSiteNav = () => {
     toggle.setAttribute("aria-expanded", String(next));
   });
 
-  navShell.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeNav);
+  navShell.addEventListener("click", (event) => {
+    if (event.target.closest("a")) {
+      closeNav();
+    }
   });
 
   window.addEventListener("resize", () => {
@@ -53,7 +150,7 @@ const buildMailtoLink = (form) => {
     body += `Topic: ${topic}\n\nMessage:\n${message || "No additional message provided."}\n`;
   }
 
-  return `mailto:${fallbackInbox}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return `mailto:${activeInbox}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 };
 
 document.addEventListener("submit", (event) => {
@@ -96,3 +193,4 @@ document.addEventListener("submit", (event) => {
 });
 
 initSiteNav();
+initSiteSettings();

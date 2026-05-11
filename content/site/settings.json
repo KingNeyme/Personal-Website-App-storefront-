@@ -1,0 +1,71 @@
+{
+  "brand": {
+    "homeHref": "index.html",
+    "logoSrc": "assets/CariAI-LOGO-Transparent.png",
+    "logoAlt": "CaribAI logo",
+    "footerCopy": "AI engineering, intelligent systems, and digital infrastructure built from the Caribbean with global ambition."
+  },
+  "navigation": {
+    "links": [
+      {
+        "label": "About",
+        "href": "about.html"
+      },
+      {
+        "label": "Projects",
+        "href": "projects.html"
+      },
+      {
+        "label": "Products",
+        "href": "storefront.html"
+      },
+      {
+        "label": "Journal",
+        "href": "blog.html"
+      }
+    ],
+    "cta": {
+      "label": "Contact",
+      "href": "contact.html"
+    }
+  },
+  "footer": {
+    "links": [
+      {
+        "label": "About",
+        "href": "about.html"
+      },
+      {
+        "label": "Projects",
+        "href": "projects.html"
+      },
+      {
+        "label": "Products",
+        "href": "storefront.html"
+      },
+      {
+        "label": "Journey",
+        "href": "journey.html"
+      },
+      {
+        "label": "Tech Stack",
+        "href": "tech-stack.html"
+      },
+      {
+        "label": "Certifications",
+        "href": "certifications.html"
+      },
+      {
+        "label": "Journal",
+        "href": "blog.html"
+      },
+      {
+        "label": "Contact",
+        "href": "contact.html"
+      }
+    ]
+  },
+  "contact": {
+    "email": "caribailabs@gmail.com"
+  }
+}

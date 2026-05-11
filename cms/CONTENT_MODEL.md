@@ -118,6 +118,31 @@ Main sections:
 - info
 - form
 
+### Settings
+
+Source today:
+
+- `content/site/settings.json`
+
+Main sections:
+
+- brand
+- navigation
+- footer
+- contact
+
+### Media Library
+
+Source today:
+
+- `content/site/media.json`
+
+Main sections:
+
+- brand
+- graphics
+- techLogos
+
 ## Repeatable Collections
 
 ### Blog Posts
@@ -130,6 +155,7 @@ Fields already in use:
 
 - title
 - slug
+- workflowStatus
 - publishDate
 - category
 - featured
@@ -149,6 +175,20 @@ The CMS should support repeatable section items such as:
 - summary cards
 - CTA blocks
 - tech stack tools
+
+## Editorial Workflow Fields
+
+The CMS now uses lightweight workflow fields directly in content:
+
+- singleton page files use `_workflowStatus`
+- journal posts use `workflowStatus`
+- storefront product items use `workflowStatus`
+
+Supported states:
+
+- `draft`
+- `ready`
+- `live`
 
 ## Media Types
 

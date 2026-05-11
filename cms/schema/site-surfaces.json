@@ -7,7 +7,9 @@
     "journey",
     "tech_stack",
     "certifications",
-    "contact"
+    "contact",
+    "settings",
+    "media"
   ],
   "collections": [
     "posts",
@@ -22,6 +24,8 @@
     "tech_stack": "content/site/tech-stack.json",
     "certifications": "content/site/certifications.json",
     "contact": "content/site/contact.json",
+    "settings": "content/site/settings.json",
+    "media": "content/site/media.json",
     "posts": "content/blog/posts.json"
   }
 }

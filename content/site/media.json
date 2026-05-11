@@ -1,0 +1,122 @@
+{
+  "brand": {
+    "title": "Brand Logos",
+    "description": "Primary wordmarks and alternate marks used across the CaribAI public site.",
+    "items": [
+      {
+        "title": "Primary Wordmark",
+        "path": "assets/CariAI-LOGO-Transparent.png",
+        "alt": "CaribAI logo",
+        "notes": "Main wordmark used in header, footer, and social surfaces."
+      },
+      {
+        "title": "Alternate Mark",
+        "path": "assets/CaribAiTrans.png",
+        "alt": "CaribAI alternate logo",
+        "notes": "Secondary brand mark reserved for future admin and social use."
+      }
+    ]
+  },
+  "graphics": {
+    "title": "Section Graphics",
+    "description": "Illustration-style support graphics used throughout public pages and storefront surfaces.",
+    "items": [
+      {
+        "title": "CaribAI Apps Card",
+        "path": "assets/graphics/caribai-apps-card.svg",
+        "alt": "CaribAI Apps graphic",
+        "notes": "Used across homepage, about, and future-direction surfaces."
+      },
+      {
+        "title": "AI Toolkit Card",
+        "path": "assets/graphics/ai-toolkit-card.svg",
+        "alt": "AI Toolkit graphic",
+        "notes": "Used across storefront, contact, and technical-growth sections."
+      },
+      {
+        "title": "Cyber Ascend Card",
+        "path": "assets/graphics/cyber-ascend-card.svg",
+        "alt": "Cyber Ascend graphic",
+        "notes": "Used for product, project, and supporting brand sections."
+      },
+      {
+        "title": "Resume Kit Card",
+        "path": "assets/graphics/resume-kit-card.svg",
+        "alt": "Resume Kit graphic",
+        "notes": "Used for certifications, utility-product framing, and support sections."
+      }
+    ]
+  },
+  "techLogos": {
+    "title": "Tech Logo Dependencies",
+    "description": "Remote logo dependencies currently used by the public tech stack.",
+    "items": [
+      {
+        "title": "Python",
+        "path": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+        "alt": "Python logo",
+        "notes": "Primary stack logo dependency."
+      },
+      {
+        "title": "FastAPI",
+        "path": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+        "alt": "FastAPI logo",
+        "notes": "Primary stack logo dependency."
+      },
+      {
+        "title": "PostgreSQL",
+        "path": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+        "alt": "PostgreSQL logo",
+        "notes": "Primary stack logo dependency."
+      },
+      {
+        "title": "SQLAlchemy",
+        "path": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg",
+        "alt": "SQLAlchemy logo",
+        "notes": "Primary stack logo dependency."
+      },
+      {
+        "title": "Redis",
+        "path": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+        "alt": "Redis logo",
+        "notes": "Primary stack logo dependency."
+      },
+      {
+        "title": "Docker",
+        "path": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+        "alt": "Docker logo",
+        "notes": "Primary stack logo dependency."
+      },
+      {
+        "title": "OpenAI API",
+        "path": "https://upload.wikimedia.org/wikipedia/commons/4/4d/OpenAI_Logo.svg",
+        "alt": "OpenAI logo",
+        "notes": "Extended stack logo dependency."
+      },
+      {
+        "title": "GitHub",
+        "path": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+        "alt": "GitHub logo",
+        "notes": "Extended stack logo dependency."
+      },
+      {
+        "title": "JavaScript",
+        "path": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+        "alt": "JavaScript logo",
+        "notes": "Extended stack logo dependency."
+      },
+      {
+        "title": "HTML & CSS",
+        "path": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+        "alt": "HTML and CSS logo",
+        "notes": "Extended stack logo dependency."
+      },
+      {
+        "title": "Vercel",
+        "path": "https://assets.vercel.com/image/upload/front/favicon/vercel/57x57.png",
+        "alt": "Vercel logo",
+        "notes": "Extended stack logo dependency."
+      }
+    ]
+  }
+}

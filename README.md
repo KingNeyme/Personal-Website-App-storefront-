@@ -76,6 +76,11 @@ These previous CMS experiments are no longer part of the active project directio
 
 The current public site can still be deployed as a static Vercel project.
 
+Current live paths:
+
+- public site: `https://caribailabs.vercel.app`
+- custom admin: `https://caribailabs.vercel.app/cms/`
+
 See:
 
 - `DEPLOYMENT.md`

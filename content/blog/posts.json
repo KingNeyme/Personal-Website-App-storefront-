@@ -3,6 +3,7 @@
     {
       "title": "Why platform-based apps become stronger after real product demand",
       "slug": "platform-apps-after-product-demand",
+      "workflowStatus": "live",
       "publishDate": "2026-05-01",
       "category": "Launch Strategy",
       "featured": true,
@@ -14,6 +15,7 @@
     {
       "title": "How I decide whether a problem is worth turning into a product",
       "slug": "how-i-choose-product-worthy-problems",
+      "workflowStatus": "live",
       "publishDate": "2026-04-29",
       "category": "Product Thinking",
       "featured": false,
@@ -25,6 +27,7 @@
     {
       "title": "Why CaribAI is both a storefront and a visible product-building journey",
       "slug": "why-caribai-is-a-storefront-and-journey",
+      "workflowStatus": "live",
       "publishDate": "2026-04-26",
       "category": "Founder Notes",
       "featured": false,

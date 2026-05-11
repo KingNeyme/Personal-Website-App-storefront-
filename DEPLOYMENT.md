@@ -16,6 +16,14 @@ It includes:
 
 This project is currently set up to deploy as a static Vercel site.
 
+Current live URL:
+
+- `https://caribailabs.vercel.app`
+
+Current custom admin URL:
+
+- `https://caribailabs.vercel.app/cms/`
+
 Relevant file:
 
 - `vercel.json`
@@ -26,6 +34,20 @@ Relevant file:
 2. Import the repository into Vercel.
 3. Keep the deployment as a static site.
 4. Deploy.
+
+## CMS Entry Point
+
+The custom admin now lives under:
+
+- `cms/`
+
+The main entry path is:
+
+- `/cms/`
+
+which redirects into:
+
+- `/cms/app/`
 
 ## What The Public Site Depends On
 
