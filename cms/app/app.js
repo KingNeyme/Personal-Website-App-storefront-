@@ -1,3 +1,15 @@
+const workspaceAccess = (() => {
+  try {
+    return JSON.parse(sessionStorage.getItem("caribai-cms-access") || "null");
+  } catch {
+    return null;
+  }
+})();
+
+if (!workspaceAccess) {
+  window.location.replace("../");
+}
+
 const pageSurfaces = [
   {
     key: "home",
@@ -96,6 +108,7 @@ const navItems = Array.from(document.querySelectorAll(".cms-nav-item"));
 const viewPanels = Array.from(document.querySelectorAll("[data-view-panel]"));
 const rowActions = Array.from(document.querySelectorAll("[data-view-target]"));
 const createPostButton = document.getElementById("createPostButton");
+const workspaceIdentity = document.getElementById("workspaceIdentity");
 
 const viewEyebrow = document.getElementById("viewEyebrow");
 const viewTitle = document.getElementById("viewTitle");
@@ -207,6 +220,11 @@ let activeMediaGroup = "brand";
 let activeMediaFileHandle = null;
 const hiddenEditorKeys = new Set(["_workflowStatus", "workflowStatus"]);
 const workflowStates = ["draft", "ready", "live"];
+
+if (workspaceIdentity && workspaceAccess) {
+  const label = workspaceAccess.role ? `${workspaceAccess.email} · ${workspaceAccess.role}` : workspaceAccess.email;
+  workspaceIdentity.textContent = label;
+}
 
 const deepClone = (value) => JSON.parse(JSON.stringify(value));
 const getSurface = (pageKey) => pageSurfaces.find((surface) => surface.key === pageKey);

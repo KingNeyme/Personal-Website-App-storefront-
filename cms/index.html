@@ -2,14 +2,410 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=./app/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CaribAI CMS</title>
-    <script>
-      window.location.replace("./app/");
-    </script>
+    <title>CaribAI CMS | Workspace Access</title>
+    <meta
+      name="description"
+      content="Private CaribAI CMS access for managing pages, journal content, storefront offers, media, and front-end controls."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #09101f;
+        --bg-soft: #10182e;
+        --panel: rgba(14, 22, 41, 0.9);
+        --panel-soft: rgba(25, 35, 63, 0.74);
+        --line: rgba(199, 210, 254, 0.12);
+        --line-strong: rgba(199, 210, 254, 0.22);
+        --text: #f8fbff;
+        --muted: #c7d2fe;
+        --accent: #4f46e5;
+        --accent-soft: rgba(79, 70, 229, 0.16);
+        --accent-line: rgba(124, 58, 237, 0.34);
+        --shadow: 0 24px 64px rgba(2, 6, 23, 0.34);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.24), transparent 22%),
+          radial-gradient(circle at 100% 0%, rgba(124, 58, 237, 0.2), transparent 24%),
+          radial-gradient(circle at 50% 100%, rgba(59, 130, 246, 0.15), transparent 28%),
+          linear-gradient(180deg, #09101f 0%, #0c1326 46%, #131d38 100%);
+        color: var(--text);
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(199, 210, 254, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(199, 210, 254, 0.04) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: radial-gradient(circle at center, black 36%, transparent 82%);
+        opacity: 0.42;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .shell {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 32px;
+      }
+
+      .panel {
+        width: min(1120px, 100%);
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(340px, 420px);
+        gap: 24px;
+      }
+
+      .hero,
+      .access-card {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+          var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .hero {
+        padding: 34px;
+      }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 28px;
+      }
+
+      .brand-row img {
+        width: 132px;
+        display: block;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--accent);
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 4vw, 3.8rem);
+        line-height: 1.06;
+        margin-bottom: 16px;
+      }
+
+      .lead {
+        max-width: 640px;
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .feature {
+        padding: 18px;
+        border-radius: 20px;
+        border: 1px solid var(--line);
+        background: var(--panel-soft);
+      }
+
+      .feature h3 {
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+
+      .feature p {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .access-card {
+        padding: 28px;
+        display: grid;
+        gap: 18px;
+        align-content: start;
+      }
+
+      .access-copy {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .field-stack {
+        display: grid;
+        gap: 14px;
+      }
+
+      .field-group {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field-group label {
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+
+      .field-input {
+        width: 100%;
+        padding: 13px 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 16px;
+        background: rgba(9, 16, 31, 0.94);
+        color: #f8fbff;
+        -webkit-text-fill-color: #f8fbff;
+        caret-color: #f8fbff;
+        font: inherit;
+      }
+
+      .field-input::placeholder {
+        color: #c7d2fe;
+      }
+
+      .field-input:focus {
+        outline: none;
+        border-color: rgba(124, 58, 237, 0.55);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.16);
+      }
+
+      .button-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .primary-button,
+      .ghost-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: 1px solid var(--line-strong);
+        font-weight: 600;
+      }
+
+      .primary-button {
+        background: linear-gradient(135deg, #4f46e5, #6d5ef8);
+        color: white;
+        border-color: transparent;
+      }
+
+      .ghost-button {
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--muted);
+      }
+
+      .note {
+        padding: 16px 18px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: var(--panel-soft);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .status {
+        color: var(--muted);
+        font-size: 0.9rem;
+        min-height: 1.4em;
+      }
+
+      .status.is-ready {
+        color: #a5f3fc;
+      }
+
+      .link-row {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      .link-row a {
+        color: #eef2ff;
+      }
+
+      @media (max-width: 980px) {
+        .panel {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .shell {
+          padding: 18px;
+        }
+
+        .hero,
+        .access-card {
+          padding: 22px;
+        }
+
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
   <body>
-    <p>Redirecting to the CaribAI CMS...</p>
+    <div class="shell">
+      <div class="panel">
+        <section class="hero">
+          <div class="brand-row">
+            <img src="../assets/CariAI-LOGO-Transparent.png" alt="CaribAI logo" />
+          </div>
+          <p class="eyebrow">Private Workspace</p>
+          <h1>Calm control over the CaribAI front end.</h1>
+          <p class="lead">
+            Manage pages, journal content, storefront offers, shared settings, and media from a simpler editorial workspace built around the public brand site.
+          </p>
+
+          <div class="feature-grid">
+            <article class="feature">
+              <h3>Pages and publishing</h3>
+              <p>Update singleton pages, create posts, and manage workflow without leaving the CaribAI visual language.</p>
+            </article>
+            <article class="feature">
+              <h3>Storefront and media</h3>
+              <p>Refine offers, track graphics, and keep the public site assets organized in one controlled space.</p>
+            </article>
+            <article class="feature">
+              <h3>Shared front-end controls</h3>
+              <p>Edit the brand shell, navigation, footer, and contact settings through structured content instead of raw files.</p>
+            </article>
+            <article class="feature">
+              <h3>Workflow clarity</h3>
+              <p>Use lightweight Draft, Ready, and Live states to keep the front-facing brand site disciplined and easy to manage.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="access-card">
+          <div>
+            <p class="eyebrow">Workspace Access</p>
+            <h2>Enter the CMS</h2>
+          </div>
+
+          <p class="access-copy">
+            This is the CaribAI editorial workspace entry surface. Use it to move into the CMS shell and manage the public site intentionally.
+          </p>
+
+          <form id="accessForm" class="field-stack">
+            <div class="field-group">
+              <label for="workspaceEmail">Email</label>
+              <input
+                id="workspaceEmail"
+                class="field-input"
+                type="email"
+                placeholder="caribailabs@gmail.com"
+                autocomplete="email"
+              />
+            </div>
+            <div class="field-group">
+              <label for="workspaceRole">Role</label>
+              <input
+                id="workspaceRole"
+                class="field-input"
+                type="text"
+                placeholder="Founder, Editor, or Staff"
+                autocomplete="organization-title"
+              />
+            </div>
+            <div class="button-row">
+              <button class="primary-button" type="submit">Enter workspace</button>
+              <a class="ghost-button" href="../index.html">Back to site</a>
+            </div>
+          </form>
+
+          <p class="status" id="accessStatus"></p>
+
+          <div class="note">
+            This entry page is the designed access surface for the current file-based CMS. If you later want true staff authentication, that becomes the next backend phase.
+          </div>
+
+          <div class="link-row">
+            <a href="./app/">Open CMS shell directly</a>
+            <a href="../index.html">Preview public site</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const form = document.getElementById("accessForm");
+      const status = document.getElementById("accessStatus");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const email = document.getElementById("workspaceEmail").value.trim();
+        const role = document.getElementById("workspaceRole").value.trim();
+
+        if (!email) {
+          status.textContent = "Add an email before entering the workspace.";
+          status.className = "status";
+          return;
+        }
+
+        sessionStorage.setItem(
+          "caribai-cms-access",
+          JSON.stringify({
+            email,
+            role,
+            accessedAt: new Date().toISOString(),
+          })
+        );
+
+        status.textContent = "Opening workspace...";
+        status.className = "status is-ready";
+        window.location.href = "./app/";
+      });
+    </script>
   </body>
 </html>
