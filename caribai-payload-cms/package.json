@@ -14,7 +14,8 @@
     "generate:importmap": "payload generate:importmap",
     "generate:types": "payload generate:types",
     "import:seed": "node --import tsx scripts/import-seed.ts",
-    "check:env": "node scripts/check-env.mjs"
+    "check:env": "node scripts/check-env.mjs",
+    "create:admin": "node --import tsx scripts/create-admin.ts"
   },
   "dependencies": {
     "@payloadcms/next": "^3.0.0",

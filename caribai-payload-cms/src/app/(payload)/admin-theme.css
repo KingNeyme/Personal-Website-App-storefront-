@@ -1,0 +1,383 @@
+:root {
+  --caribai-admin-bg: #f3f6fb;
+  --caribai-admin-surface: #ffffff;
+  --caribai-admin-surface-alt: #eef3ff;
+  --caribai-admin-text: #172033;
+  --caribai-admin-text-soft: #5f6b85;
+  --caribai-admin-border: rgba(102, 119, 166, 0.18);
+  --caribai-admin-primary: #4f46e5;
+  --caribai-admin-primary-soft: #eef0ff;
+  --caribai-admin-accent: #7c3aed;
+  --caribai-admin-sidebar: #1c2557;
+  --caribai-admin-sidebar-2: #11193f;
+  --caribai-admin-shadow: 0 18px 45px rgba(27, 39, 94, 0.08);
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(79, 70, 229, 0.09), transparent 28%),
+    radial-gradient(circle at 88% 18%, rgba(124, 58, 237, 0.08), transparent 24%),
+    linear-gradient(180deg, #f6f8fd 0%, #eef3fb 100%);
+}
+
+[data-theme='light'] {
+  --theme-bg: var(--caribai-admin-bg);
+  --theme-elevation-0: transparent;
+  --theme-elevation-50: #f7f9fd;
+  --theme-elevation-100: var(--caribai-admin-surface);
+  --theme-elevation-150: #f6f8ff;
+  --theme-elevation-200: #edf2fb;
+  --theme-elevation-300: #e4ebf8;
+  --theme-elevation-400: #d8e2f5;
+  --theme-elevation-500: #c7d4ef;
+  --theme-elevation-600: #aab9dc;
+  --theme-elevation-700: #8294c1;
+  --theme-elevation-800: #53648d;
+  --theme-elevation-900: #273353;
+  --theme-elevation-1000: #0f172d;
+  --theme-text: var(--caribai-admin-text);
+  --theme-input-bg: #ffffff;
+  --theme-border-color: var(--caribai-admin-border);
+  --theme-success-500: #0f9f6e;
+  --theme-warning-500: #d48917;
+  --theme-error-500: #d14343;
+  --theme-blue-500: var(--caribai-admin-primary);
+}
+
+.template-default,
+.template-minimal,
+.dashboard,
+.collection-list,
+.collection-edit,
+.document-fields {
+  color: var(--caribai-admin-text);
+}
+
+.template-default__wrap,
+.template-minimal__wrap {
+  max-width: 100%;
+}
+
+.nav {
+  background:
+    linear-gradient(180deg, rgba(124, 58, 237, 0.06), transparent 22%),
+    linear-gradient(180deg, var(--caribai-admin-sidebar) 0%, var(--caribai-admin-sidebar-2) 100%);
+  border-right: 1px solid rgba(160, 177, 235, 0.08);
+  box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.03);
+}
+
+.nav,
+.nav a,
+.nav button,
+.nav .pill {
+  color: rgba(240, 244, 255, 0.88);
+}
+
+.nav a:hover,
+.nav button:hover {
+  color: #ffffff;
+}
+
+.nav .pill,
+.nav .btn,
+.nav [aria-current='page'] {
+  border-radius: 10px;
+}
+
+.app-header {
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgba(115, 129, 173, 0.12);
+}
+
+.dashboard__wrap,
+.template-default__content,
+.template-default__main,
+.render-fields {
+  gap: 1.25rem;
+}
+
+.card,
+.collection-list__wrap,
+.list-controls,
+.doc-controls,
+.template-minimal__wrap,
+.field-type,
+.render-fields .row,
+.table,
+.drawer__content {
+  border-radius: 16px;
+}
+
+.card,
+.collection-list__wrap,
+.list-controls,
+.doc-controls,
+.template-minimal__wrap,
+.field-type,
+.render-fields .row,
+.table,
+.drawer__content,
+.popup__content {
+  box-shadow: var(--caribai-admin-shadow);
+  border: 1px solid var(--caribai-admin-border);
+}
+
+.btn,
+button,
+.button {
+  border-radius: 10px;
+}
+
+.caribai-admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.caribai-admin-logo img {
+  display: block;
+  height: 34px;
+  width: auto;
+}
+
+.caribai-admin-logo--large img {
+  height: 42px;
+}
+
+.caribai-admin-logo__wording {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.caribai-admin-logo__title {
+  color: var(--caribai-admin-text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.caribai-admin-logo__eyebrow {
+  color: var(--caribai-admin-text-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.caribai-admin-login-panel,
+.caribai-admin-sidebar-card,
+.caribai-admin-quick-card,
+.caribai-admin-dashboard__hero,
+.caribai-admin-dashboard__section {
+  background: var(--caribai-admin-surface);
+  border: 1px solid var(--caribai-admin-border);
+  border-radius: 18px;
+  box-shadow: var(--caribai-admin-shadow);
+}
+
+.caribai-admin-login-panel {
+  margin-bottom: 1rem;
+  padding: 1.15rem 1.2rem;
+}
+
+.caribai-admin-login-panel h3,
+.caribai-admin-sidebar-card h3,
+.caribai-admin-dashboard h2,
+.caribai-admin-dashboard h3 {
+  color: var(--caribai-admin-text);
+  margin: 0;
+}
+
+.caribai-admin-login-panel p,
+.caribai-admin-sidebar-card p,
+.caribai-admin-dashboard p {
+  color: var(--caribai-admin-text-soft);
+}
+
+.caribai-admin-login-panel__list,
+.caribai-admin-sidebar-card__list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.caribai-admin-login-panel__list li,
+.caribai-admin-sidebar-card__list li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.caribai-admin-login-panel__list li::before,
+.caribai-admin-sidebar-card__list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--caribai-admin-primary), var(--caribai-admin-accent));
+}
+
+.caribai-admin-sidebar-card {
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+.caribai-admin-sidebar-card__link {
+  display: inline-flex;
+  margin-top: 0.9rem;
+  color: var(--caribai-admin-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.caribai-admin-dashboard {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.caribai-admin-dashboard__hero {
+  padding: 1.4rem 1.5rem;
+  background:
+    radial-gradient(circle at top right, rgba(79, 70, 229, 0.12), transparent 26%),
+    linear-gradient(180deg, #ffffff 0%, #f7f9ff 100%);
+}
+
+.caribai-admin-dashboard__eyebrow {
+  color: var(--caribai-admin-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+
+.caribai-admin-dashboard__hero h1 {
+  color: var(--caribai-admin-text);
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.caribai-admin-dashboard__hero p {
+  font-size: 1rem;
+  max-width: 60rem;
+}
+
+.caribai-admin-dashboard__stats {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.caribai-admin-dashboard__stat {
+  background: var(--caribai-admin-surface);
+  border: 1px solid var(--caribai-admin-border);
+  border-radius: 16px;
+  box-shadow: var(--caribai-admin-shadow);
+  padding: 1rem 1.05rem;
+}
+
+.caribai-admin-dashboard__stat-label {
+  color: var(--caribai-admin-text-soft);
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.caribai-admin-dashboard__stat-value {
+  color: var(--caribai-admin-text);
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.caribai-admin-dashboard__section {
+  padding: 1.2rem 1.25rem;
+}
+
+.caribai-admin-dashboard__section-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.caribai-admin-dashboard__section-header a {
+  color: var(--caribai-admin-primary);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.caribai-admin-dashboard__grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.caribai-admin-quick-card {
+  padding: 1rem;
+}
+
+.caribai-admin-quick-card__eyebrow {
+  color: var(--caribai-admin-primary);
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+}
+
+.caribai-admin-quick-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.caribai-admin-quick-card p {
+  margin: 0 0 0.9rem;
+  min-height: 3rem;
+}
+
+.caribai-admin-quick-card__link {
+  align-items: center;
+  background: var(--caribai-admin-primary-soft);
+  border-radius: 10px;
+  color: var(--caribai-admin-primary);
+  display: inline-flex;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.68rem 0.85rem;
+  text-decoration: none;
+}
+
+@media (max-width: 1100px) {
+  .caribai-admin-dashboard__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .caribai-admin-dashboard__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .caribai-admin-dashboard__stats,
+  .caribai-admin-dashboard__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .caribai-admin-dashboard__hero h1 {
+    font-size: 1.55rem;
+  }
+}

@@ -79,6 +79,20 @@ This seeds:
 - products
 - projects
 
+9. Create the first production admin user:
+
+```bash
+DATABASE_URL=postgres://... \
+ADMIN_EMAIL=you@example.com \
+ADMIN_PASSWORD='replace-with-a-strong-password' \
+ADMIN_DISPLAY_NAME='Your Name' \
+npm run create:admin
+```
+
+Then log into:
+
+- `/admin/login`
+
 ## Why migrations are separate
 
 The Vercel build now runs only:

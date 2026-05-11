@@ -1,3 +1,5 @@
+import './admin-theme.css'
+
 import type { ReactNode } from 'react'
 
 import config from '@payload-config'
