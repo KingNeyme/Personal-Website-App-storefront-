@@ -4,6 +4,8 @@ import Link from 'next/link'
 import type { Project, ProjectsPage } from '@/payload-types'
 import { getPayloadClient } from '@/lib/payload'
 
+export const dynamic = 'force-dynamic'
+
 function isProject(item: number | Project): item is Project {
   return typeof item === 'object' && item !== null
 }

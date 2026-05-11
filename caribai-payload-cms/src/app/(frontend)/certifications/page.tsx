@@ -4,6 +4,8 @@ import Link from 'next/link'
 import type { CertificationsPage } from '@/payload-types'
 import { getPayloadClient } from '@/lib/payload'
 
+export const dynamic = 'force-dynamic'
+
 type CertificationsContent = {
   hero: {
     eyebrow?: string | null

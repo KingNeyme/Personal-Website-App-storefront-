@@ -4,6 +4,8 @@ import Link from 'next/link'
 import type { Product, StorefrontPage } from '@/payload-types'
 import { getPayloadClient } from '@/lib/payload'
 
+export const dynamic = 'force-dynamic'
+
 function isProduct(item: number | Product): item is Product {
   return typeof item === 'object' && item !== null
 }

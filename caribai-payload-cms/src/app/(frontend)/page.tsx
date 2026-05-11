@@ -1,5 +1,7 @@
 import { getPayloadClient } from '@/lib/payload'
 
+export const dynamic = 'force-dynamic'
+
 type ItemWithCopy = {
   title?: string | null
   description?: string | null

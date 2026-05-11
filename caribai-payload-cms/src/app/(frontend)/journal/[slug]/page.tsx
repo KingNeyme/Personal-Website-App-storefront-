@@ -6,6 +6,8 @@ import type { Post } from '@/payload-types'
 import { getPayloadClient } from '@/lib/payload'
 import { renderMarkdownLite } from '@/lib/rich-text'
 
+export const dynamic = 'force-dynamic'
+
 type Params = {
   slug: string
 }

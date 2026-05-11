@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import type { ContactPage } from '@/payload-types'
 import { getPayloadClient } from '@/lib/payload'
 
+export const dynamic = 'force-dynamic'
+
 type ContactContent = {
   hero: {
     eyebrow?: string | null

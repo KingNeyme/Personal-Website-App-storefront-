@@ -4,6 +4,8 @@ import Link from 'next/link'
 import type { JourneyPage } from '@/payload-types'
 import { getPayloadClient } from '@/lib/payload'
 
+export const dynamic = 'force-dynamic'
+
 export async function generateMetadata(): Promise<Metadata> {
   const payload = await getPayloadClient()
   const page = await payload.findGlobal({
