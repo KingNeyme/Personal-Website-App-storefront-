@@ -15,19 +15,22 @@ Already started in this folder:
 - Seed-generation script from current JSON content
 - Media-manifest generation for the current asset footprint
 - Draft/version support for the main editable entities
+- Postgres-ready Payload configuration for the permanent Vercel deployment path
 
 ### Phase 2: Content import
 
 1. Install dependencies inside `caribai-payload-cms`
-2. Generate the seed file
-3. Generate the media manifest
-4. Create a first import script or one-time bootstrap script that writes:
+2. Provision Neon and connect its Postgres URL
+3. Run the env check for production readiness
+4. Generate the seed file
+5. Generate the media manifest
+6. Create a first import script or one-time bootstrap script that writes:
    - site settings
    - globals
    - posts
    - products
    - projects
-5. Upload or reconcile media
+7. Upload or reconcile media
 
 ## Content architecture
 
@@ -94,4 +97,4 @@ The long-term goal is:
 
 ## Best next implementation task
 
-Build a bootstrap import script that takes `src/seed/caribai-seed.json` and writes it into Payload automatically after the first local setup.
+Connect Neon, run the seed import against Postgres, and verify admin/media/content flows in the permanent Vercel-oriented stack.

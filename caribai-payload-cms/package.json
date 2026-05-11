@@ -12,7 +12,8 @@
     "generate:media-manifest": "node scripts/build-media-manifest.mjs",
     "generate:importmap": "payload generate:importmap",
     "generate:types": "payload generate:types",
-    "import:seed": "node --import tsx scripts/import-seed.ts"
+    "import:seed": "node --import tsx scripts/import-seed.ts",
+    "check:env": "node scripts/check-env.mjs"
   },
   "dependencies": {
     "@payloadcms/next": "^3.0.0",

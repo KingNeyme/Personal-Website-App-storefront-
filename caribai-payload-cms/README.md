@@ -6,7 +6,7 @@ It is intentionally being built **next to** the current live static site so we c
 
 ## What this scaffold includes
 
-- Payload config with SQLite for an easy local starting point
+- Payload config that prefers Postgres for production and can still fall back to SQLite locally while the permanent database is being provisioned
 - Core admin collections:
   - `users`
   - `media`
@@ -40,19 +40,22 @@ Decap helped prove the editing flow, but CaribAI now needs a real admin foundati
 
 1. Keep the live static site running.
 2. Finish the Payload content model here.
-3. Generate and import seed data from the current JSON content.
-4. Audit and reconcile media into the Payload media library.
-5. Rebuild the public frontend against Payload APIs / local API.
-5. Cut over only when the new stack is fully ready.
+3. Provision the permanent Postgres database.
+4. Generate and import seed data from the current JSON content.
+5. Audit and reconcile media into the Payload media library.
+6. Rebuild the public frontend against Payload APIs / local API.
+7. Cut over only when the new stack is fully ready.
 
 ## Local next steps
 
 1. Copy `.env.example` to `.env`
 2. Install dependencies
-3. Run `npm run generate:seed`
-4. Run `npm run generate:media-manifest`
-5. Run `npm run import:seed`
-6. Run `npm run dev`
+3. Add `DATABASE_URL` or `POSTGRES_URL` if you already have Neon provisioned
+4. Run `npm run check:env` before production deployment
+5. Run `npm run generate:seed`
+6. Run `npm run generate:media-manifest`
+7. Run `npm run import:seed`
+8. Run `npm run dev`
 
 ## Notes
 
@@ -61,3 +64,4 @@ Decap helped prove the editing flow, but CaribAI now needs a real admin foundati
 - The journal has its own page-level global so the public editorial layer can be managed as intentionally as the rest of the brand.
 - The public site frontend migration is a separate step from the admin/data foundation.
 - Some page globals still use structured JSON fields as transitional storage so we can move faster from the current site shape into Payload without losing information.
+- The permanent production direction is `Vercel + Payload + Postgres (Neon recommended)`.
