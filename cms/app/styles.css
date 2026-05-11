@@ -245,10 +245,12 @@ img {
 
 .editor-main {
   grid-column: 1;
+  grid-row: 1;
 }
 
 .editor-side {
   grid-column: 2;
+  grid-row: 1;
 }
 
 .editor-panel {
@@ -737,6 +739,7 @@ code {
   .editor-main,
   .editor-side {
     grid-column: auto;
+    grid-row: auto;
   }
 }
 
