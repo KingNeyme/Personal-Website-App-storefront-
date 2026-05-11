@@ -7,64 +7,64 @@ const workspaceAccess = (() => {
 })();
 
 if (!workspaceAccess) {
-  window.location.replace("../");
+  window.location.replace("/cms/");
 }
 
 const pageSurfaces = [
   {
     key: "home",
     title: "Homepage",
-    source: "../../content/site/home.json",
-    route: "../../index.html",
+    source: "/content/site/home.json",
+    route: "/",
     summary: "Hero, positioning, storefront lead-in, and growth narrative.",
   },
   {
     key: "about",
     title: "About",
-    source: "../../content/site/about.json",
-    route: "../../about.html",
+    source: "/content/site/about.json",
+    route: "/about.html",
     summary: "Brand identity, values, structure, and mission.",
   },
   {
     key: "projects",
     title: "Projects",
-    source: "../../content/site/projects.json",
-    route: "../../projects.html",
+    source: "/content/site/projects.json",
+    route: "/projects.html",
     summary: "Current pipeline, solution roadmap, and product logic.",
   },
   {
     key: "storefront",
     title: "Storefront",
-    source: "../../content/site/storefront.json",
-    route: "../../storefront.html",
+    source: "/content/site/storefront.json",
+    route: "/storefront.html",
     summary: "Digital offers, early access, and future product direction.",
   },
   {
     key: "journey",
     title: "Journey",
-    source: "../../content/site/journey.json",
-    route: "../../journey.html",
+    source: "/content/site/journey.json",
+    route: "/journey.html",
     summary: "Learning path, documentation, milestones, and direction.",
   },
   {
     key: "tech-stack",
     title: "Tech Stack",
-    source: "../../content/site/tech-stack.json",
-    route: "../../tech-stack.html",
+    source: "/content/site/tech-stack.json",
+    route: "/tech-stack.html",
     summary: "Primary tools, supporting tools, and technical story.",
   },
   {
     key: "certifications",
     title: "Certifications",
-    source: "../../content/site/certifications.json",
-    route: "../../certifications.html",
+    source: "/content/site/certifications.json",
+    route: "/certifications.html",
     summary: "Credibility signals, milestones, and growth proof.",
   },
   {
     key: "contact",
     title: "Contact",
-    source: "../../content/site/contact.json",
-    route: "../../contact.html",
+    source: "/content/site/contact.json",
+    route: "/contact.html",
     summary: "Lead capture, inbox messaging, and outreach guidance.",
   },
 ];
@@ -740,8 +740,8 @@ const renderJournalEditor = () => {
 
   journalEditorTitle.textContent = post.title;
   journalEditorSummary.textContent = post.excerpt || "Edit this post’s publishing data and article content.";
-  journalEditorSource.textContent = "../../content/blog/posts.json";
-  journalPreviewButton.href = `../../blog-post.html?slug=${encodeURIComponent(post.slug)}`;
+  journalEditorSource.textContent = "/content/blog/posts.json";
+  journalPreviewButton.href = `/blog-post.html?slug=${encodeURIComponent(post.slug)}`;
   journalEditorToolbar.hidden = false;
   journalDeleteButton.hidden = false;
   renderWorkflowSwitch(journalWorkflowSwitch, getPostWorkflowStatus(post), (status) => {
@@ -781,7 +781,7 @@ const renderJournalEditor = () => {
 
 const loadJournal = async () => {
   activePostFileHandle = null;
-  const response = await fetch("../../content/blog/posts.json", { cache: "no-store" });
+  const response = await fetch("/content/blog/posts.json", { cache: "no-store" });
 
   if (!response.ok) {
     journalEditorTitle.textContent = "Journal";
@@ -870,8 +870,8 @@ const renderStorefrontEditor = () => {
   const sections = Object.keys(storefrontData).filter((key) => !key.startsWith("_"));
   storefrontSectionTabs.hidden = false;
   storefrontEditorToolbar.hidden = false;
-  storefrontEditorSource.textContent = "../../content/site/storefront.json";
-  storefrontPreviewButton.href = "../../storefront.html";
+  storefrontEditorSource.textContent = "/content/site/storefront.json";
+  storefrontPreviewButton.href = "/storefront.html";
   storefrontDeleteButton.hidden = activeStorefrontView !== "products" || !(storefrontData.products?.items?.length);
   renderWorkflowSwitch(
     storefrontWorkflowSwitch,
@@ -970,7 +970,7 @@ const renderStorefrontEditor = () => {
 
 const loadStorefront = async () => {
   activeStorefrontFileHandle = null;
-  const response = await fetch("../../content/site/storefront.json", { cache: "no-store" });
+  const response = await fetch("/content/site/storefront.json", { cache: "no-store" });
 
   if (!response.ok) {
     storefrontEditorTitle.textContent = "Storefront";
@@ -1076,8 +1076,8 @@ const renderMediaPanel = () => {
 
   mediaPanelTitle.textContent = group.title;
   mediaPanelSummary.textContent = group.description;
-  mediaEditorSource.textContent = "../../content/site/media.json";
-  mediaPreviewButton.href = "../../index.html";
+  mediaEditorSource.textContent = "/content/site/media.json";
+  mediaPreviewButton.href = "/";
   mediaEditorToolbar.hidden = false;
   renderMediaGroupList();
 
@@ -1111,7 +1111,7 @@ const renderMediaPanel = () => {
       const assetPath = item.path || "";
       const isVisualAsset = /\.(png|jpg|jpeg|svg|webp|gif)$/i.test(assetPath);
       const isRemote = /^https?:\/\//i.test(assetPath);
-      const previewPath = isRemote ? assetPath : `../../${assetPath}`;
+      const previewPath = isRemote ? assetPath : `/${assetPath}`;
 
       if (isVisualAsset) {
         const image = document.createElement("img");
@@ -1147,7 +1147,7 @@ const renderMediaPanel = () => {
 
 const loadMedia = async () => {
   activeMediaFileHandle = null;
-  const response = await fetch("../../content/site/media.json", { cache: "no-store" });
+  const response = await fetch("/content/site/media.json", { cache: "no-store" });
 
   if (!response.ok) {
     mediaPanelTitle.textContent = "Media";
@@ -1202,8 +1202,8 @@ const renderSettingsEditor = () => {
 
   settingsEditorTitle.textContent = `Settings ${humanizeKey(sectionKey)}`;
   settingsEditorSummary.textContent = "Edit the shared controls that affect navigation, footer, branding, and contact routing.";
-  settingsEditorSource.textContent = "../../content/site/settings.json";
-  settingsPreviewButton.href = "../../index.html";
+  settingsEditorSource.textContent = "/content/site/settings.json";
+  settingsPreviewButton.href = "/";
   settingsEditorToolbar.hidden = false;
   settingsSectionTabs.hidden = false;
 
@@ -1241,7 +1241,7 @@ const renderSettingsEditor = () => {
 
 const loadSettings = async () => {
   activeSettingsFileHandle = null;
-  const response = await fetch("../../content/site/settings.json", { cache: "no-store" });
+  const response = await fetch("/content/site/settings.json", { cache: "no-store" });
 
   if (!response.ok) {
     settingsEditorTitle.textContent = "Settings";
