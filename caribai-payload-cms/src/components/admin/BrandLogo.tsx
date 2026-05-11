@@ -4,7 +4,7 @@ function LogoWording() {
   return (
     <div className="caribai-admin-logo__wording">
       <span className="caribai-admin-logo__eyebrow">Content Management System</span>
-      <span className="caribai-admin-logo__title">CaribAI Control Center</span>
+      <span className="caribai-admin-logo__title">CaribAI Admin</span>
     </div>
   )
 }
@@ -20,8 +20,6 @@ export function AdminLogo() {
 
 export function AdminIcon() {
   return (
-    <div className="caribai-admin-logo">
-      <img alt="CaribAI" src={logoSrc} />
-    </div>
+    <img alt="CaribAI" src={logoSrc} />
   )
 }

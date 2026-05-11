@@ -126,12 +126,29 @@ export function DashboardView() {
   return (
     <main className="caribai-admin-dashboard">
       <section className="caribai-admin-dashboard__hero">
-        <p className="caribai-admin-dashboard__eyebrow">CaribAI CMS</p>
-        <h1>Run the brand like a modern publishing and operations platform.</h1>
-        <p>
-          This admin is designed to feel closer to a serious WordPress-style control panel: structured,
-          practical, and focused on running the public CaribAI experience with confidence.
-        </p>
+        <div className="caribai-admin-dashboard__hero-head">
+          <div className="caribai-admin-dashboard__hero-copy">
+            <p className="caribai-admin-dashboard__eyebrow">CaribAI CMS</p>
+            <h1>Run the brand like a serious publishing and operations platform.</h1>
+            <p>
+              A cleaner control surface for managing public pages, products, editorial content, and
+              brand infrastructure without getting lost in raw collection screens.
+            </p>
+          </div>
+          <div className="caribai-admin-dashboard__hero-actions">
+            <a className="caribai-admin-dashboard__hero-link" href="/admin/globals/home-page">
+              Open homepage controls
+            </a>
+            <a className="caribai-admin-dashboard__hero-link" href="/admin/globals/site-settings">
+              Open site settings
+            </a>
+          </div>
+        </div>
+        <div className="caribai-admin-dashboard__meta">
+          <span>WordPress-style structure</span>
+          <span>Payload editorial engine</span>
+          <span>Live on Vercel + Postgres</span>
+        </div>
       </section>
 
       <section className="caribai-admin-dashboard__stats">

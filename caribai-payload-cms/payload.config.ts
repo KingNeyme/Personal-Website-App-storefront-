@@ -46,12 +46,6 @@ export default buildConfig({
       beforeLogin: [
         './components/admin/LoginPanel.tsx#LoginPanel',
       ],
-      beforeNav: [
-        './components/admin/SidebarBrand.tsx#SidebarBrand',
-      ],
-      afterNavLinks: [
-        './components/admin/SidebarHelp.tsx#SidebarHelp',
-      ],
       graphics: {
         Icon: './components/admin/BrandLogo.tsx#AdminIcon',
         Logo: './components/admin/BrandLogo.tsx#AdminLogo',

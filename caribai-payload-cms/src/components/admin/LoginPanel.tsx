@@ -2,15 +2,15 @@ export function LoginPanel() {
   return (
     <section className="caribai-admin-login-panel">
       <p className="caribai-admin-dashboard__eyebrow">Admin Access</p>
-      <h3>Operate CaribAI like a real platform, not a static site.</h3>
+      <h3>Operate CaribAI with the discipline of a real platform company.</h3>
       <p>
-        Use this workspace to manage pages, products, journal entries, projects, and the public-facing
-        infrastructure behind the CaribAI brand.
+        Manage the public site, publishing workflow, products, projects, and brand infrastructure
+        from one focused control layer.
       </p>
       <ul className="caribai-admin-login-panel__list">
-        <li>Update homepage, about, journey, and contact content</li>
-        <li>Manage products, projects, and journal entries from one control layer</li>
-        <li>Use Payload as the operating system for the real CaribAI business</li>
+        <li>Update high-visibility pages without touching code.</li>
+        <li>Publish products, projects, and journal content with more control.</li>
+        <li>Keep the live CaribAI brand sharp, current, and intentional.</li>
       </ul>
     </section>
   )
