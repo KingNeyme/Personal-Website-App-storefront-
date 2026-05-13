@@ -79,6 +79,11 @@ const applySiteSettings = (payload = {}) => {
   applyBrandSettings(payload.brand || {});
   applyNavSettings(payload.navigation || {});
   applyFooterSettings(payload.footer || {});
+
+  document.querySelectorAll(".footer-meta-link").forEach((node) => {
+    node.textContent = activeInbox;
+    node.setAttribute("href", `mailto:${activeInbox}`);
+  });
 };
 
 const initSiteSettings = async () => {

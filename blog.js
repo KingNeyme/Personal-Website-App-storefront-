@@ -96,7 +96,7 @@ const renderBlogList = (posts) => {
     .map((post) => {
       const readingTime = estimateReadingTime(post.body || "");
       return `
-        <article class="blog-card">
+        <article class="blog-card ${post.featured ? "featured-post" : ""}">
           ${post.coverImage ? `<img class="blog-media" src="${post.coverImage}" alt="${post.title} cover image" />` : ""}
           <span class="pill ${post.featured ? "" : "muted"}">${post.category || "CaribAI Notes"}</span>
           <h2>${post.title}</h2>
@@ -156,6 +156,7 @@ const renderBlogPost = (posts) => {
   shell.querySelector("[data-post-date]").textContent = formatDate(post.publishDate);
   shell.querySelector("[data-post-reading-time]").textContent = `${estimateReadingTime(post.body || "")} min read`;
   shell.querySelector("[data-post-excerpt]").textContent = post.excerpt || "";
+  shell.classList.add("post-shell-premium");
 
   const contentNode = shell.querySelector("[data-post-content]");
   const content = post.body || "";

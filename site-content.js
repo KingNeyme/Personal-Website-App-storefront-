@@ -36,7 +36,7 @@ const SITE_PAGE_CONFIG = {
 const enhanceRevealMotion = (root = document) => {
   const targets = Array.from(
     root.querySelectorAll(
-      ".panel, .store-card, .capability-card, .project-row, .tool-card, .structure-card, .metric-card, .hero-mini-card"
+      ".panel, .store-card, .capability-card, .project-row, .tool-card, .structure-card, .metric-card, .hero-mini-card, .hero-stat-card, .hero-command-card, .hero-proof-card, .story-chip-card, .roadmap-step, .operating-model-card, .focus-card, .focus-narrative, .product-spotlight, .product-stack-card"
     )
   );
 
@@ -321,43 +321,104 @@ const renderForm = (config = {}) => {
 };
 
 function renderHomePage(data) {
+  const heroMetrics = (data.hero?.metrics || []).slice(0, 3);
+  const storefrontItems = data.storefront?.items || [];
+  const featuredProduct = storefrontItems.find((item) => item.featured) || storefrontItems[0];
+  const secondaryProducts = storefrontItems.filter((item) => item !== featuredProduct).slice(0, 2);
+  const structureItems = data.structure?.items || [];
+  const buildItems = data.build?.items || [];
+  const modelItems = data.businessModel?.items || [];
+  const focusItems = data.focus?.items || [];
+
   return `
-    <section class="hero panel hero-home">
-      <div class="hero-copy">
-        <p class="eyebrow">${data.hero?.eyebrow || ""}</p>
-        <h1>${data.hero?.title || ""}</h1>
-        <p class="hero-text">${data.hero?.description || ""}</p>
-        <div class="hero-actions">${renderButtons(data.hero?.actions)}</div>
-        <ul class="hero-points">${renderHeroPoints((data.hero?.points || []).slice(0, 3))}</ul>
-      </div>
-      <div class="hero-side">
-        ${renderHeroShowcase(data.storefront?.items)}
+    <section class="panel hero-home hero-home-premium">
+      <div class="home-hero-grid">
+        <div class="hero-copy hero-copy-stack">
+          <p class="eyebrow">${data.hero?.eyebrow || ""}</p>
+          <h1>${data.hero?.title || ""}</h1>
+          <p class="hero-text">${data.hero?.description || ""}</p>
+          <div class="hero-actions">${renderButtons(data.hero?.actions)}</div>
+          <ul class="hero-points">${renderHeroPoints((data.hero?.points || []).slice(0, 3))}</ul>
+
+          <div class="hero-signal-grid">
+            ${heroMetrics
+              .map(
+                (item) => `
+                  <article class="hero-stat-card ${item.featured ? "hero-stat-card-featured" : ""}">
+                    <span class="label">${item.label || "Signal"}</span>
+                    <strong>${item.title || ""}</strong>
+                    <p>${item.description || ""}</p>
+                  </article>
+                `
+              )
+              .join("")}
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="panel home-thesis">
-      <div class="split-section">
-        <div>
+    <section class="panel home-hero-feature-strip">
+      <div class="home-hero-side">
+        <article class="hero-command-card">
+          <div class="hero-command-copy">
+            <p class="overline-lite">Featured direction</p>
+            <h3>${featuredProduct?.title || ""}</h3>
+            <p>${featuredProduct?.description || ""}</p>
+            ${
+              featuredProduct?.meta?.length
+                ? `<div class="card-meta">${featuredProduct.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
+                : ""
+            }
+          </div>
+          ${renderMedia(featuredProduct, "hero-command-media")}
+        </article>
+
+        <div class="hero-proof-list">
+          ${secondaryProducts
+            .map(
+              (item) => `
+                <article class="hero-proof-card">
+                  <div>
+                    <span class="pill muted">${item.badge || "Product"}</span>
+                    <h4>${item.title || ""}</h4>
+                  </div>
+                  <p>${item.description || ""}</p>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </div>
+    </section>
+
+    <section class="panel home-story-band">
+      <div class="home-story-grid">
+        <div class="story-lead">
           <p class="eyebrow">${data.positioning?.eyebrow || ""}</p>
           <h2>${data.positioning?.title || ""}</h2>
+          <p class="section-copy">${data.positioning?.description || ""}</p>
         </div>
-        <p class="section-copy">${data.positioning?.description || ""}</p>
+        <div class="story-aside">
+          <p class="story-aside-copy">${data.structure?.description || ""}</p>
+          <div class="story-chip-list">
+            ${structureItems
+              .slice(0, 3)
+              .map(
+                (item) => `
+                  <article class="story-chip-card ${item.featured ? "story-chip-card-featured" : ""}">
+                    <span class="pill ${item.muted ? "muted" : ""}">${item.badge || "Layer"}</span>
+                    <h3>${item.title || ""}</h3>
+                    <p>${item.description || ""}</p>
+                  </article>
+                `
+              )
+              .join("")}
+          </div>
+        </div>
       </div>
-      <div class="metric-strip">${renderMetricCards((data.hero?.metrics || []).slice(0, 3))}</div>
     </section>
 
-    <section class="panel home-structure">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">${data.structure?.eyebrow || ""}</p>
-          <h2>${data.structure?.title || ""}</h2>
-        </div>
-        <p class="section-copy">${data.structure?.description || ""}</p>
-      </div>
-      <div class="structure-grid">${renderStructureCards(data.structure?.items)}</div>
-    </section>
-
-    <section id="storefront" class="panel home-products">
+    <section id="storefront" class="panel home-products-canvas">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.storefront?.eyebrow || ""}</p>
@@ -365,39 +426,107 @@ function renderHomePage(data) {
         </div>
         <p class="section-copy">${data.storefront?.description || ""}</p>
       </div>
-      <div class="storefront-grid">${renderStoreCards(data.storefront?.items)}</div>
-    </section>
+      <div class="home-products-shell">
+        <article class="product-spotlight">
+          <div class="product-spotlight-copy">
+            <span class="pill">${featuredProduct?.badge || "Current Product"}</span>
+            <h3>${featuredProduct?.title || ""}</h3>
+            <p>${featuredProduct?.description || ""}</p>
+            ${
+              featuredProduct?.meta?.length
+                ? `<div class="card-meta">${featuredProduct.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
+                : ""
+            }
+          </div>
+          <div class="product-spotlight-visual">
+            ${renderMedia(featuredProduct, "product-spotlight-media")}
+          </div>
+        </article>
 
-    <section class="panel home-roadmap">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">${data.build?.eyebrow || ""}</p>
-          <h2>${data.build?.title || ""}</h2>
+        <div class="product-stack">
+          ${secondaryProducts
+            .map(
+              (item) => `
+                <article class="product-stack-card">
+                  ${renderMedia(item, "product-stack-media")}
+                  <div>
+                    <span class="pill ${item.muted ? "muted" : ""}">${item.badge || "Product"}</span>
+                    <h3>${item.title || ""}</h3>
+                    <p>${item.description || ""}</p>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
         </div>
-        <p class="section-copy">${data.businessModel?.title || ""}</p>
-      </div>
-      <div class="home-roadmap-grid">
-        <div class="capability-grid">${renderCapabilityCards(data.build?.items)}</div>
-        <div class="insight-grid compact-insight-grid">${renderInsightCards(data.businessModel?.items)}</div>
       </div>
     </section>
 
-    <section id="projects" class="panel home-pipeline">
+    <section class="panel home-roadmap-premium">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.execution?.eyebrow || ""}</p>
           <h2>${data.execution?.title || ""}</h2>
         </div>
-        ${
-          data.execution?.link
-            ? `<a class="text-link" href="${data.execution.link.href || "#"}">${data.execution.link.label || "Learn more"}</a>`
-            : ""
-        }
+        <p class="section-copy">${data.businessModel?.title || ""}</p>
       </div>
-      <div class="project-list">${renderProjectRows(data.execution?.items)}</div>
+      <div class="home-roadmap-shell">
+        <div class="roadmap-track">
+          ${data.execution?.items
+            ?.map(
+              (item) => `
+                <article class="roadmap-step">
+                  <span class="project-row-status">${item.status || "Phase"}</span>
+                  <h3>${item.title || ""}</h3>
+                  <p>${item.description || ""}</p>
+                </article>
+              `
+            )
+            .join("") || ""}
+        </div>
+
+        <div class="operating-model">
+          <article class="operating-model-card">
+            <p class="eyebrow">${data.build?.eyebrow || ""}</p>
+            <h3>${data.build?.title || ""}</h3>
+            <div class="operating-model-list">
+              ${buildItems
+                .map(
+                  (item) => `
+                    <div class="operating-model-item">
+                      <h4>${item.title || ""}</h4>
+                      <p>${item.description || ""}</p>
+                    </div>
+                  `
+                )
+                .join("")}
+            </div>
+          </article>
+
+          <article class="operating-model-card operating-model-card-accent">
+            <p class="eyebrow">${data.businessModel?.eyebrow || ""}</p>
+            <h3>${data.businessModel?.title || ""}</h3>
+            <div class="operating-loop">
+              ${modelItems
+                .map(
+                  (item, index) => `
+                    <div class="operating-loop-step">
+                      <span>${String(index + 1).padStart(2, "0")}</span>
+                      <div>
+                        <h4>${item.title || ""}</h4>
+                        <p>${item.description || ""}</p>
+                      </div>
+                    </div>
+                  `
+                )
+                .join("")}
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="panel home-platform">
+    <section class="panel home-ecosystem-shell">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.growthHub?.eyebrow || ""}</p>
@@ -405,18 +534,50 @@ function renderHomePage(data) {
         </div>
         <p class="section-copy">${data.growthHub?.description || ""}</p>
       </div>
-      <div class="capability-grid">${renderCapabilityCards(data.growthHub?.items)}</div>
+      <div class="ecosystem-grid">
+        <div class="capability-grid">${renderCapabilityCards(data.growthHub?.items)}</div>
+        <div class="ecosystem-structure">
+          <p class="eyebrow">${data.structure?.eyebrow || ""}</p>
+          <h3>${data.structure?.title || ""}</h3>
+          <div class="structure-stack">
+            ${renderStructureCards(structureItems)}
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="panel home-focus">
+    <section id="projects" class="panel home-focus-shell">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.focus?.eyebrow || ""}</p>
           <h2>${data.focus?.title || ""}</h2>
         </div>
-        <p class="section-copy">${data.lens?.title || ""}</p>
+        ${
+          data.execution?.link
+            ? `<a class="text-link" href="${data.execution.link.href || "#"}">${data.execution.link.label || "See all projects"}</a>`
+            : ""
+        }
       </div>
-      <div class="project-list">${renderProjectRows(data.focus?.items)}</div>
+      <div class="focus-shell">
+        <div class="focus-grid">
+          ${focusItems
+            .map(
+              (item) => `
+                <article class="focus-card">
+                  <span class="project-row-status">${item.status || "Focus"}</span>
+                  <h3>${item.title || ""}</h3>
+                  <p>${item.description || ""}</p>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+        <article class="focus-narrative">
+          <p class="eyebrow">${data.lens?.eyebrow || "Why it compounds"}</p>
+          <h3>${data.lens?.title || ""}</h3>
+          <div class="compact-insight-grid">${renderInsightCards(data.lens?.items)}</div>
+        </article>
+      </div>
     </section>
 
     <section id="lead-access" class="panel lead-panel">
@@ -448,19 +609,33 @@ function renderAboutPage(data) {
   return `
     ${renderPageHero(data.hero)}
 
-    <section class="panel split-section">
-      <div>
-        <p class="eyebrow">${data.identity?.eyebrow || ""}</p>
-        <h2>${data.identity?.title || ""}</h2>
+    <section class="panel about-identity-shell">
+      <div class="about-identity-grid">
+        <div class="about-identity-copy">
+          <p class="eyebrow">${data.identity?.eyebrow || ""}</p>
+          <h2>${data.identity?.title || ""}</h2>
+          <p class="section-copy">${data.identity?.description || ""}</p>
+        </div>
+        <article class="about-identity-card">
+          <p class="overline-lite">How CaribAI operates</p>
+          <h3>Problem-first, execution-heavy, system-aware.</h3>
+          <p>CaribAI is not being built around vague AI ambition. It is being built around useful systems, visible progress, and technical depth that compounds over time.</p>
+        </article>
       </div>
-      <p class="section-copy">${data.identity?.description || ""}</p>
     </section>
 
-    <section class="panel">
+    <section class="panel about-values-shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Core Direction</p>
+          <h2>Mission, vision, and operating lens in one place.</h2>
+        </div>
+        <p class="section-copy">${data.structure?.description || ""}</p>
+      </div>
       <div class="capability-grid">${renderCapabilityCards(data.values?.items)}</div>
     </section>
 
-    <section class="panel">
+    <section class="panel about-structure-shell">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.structure?.eyebrow || ""}</p>
@@ -468,10 +643,17 @@ function renderAboutPage(data) {
         </div>
         <p class="section-copy">${data.structure?.description || ""}</p>
       </div>
-      <div class="structure-grid">${renderStructureCards(data.structure?.items)}</div>
+      <div class="about-structure-grid">
+        <div class="structure-grid">${renderStructureCards(data.structure?.items)}</div>
+        <article class="about-structure-note">
+          <p class="overline-lite">Why this matters</p>
+          <h3>One visible brand, one deeper build layer.</h3>
+          <p>The public site should help people understand that CaribAI sells useful things today while building toward stronger systems, software, and infrastructure later.</p>
+        </article>
+      </div>
     </section>
 
-    <section class="panel contact-banner">
+    <section class="panel contact-banner about-next-step">
       <div>
         <p class="eyebrow">${data.cta?.eyebrow || ""}</p>
         <h2>${data.cta?.title || ""}</h2>
@@ -483,10 +665,14 @@ function renderAboutPage(data) {
 }
 
 function renderProjectsPage(data) {
+  const projects = data.pipeline?.items || [];
+  const featuredProject = projects.find((item) => item.featured) || projects[0];
+  const secondaryProjects = projects.filter((item) => item !== featuredProject).slice(0, 3);
+
   return `
     ${renderPageHero(data.hero)}
 
-    <section class="panel">
+    <section class="panel projects-pipeline-shell">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.pipeline?.eyebrow || ""}</p>
@@ -494,14 +680,64 @@ function renderProjectsPage(data) {
         </div>
         <p class="section-copy">${data.pipeline?.description || ""}</p>
       </div>
-      <div class="storefront-grid">${renderStoreCards(data.pipeline?.items)}</div>
+      <div class="storefront-premium-grid">
+        <article class="product-spotlight projects-featured-card">
+          <div class="product-spotlight-copy">
+            <span class="pill">${featuredProject?.badge || "Current Product"}</span>
+            <h3>${featuredProject?.title || ""}</h3>
+            <p>${featuredProject?.description || ""}</p>
+            ${
+              featuredProject?.meta?.length
+                ? `<div class="card-meta">${featuredProject.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
+                : ""
+            }
+          </div>
+          <div class="product-spotlight-visual">
+            ${renderMedia(featuredProject, "product-spotlight-media")}
+          </div>
+        </article>
+
+        <div class="product-stack">
+          ${secondaryProjects
+            .map(
+              (item) => `
+                <article class="product-stack-card">
+                  ${renderMedia(item, "product-stack-media")}
+                  <div>
+                    <span class="pill ${item.muted ? "muted" : ""}">${item.badge || "Direction"}</span>
+                    <h3>${item.title || ""}</h3>
+                    <p>${item.description || ""}</p>
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </div>
     </section>
 
-    <section class="panel">
-      <div class="capability-grid">${renderCapabilityCards(data.summary?.items)}</div>
+    <section class="panel projects-summary-shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Project Logic</p>
+          <h2>Each project is a different proof point in the wider ecosystem.</h2>
+        </div>
+      </div>
+      <div class="storefront-summary-grid">
+        ${(data.summary?.items || [])
+          .map(
+            (item) => `
+              <article class="storefront-summary-card">
+                <h3>${item.title || ""}</h3>
+                <p>${item.description || ""}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
     </section>
 
-    <section class="panel contact-banner">
+    <section class="panel contact-banner projects-next-step">
       <div>
         <p class="eyebrow">${data.cta?.eyebrow || ""}</p>
         <h2>${data.cta?.title || ""}</h2>
@@ -513,10 +749,14 @@ function renderProjectsPage(data) {
 }
 
 function renderStorefrontPage(data) {
+  const products = data.products?.items || [];
+  const featuredProduct = products.find((item) => item.featured) || products[0];
+  const secondaryProducts = products.filter((item) => item !== featuredProduct).slice(0, 3);
+
   return `
     ${renderPageHero(data.hero)}
 
-    <section class="panel">
+    <section class="panel storefront-products-premium">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.products?.eyebrow || ""}</p>
@@ -524,18 +764,84 @@ function renderStorefrontPage(data) {
         </div>
         <p class="section-copy">${data.products?.description || ""}</p>
       </div>
-      <div class="storefront-grid">${renderStoreCards(data.products?.items)}</div>
+      <div class="storefront-premium-grid">
+        <article class="product-spotlight storefront-featured-card">
+          <div class="product-spotlight-copy">
+            <span class="pill">${featuredProduct?.badge || "Current Product"}</span>
+            <h3>${featuredProduct?.title || ""}</h3>
+            <p>${featuredProduct?.description || ""}</p>
+            ${
+              featuredProduct?.meta?.length
+                ? `<div class="card-meta">${featuredProduct.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
+                : ""
+            }
+          </div>
+          <div class="product-spotlight-visual">
+            ${renderMedia(featuredProduct, "product-spotlight-media")}
+          </div>
+        </article>
+
+        <div class="product-stack storefront-product-stack">
+          ${secondaryProducts
+            .map(
+              (item) => `
+                <article class="product-stack-card storefront-product-card">
+                  ${renderMedia(item, "product-stack-media")}
+                  <div>
+                    <span class="pill ${item.muted ? "muted" : ""}">${item.badge || "Product"}</span>
+                    <h3>${item.title || ""}</h3>
+                    <p>${item.description || ""}</p>
+                    ${
+                      item.meta?.length
+                        ? `<div class="card-meta">${item.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
+                        : ""
+                    }
+                  </div>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </div>
     </section>
 
-    <section class="panel">
-      <div class="capability-grid">${renderCapabilityCards(data.summary?.items)}</div>
+    <section class="panel storefront-summary-premium">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Storefront Logic</p>
+          <h2>Built to show what is usable now and what can grow later.</h2>
+        </div>
+        <p class="section-copy">${data.summary?.items?.[0]?.description || ""}</p>
+      </div>
+      <div class="storefront-summary-grid">
+        ${(data.summary?.items || [])
+          .map(
+            (item) => `
+              <article class="storefront-summary-card">
+                <h3>${item.title || ""}</h3>
+                <p>${item.description || ""}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
     </section>
 
-    <section class="panel lead-panel">
-      <div>
+    <section class="panel lead-panel storefront-access-premium">
+      <div class="storefront-access-copy">
         <p class="eyebrow">${data.lead?.eyebrow || ""}</p>
         <h2>${data.lead?.title || ""}</h2>
         <p class="section-copy">${data.lead?.description || ""}</p>
+        <div class="compact-insight-grid storefront-access-notes">
+          <article>
+            <h3>Early signal matters.</h3>
+            <p>Join the list if you want first access to digital releases, experiments, and future software directions.</p>
+          </article>
+          <article>
+            <h3>Watch the progression.</h3>
+            <p>The storefront will evolve from focused offers into stronger tools, automation layers, and AI products over time.</p>
+          </article>
+        </div>
       </div>
       ${renderForm({
         type: "storefront-access",
@@ -545,7 +851,7 @@ function renderStorefrontPage(data) {
       })}
     </section>
 
-    <section class="panel contact-banner">
+    <section class="panel contact-banner storefront-next-step">
       <div>
         <p class="eyebrow">${data.cta?.eyebrow || ""}</p>
         <h2>${data.cta?.title || ""}</h2>
@@ -560,7 +866,7 @@ function renderJourneyPage(data) {
   return `
     ${renderPageHero(data.hero)}
 
-    <section class="panel">
+    <section class="panel journey-focus-shell">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.focus?.eyebrow || ""}</p>
@@ -570,7 +876,7 @@ function renderJourneyPage(data) {
       <div class="capability-grid">${renderCapabilityCards(data.focus?.items)}</div>
     </section>
 
-    <section class="panel">
+    <section class="panel journey-documentation-shell">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.documentation?.eyebrow || ""}</p>
@@ -578,18 +884,42 @@ function renderJourneyPage(data) {
         </div>
         <p class="section-copy">${data.documentation?.description || ""}</p>
       </div>
-      <div class="project-list">${renderProjectRows(data.documentation?.items)}</div>
+      <div class="journey-log-grid">
+        ${(data.documentation?.items || [])
+          .map(
+            (item) => `
+              <article class="journey-log-card">
+                ${item.image ? `<img class="card-media" src="${item.image}" alt="${item.imageAlt || item.title || ""}" />` : ""}
+                <span class="project-row-status">${item.status || "Ongoing"}</span>
+                <h3>${item.title || ""}</h3>
+                <p>${item.description || ""}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
     </section>
 
-    <section class="panel insights-panel">
+    <section class="panel insights-panel journey-future-shell">
       <div>
         <p class="eyebrow">${data.future?.eyebrow || ""}</p>
         <h2>${data.future?.title || ""}</h2>
       </div>
-      <div class="insight-grid">${renderInsightCards(data.future?.items)}</div>
+      <div class="journey-future-grid">
+        ${(data.future?.items || [])
+          .map(
+            (item) => `
+              <article class="journey-future-card">
+                <h3>${item.title || ""}</h3>
+                <p>${item.description || ""}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
     </section>
 
-    <section class="panel contact-banner">
+    <section class="panel contact-banner journey-next-step">
       <div>
         <p class="eyebrow">${data.cta?.eyebrow || ""}</p>
         <h2>${data.cta?.title || ""}</h2>
@@ -604,7 +934,7 @@ function renderTechStackPage(data) {
   return `
     ${renderPageHero(data.hero)}
 
-    <section class="panel">
+    <section class="panel tech-stack-primary-shell">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.primary?.eyebrow || ""}</p>
@@ -615,7 +945,7 @@ function renderTechStackPage(data) {
       <div class="tool-grid">${renderToolCards(data.primary?.items)}</div>
     </section>
 
-    <section class="panel">
+    <section class="panel tech-stack-secondary-shell">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.secondary?.eyebrow || ""}</p>
@@ -626,15 +956,26 @@ function renderTechStackPage(data) {
       <div class="tool-grid">${renderToolCards(data.secondary?.items)}</div>
     </section>
 
-    <section class="panel insights-panel">
+    <section class="panel insights-panel tech-stack-support-shell">
       <div>
         <p class="eyebrow">${data.support?.eyebrow || ""}</p>
         <h2>${data.support?.title || ""}</h2>
       </div>
-      <div class="insight-grid">${renderInsightCards(data.support?.items)}</div>
+      <div class="journey-future-grid">
+        ${(data.support?.items || [])
+          .map(
+            (item) => `
+              <article class="journey-future-card">
+                <h3>${item.title || ""}</h3>
+                <p>${item.description || ""}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
     </section>
 
-    <section class="panel contact-banner">
+    <section class="panel contact-banner tech-next-step">
       <div>
         <p class="eyebrow">${data.cta?.eyebrow || ""}</p>
         <h2>${data.cta?.title || ""}</h2>
@@ -649,7 +990,7 @@ function renderCertificationsPage(data) {
   return `
     ${renderPageHero(data.hero)}
 
-    <section class="panel">
+    <section class="panel certifications-status-shell">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.status?.eyebrow || ""}</p>
@@ -657,14 +998,33 @@ function renderCertificationsPage(data) {
         </div>
         <p class="section-copy">${data.status?.description || ""}</p>
       </div>
-      <div class="project-list">${renderProjectRows(data.status?.items)}</div>
+      <div class="journey-log-grid">
+        ${(data.status?.items || [])
+          .map(
+            (item) => `
+              <article class="journey-log-card certification-card">
+                ${item.image ? `<img class="card-media" src="${item.image}" alt="${item.imageAlt || item.title || ""}" />` : ""}
+                <span class="project-row-status">${item.status || "Status"}</span>
+                <h3>${item.title || ""}</h3>
+                <p>${item.description || ""}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
     </section>
 
-    <section class="panel">
+    <section class="panel certifications-summary-shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Why it counts</p>
+          <h2>Credentials only matter when they strengthen the real work.</h2>
+        </div>
+      </div>
       <div class="capability-grid">${renderCapabilityCards(data.summary?.items)}</div>
     </section>
 
-    <section class="panel contact-banner">
+    <section class="panel contact-banner certifications-next-step">
       <div>
         <p class="eyebrow">${data.cta?.eyebrow || ""}</p>
         <h2>${data.cta?.title || ""}</h2>
@@ -679,8 +1039,8 @@ function renderContactPage(data) {
   return `
     ${renderPageHero(data.hero)}
 
-    <section class="panel contact-grid">
-      <div class="contact-info">
+    <section class="panel contact-grid contact-shell-premium">
+      <div class="contact-info contact-info-premium">
         <h2>${data.info?.title || ""}</h2>
         <ul class="hero-points">${renderHeroPoints(data.info?.items)}</ul>
         ${
@@ -702,7 +1062,7 @@ function renderContactPage(data) {
       </div>
       ${renderForm({
         type: "contact",
-        className: "contact-form",
+        className: "contact-form contact-form-premium",
         buttonLabel: data.form?.buttonLabel || "Send Inquiry",
         successMessage: data.form?.successMessage,
         note: data.form?.note,
