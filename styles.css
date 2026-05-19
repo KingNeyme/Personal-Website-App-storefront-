@@ -2262,38 +2262,20 @@ textarea:focus {
   }
 
   .nav-shell {
-    display: flex;
+    display: none;
     width: 100%;
     grid-column: 1 / -1;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    padding-top: 0;
-    margin-top: 0;
-    border-top: 1px solid transparent;
+    padding-top: 14px;
+    margin-top: 6px;
+    border-top: 1px solid rgba(199, 210, 254, 0.08);
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
-    pointer-events: none;
-    transform: translateY(-8px);
-    transition:
-      max-height 240ms ease,
-      opacity 180ms ease,
-      transform 180ms ease,
-      padding-top 180ms ease,
-      margin-top 180ms ease,
-      border-color 180ms ease;
   }
 
   .topbar.is-open .nav-shell,
   .nav-state:checked ~ .nav-shell {
-    max-height: 420px;
-    opacity: 1;
-    padding-top: 14px;
-    margin-top: 6px;
-    border-top-color: rgba(199, 210, 254, 0.08);
-    pointer-events: auto;
-    transform: translateY(0);
+    display: flex;
   }
 
   .nav {
