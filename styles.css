@@ -848,9 +848,9 @@ textarea:focus {
 
 .home-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(340px, 0.82fr);
-  gap: 22px;
-  align-items: start;
+  grid-template-columns: minmax(0, 0.98fr) minmax(360px, 0.88fr);
+  gap: 30px;
+  align-items: stretch;
   min-width: 0;
 }
 
@@ -858,38 +858,45 @@ textarea:focus {
   display: grid;
   align-content: start;
   gap: 12px;
-  padding: 10px 8px 0 2px;
+  padding: 12px 8px 8px 2px;
   max-width: none;
   min-width: 0;
 }
 
 .hero-home-premium h1 {
-  max-width: 8.3ch;
+  max-width: 8ch;
+  font-size: clamp(3.6rem, 4.9vw, 5.05rem);
+  line-height: 0.96;
 }
 
 .hero-home-premium .hero-text {
-  max-width: 56ch;
+  max-width: 50ch;
+  font-size: 0.98rem;
 }
 
 .home-hero-side {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  grid-template-columns: minmax(0, 1fr);
   align-items: start;
   gap: 16px;
   min-width: 0;
-}
-
-.home-hero-feature-strip {
+  padding: 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.022), rgba(255, 255, 255, 0.01)),
-    rgba(11, 17, 33, 0.9);
+    radial-gradient(circle at top right, rgba(124, 58, 237, 0.16), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015)),
+    rgba(11, 17, 33, 0.86);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 34px rgba(2, 6, 23, 0.14);
 }
 
 .hero-signal-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  margin-top: 28px;
+  margin-top: 22px;
 }
 
 .hero-stat-card-featured {
@@ -899,18 +906,19 @@ textarea:focus {
 .hero-home-premium .hero-points {
   grid-template-columns: 1fr;
   gap: 10px;
-  margin-top: 6px;
+  margin-top: 2px;
 }
 
 .hero-home-premium .hero-points li {
   align-items: flex-start;
-  padding: 14px 16px;
+  padding: 12px 14px;
   border-radius: 20px;
   border: 1px solid rgba(148, 163, 184, 0.12);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
     rgba(255, 255, 255, 0.022);
-  line-height: 1.58;
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
 .hero-stat-card,
@@ -966,12 +974,15 @@ textarea:focus {
 .hero-command-card {
   display: grid;
   gap: 18px;
-  padding: 18px;
-  border-radius: 28px;
+  padding: 22px;
+  border-radius: 30px;
   background:
-    radial-gradient(circle at top right, rgba(124, 58, 237, 0.16), transparent 42%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.016)),
-    rgba(255, 255, 255, 0.03);
+    radial-gradient(circle at top right, rgba(124, 58, 237, 0.2), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.036);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 18px 34px rgba(2, 6, 23, 0.16);
 }
 
 .hero-command-copy h3,
@@ -1006,11 +1017,15 @@ textarea:focus {
   display: grid;
   gap: 14px;
   align-content: start;
+  grid-template-columns: 1fr;
 }
 
 .hero-proof-card {
-  padding: 18px 18px 16px;
+  padding: 20px 20px 18px;
   border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.014)),
+    rgba(255, 255, 255, 0.028);
 }
 
 .hero-proof-card h4,
@@ -1343,8 +1358,8 @@ textarea:focus {
 
 .storefront-premium-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
-  gap: 22px;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+  gap: 26px;
 }
 
 .storefront-featured-card {
@@ -1452,8 +1467,8 @@ textarea:focus {
 .about-identity-grid,
 .about-structure-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 320px;
-  gap: 22px;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 26px;
   align-items: start;
 }
 
@@ -1497,7 +1512,7 @@ textarea:focus {
 .journey-future-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .journey-log-card .card-media {
@@ -1596,8 +1611,8 @@ textarea:focus {
 
 .page-hero-layout {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 34px;
+  grid-template-columns: minmax(0, 0.92fr) minmax(380px, 1.08fr);
+  gap: 38px;
   align-items: center;
 }
 
@@ -1753,7 +1768,8 @@ textarea:focus {
 }
 
 .contact-grid {
-  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+  grid-template-columns: minmax(300px, 0.82fr) minmax(0, 1.18fr);
+  gap: 26px;
 }
 
 .empty-state {
