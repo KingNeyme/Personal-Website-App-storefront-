@@ -33,6 +33,83 @@ const SITE_PAGE_CONFIG = {
   },
 };
 
+const escapeHTML = (value) =>
+  String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+const urlLikeKeys = new Set([
+  "href",
+  "image",
+  "video",
+  "logo",
+  "logosrc",
+  "homehref",
+  "path",
+  "coverimage",
+  "covervideo",
+]);
+
+const safeUrl = (value, fallback = "#") => {
+  const candidate = String(value ?? "").trim();
+  if (!candidate) return fallback;
+
+  if (
+    candidate.startsWith("/") ||
+    candidate.startsWith("./") ||
+    candidate.startsWith("../") ||
+    candidate.startsWith("#") ||
+    candidate.startsWith("?")
+  ) {
+    return candidate;
+  }
+
+  if (/^(https?:|mailto:|tel:)/i.test(candidate)) {
+    return candidate;
+  }
+
+  if (/^[a-z0-9][a-z0-9/_\-.]*$/i.test(candidate)) {
+    return candidate;
+  }
+
+  return fallback;
+};
+
+const sanitizeRenderableData = (value, key = "") => {
+  if (Array.isArray(value)) {
+    return value.map((item) => sanitizeRenderableData(item, key));
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([entryKey, entryValue]) => [
+        entryKey,
+        sanitizeRenderableData(entryValue, entryKey),
+      ])
+    );
+  }
+
+  if (typeof value === "string") {
+    return urlLikeKeys.has(String(key).toLowerCase()) ? safeUrl(value) : escapeHTML(value);
+  }
+
+  return value;
+};
+
+const normalizeWorkflowStatus = (value) => {
+  const status = String(value || "").toLowerCase();
+  return status === "draft" || status === "ready" || status === "live" ? status : "live";
+};
+
+const filterLiveItems = (items = []) => {
+  const collection = Array.isArray(items) ? items : [];
+  const liveItems = collection.filter((item) => normalizeWorkflowStatus(item?.workflowStatus) === "live");
+  return liveItems.length ? liveItems : collection;
+};
+
 const enhanceRevealMotion = (root = document) => {
   const targets = Array.from(
     root.querySelectorAll(
@@ -76,12 +153,12 @@ const enhanceRevealMotion = (root = document) => {
 
 const renderMedia = (item, className = "card-media") => {
   if (item?.video) {
-    return `<video class="${className}" controls preload="metadata" src="${item.video}"></video>`;
+    return `<video class="${className}" controls preload="metadata" src="${safeUrl(item.video)}"></video>`;
   }
 
   if (item?.image) {
     const alt = item.imageAlt || item.title || item.name || "CaribAI media";
-    return `<img class="${className}" src="${item.image}" alt="${alt}" />`;
+    return `<img class="${className}" src="${safeUrl(item.image)}" alt="${alt}" />`;
   }
 
   return "";
@@ -92,7 +169,7 @@ const renderButtons = (items = []) =>
     .map(
       (item) =>
         `<a class="button ${item.variant === "secondary" ? "button-secondary" : "button-primary"}" href="${
-          item.href || "#"
+          safeUrl(item.href || "#")
         }">${item.label || "Learn More"}</a>`
     )
     .join("");
@@ -229,6 +306,14 @@ const renderInsightCards = (items = []) =>
     )
     .join("");
 
+const renderEmptySurface = (title, description) => `
+  <article class="editorial-empty-card">
+    <span class="pill muted">Waiting on content</span>
+    <h3>${title}</h3>
+    <p>${description}</p>
+  </article>
+`;
+
 const renderProjectRows = (items = []) =>
   items
     .map(
@@ -292,17 +377,17 @@ const renderForm = (config = {}) => {
     >
       <label>
         Name
-        <input type="text" name="name" placeholder="${config.namePlaceholder || "Your name"}" />
+        <input type="text" name="name" placeholder="${config.namePlaceholder || "Your name"}" autocomplete="name" required />
       </label>
       <label>
         Email
-        <input type="email" name="email" placeholder="${config.emailPlaceholder || "you@example.com"}" />
+        <input type="email" name="email" placeholder="${config.emailPlaceholder || "you@example.com"}" autocomplete="email" inputmode="email" required />
       </label>
       ${
         includesTopic
           ? `<label>
               You’re reaching out about
-              <input type="text" name="company" placeholder="${config.topicPlaceholder || "Partnership, product, media, launch, collaboration..."}" />
+              <input type="text" name="company" placeholder="${config.topicPlaceholder || "Partnership, product, media, launch, collaboration..."}" autocomplete="organization-title" />
             </label>`
           : ""
       }
@@ -322,13 +407,52 @@ const renderForm = (config = {}) => {
 
 function renderHomePage(data) {
   const heroMetrics = (data.hero?.metrics || []).slice(0, 3);
-  const storefrontItems = data.storefront?.items || [];
+  const storefrontItems = filterLiveItems(data.storefront?.items || []);
   const featuredProduct = storefrontItems.find((item) => item.featured) || storefrontItems[0];
   const secondaryProducts = storefrontItems.filter((item) => item !== featuredProduct).slice(0, 2);
   const structureItems = data.structure?.items || [];
   const buildItems = data.build?.items || [];
   const modelItems = data.businessModel?.items || [];
   const focusItems = data.focus?.items || [];
+  const featuredProductBlock = featuredProduct
+    ? `
+        <article class="hero-command-card">
+          <div class="hero-command-copy">
+            <p class="overline-lite">Featured direction</p>
+            <h3>${featuredProduct?.title || ""}</h3>
+            <p>${featuredProduct?.description || ""}</p>
+            ${
+              featuredProduct?.meta?.length
+                ? `<div class="card-meta">${featuredProduct.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
+                : ""
+            }
+          </div>
+          ${renderMedia(featuredProduct, "hero-command-media")}
+        </article>
+      `
+    : renderEmptySurface(
+        "Featured direction coming next",
+        "Publish or mark at least one live storefront offer to populate this homepage spotlight."
+      );
+
+  const secondaryProductBlocks = secondaryProducts.length
+    ? secondaryProducts
+        .map(
+          (item) => `
+            <article class="hero-proof-card">
+              <div>
+                <span class="pill muted">${item.badge || "Product"}</span>
+                <h4>${item.title || ""}</h4>
+              </div>
+              <p>${item.description || ""}</p>
+            </article>
+          `
+        )
+        .join("")
+    : renderEmptySurface(
+        "More offers will appear here",
+        "As live products are added, this proof stack will fill in automatically."
+      );
 
   return `
     <section class="panel hero-home hero-home-premium">
@@ -359,34 +483,10 @@ function renderHomePage(data) {
 
     <section class="panel home-hero-feature-strip">
       <div class="home-hero-side">
-        <article class="hero-command-card">
-          <div class="hero-command-copy">
-            <p class="overline-lite">Featured direction</p>
-            <h3>${featuredProduct?.title || ""}</h3>
-            <p>${featuredProduct?.description || ""}</p>
-            ${
-              featuredProduct?.meta?.length
-                ? `<div class="card-meta">${featuredProduct.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
-                : ""
-            }
-          </div>
-          ${renderMedia(featuredProduct, "hero-command-media")}
-        </article>
+        ${featuredProductBlock}
 
         <div class="hero-proof-list">
-          ${secondaryProducts
-            .map(
-              (item) => `
-                <article class="hero-proof-card">
-                  <div>
-                    <span class="pill muted">${item.badge || "Product"}</span>
-                    <h4>${item.title || ""}</h4>
-                  </div>
-                  <p>${item.description || ""}</p>
-                </article>
-              `
-            )
-            .join("")}
+          ${secondaryProductBlocks}
         </div>
       </div>
     </section>
@@ -427,37 +527,53 @@ function renderHomePage(data) {
         <p class="section-copy">${data.storefront?.description || ""}</p>
       </div>
       <div class="home-products-shell">
-        <article class="product-spotlight">
-          <div class="product-spotlight-copy">
-            <span class="pill">${featuredProduct?.badge || "Current Product"}</span>
-            <h3>${featuredProduct?.title || ""}</h3>
-            <p>${featuredProduct?.description || ""}</p>
-            ${
-              featuredProduct?.meta?.length
-                ? `<div class="card-meta">${featuredProduct.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
-                : ""
-            }
-          </div>
-          <div class="product-spotlight-visual">
-            ${renderMedia(featuredProduct, "product-spotlight-media")}
-          </div>
-        </article>
+        ${
+          featuredProduct
+            ? `
+              <article class="product-spotlight">
+                <div class="product-spotlight-copy">
+                  <span class="pill">${featuredProduct?.badge || "Current Product"}</span>
+                  <h3>${featuredProduct?.title || ""}</h3>
+                  <p>${featuredProduct?.description || ""}</p>
+                  ${
+                    featuredProduct?.meta?.length
+                      ? `<div class="card-meta">${featuredProduct.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
+                      : ""
+                  }
+                </div>
+                <div class="product-spotlight-visual">
+                  ${renderMedia(featuredProduct, "product-spotlight-media")}
+                </div>
+              </article>
+            `
+            : renderEmptySurface(
+                "Storefront spotlight is empty",
+                "Mark a storefront product as live to repopulate this section on the homepage."
+              )
+        }
 
         <div class="product-stack">
-          ${secondaryProducts
-            .map(
-              (item) => `
-                <article class="product-stack-card">
-                  ${renderMedia(item, "product-stack-media")}
-                  <div>
-                    <span class="pill ${item.muted ? "muted" : ""}">${item.badge || "Product"}</span>
-                    <h3>${item.title || ""}</h3>
-                    <p>${item.description || ""}</p>
-                  </div>
-                </article>
-              `
-            )
-            .join("")}
+          ${
+            secondaryProducts.length
+              ? secondaryProducts
+                  .map(
+                    (item) => `
+                      <article class="product-stack-card">
+                        ${renderMedia(item, "product-stack-media")}
+                        <div>
+                          <span class="pill ${item.muted ? "muted" : ""}">${item.badge || "Product"}</span>
+                          <h3>${item.title || ""}</h3>
+                          <p>${item.description || ""}</p>
+                        </div>
+                      </article>
+                    `
+                  )
+                  .join("")
+              : renderEmptySurface(
+                  "Supporting product stack is empty",
+                  "Additional live offers will automatically appear here as the storefront grows."
+                )
+          }
         </div>
       </div>
     </section>
@@ -681,37 +797,53 @@ function renderProjectsPage(data) {
         <p class="section-copy">${data.pipeline?.description || ""}</p>
       </div>
       <div class="storefront-premium-grid">
-        <article class="product-spotlight projects-featured-card">
-          <div class="product-spotlight-copy">
-            <span class="pill">${featuredProject?.badge || "Current Product"}</span>
-            <h3>${featuredProject?.title || ""}</h3>
-            <p>${featuredProject?.description || ""}</p>
-            ${
-              featuredProject?.meta?.length
-                ? `<div class="card-meta">${featuredProject.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
-                : ""
-            }
-          </div>
-          <div class="product-spotlight-visual">
-            ${renderMedia(featuredProject, "product-spotlight-media")}
-          </div>
-        </article>
+        ${
+          featuredProject
+            ? `
+              <article class="product-spotlight projects-featured-card">
+                <div class="product-spotlight-copy">
+                  <span class="pill">${featuredProject?.badge || "Current Product"}</span>
+                  <h3>${featuredProject?.title || ""}</h3>
+                  <p>${featuredProject?.description || ""}</p>
+                  ${
+                    featuredProject?.meta?.length
+                      ? `<div class="card-meta">${featuredProject.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
+                      : ""
+                  }
+                </div>
+                <div class="product-spotlight-visual">
+                  ${renderMedia(featuredProject, "product-spotlight-media")}
+                </div>
+              </article>
+            `
+            : renderEmptySurface(
+                "Project spotlight will appear here",
+                "Add pipeline items to the projects content source to populate this feature area."
+              )
+        }
 
         <div class="product-stack">
-          ${secondaryProjects
-            .map(
-              (item) => `
-                <article class="product-stack-card">
-                  ${renderMedia(item, "product-stack-media")}
-                  <div>
-                    <span class="pill ${item.muted ? "muted" : ""}">${item.badge || "Direction"}</span>
-                    <h3>${item.title || ""}</h3>
-                    <p>${item.description || ""}</p>
-                  </div>
-                </article>
-              `
-            )
-            .join("")}
+          ${
+            secondaryProjects.length
+              ? secondaryProjects
+                  .map(
+                    (item) => `
+                      <article class="product-stack-card">
+                        ${renderMedia(item, "product-stack-media")}
+                        <div>
+                          <span class="pill ${item.muted ? "muted" : ""}">${item.badge || "Direction"}</span>
+                          <h3>${item.title || ""}</h3>
+                          <p>${item.description || ""}</p>
+                        </div>
+                      </article>
+                    `
+                  )
+                  .join("")
+              : renderEmptySurface(
+                  "Additional project cards will show here",
+                  "Add more pipeline entries to create the supporting project stack."
+                )
+          }
         </div>
       </div>
     </section>
@@ -749,7 +881,7 @@ function renderProjectsPage(data) {
 }
 
 function renderStorefrontPage(data) {
-  const products = data.products?.items || [];
+  const products = filterLiveItems(data.products?.items || []);
   const featuredProduct = products.find((item) => item.featured) || products[0];
   const secondaryProducts = products.filter((item) => item !== featuredProduct).slice(0, 3);
 
@@ -765,42 +897,58 @@ function renderStorefrontPage(data) {
         <p class="section-copy">${data.products?.description || ""}</p>
       </div>
       <div class="storefront-premium-grid">
-        <article class="product-spotlight storefront-featured-card">
-          <div class="product-spotlight-copy">
-            <span class="pill">${featuredProduct?.badge || "Current Product"}</span>
-            <h3>${featuredProduct?.title || ""}</h3>
-            <p>${featuredProduct?.description || ""}</p>
-            ${
-              featuredProduct?.meta?.length
-                ? `<div class="card-meta">${featuredProduct.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
-                : ""
-            }
-          </div>
-          <div class="product-spotlight-visual">
-            ${renderMedia(featuredProduct, "product-spotlight-media")}
-          </div>
-        </article>
+        ${
+          featuredProduct
+            ? `
+              <article class="product-spotlight storefront-featured-card">
+                <div class="product-spotlight-copy">
+                  <span class="pill">${featuredProduct?.badge || "Current Product"}</span>
+                  <h3>${featuredProduct?.title || ""}</h3>
+                  <p>${featuredProduct?.description || ""}</p>
+                  ${
+                    featuredProduct?.meta?.length
+                      ? `<div class="card-meta">${featuredProduct.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
+                      : ""
+                  }
+                </div>
+                <div class="product-spotlight-visual">
+                  ${renderMedia(featuredProduct, "product-spotlight-media")}
+                </div>
+              </article>
+            `
+            : renderEmptySurface(
+                "No live storefront offer yet",
+                "Make at least one storefront item live to populate this page’s featured commerce area."
+              )
+        }
 
         <div class="product-stack storefront-product-stack">
-          ${secondaryProducts
-            .map(
-              (item) => `
-                <article class="product-stack-card storefront-product-card">
-                  ${renderMedia(item, "product-stack-media")}
-                  <div>
-                    <span class="pill ${item.muted ? "muted" : ""}">${item.badge || "Product"}</span>
-                    <h3>${item.title || ""}</h3>
-                    <p>${item.description || ""}</p>
-                    ${
-                      item.meta?.length
-                        ? `<div class="card-meta">${item.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
-                        : ""
-                    }
-                  </div>
-                </article>
-              `
-            )
-            .join("")}
+          ${
+            secondaryProducts.length
+              ? secondaryProducts
+                  .map(
+                    (item) => `
+                      <article class="product-stack-card storefront-product-card">
+                        ${renderMedia(item, "product-stack-media")}
+                        <div>
+                          <span class="pill ${item.muted ? "muted" : ""}">${item.badge || "Product"}</span>
+                          <h3>${item.title || ""}</h3>
+                          <p>${item.description || ""}</p>
+                          ${
+                            item.meta?.length
+                              ? `<div class="card-meta">${item.meta.map((meta) => `<span>${meta}</span>`).join("")}</div>`
+                              : ""
+                          }
+                        </div>
+                      </article>
+                    `
+                  )
+                  .join("")
+              : renderEmptySurface(
+                  "Supporting offers will appear here",
+                  "Additional live storefront items will populate the supporting offer column."
+                )
+          }
         </div>
       </div>
     </section>
@@ -1092,7 +1240,7 @@ const initSiteContent = async () => {
       throw new Error(`Unable to load content for ${pageKey}.`);
     }
 
-    const data = await response.json();
+    const data = sanitizeRenderableData(await response.json());
     page.innerHTML = config.render(data);
     enhanceRevealMotion(page.closest(".site-shell") || document);
   } catch (error) {

@@ -8,6 +8,7 @@
       name="description"
       content="A calm, premium CaribAI content manager for editing the public site, journal, storefront, and shared assets."
     />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -56,6 +57,7 @@
           <div class="cms-topbar-actions">
             <a class="ghost-button" href="/">Preview site</a>
             <button class="primary-button" id="createPostButton" type="button">Create post</button>
+            <button class="ghost-button" id="exitWorkspaceButton" type="button">Exit workspace</button>
           </div>
         </header>
 
@@ -166,7 +168,7 @@
                       a browser draft or export updated JSON.
                     </p>
                   </div>
-                  <span class="badge" id="pageEditorStatus">Idle</span>
+                  <span class="badge" id="pageEditorStatus" aria-live="polite">Idle</span>
                 </div>
 
                 <div class="editor-toolbar" id="pageEditorToolbar" hidden>
@@ -217,7 +219,7 @@
                       Edit the real journal content, keep drafts locally, and export or save the updated post source.
                     </p>
                   </div>
-                  <span class="badge" id="journalEditorStatus">Idle</span>
+                  <span class="badge" id="journalEditorStatus" aria-live="polite">Idle</span>
                 </div>
 
                 <div class="editor-toolbar" id="journalEditorToolbar" hidden>
@@ -279,7 +281,7 @@
                       Edit the real storefront structure, product cards, and lead messaging without leaving the CMS shell.
                     </p>
                   </div>
-                  <span class="badge" id="storefrontEditorStatus">Idle</span>
+                  <span class="badge" id="storefrontEditorStatus" aria-live="polite">Idle</span>
                 </div>
 
                 <div class="editor-toolbar" id="storefrontEditorToolbar" hidden>
@@ -328,7 +330,7 @@
                       Organize brand assets, supporting graphics, and tech-logo dependencies in one place.
                     </p>
                   </div>
-                  <span class="badge" id="mediaEditorStatus">Idle</span>
+                  <span class="badge" id="mediaEditorStatus" aria-live="polite">Idle</span>
                 </div>
 
                 <div class="editor-toolbar" id="mediaEditorToolbar" hidden>
@@ -372,7 +374,7 @@
                       Edit the real shared site settings that power navigation, footer, brand text, and contact routing.
                     </p>
                   </div>
-                  <span class="badge" id="settingsEditorStatus">Idle</span>
+                  <span class="badge" id="settingsEditorStatus" aria-live="polite">Idle</span>
                 </div>
 
                 <div class="editor-toolbar" id="settingsEditorToolbar" hidden>

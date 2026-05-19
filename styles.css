@@ -78,12 +78,20 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.9);
+  outline-offset: 3px;
+}
+
 img {
   max-width: 100%;
 }
 
 .site-shell {
-  width: min(1200px, calc(100% - 48px));
+  width: min(1240px, calc(100% - 48px));
   margin: 0 auto;
   padding: 24px 0 96px;
 }
@@ -822,15 +830,24 @@ textarea:focus {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0;
+  min-width: 0;
 }
 
 .hero-copy-stack {
   display: grid;
   align-content: start;
-  gap: 0;
+  gap: 12px;
   padding: 10px 4px 0 2px;
-  max-width: 860px;
+  max-width: 920px;
   min-width: 0;
+}
+
+.hero-home-premium h1 {
+  max-width: 11.4ch;
+}
+
+.hero-home-premium .hero-text {
+  max-width: 64ch;
 }
 
 .home-hero-side {
@@ -852,6 +869,23 @@ textarea:focus {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin-top: 28px;
+}
+
+.hero-home-premium .hero-points {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.hero-home-premium .hero-points li {
+  align-items: flex-start;
+  padding: 14px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.022);
+  line-height: 1.58;
 }
 
 .hero-stat-card,
@@ -992,6 +1026,7 @@ textarea:focus {
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.78;
+  overflow-wrap: anywhere;
 }
 
 .story-chip-list {
@@ -1058,14 +1093,30 @@ textarea:focus {
   align-items: stretch;
 }
 
+.home-story-grid > *,
+.home-products-shell > *,
+.home-roadmap-shell > *,
+.ecosystem-grid > *,
+.focus-shell > *,
+.storefront-premium-grid > *,
+.about-identity-grid > *,
+.about-structure-grid > *,
+.journey-log-grid > *,
+.journey-future-grid > *,
+.contact-grid > * {
+  min-width: 0;
+}
+
 .product-spotlight-copy p {
   margin: 0;
   color: var(--muted);
+  overflow-wrap: anywhere;
 }
 
 .product-stack {
   display: grid;
   gap: 14px;
+  align-content: start;
 }
 
 .product-stack-card {
@@ -1079,6 +1130,28 @@ textarea:focus {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.038), rgba(255, 255, 255, 0.014)),
     rgba(255, 255, 255, 0.028);
+}
+
+.editorial-empty-card {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  padding: 22px;
+  border-radius: 24px;
+  border: 1px dashed rgba(199, 210, 254, 0.22);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.012)),
+    rgba(14, 20, 38, 0.72);
+}
+
+.editorial-empty-card h3 {
+  font-size: 1.08rem;
+  letter-spacing: -0.02em;
+}
+
+.editorial-empty-card p {
+  margin: 0;
+  color: var(--muted);
 }
 
 .product-stack-media {
@@ -1781,7 +1854,7 @@ textarea:focus {
   padding: 32px 34px;
   color: var(--muted);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.9fr) auto;
+  grid-template-columns: minmax(0, 1.02fr) minmax(280px, 0.9fr) minmax(220px, 0.78fr);
   align-items: start;
   gap: 32px;
   font-size: 0.92rem;
@@ -2125,7 +2198,8 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
-  .story-chip-list {
+  .story-chip-list,
+  .hero-home-premium .hero-points {
     grid-template-columns: 1fr;
   }
 
@@ -2304,6 +2378,10 @@ textarea:focus {
 
   .product-spotlight-media {
     aspect-ratio: 16 / 8.8;
+  }
+
+  .hero-home-premium .hero-points {
+    grid-template-columns: 1fr;
   }
 
   .nav-shell {

@@ -8,6 +8,7 @@
       name="description"
       content="Private CaribAI CMS access for managing pages, journal content, storefront offers, media, and front-end controls."
     />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -345,6 +346,8 @@
                 type="email"
                 placeholder="caribailabs@gmail.com"
                 autocomplete="email"
+                inputmode="email"
+                required
               />
             </div>
             <div class="field-group">
@@ -363,7 +366,7 @@
             </div>
           </form>
 
-          <p class="status" id="accessStatus"></p>
+          <p class="status" id="accessStatus" aria-live="polite"></p>
 
           <div class="note">
             This entry page is the designed access surface for the current file-based CMS. If you later want true staff authentication, that becomes the next backend phase.
@@ -385,11 +388,19 @@
         event.preventDefault();
 
         const email = document.getElementById("workspaceEmail").value.trim();
-        const role = document.getElementById("workspaceRole").value.trim();
+        const role = document.getElementById("workspaceRole").value.trim() || "Staff";
 
         if (!email) {
           status.textContent = "Add an email before entering the workspace.";
           status.className = "status";
+          return;
+        }
+
+        const emailInput = document.getElementById("workspaceEmail");
+        if (!emailInput.checkValidity()) {
+          status.textContent = "Use a valid email address before entering the workspace.";
+          status.className = "status";
+          emailInput.focus();
           return;
         }
 

@@ -1,6 +1,24 @@
+const workspaceAccessStorageKey = "caribai-cms-access";
+const workspaceSessionMaxAgeMs = 1000 * 60 * 60 * 12;
+
+const clearWorkspaceAccess = () => {
+  sessionStorage.removeItem(workspaceAccessStorageKey);
+};
+
 const workspaceAccess = (() => {
   try {
-    return JSON.parse(sessionStorage.getItem("caribai-cms-access") || "null");
+    const value = JSON.parse(sessionStorage.getItem(workspaceAccessStorageKey) || "null");
+    if (!value?.email) {
+      return null;
+    }
+
+    const accessedAt = new Date(value.accessedAt || 0).getTime();
+    if (!accessedAt || Number.isNaN(accessedAt) || Date.now() - accessedAt > workspaceSessionMaxAgeMs) {
+      clearWorkspaceAccess();
+      return null;
+    }
+
+    return value;
   } catch {
     return null;
   }
@@ -108,6 +126,7 @@ const navItems = Array.from(document.querySelectorAll(".cms-nav-item"));
 const viewPanels = Array.from(document.querySelectorAll("[data-view-panel]"));
 const rowActions = Array.from(document.querySelectorAll("[data-view-target]"));
 const createPostButton = document.getElementById("createPostButton");
+const exitWorkspaceButton = document.getElementById("exitWorkspaceButton");
 const workspaceIdentity = document.getElementById("workspaceIdentity");
 
 const viewEyebrow = document.getElementById("viewEyebrow");
@@ -220,6 +239,7 @@ let activeMediaGroup = "brand";
 let activeMediaFileHandle = null;
 const hiddenEditorKeys = new Set(["_workflowStatus", "workflowStatus"]);
 const workflowStates = ["draft", "ready", "live"];
+let hasUnsavedChanges = false;
 
 if (workspaceIdentity && workspaceAccess) {
   const label = workspaceAccess.role ? `${workspaceAccess.email} · ${workspaceAccess.role}` : workspaceAccess.email;
@@ -242,6 +262,10 @@ const slugify = (value) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 80);
+
+const setDirtyState = (nextValue) => {
+  hasUnsavedChanges = nextValue;
+};
 
 const setNestedValue = (obj, path, nextValue) => {
   let cursor = obj;
@@ -482,13 +506,14 @@ function renderValueEditor(container, value, path, label, onChange, rerender) {
 const saveDraft = (scope, key, data, setStatus) => {
   if (!data || !key) return;
   localStorage.setItem(draftStorageKey(scope, key), JSON.stringify(data, null, 2));
+  setDirtyState(false);
   setStatus("Draft saved");
 };
 
-const saveJsonToFile = async (data, setStatus, getHandle, setHandle) => {
+const saveJsonToFile = async (filename, data, setStatus, getHandle, setHandle) => {
   if (!data) return;
 
-  if (!window.showOpenFilePicker) {
+  if (!window.showSaveFilePicker && !window.showOpenFilePicker) {
     setStatus("Direct file save is not supported here");
     return;
   }
@@ -496,23 +521,38 @@ const saveJsonToFile = async (data, setStatus, getHandle, setHandle) => {
   try {
     let handle = getHandle();
     if (!handle) {
-      [handle] = await window.showOpenFilePicker({
-        multiple: false,
-        types: [
-          {
-            description: "JSON files",
-            accept: {
-              "application/json": [".json"],
+      if (window.showSaveFilePicker) {
+        handle = await window.showSaveFilePicker({
+          suggestedName: filename,
+          types: [
+            {
+              description: "JSON files",
+              accept: {
+                "application/json": [".json"],
+              },
             },
-          },
-        ],
-      });
+          ],
+        });
+      } else {
+        [handle] = await window.showOpenFilePicker({
+          multiple: false,
+          types: [
+            {
+              description: "JSON files",
+              accept: {
+                "application/json": [".json"],
+              },
+            },
+          ],
+        });
+      }
       setHandle(handle);
     }
 
     const writable = await handle.createWritable();
     await writable.write(JSON.stringify(data, null, 2));
     await writable.close();
+    setDirtyState(false);
     setStatus("Saved to file");
   } catch (error) {
     if (error?.name === "AbortError") {
@@ -536,6 +576,7 @@ const downloadJson = (filename, data, setStatus) => {
   link.click();
   link.remove();
   URL.revokeObjectURL(url);
+  setDirtyState(false);
   setStatus("JSON exported");
 };
 
@@ -632,6 +673,7 @@ const renderPageEditor = () => {
   renderWorkflowSwitch(pageWorkflowSwitch, activePageData._workflowStatus || "live", (status) => {
     activePageData._workflowStatus = status;
     pageWorkflowIndex[activePageKey] = status;
+    setDirtyState(true);
     updatePageStatus(`Status set to ${workflowLabel(status)}`);
     renderPagesList();
     renderPageEditor();
@@ -659,6 +701,7 @@ const renderPageEditor = () => {
     humanizeKey(sectionKey),
     (path, nextValue) => {
       setNestedValue(activePageData, path, nextValue);
+      setDirtyState(true);
       updatePageStatus("Draft in progress");
     },
     renderPageEditor
@@ -694,6 +737,7 @@ const loadPage = async (pageKey) => {
   activePageData = storedDraft ? JSON.parse(storedDraft) : deepClone(payload);
   activePageData._workflowStatus = normalizeWorkflowStatus(activePageData._workflowStatus || payload._workflowStatus || "live");
   pageWorkflowIndex[pageKey] = normalizeWorkflowStatus(activePageData._workflowStatus || payload._workflowStatus || "live");
+  setDirtyState(false);
   updatePageStatus(storedDraft ? "Draft loaded" : "Loaded");
   renderPagesList();
   renderPageEditor();
@@ -746,6 +790,7 @@ const renderJournalEditor = () => {
   journalDeleteButton.hidden = false;
   renderWorkflowSwitch(journalWorkflowSwitch, getPostWorkflowStatus(post), (status) => {
     post.workflowStatus = status;
+    setDirtyState(true);
     updateJournalStatus(`Status set to ${workflowLabel(status)}`);
     renderJournalList();
     renderJournalEditor();
@@ -760,6 +805,7 @@ const renderJournalEditor = () => {
     "Post",
     (path, nextValue) => {
       setNestedValue(blogPayloadData, path, nextValue);
+      setDirtyState(true);
       updateJournalStatus("Draft in progress");
       if (path[path.length - 1] === "title") {
         const nextSlug = slugify(nextValue) || `journal-post-${Date.now()}`;
@@ -805,6 +851,7 @@ const loadJournal = async () => {
     workflowStatus: normalizeWorkflowStatus(post.workflowStatus || "live"),
   }));
   activePostSlug = blogPayloadData.posts?.[0]?.slug || null;
+  setDirtyState(false);
   updateJournalStatus(storedDraft ? "Draft loaded" : "Loaded");
   if (pendingJournalCreate) {
     pendingJournalCreate = false;
@@ -820,6 +867,7 @@ const createJournalPost = () => {
   const nextPost = createDefaultPost();
   blogPayloadData.posts.unshift(nextPost);
   activePostSlug = nextPost.slug;
+  setDirtyState(true);
   updateJournalStatus("New post created");
   renderJournalList();
   renderJournalEditor();
@@ -830,6 +878,7 @@ const deleteJournalPost = () => {
   const nextPosts = blogPayloadData.posts.filter((post) => post.slug !== activePostSlug);
   blogPayloadData.posts = nextPosts;
   activePostSlug = nextPosts[0]?.slug || null;
+  setDirtyState(true);
   updateJournalStatus("Post deleted");
   renderJournalList();
   renderJournalEditor();
@@ -885,6 +934,7 @@ const renderStorefrontEditor = () => {
       } else {
         storefrontData._workflowStatus = status;
       }
+      setDirtyState(true);
       updateStorefrontStatus(`Status set to ${workflowLabel(status)}`);
       renderStorefrontOfferList();
       renderStorefrontEditor();
@@ -935,6 +985,7 @@ const renderStorefrontEditor = () => {
       "Product Card",
       (path, nextValue) => {
         setNestedValue(storefrontData, path, nextValue);
+        setDirtyState(true);
         updateStorefrontStatus("Draft in progress");
         if (path[path.length - 1] === "title") {
           renderStorefrontOfferList();
@@ -1006,6 +1057,7 @@ const loadStorefront = async () => {
   }
   activeStorefrontView = "products";
   activeStorefrontProductIndex = 0;
+  setDirtyState(false);
   updateStorefrontStatus(storedDraft ? "Draft loaded" : "Loaded");
   if (pendingStorefrontCreate) {
     pendingStorefrontCreate = false;
@@ -1022,6 +1074,7 @@ const createStorefrontItem = () => {
   storefrontData.products.items.push(nextItem);
   activeStorefrontView = "products";
   activeStorefrontProductIndex = storefrontData.products.items.length - 1;
+  setDirtyState(true);
   updateStorefrontStatus("New offer created");
   renderStorefrontOfferList();
   renderStorefrontEditor();
@@ -1036,6 +1089,7 @@ const deleteStorefrontItem = () => {
   } else {
     activeStorefrontProductIndex = Math.max(0, activeStorefrontProductIndex - 1);
   }
+  setDirtyState(true);
   updateStorefrontStatus("Offer deleted");
   renderStorefrontOfferList();
   renderStorefrontEditor();
@@ -1093,6 +1147,7 @@ const renderMediaPanel = () => {
     group.title,
     (path, nextValue) => {
       setNestedValue(mediaData, path, nextValue);
+      setDirtyState(true);
       updateMediaStatus("Draft in progress");
       renderMediaGroupList();
     },
@@ -1163,6 +1218,7 @@ const loadMedia = async () => {
   const storedDraft = localStorage.getItem(draftStorageKey("media", "library"));
   mediaData = storedDraft ? JSON.parse(storedDraft) : deepClone(payload);
   activeMediaGroup = Object.keys(mediaData)[0] || "brand";
+  setDirtyState(false);
   updateMediaStatus(storedDraft ? "Draft loaded" : "Loaded");
   renderMediaGroupList();
   renderMediaPanel();
@@ -1230,6 +1286,7 @@ const renderSettingsEditor = () => {
     humanizeKey(sectionKey),
     (path, nextValue) => {
       setNestedValue(settingsData, path, nextValue);
+      setDirtyState(true);
       updateSettingsStatus("Draft in progress");
     },
     renderSettingsEditor
@@ -1258,6 +1315,7 @@ const loadSettings = async () => {
   const storedDraft = localStorage.getItem(draftStorageKey("settings", "site"));
   settingsData = storedDraft ? JSON.parse(storedDraft) : deepClone(payload);
   activeSettingsSection = Object.keys(settingsData)[0] || "brand";
+  setDirtyState(false);
   updateSettingsStatus(storedDraft ? "Draft loaded" : "Loaded");
   renderSettingsSectionList();
   renderSettingsEditor();
@@ -1267,6 +1325,7 @@ const resetPage = () => {
   if (!activePageOriginal) return;
   activePageData = deepClone(activePageOriginal);
   localStorage.removeItem(draftStorageKey("page", activePageKey));
+  setDirtyState(false);
   updatePageStatus("Reset to source");
   renderPageEditor();
 };
@@ -1276,6 +1335,7 @@ const resetJournal = () => {
   blogPayloadData = deepClone(blogPayloadOriginal);
   localStorage.removeItem(draftStorageKey("journal", "posts"));
   activePostSlug = blogPayloadData.posts?.[0]?.slug || null;
+  setDirtyState(false);
   updateJournalStatus("Reset to source");
   renderJournalList();
   renderJournalEditor();
@@ -1287,6 +1347,7 @@ const resetStorefront = () => {
   localStorage.removeItem(draftStorageKey("storefront", "page"));
   activeStorefrontView = "products";
   activeStorefrontProductIndex = 0;
+  setDirtyState(false);
   updateStorefrontStatus("Reset to source");
   renderStorefrontOfferList();
   renderStorefrontEditor();
@@ -1297,6 +1358,7 @@ const resetSettings = () => {
   settingsData = deepClone(settingsOriginal);
   localStorage.removeItem(draftStorageKey("settings", "site"));
   activeSettingsSection = Object.keys(settingsData)[0] || "brand";
+  setDirtyState(false);
   updateSettingsStatus("Reset to source");
   renderSettingsSectionList();
   renderSettingsEditor();
@@ -1307,6 +1369,7 @@ const resetMedia = () => {
   mediaData = deepClone(mediaOriginal);
   localStorage.removeItem(draftStorageKey("media", "library"));
   activeMediaGroup = Object.keys(mediaData)[0] || "brand";
+  setDirtyState(false);
   updateMediaStatus("Reset to source");
   renderMediaGroupList();
   renderMediaPanel();
@@ -1349,6 +1412,12 @@ const triggerJournalCreate = () => {
 };
 
 createPostButton.addEventListener("click", triggerJournalCreate);
+if (exitWorkspaceButton) {
+  exitWorkspaceButton.addEventListener("click", () => {
+    clearWorkspaceAccess();
+    window.location.replace("/cms/");
+  });
+}
 journalCreateButton.addEventListener("click", triggerJournalCreate);
 journalDeleteButton.addEventListener("click", deleteJournalPost);
 
@@ -1357,6 +1426,7 @@ pageResetButton.addEventListener("click", resetPage);
 pageDownloadButton.addEventListener("click", () => downloadJson(`${activePageKey}.json`, activePageData, updatePageStatus));
 pageFileSaveButton.addEventListener("click", () =>
   saveJsonToFile(
+    `${activePageKey}.json`,
     activePageData,
     updatePageStatus,
     () => activePageFileHandle,
@@ -1371,6 +1441,7 @@ journalResetButton.addEventListener("click", resetJournal);
 journalDownloadButton.addEventListener("click", () => downloadJson("posts.json", blogPayloadData, updateJournalStatus));
 journalFileSaveButton.addEventListener("click", () =>
   saveJsonToFile(
+    "posts.json",
     blogPayloadData,
     updateJournalStatus,
     () => activePostFileHandle,
@@ -1398,6 +1469,7 @@ storefrontDownloadButton.addEventListener("click", () =>
 );
 storefrontFileSaveButton.addEventListener("click", () =>
   saveJsonToFile(
+    "storefront.json",
     storefrontData,
     updateStorefrontStatus,
     () => activeStorefrontFileHandle,
@@ -1416,6 +1488,7 @@ settingsDownloadButton.addEventListener("click", () =>
 );
 settingsFileSaveButton.addEventListener("click", () =>
   saveJsonToFile(
+    "settings.json",
     settingsData,
     updateSettingsStatus,
     () => activeSettingsFileHandle,
@@ -1430,6 +1503,7 @@ mediaResetButton.addEventListener("click", resetMedia);
 mediaDownloadButton.addEventListener("click", () => downloadJson("media.json", mediaData, updateMediaStatus));
 mediaFileSaveButton.addEventListener("click", () =>
   saveJsonToFile(
+    "media.json",
     mediaData,
     updateMediaStatus,
     () => activeMediaFileHandle,
@@ -1438,6 +1512,15 @@ mediaFileSaveButton.addEventListener("click", () =>
     }
   )
 );
+
+window.addEventListener("beforeunload", (event) => {
+  if (!hasUnsavedChanges) {
+    return;
+  }
+
+  event.preventDefault();
+  event.returnValue = "";
+});
 
 renderPagesList();
 setView("overview");

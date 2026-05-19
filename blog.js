@@ -1,5 +1,82 @@
 const BLOG_DATA_PATH = "content/blog/posts.json";
 
+const escapeHTML = (value) =>
+  String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+const safeUrl = (value, fallback = "") => {
+  const candidate = String(value ?? "").trim();
+  if (!candidate) return fallback;
+
+  if (
+    candidate.startsWith("/") ||
+    candidate.startsWith("./") ||
+    candidate.startsWith("../") ||
+    candidate.startsWith("#") ||
+    /^(https?:|mailto:|tel:)/i.test(candidate) ||
+    /^[a-z0-9][a-z0-9/_\-.]*$/i.test(candidate)
+  ) {
+    return candidate;
+  }
+
+  return fallback;
+};
+
+const normalizeWorkflowStatus = (value) => {
+  const status = String(value || "").toLowerCase();
+  return status === "draft" || status === "ready" || status === "live" ? status : "live";
+};
+
+const renderMarkdownSafely = (markdown) => {
+  const safeSource = escapeHTML(markdown || "");
+  const sanitizeRenderedHTML = (html) => {
+    const template = document.createElement("template");
+    template.innerHTML = html;
+
+    template.content
+      .querySelectorAll("script, style, iframe, object, embed, form, input, button, textarea, select")
+      .forEach((node) => node.remove());
+
+    template.content.querySelectorAll("*").forEach((node) => {
+      Array.from(node.attributes).forEach((attribute) => {
+        const name = attribute.name.toLowerCase();
+        const value = attribute.value;
+
+        if (name.startsWith("on")) {
+          node.removeAttribute(attribute.name);
+          return;
+        }
+
+        if (name === "href" || name === "src") {
+          const nextValue = safeUrl(value, "");
+          if (nextValue) {
+            node.setAttribute(attribute.name, nextValue);
+          } else {
+            node.removeAttribute(attribute.name);
+          }
+        }
+      });
+    });
+
+    return template.innerHTML;
+  };
+
+  if (!window.marked) {
+    return sanitizeRenderedHTML(safeSource.replace(/\n/g, "<br />"));
+  }
+
+  return sanitizeRenderedHTML(
+    window.marked.parse(safeSource, {
+      mangle: false,
+      headerIds: false,
+    })
+  );
+};
+
 const enhanceBlogRevealMotion = () => {
   const targets = Array.from(document.querySelectorAll(".panel, .blog-card, .post-shell"));
 
@@ -69,7 +146,7 @@ const getPosts = async () => {
   const posts = Array.isArray(payload.posts) ? payload.posts : [];
 
   return posts
-    .filter((post) => post && post.title && post.slug)
+    .filter((post) => post && post.title && post.slug && normalizeWorkflowStatus(post.workflowStatus) === "live")
     .sort((a, b) => new Date(b.publishDate || 0) - new Date(a.publishDate || 0));
 };
 
@@ -97,12 +174,12 @@ const renderBlogList = (posts) => {
       const readingTime = estimateReadingTime(post.body || "");
       return `
         <article class="blog-card ${post.featured ? "featured-post" : ""}">
-          ${post.coverImage ? `<img class="blog-media" src="${post.coverImage}" alt="${post.title} cover image" />` : ""}
-          <span class="pill ${post.featured ? "" : "muted"}">${post.category || "CaribAI Notes"}</span>
-          <h2>${post.title}</h2>
-          <p>${post.excerpt || ""}</p>
+          ${post.coverImage ? `<img class="blog-media" src="${safeUrl(post.coverImage)}" alt="${escapeHTML(post.title)} cover image" />` : ""}
+          <span class="pill ${post.featured ? "" : "muted"}">${escapeHTML(post.category || "CaribAI Notes")}</span>
+          <h2>${escapeHTML(post.title)}</h2>
+          <p>${escapeHTML(post.excerpt || "")}</p>
           <div class="post-meta compact">
-            <span>${formatDate(post.publishDate)}</span>
+            <span>${escapeHTML(formatDate(post.publishDate))}</span>
             <span>${readingTime} min read</span>
           </div>
           <a class="text-link" href="blog-post.html?slug=${encodeURIComponent(post.slug)}">Read article</a>
@@ -166,18 +243,21 @@ const renderBlogPost = (posts) => {
   }
 
   if (post.coverVideo) {
-    shell.querySelector("[data-post-excerpt]").insertAdjacentHTML(
-      "afterend",
-      `<video class="post-hero-media" src="${post.coverVideo}" controls playsinline></video>`
-    );
+    const video = document.createElement("video");
+    video.className = "post-hero-media";
+    video.src = safeUrl(post.coverVideo);
+    video.controls = true;
+    video.playsInline = true;
+    shell.querySelector("[data-post-excerpt]").after(video);
   } else if (post.coverImage) {
-    shell.querySelector("[data-post-excerpt]").insertAdjacentHTML(
-      "afterend",
-      `<img class="post-hero-media" src="${post.coverImage}" alt="${post.title} cover image" />`
-    );
+    const image = document.createElement("img");
+    image.className = "post-hero-media";
+    image.src = safeUrl(post.coverImage);
+    image.alt = `${post.title} cover image`;
+    shell.querySelector("[data-post-excerpt]").after(image);
   }
 
-  contentNode.innerHTML = window.marked ? window.marked.parse(content) : content;
+  contentNode.innerHTML = renderMarkdownSafely(content);
 
   shell.hidden = false;
   if (emptyState) {

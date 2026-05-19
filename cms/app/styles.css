@@ -60,6 +60,14 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.92);
+  outline-offset: 3px;
+}
+
 button {
   font: inherit;
 }
