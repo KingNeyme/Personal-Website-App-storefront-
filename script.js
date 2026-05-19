@@ -3,6 +3,33 @@ const defaultInbox = "caribailabs@gmail.com";
 
 let activeInbox = defaultInbox;
 
+const escapeHTML = (value) =>
+  String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+const safeUrl = (value, fallback = "#") => {
+  const candidate = String(value ?? "").trim();
+  if (!candidate) return fallback;
+
+  if (
+    candidate.startsWith("/") ||
+    candidate.startsWith("./") ||
+    candidate.startsWith("../") ||
+    candidate.startsWith("#") ||
+    candidate.startsWith("?") ||
+    /^(https?:|mailto:|tel:)/i.test(candidate) ||
+    /^[a-z0-9][a-z0-9/_\-.]*$/i.test(candidate)
+  ) {
+    return candidate;
+  }
+
+  return fallback;
+};
+
 const getCurrentPageName = () => {
   const pathname = window.location.pathname.split("/").pop() || "index.html";
   return pathname === "" ? "index.html" : pathname;
@@ -17,12 +44,12 @@ const applyBrandSettings = (settings = {}) => {
     "AI engineering, intelligent systems, and digital infrastructure built from the Caribbean with global ambition.";
 
   document.querySelectorAll(".brand").forEach((node) => {
-    node.setAttribute("href", homeHref);
+    node.setAttribute("href", safeUrl(homeHref, "index.html"));
     node.setAttribute("aria-label", "CaribAI home");
   });
 
   document.querySelectorAll(".brand-wordmark, .footer-wordmark").forEach((image) => {
-    image.setAttribute("src", logoSrc);
+    image.setAttribute("src", safeUrl(logoSrc, "assets/CariAI-LOGO-Transparent.png"));
     image.setAttribute("alt", logoAlt);
   });
 
@@ -43,14 +70,14 @@ const applyNavSettings = (settings = {}) => {
       .map((link) => {
         const href = link.href || "#";
         const isCurrent = href === currentPage;
-        return `<a href="${href}"${isCurrent ? ' aria-current="page"' : ""}>${link.label || "Link"}</a>`;
+        return `<a href="${safeUrl(href)}"${isCurrent ? ' aria-current="page"' : ""}>${escapeHTML(link.label || "Link")}</a>`;
       })
       .join("");
   });
 
   document.querySelectorAll(".nav-cta").forEach((link) => {
     link.textContent = ctaLabel;
-    link.setAttribute("href", ctaHref);
+    link.setAttribute("href", safeUrl(ctaHref, "contact.html"));
     if (ctaHref === currentPage) {
       link.setAttribute("aria-current", "page");
     } else {
@@ -68,7 +95,7 @@ const applyFooterSettings = (settings = {}) => {
       .map((link) => {
         const href = link.href || "#";
         const isCurrent = href === currentPage;
-        return `<a href="${href}"${isCurrent ? ' aria-current="page"' : ""}>${link.label || "Link"}</a>`;
+        return `<a href="${safeUrl(href)}"${isCurrent ? ' aria-current="page"' : ""}>${escapeHTML(link.label || "Link")}</a>`;
       })
       .join("");
   });
@@ -110,15 +137,53 @@ const initSiteNav = () => {
     return;
   }
 
+  const mobileQuery = window.matchMedia("(max-width: 980px)");
+
+  if (!toggle.id) {
+    toggle.id = "siteNavToggle";
+  }
+  if (!navShell.id) {
+    navShell.id = "siteNavShell";
+  }
+
+  toggle.setAttribute("aria-controls", navShell.id);
+  toggle.setAttribute("aria-haspopup", "true");
+
+  let isMobileView = mobileQuery.matches;
+  let isNavOpen = false;
+
+  const syncNavState = () => {
+    const isMobile = mobileQuery.matches;
+
+    if (!isMobile) {
+      isNavOpen = false;
+      topbar.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+      navShell.hidden = false;
+      navShell.style.display = "";
+      navShell.setAttribute("aria-hidden", "false");
+      return;
+    }
+
+    navShell.hidden = false;
+    topbar.classList.toggle("is-open", isNavOpen);
+    toggle.setAttribute("aria-expanded", String(isNavOpen));
+    navShell.style.display = isNavOpen ? "flex" : "none";
+    navShell.setAttribute("aria-hidden", String(!isNavOpen));
+  };
+
   const closeNav = () => {
-    topbar.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
+    isNavOpen = false;
+    syncNavState();
   };
 
   toggle.addEventListener("click", () => {
-    const next = !topbar.classList.contains("is-open");
-    topbar.classList.toggle("is-open", next);
-    toggle.setAttribute("aria-expanded", String(next));
+    if (!mobileQuery.matches) {
+      return;
+    }
+
+    isNavOpen = !isNavOpen;
+    syncNavState();
   });
 
   navShell.addEventListener("click", (event) => {
@@ -127,11 +192,46 @@ const initSiteNav = () => {
     }
   });
 
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 980) {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
       closeNav();
     }
   });
+
+  document.addEventListener("click", (event) => {
+    if (!topbar.classList.contains("is-open")) {
+      return;
+    }
+
+    if (!topbar.contains(event.target)) {
+      closeNav();
+    }
+  });
+
+  if (typeof mobileQuery.addEventListener === "function") {
+    mobileQuery.addEventListener("change", () => {
+      isMobileView = mobileQuery.matches;
+      isNavOpen = false;
+      syncNavState();
+    });
+  } else if (typeof mobileQuery.addListener === "function") {
+    mobileQuery.addListener(() => {
+      isMobileView = mobileQuery.matches;
+      isNavOpen = false;
+      syncNavState();
+    });
+  }
+
+  window.addEventListener("resize", () => {
+    const nextIsMobileView = mobileQuery.matches;
+    if (nextIsMobileView !== isMobileView) {
+      isMobileView = nextIsMobileView;
+      isNavOpen = false;
+    }
+    syncNavState();
+  });
+
+  syncNavState();
 };
 
 const buildMailtoLink = (form) => {
@@ -181,6 +281,14 @@ document.addEventListener("submit", (event) => {
   if (emailField && !emailField.value.trim()) {
     if (note) {
       note.textContent = "Please add your email before continuing.";
+    }
+    emailField.focus();
+    return;
+  }
+
+  if (emailField && !emailField.checkValidity()) {
+    if (note) {
+      note.textContent = "Use a valid email address before continuing.";
     }
     emailField.focus();
     return;
