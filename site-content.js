@@ -478,16 +478,14 @@ function renderHomePage(data) {
               .join("")}
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="panel home-hero-feature-strip">
-      <div class="home-hero-side">
+        <div class="home-hero-side">
         ${featuredProductBlock}
 
         <div class="hero-proof-list">
           ${secondaryProductBlocks}
         </div>
+      </div>
       </div>
     </section>
 
