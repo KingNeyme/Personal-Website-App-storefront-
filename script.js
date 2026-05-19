@@ -132,8 +132,62 @@ const initSiteNav = () => {
   const toggle = document.querySelector(".nav-toggle");
   const navShell = document.querySelector(".nav-shell");
   const nav = document.querySelector(".nav");
+  const navState = document.querySelector(".nav-state");
 
   if (!topbar || !toggle || !navShell || !nav) {
+    return;
+  }
+
+  if (navState instanceof HTMLInputElement) {
+    if (!navShell.id) {
+      navShell.id = "siteNavShell";
+    }
+
+    toggle.setAttribute("aria-controls", navShell.id);
+    toggle.setAttribute("aria-haspopup", "true");
+
+    const syncCheckboxNavState = () => {
+      const isMobile = window.matchMedia("(max-width: 980px)").matches;
+      const isOpen = isMobile ? navState.checked : true;
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      navShell.setAttribute("aria-hidden", String(!isOpen));
+    };
+
+    navState.addEventListener("change", syncCheckboxNavState);
+
+    navShell.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        navState.checked = false;
+        syncCheckboxNavState();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        navState.checked = false;
+        syncCheckboxNavState();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!window.matchMedia("(max-width: 980px)").matches) {
+        return;
+      }
+
+      if (!topbar.contains(event.target)) {
+        navState.checked = false;
+        syncCheckboxNavState();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (!window.matchMedia("(max-width: 980px)").matches) {
+        navState.checked = false;
+      }
+      syncCheckboxNavState();
+    });
+
+    syncCheckboxNavState();
     return;
   }
 
@@ -159,16 +213,12 @@ const initSiteNav = () => {
       isNavOpen = false;
       topbar.classList.remove("is-open");
       toggle.setAttribute("aria-expanded", "false");
-      navShell.hidden = false;
-      navShell.style.display = "";
       navShell.setAttribute("aria-hidden", "false");
       return;
     }
 
-    navShell.hidden = false;
     topbar.classList.toggle("is-open", isNavOpen);
     toggle.setAttribute("aria-expanded", String(isNavOpen));
-    navShell.style.display = isNavOpen ? "flex" : "none";
     navShell.setAttribute("aria-hidden", String(!isNavOpen));
   };
 

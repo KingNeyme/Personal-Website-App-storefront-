@@ -177,6 +177,19 @@ img {
   cursor: pointer;
 }
 
+.nav-state {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
+
 .nav-toggle span,
 .nav-toggle::before,
 .nav-toggle::after {
@@ -210,15 +223,18 @@ img {
   transform: translateY(6px);
 }
 
-.topbar.is-open .nav-toggle span {
+.topbar.is-open .nav-toggle span,
+.nav-state:checked + .nav-toggle span {
   opacity: 0;
 }
 
-.topbar.is-open .nav-toggle::before {
+.topbar.is-open .nav-toggle::before,
+.nav-state:checked + .nav-toggle::before {
   transform: rotate(45deg);
 }
 
-.topbar.is-open .nav-toggle::after {
+.topbar.is-open .nav-toggle::after,
+.nav-state:checked + .nav-toggle::after {
   transform: rotate(-45deg);
 }
 
@@ -2236,24 +2252,48 @@ textarea:focus {
     padding: 0;
   }
 
+  .nav-state {
+    display: none;
+  }
+
   .nav-toggle {
     grid-column: 2;
     justify-self: end;
   }
 
   .nav-shell {
-    display: none;
+    display: flex;
     width: 100%;
     grid-column: 1 / -1;
-    padding-top: 14px;
-    border-top: 1px solid rgba(199, 210, 254, 0.08);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding-top: 0;
+    margin-top: 0;
+    border-top: 1px solid transparent;
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition:
+      max-height 240ms ease,
+      opacity 180ms ease,
+      transform 180ms ease,
+      padding-top 180ms ease,
+      margin-top 180ms ease,
+      border-color 180ms ease;
   }
 
-  .topbar.is-open .nav-shell {
-    display: flex;
+  .topbar.is-open .nav-shell,
+  .nav-state:checked ~ .nav-shell {
+    max-height: 420px;
+    opacity: 1;
+    padding-top: 14px;
+    margin-top: 6px;
+    border-top-color: rgba(199, 210, 254, 0.08);
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
   .nav {

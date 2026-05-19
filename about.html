@@ -39,11 +39,13 @@
           <span class="brand-logo-shell"><img class="brand-wordmark" src="assets/CariAI-LOGO-Transparent.png" alt="CaribAI logo" /></span>
         </a>
 
-        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span>
-        </button>
+        <input class="nav-state" id="siteNavState" type="checkbox" />
 
-        <div class="nav-shell">
+        <label class="nav-toggle" for="siteNavState" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+        </label>
+
+        <div class="nav-shell" id="siteNavShell">
           <nav class="nav" aria-label="Primary">
             <a href="about.html" aria-current="page">About</a>
             <a href="projects.html">Projects</a>
