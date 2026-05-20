@@ -40,6 +40,7 @@ body {
     linear-gradient(180deg, #090d1b 0%, #0a0f1f 48%, #0e1430 100%);
   position: relative;
   line-height: 1.65;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -1638,6 +1639,10 @@ textarea:focus {
   max-width: 560px;
 }
 
+.page-hero-layout > * {
+  min-width: 0;
+}
+
 .page-hero-visual {
   position: relative;
   padding: 18px;
@@ -2186,7 +2191,7 @@ textarea:focus {
 
 @media (max-width: 980px) {
   .site-shell {
-    width: min(100% - 28px, 1240px);
+    width: min(1240px, calc(100% - 28px));
     padding-bottom: 60px;
   }
 
@@ -2473,7 +2478,7 @@ textarea:focus {
 
 @media (max-width: 720px) {
   .site-shell {
-    width: min(100% - 20px, 1240px);
+    width: min(1240px, calc(100% - 20px));
     padding-top: 16px;
     padding-bottom: 48px;
   }
@@ -2609,6 +2614,10 @@ textarea:focus {
     gap: 10px 14px;
     max-width: 320px;
   }
+
+  .page-hero-layout > :first-child {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 560px) {
@@ -2651,6 +2660,7 @@ textarea:focus {
 
   h1 {
     font-size: clamp(2rem, 10vw, 2.7rem);
+    line-height: 1.02;
   }
 
   h2 {
@@ -2754,6 +2764,34 @@ textarea:focus {
   .button,
   .nav-cta {
     min-height: 48px;
+  }
+}
+
+@media (max-width: 430px) {
+  h1 {
+    font-size: clamp(1.62rem, 7.9vw, 2.06rem);
+    line-height: 1.01;
+    letter-spacing: -0.035em;
+  }
+
+  .page-hero h1 {
+    max-width: 8.4ch;
+  }
+
+  .hero-text,
+  .section-copy {
+    font-size: 0.9rem;
+  }
+
+  .panel,
+  .page-hero-rich,
+  .hero-home,
+  .hero-home-premium {
+    padding: 18px;
+  }
+
+  .button {
+    min-height: 50px;
   }
 }
 
