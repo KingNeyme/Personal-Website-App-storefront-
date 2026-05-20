@@ -410,6 +410,7 @@ function renderHomePage(data) {
   const storefrontItems = filterLiveItems(data.storefront?.items || []);
   const featuredProduct = storefrontItems.find((item) => item.featured) || storefrontItems[0];
   const secondaryProducts = storefrontItems.filter((item) => item !== featuredProduct).slice(0, 2);
+  const heroPoints = (data.hero?.points || []).slice(0, 3);
   const structureItems = data.structure?.items || [];
   const buildItems = data.build?.items || [];
   const modelItems = data.businessModel?.items || [];
@@ -454,6 +455,11 @@ function renderHomePage(data) {
         "As live products are added, this proof stack will fill in automatically."
       );
 
+  const heroFoundationCopy =
+    data.positioning?.description ||
+    data.structure?.description ||
+    "CaribAI is being shaped as a focused brand layer for products, insights, and systems that compound trust.";
+
   return `
     <section class="panel hero-home hero-home-premium">
       <div class="home-hero-grid">
@@ -462,7 +468,22 @@ function renderHomePage(data) {
           <h1>${data.hero?.title || ""}</h1>
           <p class="hero-text">${data.hero?.description || ""}</p>
           <div class="hero-actions">${renderButtons(data.hero?.actions)}</div>
-          <ul class="hero-points">${renderHeroPoints((data.hero?.points || []).slice(0, 3))}</ul>
+        </div>
+
+        <div class="home-hero-side">
+          ${featuredProductBlock}
+
+          <div class="hero-proof-list">
+            ${secondaryProductBlocks}
+          </div>
+        </div>
+
+        <div class="home-hero-bottom">
+          <div class="hero-bottom-copy">
+            <p class="overline-lite">Why this can compound</p>
+            <p class="hero-bottom-text">${heroFoundationCopy}</p>
+            <ul class="hero-points hero-points-compact">${renderHeroPoints(heroPoints)}</ul>
+          </div>
 
           <div class="hero-signal-grid">
             ${heroMetrics
@@ -478,18 +499,10 @@ function renderHomePage(data) {
               .join("")}
           </div>
         </div>
-
-        <div class="home-hero-side">
-        ${featuredProductBlock}
-
-        <div class="hero-proof-list">
-          ${secondaryProductBlocks}
-        </div>
-      </div>
       </div>
     </section>
 
-    <section class="panel home-story-band">
+    <section class="panel home-story-band home-section-contained">
       <div class="home-story-grid">
         <div class="story-lead">
           <p class="eyebrow">${data.positioning?.eyebrow || ""}</p>
@@ -516,7 +529,7 @@ function renderHomePage(data) {
       </div>
     </section>
 
-    <section id="storefront" class="panel home-products-canvas">
+    <section id="storefront" class="panel home-products-canvas home-section-wide">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.storefront?.eyebrow || ""}</p>
@@ -576,7 +589,7 @@ function renderHomePage(data) {
       </div>
     </section>
 
-    <section class="panel home-roadmap-premium">
+    <section class="panel home-roadmap-premium home-section-offset-right">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.execution?.eyebrow || ""}</p>
@@ -640,7 +653,7 @@ function renderHomePage(data) {
       </div>
     </section>
 
-    <section class="panel home-ecosystem-shell">
+    <section class="panel home-ecosystem-shell home-section-offset-left">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.growthHub?.eyebrow || ""}</p>
@@ -660,7 +673,7 @@ function renderHomePage(data) {
       </div>
     </section>
 
-    <section id="projects" class="panel home-focus-shell">
+    <section id="projects" class="panel home-focus-shell home-section-wide">
       <div class="section-heading">
         <div>
           <p class="eyebrow">${data.focus?.eyebrow || ""}</p>
@@ -694,7 +707,7 @@ function renderHomePage(data) {
       </div>
     </section>
 
-    <section id="lead-access" class="panel lead-panel">
+    <section id="lead-access" class="panel lead-panel home-section-contained">
       <div>
         <p class="eyebrow">${data.lead?.eyebrow || ""}</p>
         <h2>${data.lead?.title || ""}</h2>
@@ -708,7 +721,7 @@ function renderHomePage(data) {
       })}
     </section>
 
-    <section class="panel contact-banner">
+    <section class="panel contact-banner home-section-tight">
       <div>
         <p class="eyebrow">${data.contact?.eyebrow || ""}</p>
         <h2>${data.contact?.title || ""}</h2>

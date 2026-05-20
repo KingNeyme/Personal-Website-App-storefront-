@@ -832,7 +832,7 @@ textarea:focus {
 
 .hero-home-premium {
   display: block;
-  padding: 34px;
+  padding: 40px;
   background:
     radial-gradient(circle at 0% 0%, rgba(79, 70, 229, 0.14), transparent 28%),
     radial-gradient(circle at 100% 0%, rgba(124, 58, 237, 0.12), transparent 22%),
@@ -856,8 +856,8 @@ textarea:focus {
 
 .home-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.98fr) minmax(360px, 0.88fr);
-  gap: 30px;
+  grid-template-columns: minmax(0, 1.06fr) minmax(350px, 0.94fr);
+  gap: 34px;
   align-items: stretch;
   min-width: 0;
 }
@@ -865,21 +865,21 @@ textarea:focus {
 .hero-copy-stack {
   display: grid;
   align-content: start;
-  gap: 12px;
-  padding: 12px 8px 8px 2px;
+  gap: 16px;
+  padding: 12px 8px 0 2px;
   max-width: none;
   min-width: 0;
 }
 
 .hero-home-premium h1 {
-  max-width: 8ch;
-  font-size: clamp(3.6rem, 4.9vw, 5.05rem);
-  line-height: 0.96;
+  max-width: 9.6ch;
+  font-size: clamp(4rem, 4.9vw, 5.4rem);
+  line-height: 0.92;
 }
 
 .hero-home-premium .hero-text {
-  max-width: 50ch;
-  font-size: 0.98rem;
+  max-width: 54ch;
+  font-size: 1rem;
 }
 
 .home-hero-side {
@@ -900,21 +900,51 @@ textarea:focus {
     0 18px 34px rgba(2, 6, 23, 0.14);
 }
 
+.home-hero-bottom {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.76fr) minmax(0, 1.24fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.hero-bottom-copy {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  padding: 22px 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  background:
+    radial-gradient(circle at top left, rgba(124, 58, 237, 0.14), transparent 40%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.014)),
+    rgba(11, 17, 33, 0.78);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 32px rgba(2, 6, 23, 0.12);
+}
+
+.hero-bottom-text {
+  margin: 0;
+  color: rgba(226, 232, 240, 0.84);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
 .hero-signal-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
-  margin-top: 22px;
 }
 
 .hero-stat-card-featured {
-  grid-column: 1 / -1;
+  grid-column: auto;
 }
 
 .hero-home-premium .hero-points {
   grid-template-columns: 1fr;
   gap: 10px;
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 .hero-home-premium .hero-points li {
@@ -927,6 +957,14 @@ textarea:focus {
     rgba(255, 255, 255, 0.022);
   line-height: 1.5;
   font-size: 0.95rem;
+}
+
+.hero-points-compact li {
+  padding-block: 11px;
+  padding-inline: 14px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    rgba(255, 255, 255, 0.02);
 }
 
 .hero-stat-card,
@@ -1053,10 +1091,35 @@ textarea:focus {
     rgba(12, 18, 35, 0.9);
 }
 
+.home-section-contained {
+  width: min(1140px, calc(100% - 56px));
+  margin-inline: auto;
+}
+
+.home-section-wide {
+  width: min(1240px, 100%);
+  margin-inline: auto;
+}
+
+.home-section-offset-right {
+  width: min(1180px, calc(100% - 44px));
+  margin-left: auto;
+}
+
+.home-section-offset-left {
+  width: min(1180px, calc(100% - 44px));
+  margin-right: auto;
+}
+
+.home-section-tight {
+  width: min(1020px, calc(100% - 72px));
+  margin-inline: auto;
+}
+
 .home-story-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
-  gap: 28px;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+  gap: 32px;
   align-items: start;
 }
 
@@ -1109,7 +1172,7 @@ textarea:focus {
 .home-products-shell {
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
-  gap: 22px;
+  gap: 24px;
 }
 
 .product-spotlight {
@@ -1219,8 +1282,8 @@ textarea:focus {
 
 .home-roadmap-shell {
   display: grid;
-  grid-template-columns: minmax(0, 0.94fr) minmax(320px, 1.06fr);
-  gap: 22px;
+  grid-template-columns: 1fr;
+  gap: 26px;
   align-items: start;
 }
 
@@ -1228,6 +1291,14 @@ textarea:focus {
 .operating-model {
   display: grid;
   gap: 14px;
+}
+
+.roadmap-track {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.operating-model {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .roadmap-step {
@@ -1304,8 +1375,8 @@ textarea:focus {
 
 .ecosystem-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-  gap: 22px;
+  grid-template-columns: minmax(0, 1.14fr) minmax(300px, 0.86fr);
+  gap: 26px;
   align-items: start;
 }
 
@@ -1330,14 +1401,14 @@ textarea:focus {
 
 .focus-shell {
   display: grid;
-  grid-template-columns: minmax(0, 1.06fr) minmax(300px, 0.94fr);
-  gap: 22px;
+  grid-template-columns: minmax(320px, 0.88fr) minmax(0, 1.12fr);
+  gap: 26px;
   align-items: start;
 }
 
 .focus-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -1353,6 +1424,11 @@ textarea:focus {
     radial-gradient(circle at top right, rgba(124, 58, 237, 0.16), transparent 42%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.016)),
     rgba(255, 255, 255, 0.03);
+}
+
+.focus-narrative {
+  position: relative;
+  top: 4px;
 }
 
 .storefront-products-premium,
@@ -2189,6 +2265,53 @@ textarea:focus {
   }
 }
 
+@media (max-width: 1220px) {
+  .home-hero-grid {
+    grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
+    gap: 26px;
+  }
+
+  .hero-home-premium h1 {
+    max-width: 9ch;
+    font-size: clamp(3.6rem, 5vw, 4.8rem);
+  }
+
+  .home-section-contained,
+  .home-section-offset-right,
+  .home-section-offset-left,
+  .home-section-tight {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .roadmap-track {
+    grid-template-columns: 1fr;
+  }
+
+  .operating-model {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1080px) {
+  .home-hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .home-hero-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-signal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .focus-shell {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 980px) {
   .site-shell {
     width: min(1240px, calc(100% - 28px));
@@ -2262,11 +2385,14 @@ textarea:focus {
     gap: 22px;
   }
 
+  .home-hero-bottom,
   .home-hero-side {
     grid-template-columns: 1fr;
   }
 
   .story-chip-list,
+  .roadmap-track,
+  .operating-model,
   .hero-home-premium .hero-points {
     grid-template-columns: 1fr;
   }
