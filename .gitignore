@@ -12,3 +12,8 @@ caribai-product-engine/app/db/__pycache__/
 caribai-product-engine/app/models/__pycache__/
 caribai-product-engine/app/schemas/__pycache__/
 caribai-product-engine/app/services/__pycache__/
+node_modules
+.next
+public/assets/
+public/content/
+public/cms/

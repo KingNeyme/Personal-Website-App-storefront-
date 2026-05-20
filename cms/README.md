@@ -2,11 +2,11 @@
 
 This folder now contains the live custom CMS direction for the CaribAI front-facing site.
 
-The goal is not to revive Decap or Payload. The goal is to run a clean, beautiful content manager around the site that already exists.
+The goal is not to revive Decap or Payload. The goal is to run a clean, beautiful content manager around the site that already exists, while the public-facing frontend moves onto a stronger Next/React foundation.
 
 ## What The CMS Manages
 
-The current public site already has a stable content surface. The CMS now manages:
+The current public site still has a stable JSON content surface. The CMS now manages:
 
 - homepage
 - about
@@ -25,7 +25,7 @@ The current public site already has a stable content surface. The CMS now manage
 
 The current CMS works as a file-based editorial layer:
 
-- keep the current public site and its design
+- keep the shared content model stable while the new public app evolves
 - build a custom admin in `cms/app/`
 - edit the real JSON content sources already powering the public site
 - support drafts, workflow states, preview links, JSON export, and save-to-file flows

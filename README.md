@@ -1,85 +1,72 @@
 ## CaribAI Project Structure
 
-This repository is now organized around two active directions:
+This repository now centers around three clear layers:
 
-1. The front-facing CaribAI brand site
-2. The separate CaribAI Labs product factory
+1. A new `Next.js` public-facing CaribAI site
+2. A file-based custom CMS under `/cms`
+3. A separate internal product factory under `/caribai-product-engine`
 
-The old Decap and Payload CMS experiments have been removed so the project matches the direction we actually want to build.
+The old static public-site renderer is being retired in favor of the new React/Next public app so the brand layer can reach a higher design and UX ceiling.
 
 ## Active Parts Of The Repo
 
 ### Public Brand Site
 
-The current public site lives at the repository root and is deployed as a static site.
+The current audience-facing site now lives in the Next app:
 
-Core files:
+- `app/`
+- `components/`
+- `lib/`
+- `app/globals.css`
+- `package.json`
+- `next.config.mjs`
 
-- `index.html`
-- `about.html`
-- `projects.html`
-- `storefront.html`
-- `journey.html`
-- `tech-stack.html`
-- `certifications.html`
-- `contact.html`
-- `blog.html`
-- `blog-post.html`
-- `styles.css`
-- `script.js`
-- `site-content.js`
-- `blog.js`
-
-Content and assets:
+The public app still reads the same JSON content model:
 
 - `content/site/`
 - `content/blog/`
 - `assets/`
 
-### Product Factory
+During build, those are synced into `public/` by:
 
-The internal CaribAI Labs product factory remains separate in:
+- `scripts/sync-static.mjs`
 
-- `caribai-product-engine/`
+### Custom CMS
 
-This is intentionally kept apart from the public site so the brand layer and internal product layer do not get tangled together.
-
-### Future CMS
-
-The future custom admin and content system now has a reserved home in:
+The current editorial/admin layer remains under:
 
 - `cms/`
 
+It is still file-based for now and manages the same JSON content surfaces the public app consumes.
+
+### Product Factory
+
+The separate internal CaribAI Labs product factory remains under:
+
+- `caribai-product-engine/`
+
+This stays intentionally separate from the public site and CMS.
+
 ## Current Direction
 
-The public site remains the same front-facing experience for:
+The new direction is:
 
-- brand positioning
-- storytelling
-- projects
-- certifications
-- tech stack
-- journey
-- journal content
-- storefront presentation
+- premium React/Next public brand site
+- existing file-based CMS kept working under `/cms`
+- shared JSON content model preserved
+- internal product engine kept separate
 
-The next admin direction is a custom CaribAI-managed content system built around the existing public site, not the old Decap or Payload approach.
-
-## What Was Removed
-
-These previous CMS experiments are no longer part of the active project direction:
-
-- Decap admin
-- Payload CMS app
+That gives CaribAI a cleaner frontend ceiling without forcing a full CMS/backend rewrite at the same time.
 
 ## Deployment
 
-The current public site can still be deployed as a static Vercel project.
+Current live/public base:
 
-Current live paths:
+- `https://caribailabs.vercel.app`
 
-- public site: `https://caribailabs.vercel.app`
-- custom admin: `https://caribailabs.vercel.app/cms/`
+Current CMS path:
+
+- `https://caribailabs.vercel.app/cms/`
 
 See:
 

@@ -8,11 +8,12 @@ Build a custom CaribAI admin that manages the current front-facing site without 
 
 ### Public Site
 
-The current root site remains the audience-facing frontend.
+The public site remains the audience-facing frontend, but it is now moving onto a Next/React foundation rather than the older static renderer.
 
-- static HTML pages
-- `site-content.js`
-- `blog.js`
+- `app/`
+- `components/`
+- `lib/`
+- `app/globals.css`
 - `content/site/*.json`
 - `content/blog/posts.json`
 - `assets/`
@@ -42,7 +43,7 @@ That means:
 - a post editor for the blog
 - a media manager for site graphics, logos, and uploads
 
-The first implementation should preserve the current public-site structure rather than forcing a full frontend rewrite.
+The first implementation preserves the current content model while the public frontend gets a stronger React/Next shell.
 
 ### Phase 2: Introduce A Structured Backend
 

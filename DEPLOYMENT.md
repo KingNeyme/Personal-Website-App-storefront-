@@ -2,91 +2,74 @@
 
 ## Current Public Site
 
-The active front-facing CaribAI site is the static site at the repository root.
+The active public CaribAI site is now the `Next.js` app in this repository.
 
-It includes:
+It depends on:
 
-- static HTML pages
-- shared CSS and JavaScript
-- JSON-driven site content
-- a JSON-driven journal/blog
-- local assets under `assets/`
+- `app/`
+- `components/`
+- `lib/`
+- `app/globals.css`
+- `content/site/`
+- `content/blog/`
+- `assets/`
+- `scripts/sync-static.mjs`
+
+The CMS remains a static/file-based editorial layer under:
+
+- `cms/`
 
 ## Vercel Deployment
-
-This project is currently set up to deploy as a static Vercel site.
 
 Current live URL:
 
 - `https://caribailabs.vercel.app`
 
-Current custom admin URL:
+CMS URL:
 
 - `https://caribailabs.vercel.app/cms/`
 
-Relevant file:
+Relevant files:
 
 - `vercel.json`
+- `package.json`
+- `next.config.mjs`
 
-### Deploy Steps
+## Deploy Steps
 
 1. Push the repository to GitHub.
-2. Import the repository into Vercel.
-3. Keep the deployment as a static site.
-4. Deploy.
+2. Connect the repository to Vercel.
+3. Let Vercel run `npm install` and `npm run build`.
+4. The build will sync `assets`, `content`, and `cms` into `public/` automatically.
+5. Deploy.
 
 ## CMS Entry Point
 
-The custom admin now lives under:
-
-- `cms/`
-
-The main entry path is:
+The custom admin lives at:
 
 - `/cms/`
 
-which redirects into:
+and the current shell is:
 
 - `/cms/app/`
 
-## What The Public Site Depends On
+## Contact Flow Note
 
-### Core files
-
-- `index.html`
-- `about.html`
-- `projects.html`
-- `storefront.html`
-- `journey.html`
-- `tech-stack.html`
-- `certifications.html`
-- `contact.html`
-- `blog.html`
-- `blog-post.html`
-- `styles.css`
-- `script.js`
-- `site-content.js`
-- `blog.js`
-
-### Content files
-
-- `content/site/`
-- `content/blog/`
-
-### Assets
-
-- `assets/`
-
-## Contact Form Note
-
-The current contact flow still opens the local email client and targets:
+The public-site lead and contact forms currently open the user’s email client and target:
 
 - `caribailabs@gmail.com`
 
-That is fine for now, but it can later be replaced with a proper form backend such as Formspree, Brevo, or a custom submission service.
+That is acceptable for now, but later can be replaced with:
 
-## New Direction
+- Formspree
+- Resend
+- a custom API route
+- another submission backend
 
-The old Decap and Payload CMS layers have been removed.
+## Current Goal
 
-The next CMS/admin direction should be built cleanly around the existing public site instead of reviving those earlier experiments.
+The repo is now being shaped around:
+
+- a higher-ceiling React/Next public site
+- a controlled file-based CMS
+- a separate internal product factory
